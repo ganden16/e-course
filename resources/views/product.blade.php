@@ -1,279 +1,225 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product - Healthcare Remote Circle</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome untuk Ikon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Alpine.js untuk Interaktivitas Filter -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+@php
+    $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
+    $site = $data['site'];
+    $products = $data['products'];
+    $categories = array_unique(array_column($products, 'category'));
+@endphp
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'hc-green': '#10b981',
-                        'hc-dark': '#065f46',
-                    }
-                }
-            }
-        }
-    </script>
-</head>
-<body class="font-sans antialiased bg-gray-50">
+@include('components.header', ['title' => 'Courses'])
 
-    <!-- Navigation (Konsisten dengan halaman lain) -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <a href="{{ route('home') }}" class="text-2xl font-bold text-hc-green">
-                        <i class="fas fa-heartbeat mr-2"></i>HEALTHCARE
-                    </a>
-                </div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="{{ route('home') }}" class="text-gray-700 hover:text-hc-green transition">Home</a>
-                    <a href="{{ route('about') }}" class="text-gray-700 hover:text-hc-green transition">About Us</a>
-                    <a href="{{ route('community') }}" class="text-gray-700 hover:text-hc-green transition">Our Community</a>
-                    <a href="{{ route('blog') }}" class="text-gray-700 hover:text-hc-green transition">Blog</a>
-                    <a href="{{ route('product') }}" class="text-hc-green font-semibold">Product</a>
-                    <a href="{{ route('contact') }}" class="text-gray-700 hover:text-hc-green transition">Contact</a>
-                </div>
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-gray-700">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
+<!-- Hero Section -->
+<section class="gradient-bg text-white py-16">
+    <div class="container mx-auto px-6">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Courses</h1>
+            <p class="text-xl max-w-3xl mx-auto">Explore our comprehensive range of courses designed to help you master new skills and advance your career.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Filter Section -->
+<section class="py-8 bg-white border-b">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <h2 class="text-2xl font-semibold text-gray-800">All Courses</h2>
+                <p class="text-gray-600">{{ count($products) }} courses available</p>
             </div>
-            <!-- Mobile Menu -->
-            <div x-show="mobileMenuOpen" x-transition class="md:hidden mt-4 pb-4">
-                <a href="{{ route('home') }}" class="block py-2 text-gray-700 hover:text-hc-green">Home</a>
-                <a href="{{ route('about') }}" class="block py-2 text-gray-700 hover:text-hc-green">About Us</a>
-                <a href="{{ route('community') }}" class="block py-2 text-gray-700 hover:text-hc-green">Our Community</a>
-                <a href="{{ route('blog') }}" class="block py-2 text-gray-700 hover:text-hc-green">Blog</a>
-                <a href="{{ route('product') }}" class="block py-2 text-hc-green font-semibold">Product</a>
-                <a href="{{ route('contact') }}" class="block py-2 text-gray-700 hover:text-hc-green">Contact</a>
-            </div>
-        </nav>
-    </header>
-
-    <main x-data="{ mobileMenuOpen: false, activeFilter: 'all' }">
-        <!-- Hero Section: Product (Berdasarkan Gambar) -->
-        <section class="bg-hc-green text-white py-16 lg:py-24">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col lg:flex-row items-center justify-center gap-12">
-                    <!-- Gray Circle Element -->
-                    <div class="bg-gray-300 rounded-full w-64 h-64 opacity-50 hidden lg:block"></div>
-                    <!-- Title -->
-                    <h1 class="text-5xl lg:text-6xl font-bold text-center">
-                        <span class="border-b-4 border-white pb-2">Product</span>
-                    </h1>
-                </div>
-            </div>
-        </section>
-
-        <!-- Search & Filter Section -->
-        <section class="py-8 bg-white shadow-sm">
-            <div class="container mx-auto px-6">
-                <!-- Search Bar -->
-                <div class="max-w-2xl mx-auto mb-6">
-                    <form>
-                        <div class="relative">
-                            <input type="text" placeholder="Apa Yang Ingin Kamu Pelajari ?" class="w-full px-6 py-4 pr-12 text-lg border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-hc-green">
-                            <button type="submit" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-hc-green text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-hc-dark transition">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Filter Buttons -->
-                <div class="flex flex-wrap justify-center gap-3">
-                    <button @click="activeFilter = 'all'" :class="activeFilter === 'all' ? 'bg-hc-green text-white' : 'bg-gray-200 text-gray-700'" class="px-6 py-2 rounded-full font-semibold transition">
-                        Semua
-                    </button>
-                    <button @click="activeFilter = 'Academy'" :class="activeFilter === 'Academy' ? 'bg-hc-green text-white' : 'bg-gray-200 text-gray-700'" class="px-6 py-2 rounded-full font-semibold transition">
-                        Academy
-                    </button>
-                    <button @click="activeFilter = 'Bootcamp'" :class="activeFilter === 'Bootcamp' ? 'bg-hc-green text-white' : 'bg-gray-200 text-gray-700'" class="px-6 py-2 rounded-full font-semibold transition">
-                        Bootcamp
-                    </button>
-                    <button @click="activeFilter = 'Workshop'" :class="activeFilter === 'Workshop' ? 'bg-hc-green text-white' : 'bg-gray-200 text-gray-700'" class="px-6 py-2 rounded-full font-semibold transition">
-                        Workshop
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Product Grid Section -->
-        <section class="py-16">
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    @php
-                        // Simulasi data produk dari controller
-                        $products = [
-                            [
-                                'id' => 1,
-                                'title' => 'Medical Virtual Assistant (MVA) Training Program',
-                                'category' => 'Bootcamp',
-                                'price' => 'Rp 2.500.000',
-                                'image' => 'mva-bootcamp',
-                                'instructor' => 'Siti Permata, S.Kep.',
-                                'features' => ['Live Session', 'Sertifikat', 'Job Support', '1-on-1 Mentoring'],
-                                'isFeatured' => true
-                            ],
-                            [
-                                'id' => 2,
-                                'title' => 'Digital Health Literacy for Professionals',
-                                'category' => 'Academy',
-                                'price' => 'Rp 750.000',
-                                'image' => 'digital-health',
-                                'instructor' => 'dr. Aditya Kusuma',
-                                'features' => ['Video Module', 'Quiz', 'Forum Diskusi', 'Sertifikat'],
-                                'isFeatured' => false
-                            ],
-                            [
-                                'id' => 3,
-                                'title' => 'CV & Interview Mastery for Healthcare',
-                                'category' => 'Workshop',
-                                'price' => 'Rp 350.000',
-                                'image' => 'cv-workshop',
-                                'instructor' => 'Tim HRC Career',
-                                'features' => ['Live Workshop', 'Template CV', 'Simulasi Interview'],
-                                'isFeatured' => false
-                            ],
-                            [
-                                'id' => 4,
-                                'title' => 'Telehealth Practitioner Certification',
-                                'category' => 'Academy',
-                                'price' => 'Rp 1.500.000',
-                                'image' => 'telehealth-cert',
-                                'instructor' => 'dr. Reza Wibowo',
-                                'features' => ['Modul Lengkap', 'Case Study', 'Ujian Sertifikasi'],
-                                'isFeatured' => true
-                            ],
-                            [
-                                'id' => 5,
-                                'title' => 'Basic Medical Coding & Billing',
-                                'category' => 'Academy',
-                                'price' => 'Rp 900.000',
-                                'image' => 'medical-coding',
-                                'instructor' => 'Budi Santoso, S.Kom.',
-                                'features' => ['Video Tutorial', 'Hands-on Practice', 'Sertifikat'],
-                                'isFeatured' => false
-                            ],
-                            [
-                                'id' => 6,
-                                'title' => 'Advanced MVA: Specialized Clinics',
-                                'category' => 'Bootcamp',
-                                'price' => 'Rp 3.000.000',
-                                'image' => 'advanced-mva',
-                                'instructor' => 'Tim Mentor Senior',
-                                'features' => ['Kelas Intensif', 'Project Based', 'Exclusive Network'],
-                                'isFeatured' => false
-                            ],
-                        ];
-                    @endphp
-
-                    @foreach ($products as $product)
-                    <div x-show="activeFilter === 'all' || '{{ $product['category'] }}' === activeFilter" class="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col">
-                        <!-- Featured Badge -->
-                        @if ($product['isFeatured'])
-                        <div class="bg-orange-500 text-white text-xs font-bold text-center py-1">
-                            <i class="fas fa-star mr-1"></i>FEATURED
-                        </div>
-                        @endif
-                        
-                        <div class="p-6 flex-1 flex flex-col">
-                            <a href="#" class="block shrink-0 mb-4">
-                                <img src="https://placehold.co/400x250/E2E8F0/10B981?text={{ $product['image'] }}" alt="{{ $product['title'] }}" class="w-full h-48 object-cover rounded-lg">
-                            </a>
-                            
-                            <div class="flex-1">
-                                <span class="text-xs font-semibold text-hc-green bg-hc-green bg-opacity-10 px-3 py-1 rounded-full">{{ $product['category'] }}</span>
-                                <h3 class="text-xl font-bold text-gray-800 mt-3 mb-2 hover:text-hc-green transition-colors">
-                                    <a href="#">{{ $product['title'] }}</a>
-                                </h3>
-                                <p class="text-sm text-gray-500 mb-4">by {{ $product['instructor'] }}</p>
-                                
-                                <ul class="text-sm text-gray-600 space-y-1 mb-6">
-                                    @foreach ($product['features'] as $feature)
-                                        <li><i class="fas fa-check text-hc-green mr-2"></i>{{ $feature }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-
-                            <div class="flex items-center justify-between mt-auto pt-4 border-t">
-                                <span class="text-2xl font-bold text-hc-dark">{{ $product['price'] }}</span>
-                                <a href="#" class="bg-hc-green hover:bg-hc-dark text-white font-bold py-2 px-6 rounded-lg transition">
-                                    Lihat Detail
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="categoryFilter">
+                    <option value="">All Categories</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category }}">{{ $category }}</option>
                     @endforeach
-                </div>
-
-                <!-- Pagination -->
-                <div class="mt-12 flex justify-center">
-                    <nav class="flex items-center space-x-2">
-                        <a href="#" class="px-3 py-2 text-gray-500 hover:bg-gray-200 rounded-md transition">
-                            <i class="fas fa-chevron-left"></i>
-                        </a>
-                        <a href="#" class="px-4 py-2 bg-hc-green text-white rounded-md">1</a>
-                        <a href="#" class="px-4 py-2 text-gray-700 hover:bg-gray-200 rounded-md transition">2</a>
-                        <a href="#" class="px-4 py-2 text-gray-700 hover:bg-gray-200 rounded-md transition">3</a>
-                        <a href="#" class="px-3 py-2 text-gray-700 hover:bg-gray-200 rounded-md transition">
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </nav>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer (Konsisten dengan halaman lain) -->
-    <footer class="bg-hc-dark text-white">
-        <div class="container mx-auto px-6 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">
-                        <i class="fas fa-heartbeat mr-2"></i>HEALTHCARE
-                    </h3>
-                    <p class="text-sm">Academy And Community for a better future in healthcare.</p>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="{{ route('home') }}" class="hover:text-hc-green transition">Home</a></li>
-                        <li><a href="{{ route('about') }}" class="hover:text-hc-green transition">Tentang Kami</a></li>
-                        <li><a href="{{ route('product') }}" class="hover:text-hc-green transition">Produk</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Kontak</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><i class="fas fa-envelope mr-2"></i>info@healthcarerc.com</li>
-                        <li><i class="fas fa-phone mr-2"></i>+62 812-3456-7890</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Ikuti Kami</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="hover:text-hc-green transition"><i class="fab fa-facebook text-xl"></i></a>
-                        <a href="#" class="hover:text-hc-green transition"><i class="fab fa-twitter text-xl"></i></a>
-                        <a href="#" class="hover:text-hc-green transition"><i class="fab fa-instagram text-xl"></i></a>
-                        <a href="#" class="hover:text-hc-green transition"><i class="fab fa-linkedin text-xl"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm">
-                <p>&copy; {{ date('Y') }} Healthcare Remote Circle. All rights reserved.</p>
+                </select>
+                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="sortFilter">
+                    <option value="default">Sort by</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Highest Rated</option>
+                    <option value="students">Most Popular</option>
+                </select>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-</body>
-</html>
+<!-- Courses Grid -->
+<section class="py-16 bg-light">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="coursesGrid">
+            @foreach($products as $product)
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover course-item" data-category="{{ $product['category'] }}" data-price="{{ $product['price'] }}" data-rating="{{ $product['rating'] }}" data-students="{{ $product['students'] }}">
+                    <div class="relative">
+                        <img src="{{ $product['image'] }}" alt="{{ $product['title'] }}" class="w-full h-48 object-cover">
+                        @if($product['price'] < $product['original_price'])
+                            <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                                {{ round((1 - $product['price'] / $product['original_price']) * 100) }}% OFF
+                            </div>
+                        @endif
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">{{ $product['category'] }}</span>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="ml-1 text-sm font-medium">{{ $product['rating'] }}</span>
+                                <span class="ml-1 text-sm text-gray-500">({{ $product['students'] }})</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">{{ $product['title'] }}</h3>
+                        <p class="text-gray-600 mb-4">{{ $product['description'] }}</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-user-tie mr-2"></i>
+                            <span class="mr-4">{{ $product['instructor'] }}</span>
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>{{ $product['duration'] }}</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold text-primary">Rp {{ number_format($product['price'], 0, ',', '.') }}</span>
+                                @if($product['price'] < $product['original_price'])
+                                    <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($product['original_price'], 0, ',', '.') }}</span>
+                                @endif
+                            </div>
+                            <a href="/product/{{ $product['id'] }}" class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-12">
+            <button class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                Load More Courses
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why Learn With Us?</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">We provide the best learning experience with comprehensive features.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-certificate text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Certificate</h3>
+                <p class="text-gray-600">Receive industry-recognized certificates upon completion</p>
+            </div>
+            <div class="text-center">
+                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-infinity text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Lifetime Access</h3>
+                <p class="text-gray-600">Get lifetime access to course materials and updates</p>
+            </div>
+            <div class="text-center">
+                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-mobile-alt text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Mobile Access</h3>
+                <p class="text-gray-600">Learn on the go with our mobile app</p>
+            </div>
+            <div class="text-center">
+                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-headset text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+                <p class="text-gray-600">Get help whenever you need it</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 gradient-bg text-white">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Can't Find What You're Looking For?</h2>
+        <p class="text-xl mb-8 max-w-3xl mx-auto">We're constantly adding new courses. Let us know what you'd like to learn!</p>
+        <a href="/contact" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+            Request a Course
+        </a>
+    </div>
+</section>
+
+@include('components.footer')
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryFilter = document.getElementById('categoryFilter');
+    const sortFilter = document.getElementById('sortFilter');
+    const coursesGrid = document.getElementById('coursesGrid');
+    const courseItems = Array.from(coursesGrid.querySelectorAll('.course-item'));
+
+    function filterCourses() {
+        const selectedCategory = categoryFilter.value;
+
+        courseItems.forEach(item => {
+            const itemCategory = item.getAttribute('data-category');
+
+            if (selectedCategory === '' || itemCategory === selectedCategory) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    function sortCourses() {
+        const sortValue = sortFilter.value;
+        let sortedItems = [...courseItems];
+
+        switch(sortValue) {
+            case 'price-low':
+                sortedItems.sort((a, b) => {
+                    return parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price'));
+                });
+                break;
+            case 'price-high':
+                sortedItems.sort((a, b) => {
+                    return parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price'));
+                });
+                break;
+            case 'rating':
+                sortedItems.sort((a, b) => {
+                    return parseFloat(b.getAttribute('data-rating')) - parseFloat(a.getAttribute('data-rating'));
+                });
+                break;
+            case 'students':
+                sortedItems.sort((a, b) => {
+                    return parseInt(b.getAttribute('data-students')) - parseInt(a.getAttribute('data-students'));
+                });
+                break;
+            default:
+                // Default order
+                sortedItems = courseItems;
+        }
+
+        // Clear and re-append sorted items
+        coursesGrid.innerHTML = '';
+        sortedItems.forEach(item => {
+            if (item.style.display !== 'none') {
+                coursesGrid.appendChild(item);
+            }
+        });
+    }
+
+    categoryFilter.addEventListener('change', function() {
+        filterCourses();
+        sortCourses();
+    });
+
+    sortFilter.addEventListener('change', function() {
+        sortCourses();
+    });
+});
+</script>

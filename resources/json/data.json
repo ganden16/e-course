@@ -1,0 +1,688 @@
+{
+  "site": {
+    "name": "EduTech Academy",
+    "tagline": "Unlock Your Potential with Digital Learning",
+    "description": "Platform e-learning terdepan yang menyediakan kursus digital dan bootcamp berkualitas untuk meningkatkan karir Anda.",
+    "logo": "fas fa-graduation-cap",
+    "email": "info@edutechacademy.com",
+    "phone": "+62 812-3456-7890",
+    "address": "Jakarta, Indonesia"
+  },
+  "navigation": [
+    {
+      "name": "Home",
+      "url": "/",
+      "active": true
+    },
+    {
+      "name": "About Us",
+      "url": "/about-us",
+      "active": false
+    },
+    {
+      "name": "Product",
+      "url": "/product",
+      "active": false
+    },
+    {
+      "name": "Blog",
+      "url": "/blog",
+      "active": false
+    },
+    {
+      "name": "Contact",
+      "url": "/contact",
+      "active": false
+    },
+    {
+      "name": "Bootcamp",
+      "url": "/bootcamp",
+      "active": false
+    },
+    {
+      "name": "Our Community",
+      "url": "/community",
+      "active": false
+    }
+  ],
+  "hero": {
+    "title": "Transform Your Career with Digital Learning",
+    "subtitle": "Join thousands of students who have advanced their careers through our comprehensive courses and bootcamps",
+    "description": "Access high-quality digital courses and intensive bootcamps taught by industry experts. Learn at your own pace, anytime, anywhere.",
+    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+    "cta_text": "Explore Courses",
+    "cta_secondary": "Join Community"
+  },
+  "stats": [
+    {
+      "number": "15,000+",
+      "label": "Active Students"
+    },
+    {
+      "number": "50+",
+      "label": "Expert Instructors"
+    },
+    {
+      "number": "100+",
+      "label": "Courses Available"
+    },
+    {
+      "number": "95%",
+      "label": "Satisfaction Rate"
+    }
+  ],
+  "features": [
+    {
+      "icon": "fas fa-laptop-code",
+      "title": "Learn Anywhere",
+      "description": "Access our courses from any device, anywhere in the world. Learn at your own pace."
+    },
+    {
+      "icon": "fas fa-certificate",
+      "title": "Certified Courses",
+      "description": "Receive industry-recognized certificates upon completion of our courses."
+    },
+    {
+      "icon": "fas fa-users",
+      "title": "Expert Instructors",
+      "description": "Learn from industry experts with years of practical experience."
+    },
+    {
+      "icon": "fas fa-headset",
+      "title": "24/7 Support",
+      "description": "Get help whenever you need it with our round-the-clock support team."
+    },
+    {
+      "icon": "fas fa-chart-line",
+      "title": "Track Progress",
+      "description": "Monitor your learning progress with our advanced analytics tools."
+    },
+    {
+      "icon": "fas fa-dollar-sign",
+      "title": "Affordable Pricing",
+      "description": "Get quality education at prices that won't break the bank."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Sarah Johnson",
+      "role": "Web Developer",
+      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+      "content": "EduTech Academy completely transformed my career. The courses were comprehensive and the instructors were amazing!"
+    },
+    {
+      "name": "Michael Chen",
+      "role": "Data Scientist",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+      "content": "The bootcamp I attended was intensive and practical. I landed a job within a month of completing it."
+    },
+    {
+      "name": "Amanda Rodriguez",
+      "role": "UX Designer",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "content": "The flexibility of learning at my own pace while working full-time was invaluable. Highly recommend!"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "title": "Complete Web Development Bootcamp",
+      "category": "Web Development",
+      "price": 899000,
+      "original_price": 1499000,
+      "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+      "instructor": "David Anderson",
+      "rating": 4.8,
+      "students": 3420,
+      "duration": "42 hours",
+      "level": "Beginner to Advanced",
+      "description": "Learn web development from scratch with HTML, CSS, JavaScript, React, Node.js and more.",
+      "features": [
+        "42 hours of video content",
+        "100+ coding exercises",
+        "5 real-world projects",
+        "Certificate of completion",
+        "Lifetime access",
+        "Mobile app access"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Python for Data Science",
+      "category": "Data Science",
+      "price": 799000,
+      "original_price": 1299000,
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "instructor": "Dr. Sarah Mitchell",
+      "rating": 4.9,
+      "students": 2850,
+      "duration": "36 hours",
+      "level": "Intermediate",
+      "description": "Master Python programming for data science, machine learning, and data analysis.",
+      "features": [
+        "36 hours of video content",
+        "80+ coding exercises",
+        "10 real-world projects",
+        "Certificate of completion",
+        "Lifetime access",
+        "Downloadable resources"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Digital Marketing Mastery",
+      "category": "Marketing",
+      "price": 699000,
+      "original_price": 1199000,
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
+      "instructor": "Emma Thompson",
+      "rating": 4.7,
+      "students": 1980,
+      "duration": "28 hours",
+      "level": "Beginner",
+      "description": "Learn digital marketing strategies including SEO, social media, content marketing, and more.",
+      "features": [
+        "28 hours of video content",
+        "50+ practical assignments",
+        "8 real-world projects",
+        "Certificate of completion",
+        "Lifetime access",
+        "Community support"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "UI/UX Design Fundamentals",
+      "category": "Design",
+      "price": 749000,
+      "original_price": 1249000,
+      "image": "https://images.unsplash.com/photo-1559028006-44a26f024d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "instructor": "Alex Rodriguez",
+      "rating": 4.8,
+      "students": 2150,
+      "duration": "32 hours",
+      "level": "Beginner to Intermediate",
+      "description": "Master the principles of user interface and user experience design.",
+      "features": [
+        "32 hours of video content",
+        "60+ design exercises",
+        "6 portfolio projects",
+        "Certificate of completion",
+        "Lifetime access",
+        "Design tools access"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Mobile App Development with Flutter",
+      "category": "Mobile Development",
+      "price": 849000,
+      "original_price": 1399000,
+      "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "instructor": "James Wilson",
+      "rating": 4.6,
+      "students": 1680,
+      "duration": "38 hours",
+      "level": "Intermediate",
+      "description": "Build beautiful mobile apps for iOS and Android using Flutter and Dart.",
+      "features": [
+        "38 hours of video content",
+        "70+ coding exercises",
+        "8 complete apps",
+        "Certificate of completion",
+        "Lifetime access",
+        "Source code included"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Cybersecurity Essentials",
+      "category": "Security",
+      "price": 899000,
+      "original_price": 1499000,
+      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "instructor": "Robert Chang",
+      "rating": 4.9,
+      "students": 1230,
+      "duration": "40 hours",
+      "level": "Intermediate",
+      "description": "Learn cybersecurity fundamentals, ethical hacking, and network security.",
+      "features": [
+        "40 hours of video content",
+        "90+ practical exercises",
+        "10 security projects",
+        "Certificate of completion",
+        "Lifetime access",
+        "Virtual lab access"
+      ]
+    }
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "The Future of Web Development: Trends to Watch in 2024",
+      "excerpt": "Explore the latest trends shaping the future of web development, from AI-powered tools to advanced frameworks.",
+      "content": "Web development is constantly evolving, and staying ahead of the curve is crucial for developers. In this comprehensive guide, we'll explore the key trends that are set to define the web development landscape in 2024. From the rise of AI-assisted coding to the growing importance of web performance, we'll cover everything you need to know to stay competitive in this rapidly changing field.",
+      "author": "David Anderson",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "date": "2024-01-15",
+      "read_time": "8 min read",
+      "category": "Web Development",
+      "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+      "tags": ["Web Development", "Trends", "2024", "Technology"]
+    },
+    {
+      "id": 2,
+      "title": "Getting Started with Machine Learning: A Beginner's Guide",
+      "excerpt": "Learn the fundamentals of machine learning and how to get started on your journey to becoming an ML engineer.",
+      "content": "Machine learning is revolutionizing industries across the globe, but getting started can seem daunting. This guide breaks down the fundamentals of ML, from basic concepts to practical implementation. We'll cover the essential algorithms, tools, and techniques you need to begin your machine learning journey, along with real-world examples and hands-on projects to solidify your understanding.",
+      "author": "Dr. Sarah Mitchell",
+      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+      "date": "2024-01-12",
+      "read_time": "12 min read",
+      "category": "Data Science",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "tags": ["Machine Learning", "Data Science", "Beginner", "AI"]
+    },
+    {
+      "id": 3,
+      "title": "Effective Digital Marketing Strategies for Small Businesses",
+      "excerpt": "Discover cost-effective digital marketing strategies that can help small businesses compete with larger competitors.",
+      "content": "Digital marketing doesn't have to break the bank, especially for small businesses. In this article, we explore proven strategies that deliver maximum impact with minimal investment. From social media marketing to content creation, email campaigns to SEO optimization, we'll cover the essential tactics that can help your small business thrive in the digital landscape.",
+      "author": "Emma Thompson",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "date": "2024-01-10",
+      "read_time": "10 min read",
+      "category": "Marketing",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
+      "tags": ["Digital Marketing", "Small Business", "Strategy", "SEO"]
+    },
+    {
+      "id": 4,
+      "title": "The Psychology of Great UX Design",
+      "excerpt": "Understanding the psychological principles that underpin effective user experience design.",
+      "content": "Great UX design goes beyond aesthetics – it's about understanding how users think, feel, and behave. This article delves into the psychological principles that inform effective design decisions, from cognitive load theory to emotional design. Learn how to create interfaces that not only look good but also feel intuitive and satisfying to use.",
+      "author": "Alex Rodriguez",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+      "date": "2024-01-08",
+      "read_time": "7 min read",
+      "category": "Design",
+      "image": "https://images.unsplash.com/photo-1559028006-44a26f024d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "tags": ["UX Design", "Psychology", "User Experience", "Design Principles"]
+    },
+    {
+      "id": 5,
+      "title": "Mobile-First Development: Best Practices and Techniques",
+      "excerpt": "Learn how to implement mobile-first development strategies to create better responsive web applications.",
+      "content": "With mobile devices accounting for over half of all web traffic, mobile-first development is no longer optional – it's essential. This comprehensive guide covers the best practices, techniques, and tools for implementing a mobile-first approach. From responsive design principles to performance optimization, we'll help you create web applications that work seamlessly across all devices.",
+      "author": "James Wilson",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "date": "2024-01-05",
+      "read_time": "9 min read",
+      "category": "Mobile Development",
+      "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "tags": ["Mobile Development", "Responsive Design", "Best Practices", "Web Development"]
+    },
+    {
+      "id": 6,
+      "title": "Cybersecurity in the Remote Work Era",
+      "excerpt": "Essential cybersecurity practices for protecting your data and systems in an increasingly remote work environment.",
+      "content": "The shift to remote work has created new cybersecurity challenges for organizations and individuals alike. This article explores the essential practices and tools needed to maintain security in a distributed work environment. From secure connection methods to data protection strategies, we'll cover everything you need to know to stay safe while working remotely.",
+      "author": "Robert Chang",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+      "date": "2024-01-03",
+      "read_time": "11 min read",
+      "category": "Security",
+      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "tags": ["Cybersecurity", "Remote Work", "Data Protection", "Security Best Practices"]
+    }
+  ],
+  "bootcamps": [
+    {
+      "id": 1,
+      "title": "Full Stack Web Development Bootcamp",
+      "category": "Web Development",
+      "price": 5999000,
+      "original_price": 8999000,
+      "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+      "instructor": "David Anderson",
+      "rating": 4.9,
+      "students": 450,
+      "duration": "12 weeks",
+      "level": "Beginner to Advanced",
+      "schedule": "Monday - Friday, 9:00 AM - 5:00 PM",
+      "start_date": "2024-02-01",
+      "description": "Intensive 12-week bootcamp covering front-end and back-end development, databases, and deployment.",
+      "features": [
+        "480 hours of intensive training",
+        "20+ real-world projects",
+        "1-on-1 mentorship",
+        "Career services and job placement",
+        "Certificate of completion",
+        "Alumni network access"
+      ],
+      "curriculum": [
+        "HTML, CSS, JavaScript fundamentals",
+        "React.js and modern front-end frameworks",
+        "Node.js, Express.js and back-end development",
+        "Database design and management",
+        "API development and integration",
+        "DevOps and deployment strategies",
+        "Version control with Git",
+        "Agile development methodologies"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Data Science & Machine Learning Bootcamp",
+      "category": "Data Science",
+      "price": 6999000,
+      "original_price": 9999000,
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "instructor": "Dr. Sarah Mitchell",
+      "rating": 4.8,
+      "students": 320,
+      "duration": "14 weeks",
+      "level": "Intermediate",
+      "schedule": "Monday - Friday, 9:00 AM - 5:00 PM",
+      "start_date": "2024-02-15",
+      "description": "Comprehensive data science bootcamp covering statistics, machine learning, and data visualization.",
+      "features": [
+        "560 hours of intensive training",
+        "25+ real-world projects",
+        "1-on-1 mentorship",
+        "Career services and job placement",
+        "Certificate of completion",
+        "Industry networking events"
+      ],
+      "curriculum": [
+        "Python programming for data science",
+        "Statistical analysis and hypothesis testing",
+        "Machine learning algorithms and techniques",
+        "Deep learning and neural networks",
+        "Data visualization with Tableau and Power BI",
+        "Big data technologies (Hadoop, Spark)",
+        "Natural language processing",
+        "Computer vision fundamentals"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "UX/UI Design Bootcamp",
+      "category": "Design",
+      "price": 5499000,
+      "original_price": 7999000,
+      "image": "https://images.unsplash.com/photo-1559028006-44a26f024d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "instructor": "Alex Rodriguez",
+      "rating": 4.7,
+      "students": 280,
+      "duration": "10 weeks",
+      "level": "Beginner to Intermediate",
+      "schedule": "Monday - Friday, 9:00 AM - 5:00 PM",
+      "start_date": "2024-03-01",
+      "description": "Intensive design bootcamp covering user research, interface design, and prototyping.",
+      "features": [
+        "400 hours of intensive training",
+        "15+ portfolio projects",
+        "1-on-1 mentorship",
+        "Career services and job placement",
+        "Certificate of completion",
+        "Design tools access"
+      ],
+      "curriculum": [
+        "Design thinking and user research",
+        "Information architecture and wireframing",
+        "Visual design principles and typography",
+        "Prototyping with Figma and Adobe XD",
+        "Usability testing and iteration",
+        "Responsive design for web and mobile",
+        "Design systems and component libraries",
+        "Portfolio development and presentation"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Digital Marketing Mastery Bootcamp",
+      "category": "Marketing",
+      "price": 4999000,
+      "original_price": 7499000,
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
+      "instructor": "Emma Thompson",
+      "rating": 4.6,
+      "students": 350,
+      "duration": "8 weeks",
+      "level": "Beginner",
+      "schedule": "Monday - Friday, 9:00 AM - 5:00 PM",
+      "start_date": "2024-03-15",
+      "description": "Comprehensive digital marketing bootcamp covering SEO, social media, content marketing, and analytics.",
+      "features": [
+        "320 hours of intensive training",
+        "12+ real-world campaigns",
+        "1-on-1 mentorship",
+        "Career services and job placement",
+        "Certificate of completion",
+        "Industry certifications prep"
+      ],
+      "curriculum": [
+        "Digital marketing fundamentals",
+        "Search engine optimization (SEO)",
+        "Social media marketing strategy",
+        "Content marketing and copywriting",
+        "Email marketing automation",
+        "Pay-per-click advertising (PPC)",
+        "Analytics and data-driven marketing",
+        "Marketing automation and CRM"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Mobile App Development Bootcamp",
+      "category": "Mobile Development",
+      "price": 6499000,
+      "original_price": 9499000,
+      "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      "instructor": "James Wilson",
+      "rating": 4.8,
+      "students": 220,
+      "duration": "12 weeks",
+      "level": "Intermediate",
+      "schedule": "Monday - Friday, 9:00 AM - 5:00 PM",
+      "start_date": "2024-04-01",
+      "description": "Intensive mobile development bootcamp covering iOS, Android, and cross-platform development.",
+      "features": [
+        "480 hours of intensive training",
+        "18+ complete mobile apps",
+        "1-on-1 mentorship",
+        "Career services and job placement",
+        "Certificate of completion",
+        "App store deployment guidance"
+      ],
+      "curriculum": [
+        "Mobile development fundamentals",
+        "Swift and iOS development",
+        "Kotlin and Android development",
+        "Cross-platform development with Flutter",
+        "Mobile UI/UX design principles",
+        "API integration and data management",
+        "Mobile app testing and debugging",
+        "App deployment and maintenance"
+      ]
+    }
+  ],
+  "community": {
+    "title": "Join Our Thriving Learning Community",
+    "description": "Connect with thousands of learners, instructors, and industry professionals from around the world.",
+    "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "stats": [
+      {
+        "number": "15,000+",
+        "label": "Active Members"
+      },
+      {
+        "number": "50+",
+        "label": "Countries"
+      },
+      {
+        "number": "1000+",
+        "label": "Daily Interactions"
+      },
+      {
+        "number": "24/7",
+        "label": "Community Support"
+      }
+    ],
+    "social_links": [
+      {
+        "name": "Facebook",
+        "url": "https://facebook.com/edutechacademy",
+        "icon": "fab fa-facebook",
+        "description": "Join our Facebook community for daily updates and discussions"
+      },
+      {
+        "name": "Discord",
+        "url": "https://discord.gg/edutechacademy",
+        "icon": "fab fa-discord",
+        "description": "Connect with students and instructors in real-time"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/company/edutechacademy",
+        "icon": "fab fa-linkedin",
+        "description": "Professional networking and career opportunities"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/edutechacademy",
+        "icon": "fab fa-twitter",
+        "description": "Follow us for industry news and updates"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://instagram.com/edutechacademy",
+        "icon": "fab fa-instagram",
+        "description": "Behind-the-scenes content and student spotlights"
+      },
+      {
+        "name": "YouTube",
+        "url": "https://youtube.com/edutechacademy",
+        "icon": "fab fa-youtube",
+        "description": "Free tutorials and course previews"
+      }
+    ]
+  },
+  "about": {
+    "title": "About EduTech Academy",
+    "subtitle": "Empowering Learners Worldwide Since 2020",
+    "description": "EduTech Academy is a leading online learning platform dedicated to providing high-quality education to students worldwide. Our mission is to make education accessible, affordable, and effective for everyone.",
+    "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "story": "Founded in 2020, EduTech Academy started with a simple vision: to democratize education by leveraging technology. What began as a small startup has grown into a global learning community with over 15,000 students across 50+ countries.",
+    "mission": "Our mission is to transform lives through education by providing accessible, high-quality learning experiences that empower individuals to achieve their career goals and make a positive impact in the world.",
+    "values": [
+      {
+        "title": "Quality Education",
+        "description": "We are committed to delivering the highest quality educational content, taught by industry experts and designed to provide real-world skills.",
+        "icon": "fas fa-graduation-cap"
+      },
+      {
+        "title": "Accessibility",
+        "description": "We believe education should be accessible to everyone, regardless of their background, location, or financial situation.",
+        "icon": "fas fa-universal-access"
+      },
+      {
+        "title": "Innovation",
+        "description": "We continuously innovate our teaching methods and technology to provide the most effective learning experience possible.",
+        "icon": "fas fa-lightbulb"
+      },
+      {
+        "title": "Community",
+        "description": "We foster a supportive learning community where students can connect, collaborate, and grow together.",
+        "icon": "fas fa-users"
+      }
+    ],
+    "team": [
+      {
+        "name": "Sarah Johnson",
+        "role": "CEO & Founder",
+        "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+        "bio": "Sarah is a passionate educator with over 15 years of experience in educational technology and online learning."
+      },
+      {
+        "name": "Michael Chen",
+        "role": "CTO & Co-Founder",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+        "bio": "Michael is a tech visionary with extensive experience in building scalable educational platforms."
+      },
+      {
+        "name": "Amanda Rodriguez",
+        "role": "Head of Curriculum",
+        "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "bio": "Amanda ensures our curriculum remains relevant, comprehensive, and aligned with industry needs."
+      },
+      {
+        "name": "David Wilson",
+        "role": "Head of Student Success",
+        "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "bio": "David is dedicated to ensuring our students have the support they need to succeed in their learning journey."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "We're here to help you on your learning journey",
+    "description": "Have questions about our courses, bootcamps, or need help with enrollment? Our team is here to assist you.",
+    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "contact_info": [
+      {
+        "type": "Email",
+        "value": "info@edutechacademy.com",
+        "icon": "fas fa-envelope"
+      },
+      {
+        "type": "Phone",
+        "value": "+62 812-3456-7890",
+        "icon": "fas fa-phone"
+      },
+      {
+        "type": "Address",
+        "value": "Jakarta, Indonesia",
+        "icon": "fas fa-map-marker-alt"
+      }
+    ],
+    "office_hours": [
+      {
+        "day": "Monday - Friday",
+        "hours": "9:00 AM - 6:00 PM"
+      },
+      {
+        "day": "Saturday",
+        "hours": "10:00 AM - 4:00 PM"
+      },
+      {
+        "day": "Sunday",
+        "hours": "Closed"
+      }
+    ],
+    "social_links": [
+      {
+        "name": "Facebook",
+        "url": "https://facebook.com/edutechacademy",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/edutechacademy",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/company/edutechacademy",
+        "icon": "fab fa-linkedin"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://instagram.com/edutechacademy",
+        "icon": "fab fa-instagram"
+      }
+    ]
+  }
+}

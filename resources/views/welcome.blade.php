@@ -1,253 +1,261 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PayWise - Your Next Online Bank</title>
-	  @vite('resources/css/app.css')
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .pulse-animation {
-            animation: pulse 2s ease-in-out infinite;
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, #10b981 0%, #064e3b 100%);
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-    </style>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'paywise-green': '#10b981',
-                        'paywise-dark': '#064e3b',
-                        'paywise-light': '#d1fae5',
-                    }
-                }
-            }
-        }
-    </script>
-</head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="gradient-bg shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                        <i class="fas fa-chart-line text-paywise-green text-xl"></i>
-                    </div>
-                    <h1 class="text-2xl font-bold text-white">PAYWISE</h1>
+@php
+    $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
+    $site = $data['site'];
+    $hero = $data['hero'];
+    $stats = $data['stats'];
+    $features = $data['features'];
+    $testimonials = $data['testimonials'];
+    $products = array_slice($data['products'], 0, 3); // Get first 3 products
+    $blogs = array_slice($data['blogs'], 0, 3); // Get first 3 blogs
+    $bootcamps = array_slice($data['bootcamps'], 0, 2); // Get first 2 bootcamps
+@endphp
+
+@include('components.header', ['title' => 'Home'])
+
+<!-- Hero Section -->
+<section class="gradient-bg text-white">
+    <div class="container mx-auto px-6 py-16 lg:py-24">
+        <div class="flex flex-col lg:flex-row items-center">
+            <div class="lg:w-1/2 lg:pr-10">
+                <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-4 float-animation">
+                    {{ $hero['title'] }}
+                </h1>
+                <p class="text-xl lg:text-2xl mb-8 font-light">
+                    {{ $hero['subtitle'] }}
+                </p>
+                <p class="text-base mb-8 opacity-90">
+                    {{ $hero['description'] }}
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg text-center">
+                        {{ $hero['cta_text'] }}
+                    </a>
+                    <a href="/community" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 text-center">
+                        {{ $hero['cta_secondary'] }}
+                    </a>
                 </div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="#" class="text-white hover:text-paywise-light transition transform hover:scale-105">Home</a>
-                    <a href="#" class="text-white hover:text-paywise-light transition transform hover:scale-105">Features</a>
-                    <a href="#" class="text-white hover:text-paywise-light transition transform hover:scale-105">Services</a>
-                    <a href="#" class="text-white hover:text-paywise-light transition transform hover:scale-105">About</a>
-                    <a href="#" class="text-white hover:text-paywise-light transition transform hover:scale-105">Contact</a>
-                </div>
-                <button class="md:hidden text-white hover:text-paywise-light transition">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
+            </div>
+            <div class="lg:w-1/2 mt-10 lg:mt-0">
+                <img src="{{ $hero['image'] }}" alt="E-Learning Platform" class="w-full h-auto rounded-lg shadow-2xl">
             </div>
         </div>
-    </nav>
+    </div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="container mx-auto px-6 py-16">
-        <div class="flex flex-col md:flex-row items-center">
-            <!-- Left Content -->
-            <div class="md:w-1/2 mb-8 md:mb-0">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 float-animation">Your Next Online Bank.</h2>
-                <p class="text-lg text-gray-600 mb-8">Experience the future of banking with PayWise. Secure, fast, and convenient financial services at your fingertips.</p>
-                
-                <!-- Stats -->
-                <div class="flex space-x-8 mb-8">
-                    <div class="text-center card-hover bg-white p-4 rounded-lg shadow-md">
-                        <div class="text-3xl font-bold text-paywise-green pulse-animation">6X</div>
-                        <div class="text-sm text-gray-600">Faster Transactions</div>
-                    </div>
-                    <div class="text-center card-hover bg-white p-4 rounded-lg shadow-md">
-                        <div class="text-3xl font-bold text-paywise-green pulse-animation">-15%</div>
-                        <div class="text-sm text-gray-600">Lower Fees</div>
-                    </div>
-                    <div class="text-center card-hover bg-white p-4 rounded-lg shadow-md">
-                        <div class="text-3xl font-bold text-paywise-green pulse-animation">3M+</div>
-                        <div class="text-sm text-gray-600">Happy Customers</div>
-                    </div>
+<!-- Stats Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            @foreach($stats as $stat)
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2 pulse-animation">{{ $stat['number'] }}</div>
+                    <div class="text-gray-600">{{ $stat['label'] }}</div>
                 </div>
-                
-                <!-- CTA Button -->
-                <button class="gradient-bg hover:shadow-lg text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 pulse-animation">
-                    <i class="fas fa-download mr-2"></i> Download Now
-                </button>
-            </div>
-            
-            <!-- Right Content -->
-            <div class="md:w-1/2 md:pl-12">
-                <!-- Currency Exchange Rates -->
-                <div class="bg-white rounded-lg shadow-lg p-6 mb-6 card-hover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-exchange-alt text-paywise-green mr-2"></i> Currency Exchange Rates
-                    </h3>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center p-2 hover:bg-paywise-light rounded transition">
-                            <span class="text-gray-600">USD/EUR</span>
-                            <span class="font-semibold text-paywise-green">0.92</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2 hover:bg-paywise-light rounded transition">
-                            <span class="text-gray-600">USD/GBP</span>
-                            <span class="font-semibold text-paywise-green">0.79</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2 hover:bg-paywise-light rounded transition">
-                            <span class="text-gray-600">USD/JPY</span>
-                            <span class="font-semibold text-paywise-green">140.25</span>
-                        </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-16 bg-light">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why Choose {{ $site['name'] }}?</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">We provide the best learning experience with comprehensive features designed to help you succeed.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach($features as $feature)
+                <div class="text-center bg-white p-8 rounded-xl shadow-lg card-hover">
+                    <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
+                        <i class="{{ $feature['icon'] }} text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-semibold mb-2">{{ $feature['title'] }}</h3>
+                    <p class="text-gray-600">{{ $feature['description'] }}</p>
                 </div>
-                
-                <!-- Global Services -->
-                <div class="bg-white rounded-lg shadow-lg p-6 mb-6 card-hover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-globe-americas text-paywise-green mr-2"></i> Global Services
-                    </h3>
-                    <div class="grid grid-cols-3 gap-4">
-                        <div class="text-center p-3 hover:bg-paywise-light rounded-lg transition">
-                            <i class="fas fa-globe text-2xl text-paywise-green mb-2 float-animation"></i>
-                            <p class="text-sm text-gray-600">Worldwide Access</p>
-                        </div>
-                        <div class="text-center p-3 hover:bg-paywise-light rounded-lg transition">
-                            <i class="fas fa-shield-alt text-2xl text-paywise-green mb-2 float-animation"></i>
-                            <p class="text-sm text-gray-600">Secure Banking</p>
-                        </div>
-                        <div class="text-center p-3 hover:bg-paywise-light rounded-lg transition">
-                            <i class="fas fa-mobile-alt text-2xl text-paywise-green mb-2 float-animation"></i>
-                            <p class="text-sm text-gray-600">Mobile App</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Cards -->
-                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-credit-card text-paywise-green mr-2"></i> Our Cards
-                    </h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center p-3 hover:bg-paywise-light rounded-lg transition">
-                            <div class="w-16 h-10 bg-gradient-to-r from-green-400 to-green-600 rounded mr-4 shadow-md"></div>
-                            <div>
-                                <h4 class="font-semibold">Petal1</h4>
-                                <p class="text-sm text-gray-600">Basic card with 1% cashback</p>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- Featured Courses Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Featured Courses</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Explore our most popular courses and start learning today.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach($products as $product)
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <img src="{{ $product['image'] }}" alt="{{ $product['title'] }}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">{{ $product['category'] }}</span>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="ml-1 text-sm font-medium">{{ $product['rating'] }}</span>
                             </div>
                         </div>
-                        <div class="flex items-center p-3 hover:bg-paywise-light rounded-lg transition">
-                            <div class="w-16 h-10 bg-gradient-to-r from-green-600 to-green-800 rounded mr-4 shadow-md"></div>
+                        <h3 class="text-xl font-semibold mb-2">{{ $product['title'] }}</h3>
+                        <p class="text-gray-600 mb-4">{{ $product['description'] }}</p>
+                        <div class="flex items-center justify-between">
                             <div>
-                                <h4 class="font-semibold">Petal2</h4>
-                                <p class="text-sm text-gray-600">Premium card with 2% cashback</p>
+                                <span class="text-2xl font-bold text-primary">Rp {{ number_format($product['price'], 0, ',', '.') }}</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($product['original_price'], 0, ',', '.') }}</span>
+                            </div>
+                            <a href="/product/{{ $product['id'] }}" class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <div class="text-center mt-12">
+            <a href="/product" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                View All Courses
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Upcoming Bootcamps Section -->
+<section class="py-16 bg-light">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Upcoming Bootcamps</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Join our intensive bootcamps and accelerate your career.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            @foreach($bootcamps as $bootcamp)
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="md:flex">
+                        <div class="md:w-1/3">
+                            <img src="{{ $bootcamp['image'] }}" alt="{{ $bootcamp['title'] }}" class="w-full h-48 md:h-full object-cover">
+                        </div>
+                        <div class="md:w-2/3 p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $bootcamp['category'] }}</span>
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <span class="ml-1 text-sm font-medium">{{ $bootcamp['rating'] }}</span>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">{{ $bootcamp['title'] }}</h3>
+                            <p class="text-gray-600 mb-4">{{ $bootcamp['description'] }}</p>
+                            <div class="flex items-center text-sm text-gray-500 mb-4">
+                                <i class="fas fa-clock mr-2"></i>
+                                <span class="mr-4">{{ $bootcamp['duration'] }}</span>
+                                <i class="fas fa-calendar mr-2"></i>
+                                <span>{{ $bootcamp['start_date'] }}</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-2xl font-bold text-primary">Rp {{ number_format($bootcamp['price'], 0, ',', '.') }}</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($bootcamp['original_price'], 0, ',', '.') }}</span>
+                                </div>
+                                <a href="/bootcamp/{{ $bootcamp['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                                    Learn More
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="bg-gradient-to-br from-paywise-light to-white py-16">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Why Choose PayWise?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center bg-white p-8 rounded-xl shadow-lg card-hover">
-                    <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
-                        <i class="fas fa-lock text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Secure</h3>
-                    <p class="text-gray-600">Bank-level security to protect your money and data</p>
-                </div>
-                <div class="text-center bg-white p-8 rounded-xl shadow-lg card-hover">
-                    <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
-                        <i class="fas fa-bolt text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Fast</h3>
-                    <p class="text-gray-600">Instant transfers and real-time notifications</p>
-                </div>
-                <div class="text-center bg-white p-8 rounded-xl shadow-lg card-hover">
-                    <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
-                        <i class="fas fa-chart-line text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Smart</h3>
-                    <p class="text-gray-600">AI-powered insights to help you manage your finances</p>
-                </div>
-            </div>
+        <div class="text-center mt-12">
+            <a href="/bootcamp" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                View All Bootcamps
+            </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="gradient-bg text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <div class="flex items-center space-x-2 mb-2">
-                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                            <i class="fas fa-chart-line text-paywise-green text-xl"></i>
+<!-- Latest Blog Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Latest from Our Blog</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Stay updated with the latest trends and insights in tech and education.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach($blogs as $blog)
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <img src="{{ $blog['image'] }}" alt="{{ $blog['title'] }}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">{{ $blog['category'] }}</span>
+                            <span class="text-sm text-gray-500">{{ $blog['read_time'] }}</span>
                         </div>
-                        <h3 class="text-2xl font-bold">PAYWISE</h3>
+                        <h3 class="text-xl font-semibold mb-2">{{ $blog['title'] }}</h3>
+                        <p class="text-gray-600 mb-4">{{ $blog['excerpt'] }}</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="{{ $blog['avatar'] }}" alt="{{ $blog['author'] }}" class="w-8 h-8 rounded-full mr-2">
+                                <div>
+                                    <p class="text-sm font-medium">{{ $blog['author'] }}</p>
+                                    <p class="text-xs text-gray-500">{{ $blog['date'] }}</p>
+                                </div>
+                            </div>
+                            <a href="/blog/{{ $blog['id'] }}" class="text-primary hover:text-primary-dark font-medium">
+                                Read More <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
                     </div>
-                    <p class="text-sm">Your Next Online Bank.</p>
                 </div>
-                <div class="flex space-x-6 mb-4 md:mb-0">
-                    <a href="#" class="hover:text-paywise-light transition transform hover:scale-105">Privacy Policy</a>
-                    <a href="#" class="hover:text-paywise-light transition transform hover:scale-105">Terms of Service</a>
-                    <a href="#" class="hover:text-paywise-light transition transform hover:scale-105">Support</a>
-                </div>
-                <div class="flex space-x-4">
-                    <a href="#" class="hover:text-paywise-light transition transform hover:scale-105"><i class="fab fa-facebook text-xl"></i></a>
-                    <a href="#" class="hover:text-paywise-light transition transform hover:scale-105"><i class="fab fa-twitter text-xl"></i></a>
-                    <a href="#" class="hover:text-paywise-light transition transform hover:scale-105"><i class="fab fa-instagram text-xl"></i></a>
-                    <a href="#" class="hover:text-paywise-light transition transform hover:scale-105"><i class="fab fa-linkedin text-xl"></i></a>
-                </div>
-            </div>
-            <div class="mt-8 pt-8 border-t border-white/20 text-center">
-                <p class="text-sm">&copy; {{ date('Y') }} PayWise. All rights reserved.</p>
-            </div>
+            @endforeach
         </div>
-    </footer>
+        <div class="text-center mt-12">
+            <a href="/blog" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                View All Articles
+            </a>
+        </div>
+    </div>
+</section>
 
-    <!-- Newsletter Subscription -->
-    {{-- <div class="fixed bottom-0 right-0 bg-white shadow-2xl rounded-tl-lg p-6 max-w-sm card-hover">
-        <div class="flex items-center mb-2">
-            <i class="fas fa-envelope text-paywise-green text-xl mr-2"></i>
-            <h3 class="text-lg font-semibold">Stay Updated</h3>
+<!-- Testimonials Section -->
+<section class="py-16 bg-light">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What Our Students Say</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Real stories from real students who have transformed their careers.</p>
         </div>
-        <p class="text-sm text-gray-600 mb-4">Subscribe to our newsletter for the latest updates</p>
-        <form class="flex">
-            <input type="email" placeholder="Your email" class="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-paywise-green">
-            <button type="submit" class="gradient-bg hover:shadow-lg text-white px-4 py-2 rounded-r-md transition transform hover:scale-105">
-                <i class="fas fa-paper-plane"></i>
-            </button>
-        </form>
-    </div> --}}
-</body>
-</html>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach($testimonials as $testimonial)
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <img src="{{ $testimonial['avatar'] }}" alt="{{ $testimonial['name'] }}" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">{{ $testimonial['name'] }}</h4>
+                            <p class="text-sm text-gray-500">{{ $testimonial['role'] }}</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        @for($i = 0; $i < 5; $i++)
+                            <i class="fas fa-star text-yellow-400"></i>
+                        @endfor
+                    </div>
+                    <p class="text-gray-600 italic">"{{ $testimonial['content'] }}"</p>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 gradient-bg text-white">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Learning Journey?</h2>
+        <p class="text-xl mb-8 max-w-3xl mx-auto">Join thousands of students who are already transforming their careers with our courses.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                Browse Courses
+            </a>
+            <a href="/contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</section>
+
+@include('components.footer')
