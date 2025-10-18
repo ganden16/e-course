@@ -1,0 +1,252 @@
+{
+  "dashboard": {
+    "stats": [
+      {
+        "title": "Total Users",
+        "value": "15,234",
+        "change": "+12.5%",
+        "changeType": "increase",
+        "icon": "fas fa-users",
+        "color": "blue"
+      },
+      {
+        "title": "Total Courses",
+        "value": "86",
+        "change": "+8.2%",
+        "changeType": "increase",
+        "icon": "fas fa-book",
+        "color": "green"
+      },
+      {
+        "title": "Total Bootcamps",
+        "value": "24",
+        "change": "+15.3%",
+        "changeType": "increase",
+        "icon": "fas fa-campground",
+        "color": "purple"
+      },
+      {
+        "title": "Total Mentors",
+        "value": "42",
+        "change": "+5.1%",
+        "changeType": "increase",
+        "icon": "fas fa-chalkboard-teacher",
+        "color": "orange"
+      },
+      {
+        "title": "Total Revenue",
+        "value": "Rp 2.4B",
+        "change": "+18.7%",
+        "changeType": "increase",
+        "icon": "fas fa-money-bill-wave",
+        "color": "emerald"
+      }
+    ],
+    "recentActivities": [
+      {
+        "id": 1,
+        "user": "Sarah Johnson",
+        "action": "enrolled in",
+        "target": "Complete Web Development Bootcamp",
+        "time": "2 hours ago",
+        "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+      },
+      {
+        "id": 2,
+        "user": "Michael Chen",
+        "action": "completed",
+        "target": "Python for Data Science",
+        "time": "5 hours ago",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+      },
+      {
+        "id": 3,
+        "user": "Amanda Rodriguez",
+        "action": "reviewed",
+        "target": "UI/UX Design Fundamentals",
+        "time": "1 day ago",
+        "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+      }
+    ]
+  },
+  "blogs": [
+    {
+      "id": 1,
+      "title": "The Future of Web Development: Trends to Watch in 2024",
+      "excerpt": "Explore the latest trends shaping the future of web development...",
+      "author": "David Anderson",
+      "date": "2024-01-15",
+      "status": "published",
+      "views": 15234,
+      "category": "Web Development"
+    },
+    {
+      "id": 2,
+      "title": "Getting Started with Machine Learning: A Beginner's Guide",
+      "excerpt": "Learn the fundamentals of machine learning and how to get started...",
+      "author": "Dr. Sarah Mitchell",
+      "date": "2024-01-12",
+      "status": "published",
+      "views": 12450,
+      "category": "Data Science"
+    },
+    {
+      "id": 3,
+      "title": "Effective Digital Marketing Strategies for Small Businesses",
+      "excerpt": "Discover cost-effective digital marketing strategies...",
+      "author": "Emma Thompson",
+      "date": "2024-01-10",
+      "status": "draft",
+      "views": 0,
+      "category": "Marketing"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "title": "Complete Web Development Bootcamp",
+      "category": "Web Development",
+      "price": 899000,
+      "status": "active",
+      "enrolled": 3420,
+      "rating": 4.8,
+      "instructor": "David Anderson",
+      "created_at": "2024-01-01"
+    },
+    {
+      "id": 2,
+      "title": "Python for Data Science",
+      "category": "Data Science",
+      "price": 799000,
+      "status": "active",
+      "enrolled": 2850,
+      "rating": 4.9,
+      "instructor": "Dr. Sarah Mitchell",
+      "created_at": "2024-01-02"
+    },
+    {
+      "id": 3,
+      "title": "Digital Marketing Mastery",
+      "category": "Marketing",
+      "price": 699000,
+      "status": "inactive",
+      "enrolled": 1980,
+      "rating": 4.7,
+      "instructor": "Emma Thompson",
+      "created_at": "2024-01-03"
+    }
+  ],
+  "bootcamps": [
+    {
+      "id": 1,
+      "title": "Full Stack Web Development Bootcamp",
+      "category": "Web Development",
+      "price": 5999000,
+      "status": "active",
+      "enrolled": 450,
+      "start_date": "2024-02-01",
+      "mentor": "David Anderson",
+      "duration": "12 weeks"
+    },
+    {
+      "id": 2,
+      "title": "Data Science & Machine Learning Bootcamp",
+      "category": "Data Science",
+      "price": 6999000,
+      "status": "active",
+      "enrolled": 320,
+      "start_date": "2024-02-15",
+      "mentor": "Dr. Sarah Mitchell",
+      "duration": "14 weeks"
+    },
+    {
+      "id": 3,
+      "title": "UX/UI Design Bootcamp",
+      "category": "Design",
+      "price": 5499000,
+      "status": "upcoming",
+      "enrolled": 0,
+      "start_date": "2024-03-01",
+      "mentor": "Not Assigned",
+      "duration": "10 weeks"
+    }
+  ],
+  "mentors": [
+    {
+      "id": 1,
+      "name": "David Anderson",
+      "email": "david.anderson@edutechacademy.com",
+      "specialization": "Web Development",
+      "rating": 4.9,
+      "students": 3420,
+      "courses": 3,
+      "bootcamps": 1,
+      "status": "active",
+      "joined_date": "2023-01-15",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": 2,
+      "name": "Dr. Sarah Mitchell",
+      "email": "sarah.mitchell@edutechacademy.com",
+      "specialization": "Data Science",
+      "rating": 4.8,
+      "students": 2850,
+      "courses": 2,
+      "bootcamps": 1,
+      "status": "active",
+      "joined_date": "2023-02-20",
+      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+    },
+    {
+      "id": 3,
+      "name": "Emma Thompson",
+      "email": "emma.thompson@edutechacademy.com",
+      "specialization": "Marketing",
+      "rating": 4.7,
+      "students": 1980,
+      "courses": 2,
+      "bootcamps": 1,
+      "status": "active",
+      "joined_date": "2023-03-10",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": 4,
+      "name": "Alex Rodriguez",
+      "email": "alex.rodriguez@edutechacademy.com",
+      "specialization": "UI/UX Design",
+      "rating": 4.6,
+      "students": 2150,
+      "courses": 1,
+      "bootcamps": 0,
+      "status": "inactive",
+      "joined_date": "2023-04-05",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "role": "user",
+      "status": "active",
+      "joined_date": "2023-05-15",
+      "courses_enrolled": 3,
+      "bootcamps_enrolled": 1,
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "role": "user",
+      "status": "active",
+      "joined_date": "2023-06-20",
+      "courses_enrolled": 2,
+      "bootcamps_enrolled": 0,
+      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+    }
+  ]
+}

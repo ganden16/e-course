@@ -41,3 +41,70 @@ Route::get('/bootcamp', function () {
 Route::get('/bootcamp/{id}', function ($id) {
     return view('bootcamp-detail', ['id' => $id]);
 })->name('bootcamp.detail');
+
+// Authentication Routes
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+// Admin Routes
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+
+    Route::get('/users', function () {
+        return view('admin.users');
+    })->name('admin.users');
+
+    Route::get('/products', function () {
+        return view('admin.products');
+    })->name('admin.products');
+
+    Route::get('/bootcamps', function () {
+        return view('admin.bootcamps');
+    })->name('admin.bootcamps');
+
+    Route::get('/mentors', function () {
+        return view('admin.mentors');
+    })->name('admin.mentors');
+
+    Route::get('/blogs', function () {
+        return view('admin.blogs');
+    })->name('admin.blogs');
+
+    Route::get('/settings', function () {
+        return view('admin.settings');
+    })->name('admin.settings');
+});
+
+// Mentor Routes
+Route::prefix('mentor')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('mentor.dashboard');
+    })->name('mentor.dashboard');
+
+    Route::get('/bootcamps', function () {
+        return view('mentor.bootcamps');
+    })->name('mentor.bootcamps');
+
+    Route::get('/materials', function () {
+        return view('mentor.materials');
+    })->name('mentor.materials');
+
+    Route::get('/announcements', function () {
+        return view('mentor.announcements');
+    })->name('mentor.announcements');
+
+    Route::get('/students', function () {
+        return view('mentor.students');
+    })->name('mentor.students');
+
+    Route::get('/profile', function () {
+        return view('mentor.profile');
+    })->name('mentor.profile');
+
+    Route::get('/settings', function () {
+        return view('mentor.settings');
+    })->name('mentor.settings');
+});
