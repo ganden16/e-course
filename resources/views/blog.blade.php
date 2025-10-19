@@ -1,4 +1,19 @@
 @php
+    // Get current locale from middleware
+    $locale = app()->getLocale();
+
+    // Load language file for blog page
+    $translations = include lang_path("{$locale}/blog.php");
+    $hero = $translations['hero'];
+    $filter = $translations['filter'];
+    $featured_post = $translations['featured_post'];
+    $latest_posts = $translations['latest_posts'];
+    $blog_details = $translations['blog_details'];
+    $load_more = $translations['load_more'];
+    $popular_tags = $translations['popular_tags'];
+    $newsletter = $translations['newsletter'];
+
+    // Load data from JSON for dynamic content
     $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
     $site = $data['site'];
     $blogs = $data['blogs'];
@@ -10,6 +25,9 @@
         $allTags = array_merge($allTags, $blog['tags']);
     }
     $tags = array_unique($allTags);
+
+    // Build URLs with current locale
+    $baseUrl = '/' . $locale;
 @endphp
 
 @include('components.header', ['title' => 'Blog'])
@@ -18,8 +36,8 @@
 <section class="gradient-bg text-white py-16">
     <div class="container mx-auto px-6">
         <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Blog</h1>
-            <p class="text-xl max-w-3xl mx-auto">Stay updated with the latest trends, insights, and news in tech, education, and career development.</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ $hero['title'] }}</h1>
+            <p class="text-xl max-w-3xl mx-auto">{{ $hero['subtitle'] }}</p>
         </div>
     </div>
 </section>
@@ -27,7 +45,7 @@
 <!-- Featured Post -->
 <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-gray-800 mb-8">Featured Article</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $latest_posts['featured_article'] }}</h2>
         <div class="bg-white rounded-xl shadow-lg overflow-hidden">
             <div class="md:flex">
                 <div class="md:w-2/5">
@@ -48,8 +66,8 @@
                                 <p class="text-sm text-gray-500">{{ $blogs[0]['date'] }}</p>
                             </div>
                         </div>
-                        <a href="/blog/{{ $blogs[0]['id'] }}" class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-lg transition duration-300">
-                            Read Article
+                        <a href="{{ $baseUrl }}/blog/{{ $blogs[0]['id'] }}" class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+                            {{ $featured_post['read_article'] }}
                         </a>
                     </div>
                 </div>
@@ -63,19 +81,19 @@
     <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
-                <h2 class="text-2xl font-semibold text-gray-800">All Articles</h2>
-                <p class="text-gray-600">{{ count($blogs) }} articles available</p>
+                <h2 class="text-2xl font-semibold text-gray-800">{{ $filter['all_articles'] }}</h2>
+                <p class="text-gray-600">{{ count($blogs) }} {{ $filter['articles_available'] }}</p>
             </div>
             <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
                 <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="categoryFilter">
-                    <option value="">All Categories</option>
+                    <option value="">{{ $filter['all_categories'] }}</option>
                     @foreach($categories as $category)
                         <option value="{{ $category }}">{{ $category }}</option>
                     @endforeach
                 </select>
                 <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="sortFilter">
-                    <option value="latest">Latest First</option>
-                    <option value="oldest">Oldest First</option>
+                    <option value="latest">{{ $filter['latest_first'] }}</option>
+                    <option value="oldest">{{ $filter['oldest_first'] }}</option>
                 </select>
             </div>
         </div>
@@ -109,8 +127,8 @@
                                     <p class="text-xs text-gray-500">{{ $blog['date'] }}</p>
                                 </div>
                             </div>
-                            <a href="/blog/{{ $blog['id'] }}" class="text-primary hover:text-primary-dark font-medium">
-                                Read More <i class="fas fa-arrow-right ml-1"></i>
+                            <a href="{{ $baseUrl }}/blog/{{ $blog['id'] }}" class="text-primary hover:text-primary-dark font-medium">
+                                {{ $blog_details['read_more'] }} <i class="fas fa-arrow-right ml-1"></i>
                             </a>
                         </div>
                     </div>
@@ -121,7 +139,7 @@
         <!-- Load More Button -->
         <div class="text-center mt-12">
             <button class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
-                Load More Articles
+                {{ $load_more['articles'] }}
             </button>
         </div>
     </div>
@@ -131,8 +149,8 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Popular Tags</h2>
-            <p class="text-lg text-gray-600">Discover articles by topics that interest you</p>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ $popular_tags['title'] }}</h2>
+            <p class="text-lg text-gray-600">{{ $popular_tags['subtitle'] }}</p>
         </div>
         <div class="flex flex-wrap justify-center gap-3">
             @foreach($tags as $tag)
@@ -148,12 +166,12 @@
 <section class="py-16 gradient-bg text-white">
     <div class="container mx-auto px-6">
         <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Subscribe to Our Newsletter</h2>
-            <p class="text-xl mb-8">Get the latest articles and insights delivered straight to your inbox.</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $newsletter['title'] }}</h2>
+            <p class="text-xl mb-8">{{ $newsletter['subtitle'] }}</p>
             <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input type="email" placeholder="Your email address" class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                <input type="email" placeholder="{{ $newsletter['email_placeholder'] }}" class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
                 <button class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
-                    Subscribe
+                    {{ $newsletter['subscribe'] }}
                 </button>
             </div>
         </div>

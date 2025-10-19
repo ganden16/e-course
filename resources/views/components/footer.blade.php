@@ -1,6 +1,15 @@
 @php
-    $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
-    $site = $data['site'];
+    // Get current locale from middleware
+    $locale = app()->getLocale();
+
+    // Load language file for landing page (header/footer are part of landing page)
+    $translations = include lang_path("{$locale}/landingPage.php");
+    $site = $translations['site'];
+    $footer = $translations['footer'];
+    $navigation = $translations['navigation'];
+
+    // Build URLs with current locale
+    $baseUrl = '/' . $locale;
 @endphp
 
     </main>
@@ -17,16 +26,16 @@
                     </div>
                     <p class="text-sm text-gray-300 mb-4">{{ $site['description'] }}</p>
                     <div class="flex space-x-3">
-                        <a href="https://facebook.com/{{ $site['name'] }}" class="text-gray-300 hover:text-white transition-colors">
+                        <a href="https://facebook.com/{{ str_replace(' ', '', $site['name']) }}" class="text-gray-300 hover:text-white transition-colors">
                             <i class="fab fa-facebook text-lg"></i>
                         </a>
-                        <a href="https://twitter.com/{{ $site['name'] }}" class="text-gray-300 hover:text-white transition-colors">
+                        <a href="https://twitter.com/{{ str_replace(' ', '', $site['name']) }}" class="text-gray-300 hover:text-white transition-colors">
                             <i class="fab fa-twitter text-lg"></i>
                         </a>
-                        <a href="https://instagram.com/{{ $site['name'] }}" class="text-gray-300 hover:text-white transition-colors">
+                        <a href="https://instagram.com/{{ str_replace(' ', '', $site['name']) }}" class="text-gray-300 hover:text-white transition-colors">
                             <i class="fab fa-instagram text-lg"></i>
                         </a>
-                        <a href="https://linkedin.com/company/{{ $site['name'] }}" class="text-gray-300 hover:text-white transition-colors">
+                        <a href="https://linkedin.com/company/{{ str_replace(' ', '', $site['name']) }}" class="text-gray-300 hover:text-white transition-colors">
                             <i class="fab fa-linkedin text-lg"></i>
                         </a>
                     </div>
@@ -34,33 +43,33 @@
 
                 <!-- Quick Links -->
                 <div>
-                    <h4 class="font-semibold mb-4 text-lg">Quick Links</h4>
+                    <h4 class="font-semibold mb-4 text-lg">{{ $footer['quick_links'] }}</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="/about-us" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="/product" class="text-gray-300 hover:text-white transition-colors">Courses</a></li>
-                        <li><a href="/bootcamp" class="text-gray-300 hover:text-white transition-colors">Bootcamps</a></li>
-                        <li><a href="/blog" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="/community" class="text-gray-300 hover:text-white transition-colors">Community</a></li>
+                        <li><a href="{{ $baseUrl }}" class="text-gray-300 hover:text-white transition-colors">{{ $navigation['home'] }}</a></li>
+                        <li><a href="{{ $baseUrl }}/about-us" class="text-gray-300 hover:text-white transition-colors">{{ $navigation['about'] }}</a></li>
+                        <li><a href="{{ $baseUrl }}/product" class="text-gray-300 hover:text-white transition-colors">{{ $navigation['product'] }}</a></li>
+                        <li><a href="{{ $baseUrl }}/bootcamp" class="text-gray-300 hover:text-white transition-colors">{{ $navigation['bootcamp'] }}</a></li>
+                        <li><a href="{{ $baseUrl }}/blog" class="text-gray-300 hover:text-white transition-colors">{{ $navigation['blog'] }}</a></li>
+                        <li><a href="{{ $baseUrl }}/community" class="text-gray-300 hover:text-white transition-colors">{{ $navigation['community'] }}</a></li>
                     </ul>
                 </div>
 
                 <!-- Support -->
-                <div>
-                    <h4 class="font-semibold mb-4 text-lg">Support</h4>
+                {{-- <div>
+                    <h4 class="font-semibold mb-4 text-lg">{{ $footer['support'] }}</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="/contact" class="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="{{ $baseUrl }}/contact" class="text-gray-300 hover:text-white transition-colors">{{ $footer['contact_info'] }}</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Help Center</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Terms of Service</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Refund Policy</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-white transition-colors">FAQ</a></li>
                     </ul>
-                </div>
+                </div> --}}
 
                 <!-- Contact Info -->
                 <div>
-                    <h4 class="font-semibold mb-4 text-lg">Contact Info</h4>
+                    <h4 class="font-semibold mb-4 text-lg">{{ $footer['contact_info'] }}</h4>
                     <ul class="space-y-3 text-sm">
                         <li class="flex items-start">
                             <i class="fas fa-envelope mt-1 mr-3 text-primary"></i>
@@ -78,9 +87,9 @@
 
                     <!-- Newsletter -->
                     <div class="mt-6">
-                        <h5 class="font-semibold mb-2">Subscribe to Our Newsletter</h5>
+                        <h5 class="font-semibold mb-2">{{ $footer['newsletter'] }}</h5>
                         <div class="flex">
-                            <input type="email" placeholder="Your email" class="flex-1 px-3 py-2 bg-gray-800 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary">
+                            <input type="email" placeholder="{{ $footer['your_email'] }}" class="flex-1 px-3 py-2 bg-gray-800 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary">
                             <button class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-r-md transition duration-300">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
@@ -91,7 +100,7 @@
 
             <!-- Copyright -->
             <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
-                <p>&copy; {{ date('Y') }} {{ $site['name'] }}. All rights reserved.</p>
+                <p>&copy; {{ date('Y') }} {{ $site['name'] }}. {{ $footer['all_rights_reserved'] }}.</p>
             </div>
         </div>
     </footer>

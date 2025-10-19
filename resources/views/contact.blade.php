@@ -1,7 +1,22 @@
 @php
+    // Get current locale from middleware
+    $locale = app()->getLocale();
+
+    // Load language file for contact page
+    $translations = include lang_path("{$locale}/contact.php");
+    $hero = $translations['hero'];
+    $contact_info = $translations['contact_info'];
+    $contact_form = $translations['contact_form'];
+    $faq = $translations['faq'];
+    $cta = $translations['cta'];
+
+    // Load data from JSON for dynamic content
     $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
     $site = $data['site'];
     $contact = $data['contact'];
+
+    // Build URLs with current locale
+    $baseUrl = '/' . $locale;
 @endphp
 
 @include('components.header', ['title' => 'Contact Us'])
@@ -10,8 +25,8 @@
 <section class="gradient-bg text-white py-16">
     <div class="container mx-auto px-6">
         <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ $contact['title'] }}</h1>
-            <p class="text-xl max-w-3xl mx-auto">{{ $contact['subtitle'] }}</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ $hero['title'] }}</h1>
+            <p class="text-xl max-w-3xl mx-auto">{{ $hero['subtitle'] }}</p>
         </div>
     </div>
 </section>
@@ -24,8 +39,8 @@
                 <img src="{{ $contact['image'] }}" alt="Contact Us" class="w-full rounded-lg shadow-lg">
             </div>
             <div class="lg:w-1/2">
-                <h2 class="text-3xl font-bold text-gray-800 mb-6">{{ $contact['description'] }}</h2>
-                <p class="text-lg text-gray-600 mb-8">Whether you have questions about our courses, need technical support, or want to learn more about our bootcamps, our team is here to help you every step of the way.</p>
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">{{ $contact_info['description'] }}</h2>
+                <p class="text-lg text-gray-600 mb-8">{{ $contact_info['additional_info'] }}</p>
 
                 <div class="space-y-6">
                     @foreach($contact['contact_info'] as $info)
@@ -42,7 +57,7 @@
                 </div>
 
                 <div class="mt-8">
-                    <h3 class="text-xl font-semibold mb-4">Office Hours</h3>
+                    <h3 class="text-xl font-semibold mb-4">{{ $contact_info['office_hours'] }}</h3>
                     <div class="space-y-2">
                         @foreach($contact['office_hours'] as $hours)
                             <div class="flex justify-between">
@@ -54,7 +69,7 @@
                 </div>
 
                 <div class="mt-8">
-                    <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                    <h3 class="text-xl font-semibold mb-4">{{ $contact_info['follow_us'] }}</h3>
                     <div class="flex space-x-4">
                         @foreach($contact['social_links'] as $social)
                             <a href="{{ $social['url'] }}" class="bg-gray-100 hover:bg-primary hover:text-white text-gray-700 w-12 h-12 rounded-full flex items-center justify-center transition duration-300">
@@ -73,61 +88,61 @@
     <div class="container mx-auto px-6">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Send Us a Message</h2>
-                <p class="text-lg text-gray-600">Fill out the form below and we'll get back to you as soon as possible.</p>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ $contact_form['title'] }}</h2>
+                <p class="text-lg text-gray-600">{{ $contact_form['subtitle'] }}</p>
             </div>
 
             <div class="bg-white rounded-xl shadow-lg p-8">
                 <form>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label for="firstName" class="block text-gray-700 font-medium mb-2">First Name</label>
+                            <label for="firstName" class="block text-gray-700 font-medium mb-2">{{ $contact_form['first_name'] }}</label>
                             <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
                         </div>
                         <div>
-                            <label for="lastName" class="block text-gray-700 font-medium mb-2">Last Name</label>
+                            <label for="lastName" class="block text-gray-700 font-medium mb-2">{{ $contact_form['last_name'] }}</label>
                             <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">{{ $contact_form['email_address'] }}</label>
                             <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
                         </div>
                         <div>
-                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">{{ $contact_form['phone_number'] }}</label>
                             <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
                         </div>
                     </div>
 
                     <div class="mb-6">
-                        <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                        <label for="subject" class="block text-gray-700 font-medium mb-2">{{ $contact_form['subject'] }}</label>
                         <select id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                            <option value="">Select a subject</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="course">Course Information</option>
-                            <option value="bootcamp">Bootcamp Details</option>
-                            <option value="technical">Technical Support</option>
-                            <option value="billing">Billing & Payment</option>
-                            <option value="partnership">Partnership Opportunities</option>
+                            <option value="">{{ $contact_form['select_subject'] }}</option>
+                            <option value="general">{{ $contact_form['general_inquiry'] }}</option>
+                            <option value="course">{{ $contact_form['course_information'] }}</option>
+                            <option value="bootcamp">{{ $contact_form['bootcamp_details'] }}</option>
+                            <option value="technical">{{ $contact_form['technical_support'] }}</option>
+                            <option value="billing">{{ $contact_form['billing_payment'] }}</option>
+                            <option value="partnership">{{ $contact_form['partnership_opportunities'] }}</option>
                         </select>
                     </div>
 
                     <div class="mb-6">
-                        <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                        <label for="message" class="block text-gray-700 font-medium mb-2">{{ $contact_form['message'] }}</label>
                         <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
                     </div>
 
                     <div class="mb-6">
                         <label class="flex items-center">
                             <input type="checkbox" class="mr-2">
-                            <span class="text-gray-700">I agree to the <a href="#" class="text-primary hover:underline">Privacy Policy</a> and <a href="#" class="text-primary hover:underline">Terms of Service</a></span>
+                            <span class="text-gray-700">{!! $contact_form['privacy_terms'] !!}</span>
                         </label>
                     </div>
 
                     <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
-                        Send Message
+                        {{ $contact_form['send_message'] }}
                     </button>
                 </form>
             </div>
@@ -139,48 +154,48 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Find answers to common questions about our courses and services.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $faq['title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $faq['subtitle'] }}</p>
         </div>
 
         <div class="max-w-3xl mx-auto" x-data="{ open: 0 }">
             <div class="mb-4">
                 <button @click="open = 0" class="w-full text-left bg-gray-100 p-4 rounded-lg flex justify-between items-center hover:bg-gray-200 transition">
-                    <span class="font-semibold">How do I enroll in a course?</span>
+                    <span class="font-semibold">{{ $faq['how_to_enroll']['question'] }}</span>
                     <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === 0 }"></i>
                 </button>
                 <div x-show="open === 0" x-transition class="bg-gray-50 p-4 rounded-b-lg">
-                    <p class="text-gray-600">Simply browse our course catalog, select the course you're interested in, and click the "Enroll Now" button. You'll be guided through the registration and payment process.</p>
+                    <p class="text-gray-600">{{ $faq['how_to_enroll']['answer'] }}</p>
                 </div>
             </div>
 
             <div class="mb-4">
                 <button @click="open = 1" class="w-full text-left bg-gray-100 p-4 rounded-lg flex justify-between items-center hover:bg-gray-200 transition">
-                    <span class="font-semibold">What payment methods do you accept?</span>
+                    <span class="font-semibold">{{ $faq['payment_methods']['question'] }}</span>
                     <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === 1 }"></i>
                 </button>
                 <div x-show="open === 1" x-transition class="bg-gray-50 p-4 rounded-b-lg">
-                    <p class="text-gray-600">We accept all major credit cards, debit cards, PayPal, and bank transfers. We also offer installment plans for select courses and bootcamps.</p>
+                    <p class="text-gray-600">{{ $faq['payment_methods']['answer'] }}</p>
                 </div>
             </div>
 
             <div class="mb-4">
                 <button @click="open = 2" class="w-full text-left bg-gray-100 p-4 rounded-lg flex justify-between items-center hover:bg-gray-200 transition">
-                    <span class="font-semibold">Can I get a refund if I'm not satisfied?</span>
+                    <span class="font-semibold">{{ $faq['refund_policy']['question'] }}</span>
                     <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === 2 }"></i>
                 </button>
                 <div x-show="open === 2" x-transition class="bg-gray-50 p-4 rounded-b-lg">
-                    <p class="text-gray-600">Yes, we offer a 30-day money-back guarantee for most courses. If you're not satisfied with your purchase, contact our support team within 30 days for a full refund.</p>
+                    <p class="text-gray-600">{{ $faq['refund_policy']['answer'] }}</p>
                 </div>
             </div>
 
             <div class="mb-4">
                 <button @click="open = 3" class="w-full text-left bg-gray-100 p-4 rounded-lg flex justify-between items-center hover:bg-gray-200 transition">
-                    <span class="font-semibold">Do you offer corporate training?</span>
+                    <span class="font-semibold">{{ $faq['corporate_training']['question'] }}</span>
                     <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === 3 }"></i>
                 </button>
                 <div x-show="open === 3" x-transition class="bg-gray-50 p-4 rounded-b-lg">
-                    <p class="text-gray-600">Yes, we offer customized corporate training programs for teams and organizations. Contact our business team for more information about group discounts and tailored solutions.</p>
+                    <p class="text-gray-600">{{ $faq['corporate_training']['answer'] }}</p>
                 </div>
             </div>
         </div>
@@ -188,7 +203,7 @@
 </section>
 
 <!-- Location Section -->
-<section class="py-16 bg-light">
+{{-- <section class="py-16 bg-light">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Visit Our Office</h2>
@@ -213,19 +228,19 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <!-- CTA Section -->
 <section class="py-16 gradient-bg text-white">
     <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Learning Journey?</h2>
-        <p class="text-xl mb-8 max-w-3xl mx-auto">Join thousands of students who are already advancing their careers with our courses.</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
+        <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
-                Browse Courses
+            <a href="{{ $baseUrl }}/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                {{ $cta['browse_courses'] }}
             </a>
-            <a href="/bootcamp" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
-                Explore Bootcamps
+            <a href="{{ $baseUrl }}/bootcamp" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                {{ $cta['explore_bootcamps'] }}
             </a>
         </div>
     </div>

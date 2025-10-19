@@ -1,13 +1,30 @@
 @php
+    // Get current locale from middleware
+    $locale = app()->getLocale();
+
+    // Load language file for landing page
+    $translations = include lang_path("{$locale}/landingPage.php");
+    $site = $translations['site'];
+    $hero = $translations['hero'];
+    $stats = $translations['stats'];
+    $features = $translations['features'];
+    $featured_courses = $translations['featured_courses'];
+    $upcoming_bootcamps = $translations['upcoming_bootcamps'];
+    $latest_blog = $translations['latest_blog'];
+    $testimonials = $translations['testimonials'];
+    $cta = $translations['cta'];
+
+    // Load data from JSON for dynamic content
     $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
-    $site = $data['site'];
-    $hero = $data['hero'];
-    $stats = $data['stats'];
-    $features = $data['features'];
-    $testimonials = $data['testimonials'];
+    $statsData = $data['stats'];
+    $featuresData = $data['features'];
+    $testimonialsData = $data['testimonials'];
     $products = array_slice($data['products'], 0, 3); // Get first 3 products
     $blogs = array_slice($data['blogs'], 0, 3); // Get first 3 blogs
     $bootcamps = array_slice($data['bootcamps'], 0, 2); // Get first 2 bootcamps
+
+    // Build URLs with current locale
+    $baseUrl = '/' . $locale;
 @endphp
 
 @include('components.header', ['title' => 'Home'])
@@ -27,16 +44,16 @@
                     {{ $hero['description'] }}
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg text-center">
+                    <a href="{{ $baseUrl }}/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg text-center">
                         {{ $hero['cta_text'] }}
                     </a>
-                    <a href="/community" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 text-center">
+                    <a href="{{ $baseUrl }}/community" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 text-center">
                         {{ $hero['cta_secondary'] }}
                     </a>
                 </div>
             </div>
             <div class="lg:w-1/2 mt-10 lg:mt-0">
-                <img src="{{ $hero['image'] }}" alt="E-Learning Platform" class="w-full h-auto rounded-lg shadow-2xl">
+                <img src="{{ $data['hero']['image'] }}" alt="E-Learning Platform" class="w-full h-auto rounded-lg shadow-2xl">
             </div>
         </div>
     </div>
@@ -46,10 +63,10 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            @foreach($stats as $stat)
+            @foreach($statsData as $index => $stat)
                 <div class="text-center">
                     <div class="text-3xl md:text-4xl font-bold text-primary mb-2 pulse-animation">{{ $stat['number'] }}</div>
-                    <div class="text-gray-600">{{ $stat['label'] }}</div>
+                    <div class="text-gray-600">{{ $stats['active_students'] }}</div>
                 </div>
             @endforeach
         </div>
@@ -60,11 +77,11 @@
 <section class="py-16 bg-light">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why Choose {{ $site['name'] }}?</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">We provide the best learning experience with comprehensive features designed to help you succeed.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $features['title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $features['subtitle'] }}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach($features as $feature)
+            @foreach($featuresData as $index => $feature)
                 <div class="text-center bg-white p-8 rounded-xl shadow-lg card-hover">
                     <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                         <i class="{{ $feature['icon'] }} text-2xl"></i>
@@ -81,8 +98,8 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Featured Courses</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Explore our most popular courses and start learning today.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $featured_courses['title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $featured_courses['subtitle'] }}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($products as $product)
@@ -103,8 +120,8 @@
                                 <span class="text-2xl font-bold text-primary">Rp {{ number_format($product['price'], 0, ',', '.') }}</span>
                                 <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($product['original_price'], 0, ',', '.') }}</span>
                             </div>
-                            <a href="/product/{{ $product['id'] }}" class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
-                                View Details
+                            <a href="{{ $baseUrl }}/product/{{ $product['id'] }}" class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                                {{ $featured_courses['view_details'] }}
                             </a>
                         </div>
                     </div>
@@ -112,8 +129,8 @@
             @endforeach
         </div>
         <div class="text-center mt-12">
-            <a href="/product" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
-                View All Courses
+            <a href="{{ $baseUrl }}/product" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                {{ $featured_courses['view_all_courses'] }}
             </a>
         </div>
     </div>
@@ -123,8 +140,8 @@
 <section class="py-16 bg-light">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Upcoming Bootcamps</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Join our intensive bootcamps and accelerate your career.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $upcoming_bootcamps['title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $upcoming_bootcamps['subtitle'] }}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             @foreach($bootcamps as $bootcamp)
@@ -154,8 +171,8 @@
                                     <span class="text-2xl font-bold text-primary">Rp {{ number_format($bootcamp['price'], 0, ',', '.') }}</span>
                                     <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($bootcamp['original_price'], 0, ',', '.') }}</span>
                                 </div>
-                                <a href="/bootcamp/{{ $bootcamp['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
-                                    Learn More
+                                <a href="{{ $baseUrl }}/bootcamp/{{ $bootcamp['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                                    {{ $upcoming_bootcamps['learn_more'] }}
                                 </a>
                             </div>
                         </div>
@@ -164,8 +181,8 @@
             @endforeach
         </div>
         <div class="text-center mt-12">
-            <a href="/bootcamp" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
-                View All Bootcamps
+            <a href="{{ $baseUrl }}/bootcamp" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                {{ $upcoming_bootcamps['view_all_bootcamps'] }}
             </a>
         </div>
     </div>
@@ -175,8 +192,8 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Latest from Our Blog</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Stay updated with the latest trends and insights in tech and education.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $latest_blog['title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $latest_blog['subtitle'] }}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($blogs as $blog)
@@ -197,8 +214,8 @@
                                     <p class="text-xs text-gray-500">{{ $blog['date'] }}</p>
                                 </div>
                             </div>
-                            <a href="/blog/{{ $blog['id'] }}" class="text-primary hover:text-primary-dark font-medium">
-                                Read More <i class="fas fa-arrow-right ml-1"></i>
+                            <a href="{{ $baseUrl }}/blog/{{ $blog['id'] }}" class="text-primary hover:text-primary-dark font-medium">
+                                {{ $latest_blog['read_more'] }} <i class="fas fa-arrow-right ml-1"></i>
                             </a>
                         </div>
                     </div>
@@ -206,8 +223,8 @@
             @endforeach
         </div>
         <div class="text-center mt-12">
-            <a href="/blog" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
-                View All Articles
+            <a href="{{ $baseUrl }}/blog" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                {{ $latest_blog['view_all_articles'] }}
             </a>
         </div>
     </div>
@@ -217,11 +234,11 @@
 <section class="py-16 bg-light">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What Our Students Say</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Real stories from real students who have transformed their careers.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $testimonials['title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $testimonials['subtitle'] }}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach($testimonials as $testimonial)
+            @foreach($testimonialsData as $testimonial)
                 <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
                     <div class="flex items-center mb-4">
                         <img src="{{ $testimonial['avatar'] }}" alt="{{ $testimonial['name'] }}" class="w-12 h-12 rounded-full mr-4">
@@ -245,14 +262,14 @@
 <!-- CTA Section -->
 <section class="py-16 gradient-bg text-white">
     <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Learning Journey?</h2>
-        <p class="text-xl mb-8 max-w-3xl mx-auto">Join thousands of students who are already transforming their careers with our courses.</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
+        <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
-                Browse Courses
+            <a href="{{ $baseUrl }}/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                {{ $cta['browse_courses'] }}
             </a>
-            <a href="/contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
-                Contact Us
+            <a href="{{ $baseUrl }}/contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                {{ $cta['contact_us'] }}
             </a>
         </div>
     </div>

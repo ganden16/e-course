@@ -1,46 +1,58 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LanguageController;
 
+// Language switch route
+Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('language.switch');
+
+// Group routes with language prefix
+Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'id|en']], function () {
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('home');
+
+    Route::get('/about-us', function () {
+        return view('about-us');
+    })->name('about');
+
+    Route::get('/community', function () {
+        return view('community');
+    })->name('community');
+
+    Route::get('/blog', function () {
+        return view('blog');
+    })->name('blog');
+
+    Route::get('/blog/{id}', function ($id) {
+        return view('blog-detail', ['id' => $id]);
+    })->name('blog.detail');
+
+    Route::get('/contact', function () {
+        return view('contact');
+    })->name('contact');
+
+    Route::get('/product', function () {
+        return view('product');
+    })->name('product');
+
+    Route::get('/product/{id}', function ($id) {
+        return view('product-detail', ['id' => $id]);
+    })->name('product.detail');
+
+    Route::get('/bootcamp', function () {
+        return view('bootcamp');
+    })->name('bootcamp');
+
+    Route::get('/bootcamp/{id}', function ($id) {
+        return view('bootcamp-detail', ['id' => $id]);
+    })->name('bootcamp.detail');
+});
+
+// Redirect root to default language (Indonesian)
 Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
-Route::get('/about-us', function () {
-    return view('about-us');
-})->name('about');
-
-Route::get('/community', function () {
-    return view('community');
-})->name('community');
-
-Route::get('/blog', function () {
-    return view('blog');
-})->name('blog');
-
-Route::get('/blog/{id}', function ($id) {
-    return view('blog-detail', ['id' => $id]);
-})->name('blog.detail');
-
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-
-Route::get('/product', function () {
-    return view('product');
-})->name('product');
-
-Route::get('/product/{id}', function ($id) {
-    return view('product-detail', ['id' => $id]);
-})->name('product.detail');
-
-Route::get('/bootcamp', function () {
-    return view('bootcamp');
-})->name('bootcamp');
-
-Route::get('/bootcamp/{id}', function ($id) {
-    return view('bootcamp-detail', ['id' => $id]);
-})->name('bootcamp.detail');
+    return redirect('/id');
+});
 
 // Authentication Routes
 Route::get('/login', function () {

@@ -1,7 +1,7 @@
 {
   "site": {
     "name": "EduTech Academy",
-    "tagline": "Unlock Your Potential with Digital Learning",
+    "tagline": "Buka Potensi Anda dengan Pembelajaran Digital",
     "description": "Platform e-learning terdepan yang menyediakan kursus digital dan bootcamp berkualitas untuk meningkatkan karir Anda.",
     "logo": "fas fa-graduation-cap",
     "email": "info@edutechacademy.com",
@@ -10,17 +10,17 @@
   },
   "navigation": [
     {
-      "name": "Home",
+      "name": "Beranda",
       "url": "/",
       "active": true
     },
     {
-      "name": "About Us",
+      "name": "Tentang Kami",
       "url": "/about-us",
       "active": false
     },
     {
-      "name": "Product",
+      "name": "Produk",
       "url": "/product",
       "active": false
     },
@@ -30,7 +30,7 @@
       "active": false
     },
     {
-      "name": "Contact",
+      "name": "Kontak",
       "url": "/contact",
       "active": false
     },
@@ -40,94 +40,94 @@
       "active": false
     },
     {
-      "name": "Our Community",
+      "name": "Komunitas Kami",
       "url": "/community",
       "active": false
     }
   ],
   "hero": {
-    "title": "Transform Your Career with Digital Learning",
-    "subtitle": "Join thousands of students who have advanced their careers through our comprehensive courses and bootcamps",
-    "description": "Access high-quality digital courses and intensive bootcamps taught by industry experts. Learn at your own pace, anytime, anywhere.",
+    "title": "Ubah Karir Anda dengan Pembelajaran Digital",
+    "subtitle": "Bergabunglah dengan ribuan siswa yang telah mengembangkan karir mereka melalui kursus dan bootcamp komprehensif kami",
+    "description": "Akses kursus digital berkualitas tinggi dan bootcamp intensif yang diajarkan oleh ahli industri. Belajar dengan kecepatan Anda sendiri, kapan saja, di mana saja.",
     "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
-    "cta_text": "Explore Courses",
-    "cta_secondary": "Join Community"
+    "cta_text": "Jelajahi Kursus",
+    "cta_secondary": "Bergabung dengan Komunitas"
   },
   "stats": [
     {
       "number": "15,000+",
-      "label": "Active Students"
+      "label": "Siswa Aktif"
     },
     {
       "number": "50+",
-      "label": "Expert Instructors"
+      "label": "Instruktur Ahli"
     },
     {
       "number": "100+",
-      "label": "Courses Available"
+      "label": "Kursus Tersedia"
     },
     {
       "number": "95%",
-      "label": "Satisfaction Rate"
+      "label": "Tingkat Kepuasan"
     }
   ],
   "features": [
     {
       "icon": "fas fa-laptop-code",
-      "title": "Learn Anywhere",
-      "description": "Access our courses from any device, anywhere in the world. Learn at your own pace."
+      "title": "Belajar di Mana Saja",
+      "description": "Akses kursus kami dari perangkat apa pun, di mana pun di dunia. Belajar dengan kecepatan Anda sendiri."
     },
     {
       "icon": "fas fa-certificate",
-      "title": "Certified Courses",
-      "description": "Receive industry-recognized certificates upon completion of our courses."
+      "title": "Kursus Bersertifikat",
+      "description": "Terima sertifikat yang diakui industri setelah menyelesaikan kursus kami."
     },
     {
       "icon": "fas fa-users",
-      "title": "Expert Instructors",
-      "description": "Learn from industry experts with years of practical experience."
+      "title": "Instruktur Ahli",
+      "description": "Belajar dari ahli industri dengan pengalaman praktis bertahun-tahun."
     },
     {
       "icon": "fas fa-headset",
-      "title": "24/7 Support",
-      "description": "Get help whenever you need it with our round-the-clock support team."
+      "title": "Dukungan 24/7",
+      "description": "Dapatkan bantuan kapan pun Anda membutuhkannya dengan tim dukungan kami yang siaga 24 jam."
     },
     {
       "icon": "fas fa-chart-line",
-      "title": "Track Progress",
-      "description": "Monitor your learning progress with our advanced analytics tools."
+      "title": "Lacak Kemajuan",
+      "description": "Pantau kemajuan pembelajaran Anda dengan alat analitik canggih kami."
     },
     {
       "icon": "fas fa-dollar-sign",
-      "title": "Affordable Pricing",
-      "description": "Get quality education at prices that won't break the bank."
+      "title": "Harga Terjangkau",
+      "description": "Dapatkan pendidikan berkualitas dengan harga yang tidak akan menguras kantong Anda."
     }
   ],
   "testimonials": [
     {
       "name": "Sarah Johnson",
-      "role": "Web Developer",
+      "role": "Pengembang Web",
       "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-      "content": "EduTech Academy completely transformed my career. The courses were comprehensive and the instructors were amazing!"
+      "content": "EduTech Academy benar-benar mengubah karir saya. Kursusnya sangat komprehensif dan instrukturnya luar biasa!"
     },
     {
       "name": "Michael Chen",
-      "role": "Data Scientist",
+      "role": "Ilmuwan Data",
       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-      "content": "The bootcamp I attended was intensive and practical. I landed a job within a month of completing it."
+      "content": "Bootcamp yang saya ikuti sangat intensif dan praktis. Saya mendapatkan pekerjaan dalam sebulan setelah menyelesaikannya."
     },
     {
       "name": "Amanda Rodriguez",
-      "role": "UX Designer",
+      "role": "Desainer UX",
       "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      "content": "The flexibility of learning at my own pace while working full-time was invaluable. Highly recommend!"
+      "content": "Fleksibilitas belajar dengan kecepatan saya sendiri sambil bekerja penuh waktu sangat berharga. Sangat direkomendasikan!"
     }
   ],
   "products": [
     {
       "id": 1,
-      "title": "Complete Web Development Bootcamp",
-      "category": "Web Development",
+      "title": "Bootcamp Pengembangan Web Lengkap",
+      "category": "Pengembangan Web",
       "price": 899000,
       "original_price": 1499000,
       "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
@@ -135,21 +135,21 @@
       "rating": 4.8,
       "students": 3420,
       "duration": "42 hours",
-      "level": "Beginner to Advanced",
-      "description": "Learn web development from scratch with HTML, CSS, JavaScript, React, Node.js and more.",
+      "level": "Pemula hingga Lanjutan",
+      "description": "Pelajari pengembangan web dari nol dengan HTML, CSS, JavaScript, React, Node.js, dan lainnya.",
       "features": [
-        "42 hours of video content",
-        "100+ coding exercises",
-        "5 real-world projects",
-        "Certificate of completion",
-        "Lifetime access",
-        "Mobile app access"
+        "42 jam konten video",
+        "100+ latihan coding",
+        "5 proyek dunia nyata",
+        "Sertifikat penyelesaian",
+        "Akses seumur hidup",
+        "Akses aplikasi mobile"
       ]
     },
     {
       "id": 2,
-      "title": "Python for Data Science",
-      "category": "Data Science",
+      "title": "Python untuk Ilmu Data",
+      "category": "Ilmu Data",
       "price": 799000,
       "original_price": 1299000,
       "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -157,21 +157,21 @@
       "rating": 4.9,
       "students": 2850,
       "duration": "36 hours",
-      "level": "Intermediate",
-      "description": "Master Python programming for data science, machine learning, and data analysis.",
+      "level": "Menengah",
+      "description": "Kuasai pemrograman Python untuk ilmu data, machine learning, dan analisis data.",
       "features": [
-        "36 hours of video content",
-        "80+ coding exercises",
-        "10 real-world projects",
-        "Certificate of completion",
-        "Lifetime access",
-        "Downloadable resources"
+        "36 jam konten video",
+        "80+ latihan coding",
+        "10 proyek dunia nyata",
+        "Sertifikat penyelesaian",
+        "Akses seumur hidup",
+        "Sumber daya yang dapat diunduh"
       ]
     },
     {
       "id": 3,
-      "title": "Digital Marketing Mastery",
-      "category": "Marketing",
+      "title": "Penguasaan Pemasaran Digital",
+      "category": "Pemasaran",
       "price": 699000,
       "original_price": 1199000,
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
@@ -179,21 +179,21 @@
       "rating": 4.7,
       "students": 1980,
       "duration": "28 hours",
-      "level": "Beginner",
-      "description": "Learn digital marketing strategies including SEO, social media, content marketing, and more.",
+      "level": "Pemula",
+      "description": "Pelajari strategi pemasaran digital termasuk SEO, media sosial, pemasaran konten, dan lainnya.",
       "features": [
-        "28 hours of video content",
-        "50+ practical assignments",
-        "8 real-world projects",
-        "Certificate of completion",
-        "Lifetime access",
-        "Community support"
+        "28 jam konten video",
+        "50+ tugas praktis",
+        "8 proyek dunia nyata",
+        "Sertifikat penyelesaian",
+        "Akses seumur hidup",
+        "Dukungan komunitas"
       ]
     },
     {
       "id": 4,
-      "title": "UI/UX Design Fundamentals",
-      "category": "Design",
+      "title": "Dasar-dasar Desain UI/UX",
+      "category": "Desain",
       "price": 749000,
       "original_price": 1249000,
       "image": "https://images.unsplash.com/photo-1559028006-44a26f024d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -201,21 +201,21 @@
       "rating": 4.8,
       "students": 2150,
       "duration": "32 hours",
-      "level": "Beginner to Intermediate",
-      "description": "Master the principles of user interface and user experience design.",
+      "level": "Pemula hingga Menengah",
+      "description": "Kuasai prinsip-prinsip desain antarmuka pengguna dan pengalaman pengguna.",
       "features": [
-        "32 hours of video content",
-        "60+ design exercises",
-        "6 portfolio projects",
-        "Certificate of completion",
-        "Lifetime access",
-        "Design tools access"
+        "32 jam konten video",
+        "60+ latihan desain",
+        "6 proyek portofolio",
+        "Sertifikat penyelesaian",
+        "Akses seumur hidup",
+        "Akses alat desain"
       ]
     },
     {
       "id": 5,
-      "title": "Mobile App Development with Flutter",
-      "category": "Mobile Development",
+      "title": "Pengembangan Aplikasi Mobile dengan Flutter",
+      "category": "Pengembangan Mobile",
       "price": 849000,
       "original_price": 1399000,
       "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -223,21 +223,21 @@
       "rating": 4.6,
       "students": 1680,
       "duration": "38 hours",
-      "level": "Intermediate",
-      "description": "Build beautiful mobile apps for iOS and Android using Flutter and Dart.",
+      "level": "Menengah",
+      "description": "Bangun aplikasi mobile yang indah untuk iOS dan Android menggunakan Flutter dan Dart.",
       "features": [
-        "38 hours of video content",
-        "70+ coding exercises",
-        "8 complete apps",
-        "Certificate of completion",
-        "Lifetime access",
-        "Source code included"
+        "38 jam konten video",
+        "70+ latihan coding",
+        "8 aplikasi lengkap",
+        "Sertifikat penyelesaian",
+        "Akses seumur hidup",
+        "Kode sumber termasuk"
       ]
     },
     {
       "id": 6,
-      "title": "Cybersecurity Essentials",
-      "category": "Security",
+      "title": "Dasar-dasar Keamanan Siber",
+      "category": "Keamanan",
       "price": 899000,
       "original_price": 1499000,
       "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -245,103 +245,103 @@
       "rating": 4.9,
       "students": 1230,
       "duration": "40 hours",
-      "level": "Intermediate",
-      "description": "Learn cybersecurity fundamentals, ethical hacking, and network security.",
+      "level": "Menengah",
+      "description": "Pelajari dasar-dasar keamanan siber, peretasan etis, dan keamanan jaringan.",
       "features": [
-        "40 hours of video content",
-        "90+ practical exercises",
-        "10 security projects",
-        "Certificate of completion",
-        "Lifetime access",
-        "Virtual lab access"
+        "40 jam konten video",
+        "90+ latihan praktis",
+        "10 proyek keamanan",
+        "Sertifikat penyelesaian",
+        "Akses seumur hidup",
+        "Akses lab virtual"
       ]
     }
   ],
   "blogs": [
     {
       "id": 1,
-      "title": "The Future of Web Development: Trends to Watch in 2024",
-      "excerpt": "Explore the latest trends shaping the future of web development, from AI-powered tools to advanced frameworks.",
-      "content": "Web development is constantly evolving, and staying ahead of the curve is crucial for developers. In this comprehensive guide, we'll explore the key trends that are set to define the web development landscape in 2024. From the rise of AI-assisted coding to the growing importance of web performance, we'll cover everything you need to know to stay competitive in this rapidly changing field.",
+      "title": "Masa Depan Pengembangan Web: Tren yang Perlu Diperhatikan di 2024",
+      "excerpt": "Jelajahi tren terbaru yang membentuk masa depan pengembangan web, dari alat bertenaga AI hingga kerangka kerja canggih.",
+      "content": "Pengembangan web terus berkembang, dan tetap menjadi yang terdepan sangat penting bagi para pengembang. Dalam panduan komprehensif ini, kami akan menjelajahi tren-tren kunci yang akan mendefinisikan lanskap pengembangan web di 2024. Dari munculnya coding berbantuan AI hingga pentingnya kinerja web yang semakin meningkat, kami akan membahas semua yang perlu Anda ketahui untuk tetap kompetitif di bidang yang berubah dengan cepat ini.",
       "author": "David Anderson",
       "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "date": "2024-01-15",
       "read_time": "8 min read",
-      "category": "Web Development",
+      "category": "Pengembangan Web",
       "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-      "tags": ["Web Development", "Trends", "2024", "Technology"]
+      "tags": ["Pengembangan Web", "Tren", "2024", "Teknologi"]
     },
     {
       "id": 2,
-      "title": "Getting Started with Machine Learning: A Beginner's Guide",
-      "excerpt": "Learn the fundamentals of machine learning and how to get started on your journey to becoming an ML engineer.",
-      "content": "Machine learning is revolutionizing industries across the globe, but getting started can seem daunting. This guide breaks down the fundamentals of ML, from basic concepts to practical implementation. We'll cover the essential algorithms, tools, and techniques you need to begin your machine learning journey, along with real-world examples and hands-on projects to solidify your understanding.",
+      "title": "Memulai dengan Machine Learning: Panduan untuk Pemula",
+      "excerpt": "Pelajari dasar-dasar machine learning dan cara memulai perjalanan Anda untuk menjadi insinyur ML.",
+      "content": "Machine learning merevolusi industri di seluruh dunia, tetapi memulainya bisa terasa menakutkan. Panduan ini menguraikan dasar-dasar ML, dari konsep dasar hingga implementasi praktis. Kami akan membahas algoritma, alat, dan teknik penting yang Anda butuhkan untuk memulai perjalanan machine learning Anda, bersama dengan contoh dunia nyata dan proyek hands-on untuk memperkuat pemahaman Anda.",
       "author": "Dr. Sarah Mitchell",
       "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
       "date": "2024-01-12",
       "read_time": "12 min read",
-      "category": "Data Science",
+      "category": "Ilmu Data",
       "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "tags": ["Machine Learning", "Data Science", "Beginner", "AI"]
+      "tags": ["Machine Learning", "Ilmu Data", "Pemula", "AI"]
     },
     {
       "id": 3,
-      "title": "Effective Digital Marketing Strategies for Small Businesses",
-      "excerpt": "Discover cost-effective digital marketing strategies that can help small businesses compete with larger competitors.",
-      "content": "Digital marketing doesn't have to break the bank, especially for small businesses. In this article, we explore proven strategies that deliver maximum impact with minimal investment. From social media marketing to content creation, email campaigns to SEO optimization, we'll cover the essential tactics that can help your small business thrive in the digital landscape.",
+      "title": "Strategi Pemasaran Digital yang Efektif untuk Usaha Kecil",
+      "excerpt": "Temukan strategi pemasaran digital yang hemat biaya yang dapat membantu usaha kecil bersaing dengan pesaing yang lebih besar.",
+      "content": "Pemasaran digital tidak harus mahal, terutama untuk usaha kecil. Dalam artikel ini, kami menjelajahi strategi terbukti yang memberikan dampak maksimal dengan investasi minimal. Dari pemasaran media sosial hingga pembuatan konten, kampanye email hingga optimasi SEO, kami akan membahas taktik penting yang dapat membantu usaha kecil Anda berkembang di lanskap digital.",
       "author": "Emma Thompson",
       "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "date": "2024-01-10",
       "read_time": "10 min read",
-      "category": "Marketing",
+      "category": "Pemasaran",
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
-      "tags": ["Digital Marketing", "Small Business", "Strategy", "SEO"]
+      "tags": ["Pemasaran Digital", "Usaha Kecil", "Strategi", "SEO"]
     },
     {
       "id": 4,
-      "title": "The Psychology of Great UX Design",
-      "excerpt": "Understanding the psychological principles that underpin effective user experience design.",
-      "content": "Great UX design goes beyond aesthetics – it's about understanding how users think, feel, and behave. This article delves into the psychological principles that inform effective design decisions, from cognitive load theory to emotional design. Learn how to create interfaces that not only look good but also feel intuitive and satisfying to use.",
+      "title": "Psikologi Desain UX yang Hebat",
+      "excerpt": "Memahami prinsip-prinsip psikologis yang mendasari desain pengalaman pengguna yang efektif.",
+      "content": "Desain UX yang hebat melampaui estetika - ini tentang memahami bagaimana pengguna berpikir, merasa, dan berperilaku. Artikel ini menggali prinsip-prinsip psikologis yang menginformasikan keputusan desain yang efektif, dari teori beban kognitif hingga desain emosional. Pelajari cara membuat antarmuka yang tidak hanya terlihat bagus tetapi juga terasa intuitif dan memuaskan untuk digunakan.",
       "author": "Alex Rodriguez",
       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
       "date": "2024-01-08",
       "read_time": "7 min read",
-      "category": "Design",
+      "category": "Desain",
       "image": "https://images.unsplash.com/photo-1559028006-44a26f024d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "tags": ["UX Design", "Psychology", "User Experience", "Design Principles"]
+      "tags": ["Desain UX", "Psikologi", "Pengalaman Pengguna", "Prinsip Desain"]
     },
     {
       "id": 5,
-      "title": "Mobile-First Development: Best Practices and Techniques",
-      "excerpt": "Learn how to implement mobile-first development strategies to create better responsive web applications.",
-      "content": "With mobile devices accounting for over half of all web traffic, mobile-first development is no longer optional – it's essential. This comprehensive guide covers the best practices, techniques, and tools for implementing a mobile-first approach. From responsive design principles to performance optimization, we'll help you create web applications that work seamlessly across all devices.",
+      "title": "Pengembangan Mobile-First: Praktik Terbaik dan Teknik",
+      "excerpt": "Pelajari cara menerapkan strategi pengembangan mobile-first untuk membuat aplikasi web responsif yang lebih baik.",
+      "content": "Dengan perangkat mobile menyumbang lebih dari setengah dari semua lalu lintas web, pengembangan mobile-first tidak lagi opsional - ini sangat penting. Panduan komprehensif ini mencakup praktik terbaik, teknik, dan alat untuk menerapkan pendekatan mobile-first. Dari prinsip desain responsif hingga optimasi kinerja, kami akan membantu Anda membuat aplikasi web yang berfungsi dengan mulus di semua perangkat.",
       "author": "James Wilson",
       "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "date": "2024-01-05",
       "read_time": "9 min read",
-      "category": "Mobile Development",
+      "category": "Pengembangan Mobile",
       "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "tags": ["Mobile Development", "Responsive Design", "Best Practices", "Web Development"]
+      "tags": ["Pengembangan Mobile", "Desain Responsif", "Praktik Terbaik", "Pengembangan Web"]
     },
     {
       "id": 6,
-      "title": "Cybersecurity in the Remote Work Era",
-      "excerpt": "Essential cybersecurity practices for protecting your data and systems in an increasingly remote work environment.",
-      "content": "The shift to remote work has created new cybersecurity challenges for organizations and individuals alike. This article explores the essential practices and tools needed to maintain security in a distributed work environment. From secure connection methods to data protection strategies, we'll cover everything you need to know to stay safe while working remotely.",
+      "title": "Keamanan Siber di Era Kerja Jarak Jauh",
+      "excerpt": "Praktik keamanan siber penting untuk melindungi data dan sistem Anda di lingkungan kerja jarak jauh yang semakin meningkat.",
+      "content": "Pergeseran ke kerja jarak jauh telah menciptakan tantangan keamanan siber baru bagi organisasi dan individu. Artikel ini mengeksplorasi praktik dan alat penting yang diperlukan untuk menjaga keamanan di lingkungan kerja yang terdistribusi. Dari metode koneksi yang aman hingga strategi perlindungan data, kami akan membahas semua yang perlu Anda ketahui untuk tetap aman saat bekerja dari jarak jauh.",
       "author": "Robert Chang",
       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
       "date": "2024-01-03",
       "read_time": "11 min read",
-      "category": "Security",
+      "category": "Keamanan",
       "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "tags": ["Cybersecurity", "Remote Work", "Data Protection", "Security Best Practices"]
+      "tags": ["Keamanan Siber", "Kerja Jarak Jauh", "Perlindungan Data", "Praktik Keamanan Terbaik"]
     }
   ],
   "bootcamps": [
     {
       "id": 1,
-      "title": "Full Stack Web Development Bootcamp",
-      "category": "Web Development",
+      "title": "Bootcamp Pengembangan Web Full Stack",
+      "category": "Pengembangan Web",
       "price": 5999000,
       "original_price": 8999000,
       "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
@@ -349,33 +349,33 @@
       "rating": 4.9,
       "students": 450,
       "duration": "12 weeks",
-      "level": "Beginner to Advanced",
-      "schedule": "Monday - Friday, 9:00 AM - 5:00 PM",
+      "level": "Pemula hingga Lanjutan",
+      "schedule": "Senin - Jumat, 09:00 - 17:00",
       "start_date": "2024-02-01",
-      "description": "Intensive 12-week bootcamp covering front-end and back-end development, databases, and deployment.",
+      "description": "Bootcamp intensif 12 minggu yang mencakup pengembangan front-end dan back-end, database, dan deployment.",
       "features": [
-        "480 hours of intensive training",
-        "20+ real-world projects",
-        "1-on-1 mentorship",
-        "Career services and job placement",
-        "Certificate of completion",
-        "Alumni network access"
+        "480 jam pelatihan intensif",
+        "20+ proyek dunia nyata",
+        "Mentor 1-on-1",
+        "Layanan karir dan penempatan kerja",
+        "Sertifikat penyelesaian",
+        "Akses jaringan alumni"
       ],
       "curriculum": [
-        "HTML, CSS, JavaScript fundamentals",
-        "React.js and modern front-end frameworks",
-        "Node.js, Express.js and back-end development",
-        "Database design and management",
-        "API development and integration",
-        "DevOps and deployment strategies",
-        "Version control with Git",
-        "Agile development methodologies"
+        "Dasar-dasar HTML, CSS, JavaScript",
+        "React.js dan kerangka kerja front-end modern",
+        "Node.js, Express.js dan pengembangan back-end",
+        "Desain dan manajemen database",
+        "Pengembangan dan integrasi API",
+        "Strategi DevOps dan deployment",
+        "Kontrol versi dengan Git",
+        "Metodologi pengembangan Agile"
       ]
     },
     {
       "id": 2,
-      "title": "Data Science & Machine Learning Bootcamp",
-      "category": "Data Science",
+      "title": "Bootcamp Ilmu Data & Machine Learning",
+      "category": "Ilmu Data",
       "price": 6999000,
       "original_price": 9999000,
       "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -383,33 +383,33 @@
       "rating": 4.8,
       "students": 320,
       "duration": "14 weeks",
-      "level": "Intermediate",
-      "schedule": "Monday - Friday, 9:00 AM - 5:00 PM",
+      "level": "Menengah",
+      "schedule": "Senin - Jumat, 09:00 - 17:00",
       "start_date": "2024-02-15",
-      "description": "Comprehensive data science bootcamp covering statistics, machine learning, and data visualization.",
+      "description": "Bootcamp ilmu data komprehensif yang mencakup statistik, machine learning, dan visualisasi data.",
       "features": [
-        "560 hours of intensive training",
-        "25+ real-world projects",
-        "1-on-1 mentorship",
-        "Career services and job placement",
-        "Certificate of completion",
-        "Industry networking events"
+        "560 jam pelatihan intensif",
+        "25+ proyek dunia nyata",
+        "Mentor 1-on-1",
+        "Layanan karir dan penempatan kerja",
+        "Sertifikat penyelesaian",
+        "Acara jaringan industri"
       ],
       "curriculum": [
-        "Python programming for data science",
-        "Statistical analysis and hypothesis testing",
-        "Machine learning algorithms and techniques",
-        "Deep learning and neural networks",
-        "Data visualization with Tableau and Power BI",
-        "Big data technologies (Hadoop, Spark)",
-        "Natural language processing",
-        "Computer vision fundamentals"
+        "Pemrograman Python untuk ilmu data",
+        "Analisis statistik dan pengujian hipotesis",
+        "Algoritma dan teknik machine learning",
+        "Deep learning dan jaringan saraf",
+        "Visualisasi data dengan Tableau dan Power BI",
+        "Teknologi big data (Hadoop, Spark)",
+        "Pemrosesan bahasa alami",
+        "Dasar-dasar visi komputer"
       ]
     },
     {
       "id": 3,
-      "title": "UX/UI Design Bootcamp",
-      "category": "Design",
+      "title": "Bootcamp Desain UX/UI",
+      "category": "Desain",
       "price": 5499000,
       "original_price": 7999000,
       "image": "https://images.unsplash.com/photo-1559028006-44a26f024d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -417,33 +417,33 @@
       "rating": 4.7,
       "students": 280,
       "duration": "10 weeks",
-      "level": "Beginner to Intermediate",
-      "schedule": "Monday - Friday, 9:00 AM - 5:00 PM",
+      "level": "Pemula hingga Menengah",
+      "schedule": "Senin - Jumat, 09:00 - 17:00",
       "start_date": "2024-03-01",
-      "description": "Intensive design bootcamp covering user research, interface design, and prototyping.",
+      "description": "Bootcamp desain intensif yang mencakup penelitian pengguna, desain antarmuka, dan prototyping.",
       "features": [
-        "400 hours of intensive training",
-        "15+ portfolio projects",
-        "1-on-1 mentorship",
-        "Career services and job placement",
-        "Certificate of completion",
-        "Design tools access"
+        "400 jam pelatihan intensif",
+        "15+ proyek portofolio",
+        "Mentor 1-on-1",
+        "Layanan karir dan penempatan kerja",
+        "Sertifikat penyelesaian",
+        "Akses alat desain"
       ],
       "curriculum": [
-        "Design thinking and user research",
-        "Information architecture and wireframing",
-        "Visual design principles and typography",
-        "Prototyping with Figma and Adobe XD",
-        "Usability testing and iteration",
-        "Responsive design for web and mobile",
-        "Design systems and component libraries",
-        "Portfolio development and presentation"
+        "Berpikir desain dan penelitian pengguna",
+        "Arsitektur informasi dan wireframing",
+        "Prinsip desain visual dan tipografi",
+        "Prototyping dengan Figma dan Adobe XD",
+        "Pengujian kegunaan dan iterasi",
+        "Desain responsif untuk web dan mobile",
+        "Sistem desain dan pustaka komponen",
+        "Pengembangan dan presentasi portofolio"
       ]
     },
     {
       "id": 4,
-      "title": "Digital Marketing Mastery Bootcamp",
-      "category": "Marketing",
+      "title": "Bootcamp Penguasaan Pemasaran Digital",
+      "category": "Pemasaran",
       "price": 4999000,
       "original_price": 7499000,
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
@@ -451,33 +451,33 @@
       "rating": 4.6,
       "students": 350,
       "duration": "8 weeks",
-      "level": "Beginner",
-      "schedule": "Monday - Friday, 9:00 AM - 5:00 PM",
+      "level": "Pemula",
+      "schedule": "Senin - Jumat, 09:00 - 17:00",
       "start_date": "2024-03-15",
-      "description": "Comprehensive digital marketing bootcamp covering SEO, social media, content marketing, and analytics.",
+      "description": "Bootcamp pemasaran digital komprehensif yang mencakup SEO, media sosial, pemasaran konten, dan analitik.",
       "features": [
-        "320 hours of intensive training",
-        "12+ real-world campaigns",
-        "1-on-1 mentorship",
-        "Career services and job placement",
-        "Certificate of completion",
-        "Industry certifications prep"
+        "320 jam pelatihan intensif",
+        "12+ kampanye dunia nyata",
+        "Mentor 1-on-1",
+        "Layanan karir dan penempatan kerja",
+        "Sertifikat penyelesaian",
+        "Persiapan sertifikasi industri"
       ],
       "curriculum": [
-        "Digital marketing fundamentals",
-        "Search engine optimization (SEO)",
-        "Social media marketing strategy",
-        "Content marketing and copywriting",
-        "Email marketing automation",
-        "Pay-per-click advertising (PPC)",
-        "Analytics and data-driven marketing",
-        "Marketing automation and CRM"
+        "Dasar-dasar pemasaran digital",
+        "Optimasi mesin pencari (SEO)",
+        "Strategi pemasaran media sosial",
+        "Pemasaran konten dan copywriting",
+        "Otomasi pemasaran email",
+        "Iklan bayar per klik (PPC)",
+        "Analitik dan pemasaran berbasis data",
+        "Otomasi pemasaran dan CRM"
       ]
     },
     {
       "id": 5,
-      "title": "Mobile App Development Bootcamp",
-      "category": "Mobile Development",
+      "title": "Bootcamp Pengembangan Aplikasi Mobile",
+      "category": "Pengembangan Mobile",
       "price": 6499000,
       "original_price": 9499000,
       "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -485,50 +485,50 @@
       "rating": 4.8,
       "students": 220,
       "duration": "12 weeks",
-      "level": "Intermediate",
-      "schedule": "Monday - Friday, 9:00 AM - 5:00 PM",
+      "level": "Menengah",
+      "schedule": "Senin - Jumat, 09:00 - 17:00",
       "start_date": "2024-04-01",
-      "description": "Intensive mobile development bootcamp covering iOS, Android, and cross-platform development.",
+      "description": "Bootcamp pengembangan mobile intensif yang mencakup iOS, Android, dan pengembangan lintas platform.",
       "features": [
-        "480 hours of intensive training",
-        "18+ complete mobile apps",
-        "1-on-1 mentorship",
-        "Career services and job placement",
-        "Certificate of completion",
-        "App store deployment guidance"
+        "480 jam pelatihan intensif",
+        "18+ aplikasi mobile lengkap",
+        "Mentor 1-on-1",
+        "Layanan karir dan penempatan kerja",
+        "Sertifikat penyelesaian",
+        "Bimbingan deployment toko aplikasi"
       ],
       "curriculum": [
-        "Mobile development fundamentals",
-        "Swift and iOS development",
-        "Kotlin and Android development",
-        "Cross-platform development with Flutter",
-        "Mobile UI/UX design principles",
-        "API integration and data management",
-        "Mobile app testing and debugging",
-        "App deployment and maintenance"
+        "Dasar-dasar pengembangan mobile",
+        "Swift dan pengembangan iOS",
+        "Kotlin dan pengembangan Android",
+        "Pengembangan lintas platform dengan Flutter",
+        "Prinsip desain UI/UX mobile",
+        "Integrasi API dan manajemen data",
+        "Pengujian dan debugging aplikasi mobile",
+        "Deployment dan pemeliharaan aplikasi"
       ]
     }
   ],
   "community": {
-    "title": "Join Our Thriving Learning Community",
-    "description": "Connect with thousands of learners, instructors, and industry professionals from around the world.",
+    "title": "Bergabunglah dengan Komunitas Pembelajaran yang Berkembang Pesat",
+    "description": "Terhubung dengan ribuan pelajar, instruktur, dan profesional industri dari seluruh dunia.",
     "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     "stats": [
       {
         "number": "15,000+",
-        "label": "Active Members"
+        "label": "Anggota Aktif"
       },
       {
         "number": "50+",
-        "label": "Countries"
+        "label": "Negara"
       },
       {
         "number": "1000+",
-        "label": "Daily Interactions"
+        "label": "Interaksi Harian"
       },
       {
         "number": "24/7",
-        "label": "Community Support"
+        "label": "Dukungan Komunitas"
       }
     ],
     "social_links": [
@@ -536,100 +536,100 @@
         "name": "Facebook",
         "url": "https://facebook.com/edutechacademy",
         "icon": "fab fa-facebook",
-        "description": "Join our Facebook community for daily updates and discussions"
+        "description": "Bergabunglah dengan komunitas Facebook kami untuk pembaruan dan diskusi harian"
       },
       {
         "name": "Discord",
         "url": "https://discord.gg/edutechacademy",
         "icon": "fab fa-discord",
-        "description": "Connect with students and instructors in real-time"
+        "description": "Terhubung dengan siswa dan instruktur secara real-time"
       },
       {
         "name": "LinkedIn",
         "url": "https://linkedin.com/company/edutechacademy",
         "icon": "fab fa-linkedin",
-        "description": "Professional networking and career opportunities"
+        "description": "Jaringan profesional dan peluang karir"
       },
       {
         "name": "Twitter",
         "url": "https://twitter.com/edutechacademy",
         "icon": "fab fa-twitter",
-        "description": "Follow us for industry news and updates"
+        "description": "Ikuti kami untuk berita industri dan pembaruan"
       },
       {
         "name": "Instagram",
         "url": "https://instagram.com/edutechacademy",
         "icon": "fab fa-instagram",
-        "description": "Behind-the-scenes content and student spotlights"
+        "description": "Konten di balik layar dan sorotan siswa"
       },
       {
         "name": "YouTube",
         "url": "https://youtube.com/edutechacademy",
         "icon": "fab fa-youtube",
-        "description": "Free tutorials and course previews"
+        "description": "Tutorial gratis dan pratinjau kursus"
       }
     ]
   },
   "about": {
-    "title": "About EduTech Academy",
-    "subtitle": "Empowering Learners Worldwide Since 2020",
-    "description": "EduTech Academy is a leading online learning platform dedicated to providing high-quality education to students worldwide. Our mission is to make education accessible, affordable, and effective for everyone.",
+    "title": "Tentang EduTech Academy",
+    "subtitle": "Memberdayakan Pelajar di Seluruh Dunia Sejak 2020",
+    "description": "EduTech Academy adalah platform pembelajaran online terkemuka yang didedikasikan untuk menyediakan pendidikan berkualitas tinggi kepada siswa di seluruh dunia. Misi kami adalah membuat pendidikan dapat diakses, terjangkau, dan efektif untuk semua orang.",
     "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    "story": "Founded in 2020, EduTech Academy started with a simple vision: to democratize education by leveraging technology. What began as a small startup has grown into a global learning community with over 15,000 students across 50+ countries.",
-    "mission": "Our mission is to transform lives through education by providing accessible, high-quality learning experiences that empower individuals to achieve their career goals and make a positive impact in the world.",
+    "story": "Didirikan pada tahun 2020, EduTech Academy dimulai dengan visi sederhana: mendemokratisasi pendidikan dengan memanfaatkan teknologi. Yang dimulai sebagai startup kecil telah berkembang menjadi komunitas pembelajaran global dengan lebih dari 15.000 siswa di lebih dari 50 negara.",
+    "mission": "Misi kami adalah mengubah hidup melalui pendidikan dengan menyediakan pengalaman pembelajaran yang dapat diakses dan berkualitas tinggi yang memberdayakan individu untuk mencapai tujuan karir mereka dan memberikan dampak positif di dunia.",
     "values": [
       {
-        "title": "Quality Education",
-        "description": "We are committed to delivering the highest quality educational content, taught by industry experts and designed to provide real-world skills.",
+        "title": "Pendidikan Berkualitas",
+        "description": "Kami berkomitmen untuk memberikan konten pendidikan berkualitas tertinggi, diajarkan oleh ahli industri dan dirancang untuk memberikan keterampilan dunia nyata.",
         "icon": "fas fa-graduation-cap"
       },
       {
-        "title": "Accessibility",
-        "description": "We believe education should be accessible to everyone, regardless of their background, location, or financial situation.",
+        "title": "Aksesibilitas",
+        "description": "Kami percaya pendidikan harus dapat diakses oleh semua orang, terlepas dari latar belakang, lokasi, atau situasi keuangan mereka.",
         "icon": "fas fa-universal-access"
       },
       {
-        "title": "Innovation",
-        "description": "We continuously innovate our teaching methods and technology to provide the most effective learning experience possible.",
+        "title": "Inovasi",
+        "description": "Kami terus-menerus menginovasi metode pengajaran dan teknologi kami untuk memberikan pengalaman pembelajaran yang paling efektif.",
         "icon": "fas fa-lightbulb"
       },
       {
-        "title": "Community",
-        "description": "We foster a supportive learning community where students can connect, collaborate, and grow together.",
+        "title": "Komunitas",
+        "description": "Kami memupuk komunitas pembelajaran yang mendukung di mana siswa dapat terhubung, berkolaborasi, dan tumbuh bersama.",
         "icon": "fas fa-users"
       }
     ],
     "team": [
       {
         "name": "Sarah Johnson",
-        "role": "CEO & Founder",
+        "role": "CEO & Pendiri",
         "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-        "bio": "Sarah is a passionate educator with over 15 years of experience in educational technology and online learning."
+        "bio": "Sarah adalah pendidik yang bersemangat dengan pengalaman lebih dari 15 tahun dalam teknologi pendidikan dan pembelajaran online."
       },
       {
         "name": "Michael Chen",
-        "role": "CTO & Co-Founder",
+        "role": "CTO & Co-Pendiri",
         "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-        "bio": "Michael is a tech visionary with extensive experience in building scalable educational platforms."
+        "bio": "Michael adalah visioner teknologi dengan pengalaman luas dalam membangun platform pendidikan yang skalabel."
       },
       {
         "name": "Amanda Rodriguez",
-        "role": "Head of Curriculum",
+        "role": "Kepala Kurikulum",
         "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-        "bio": "Amanda ensures our curriculum remains relevant, comprehensive, and aligned with industry needs."
+        "bio": "Amanda memastikan kurikulum kami tetap relevan, komprehensif, dan selaras dengan kebutuhan industri."
       },
       {
         "name": "David Wilson",
-        "role": "Head of Student Success",
+        "role": "Kepala Kesuksesan Siswa",
         "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-        "bio": "David is dedicated to ensuring our students have the support they need to succeed in their learning journey."
+        "bio": "David didedikasikan untuk memastikan siswa kami memiliki dukungan yang mereka butuhkan untuk berhasil dalam perjalanan pembelajaran mereka."
       }
     ]
   },
   "contact": {
-    "title": "Get in Touch",
-    "subtitle": "We're here to help you on your learning journey",
-    "description": "Have questions about our courses, bootcamps, or need help with enrollment? Our team is here to assist you.",
+    "title": "Hubungi Kami",
+    "subtitle": "Kami di sini untuk membantu Anda dalam perjalanan pembelajaran Anda",
+    "description": "Punya pertanyaan tentang kursus kami, bootcamp, atau butuh bantuan dengan pendaftaran? Tim kami di sini untuk membantu Anda.",
     "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     "contact_info": [
       {
@@ -638,28 +638,28 @@
         "icon": "fas fa-envelope"
       },
       {
-        "type": "Phone",
+        "type": "Telepon",
         "value": "+62 812-3456-7890",
         "icon": "fas fa-phone"
       },
       {
-        "type": "Address",
+        "type": "Alamat",
         "value": "Jakarta, Indonesia",
         "icon": "fas fa-map-marker-alt"
       }
     ],
     "office_hours": [
       {
-        "day": "Monday - Friday",
-        "hours": "9:00 AM - 6:00 PM"
+        "day": "Senin - Jumat",
+        "hours": "09:00 - 18:00"
       },
       {
-        "day": "Saturday",
-        "hours": "10:00 AM - 4:00 PM"
+        "day": "Sabtu",
+        "hours": "10:00 - 16:00"
       },
       {
-        "day": "Sunday",
-        "hours": "Closed"
+        "day": "Minggu",
+        "hours": "Tutup"
       }
     ],
     "social_links": [

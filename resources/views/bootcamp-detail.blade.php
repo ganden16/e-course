@@ -1,22 +1,36 @@
 @php
+    // Get current locale from middleware
+    $locale = app()->getLocale();
+
+    // Load language file for bootcamp page
+    $translations = include lang_path("{$locale}/bootcamp.php");
+
     $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
     $site = $data['site'];
     $bootcamps = $data['bootcamps'];
     $bootcamp = null;
 
+    // Extract the bootcamp ID from the current URL
+    $currentPath = request()->path();
+    $pathParts = explode('/', $currentPath);
+    $bootcampId = end($pathParts); // Get the last part of the URL
+
     // Find the bootcamp by ID
     foreach($bootcamps as $b) {
-        if($b['id'] == $id) {
+        if($b['id'] == intval($bootcampId)) {
             $bootcamp = $b;
             break;
         }
     }
 
     // Get related bootcamps (same category, excluding current bootcamp)
-    $relatedBootcamps = array_filter($bootcamps, function($b) use ($bootcamp) {
-        return $b['category'] === $bootcamp['category'] && $b['id'] != $bootcamp['id'];
-    });
-    $relatedBootcamps = array_slice($relatedBootcamps, 0, 2);
+    $relatedBootcamps = [];
+    if($bootcamp) {
+        $relatedBootcamps = array_filter($bootcamps, function($b) use ($bootcamp) {
+            return $b['category'] === $bootcamp['category'] && $b['id'] != $bootcamp['id'];
+        });
+        $relatedBootcamps = array_slice($relatedBootcamps, 0, 2);
+    }
 @endphp
 
 @if(!$bootcamp)

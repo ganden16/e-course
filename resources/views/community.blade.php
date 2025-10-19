@@ -1,7 +1,22 @@
 @php
+    // Get current locale from middleware
+    $locale = app()->getLocale();
+
+    // Load language file for community page
+    $translations = include lang_path("{$locale}/community.php");
+    $hero = $translations['hero'];
+    $membership = $translations['benefits'];
+    $guidelines = $translations['guidelines'];
+    $testimonials = $translations['testimonials'];
+    $cta = $translations['cta'];
+
+    // Load data from JSON for dynamic content
     $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
     $site = $data['site'];
     $community = $data['community'];
+
+    // Build URLs with current locale
+    $baseUrl = '/' . $locale;
 @endphp
 
 @include('components.header', ['title' => 'Our Community'])
@@ -10,8 +25,8 @@
 <section class="gradient-bg text-white py-16">
     <div class="container mx-auto px-6">
         <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ $community['title'] }}</h1>
-            <p class="text-xl max-w-3xl mx-auto">{{ $community['description'] }}</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ $hero['title'] }}</h1>
+            <p class="text-xl max-w-3xl mx-auto">{{ $hero['subtitle'] }}</p>
         </div>
     </div>
 </section>
@@ -20,8 +35,8 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Growing Community</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Join thousands of learners from around the world</p>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ $hero['stats_title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $hero['stats_subtitle'] }}</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             @foreach($community['stats'] as $stat)
@@ -47,8 +62,8 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Join Our Online Communities</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Connect with us on social media for updates, discussions, and networking opportunities.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $hero['connect_title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $hero['connect_subtitle'] }}</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -61,7 +76,7 @@
                         <h3 class="text-2xl font-semibold mb-3">{{ $social['name'] }}</h3>
                         <p class="text-gray-600 mb-6">{{ $social['description'] }}</p>
                         <a href="{{ $social['url'] }}" target="_blank" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
-                            Join Now
+                            {{ $hero['join_now'] }}
                         </a>
                     </div>
                 </div>
@@ -74,8 +89,8 @@
 <section class="py-16 bg-light">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why Join Our Community?</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Discover the benefits of being part of our learning ecosystem.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $membership['title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $membership['subtitle'] }}</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -83,43 +98,43 @@
                 <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="fas fa-users text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-semibold mb-2">Network with Peers</h3>
-                <p class="text-gray-600">Connect with like-minded learners and professionals from around the world.</p>
+                <h3 class="text-xl font-semibold mb-2">{{ $membership['network_peers']['title'] }}</h3>
+                <p class="text-gray-600">{{ $membership['network_peers']['description'] }}</p>
             </div>
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
                 <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="fas fa-chalkboard-teacher text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-semibold mb-2">Learn from Experts</h3>
-                <p class="text-gray-600">Get insights and advice from industry experts and experienced professionals.</p>
+                <h3 class="text-xl font-semibold mb-2">{{ $membership['learn_experts']['title'] }}</h3>
+                <p class="text-gray-600">{{ $membership['learn_experts']['description'] }}</p>
             </div>
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
                 <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="fas fa-briefcase text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-semibold mb-2">Career Opportunities</h3>
-                <p class="text-gray-600">Access exclusive job postings and career advancement opportunities.</p>
+                <h3 class="text-xl font-semibold mb-2">{{ $membership['career_opportunities']['title'] }}</h3>
+                <p class="text-gray-600">{{ $membership['career_opportunities']['description'] }}</p>
             </div>
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
                 <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="fas fa-lightbulb text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-semibold mb-2">Share Knowledge</h3>
-                <p class="text-gray-600">Contribute to discussions and share your own insights and experiences.</p>
+                <h3 class="text-xl font-semibold mb-2">{{ $membership['share_knowledge']['title'] }}</h3>
+                <p class="text-gray-600">{{ $membership['share_knowledge']['description'] }}</p>
             </div>
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
                 <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="fas fa-calendar-alt text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-semibold mb-2">Events & Workshops</h3>
-                <p class="text-gray-600">Participate in exclusive events, workshops, and webinars.</p>
+                <h3 class="text-xl font-semibold mb-2">{{ $membership['events_workshops']['title'] }}</h3>
+                <p class="text-gray-600">{{ $membership['events_workshops']['description'] }}</p>
             </div>
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
                 <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="fas fa-trophy text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-semibold mb-2">Achievements</h3>
-                <p class="text-gray-600">Celebrate your milestones and earn recognition for your accomplishments.</p>
+                <h3 class="text-xl font-semibold mb-2">{{ $membership['achievements']['title'] }}</h3>
+                <p class="text-gray-600">{{ $membership['achievements']['description'] }}</p>
             </div>
         </div>
     </div>
@@ -129,35 +144,35 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Community Guidelines</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Help us maintain a positive and inclusive environment for everyone.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $guidelines['title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $guidelines['subtitle'] }}</p>
         </div>
 
         <div class="max-w-4xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-gray-50 rounded-lg p-6">
                     <h3 class="text-xl font-semibold mb-4 flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i> Be Respectful
+                        <i class="fas fa-check-circle text-primary mr-3"></i> {{ $guidelines['be_respectful']['title'] }}
                     </h3>
-                    <p class="text-gray-600">Treat all community members with respect and kindness, regardless of their background or experience level.</p>
+                    <p class="text-gray-600">{{ $guidelines['be_respectful']['description'] }}</p>
                 </div>
                 <div class="bg-gray-50 rounded-lg p-6">
                     <h3 class="text-xl font-semibold mb-4 flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i> Stay Relevant
+                        <i class="fas fa-check-circle text-primary mr-3"></i> {{ $guidelines['stay_relevant']['title'] }}
                     </h3>
-                    <p class="text-gray-600">Keep discussions focused on learning, career development, and related topics.</p>
+                    <p class="text-gray-600">{{ $guidelines['stay_relevant']['description'] }}</p>
                 </div>
                 <div class="bg-gray-50 rounded-lg p-6">
                     <h3 class="text-xl font-semibold mb-4 flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i> Help Others
+                        <i class="fas fa-check-circle text-primary mr-3"></i> {{ $guidelines['help_others']['title'] }}
                     </h3>
-                    <p class="text-gray-600">Share your knowledge and support fellow learners on their educational journey.</p>
+                    <p class="text-gray-600">{{ $guidelines['help_others']['description'] }}</p>
                 </div>
                 <div class="bg-gray-50 rounded-lg p-6">
                     <h3 class="text-xl font-semibold mb-4 flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i> No Spam
+                        <i class="fas fa-check-circle text-primary mr-3"></i> {{ $guidelines['no_spam']['title'] }}
                     </h3>
-                    <p class="text-gray-600">Avoid posting promotional content, spam, or unrelated advertisements.</p>
+                    <p class="text-gray-600">{{ $guidelines['no_spam']['description'] }}</p>
                 </div>
             </div>
         </div>
@@ -168,8 +183,8 @@
 <section class="py-16 bg-light">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Community Stories</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Hear from our community members about their experiences.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $testimonials['title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $testimonials['subtitle'] }}</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -210,14 +225,14 @@
 <!-- CTA Section -->
 <section class="py-16 gradient-bg text-white">
     <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Join Our Community?</h2>
-        <p class="text-xl mb-8 max-w-3xl mx-auto">Take the first step towards connecting with thousands of learners and professionals worldwide.</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
+        <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
-                Start Learning
+            <a href="{{ $baseUrl }}/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                {{ $cta['start_learning'] }}
             </a>
             <a href="https://discord.gg/edutechacademy" target="_blank" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
-                Join Discord
+                {{ $cta['join_discord'] }}
             </a>
         </div>
     </div>

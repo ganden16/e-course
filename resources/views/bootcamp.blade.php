@@ -1,8 +1,26 @@
 @php
+    // Get current locale from middleware
+    $locale = app()->getLocale();
+
+    // Load language file for bootcamp page
+    $translations = include lang_path("{$locale}/bootcamp.php");
+    $hero = $translations['hero'];
+    $filter = $translations['filter'];
+    $bootcamp_details = $translations['bootcamp_details'];
+    $load_more = $translations['load_more'];
+    $benefits = $translations['benefits'];
+    $success_stories = $translations['success_stories'];
+    $faq = $translations['faq'];
+    $cta = $translations['cta'];
+
+    // Load data from JSON for dynamic content
     $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
     $site = $data['site'];
     $bootcamps = $data['bootcamps'];
     $categories = array_unique(array_column($bootcamps, 'category'));
+
+    // Build URLs with current locale
+    $baseUrl = '/' . $locale;
 @endphp
 
 @include('components.header', ['title' => 'Bootcamps'])
@@ -11,8 +29,8 @@
 <section class="gradient-bg text-white py-16">
     <div class="container mx-auto px-6">
         <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Intensive Bootcamps</h1>
-            <p class="text-xl max-w-3xl mx-auto">Accelerate your career with our comprehensive bootcamps. Learn from industry experts and build real-world projects in a structured, immersive environment.</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ $hero['title'] }}</h1>
+            <p class="text-xl max-w-3xl mx-auto">{{ $hero['subtitle'] }}</p>
         </div>
     </div>
 </section>
@@ -21,37 +39,37 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why Choose Our Bootcamps?</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our bootcamps are designed to transform your career through intensive, hands-on learning.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $benefits['title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $benefits['subtitle'] }}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div class="text-center">
                 <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-rocket text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-semibold mb-2">Fast-Track Learning</h3>
-                <p class="text-gray-600">Master new skills in weeks, not years</p>
+                <h3 class="text-xl font-semibold mb-2">{{ $benefits['fast_track_learning']['title'] }}</h3>
+                <p class="text-gray-600">{{ $benefits['fast_track_learning']['description'] }}</p>
             </div>
             <div class="text-center">
                 <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-briefcase text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-semibold mb-2">Career Support</h3>
-                <p class="text-gray-600">Job placement assistance and interview prep</p>
+                <h3 class="text-xl font-semibold mb-2">{{ $benefits['career_support']['title'] }}</h3>
+                <p class="text-gray-600">{{ $benefits['career_support']['description'] }}</p>
             </div>
             <div class="text-center">
                 <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-users text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-semibold mb-2">Expert Mentors</h3>
-                <p class="text-gray-600">Learn from industry professionals</p>
+                <h3 class="text-xl font-semibold mb-2">{{ $benefits['expert_mentors']['title'] }}</h3>
+                <p class="text-gray-600">{{ $benefits['expert_mentors']['description'] }}</p>
             </div>
             <div class="text-center">
                 <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-project-diagram text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-semibold mb-2">Real Projects</h3>
-                <p class="text-gray-600">Build a portfolio of real-world projects</p>
+                <h3 class="text-xl font-semibold mb-2">{{ $benefits['real_projects']['title'] }}</h3>
+                <p class="text-gray-600">{{ $benefits['real_projects']['description'] }}</p>
             </div>
         </div>
     </div>
@@ -62,22 +80,22 @@
     <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
-                <h2 class="text-2xl font-semibold text-gray-800">All Bootcamps</h2>
-                <p class="text-gray-600">{{ count($bootcamps) }} bootcamps available</p>
+                <h2 class="text-2xl font-semibold text-gray-800">{{ $filter['all_bootcamps'] }}</h2>
+                <p class="text-gray-600">{{ count($bootcamps) }} {{ $filter['bootcamps_available'] }}</p>
             </div>
             <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
                 <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="categoryFilter">
-                    <option value="">All Categories</option>
+                    <option value="">{{ $filter['all_categories'] }}</option>
                     @foreach($categories as $category)
                         <option value="{{ $category }}">{{ $category }}</option>
                     @endforeach
                 </select>
                 <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="sortFilter">
-                    <option value="default">Sort by</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
-                    <option value="rating">Highest Rated</option>
-                    <option value="duration">Shortest First</option>
+                    <option value="default">{{ $filter['sort_by'] }}</option>
+                    <option value="price-low">{{ $filter['price_low_high'] }}</option>
+                    <option value="price-high">{{ $filter['price_high_low'] }}</option>
+                    <option value="rating">{{ $filter['highest_rated'] }}</option>
+                    <option value="duration">{{ $filter['shortest_first'] }}</option>
                 </select>
             </div>
         </div>
@@ -94,7 +112,7 @@
                         <img src="{{ $bootcamp['image'] }}" alt="{{ $bootcamp['title'] }}" class="w-full h-64 object-cover">
                         @if($bootcamp['price'] < $bootcamp['original_price'])
                             <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                                {{ round((1 - $bootcamp['price'] / $bootcamp['original_price']) * 100) }}% OFF
+                                {{ round((1 - $bootcamp['price'] / $bootcamp['original_price']) * 100) }}% {{ $bootcamp_details['off'] }}
                             </div>
                         @endif
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
@@ -132,13 +150,13 @@
                         </div>
 
                         <div class="border-t pt-4 mb-4">
-                            <h4 class="font-semibold mb-2">What You'll Learn:</h4>
+                            <h4 class="font-semibold mb-2">{{ $bootcamp_details['what_youll_learn'] }}:</h4>
                             <div class="flex flex-wrap gap-2">
                                 @foreach(array_slice($bootcamp['curriculum'], 0, 3) as $item)
                                     <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">{{ $item }}</span>
                                 @endforeach
                                 @if(count($bootcamp['curriculum']) > 3)
-                                    <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">+{{ count($bootcamp['curriculum']) - 3 }} more</span>
+                                    <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">+{{ count($bootcamp['curriculum']) - 3 }} {{ $bootcamp_details['more'] }}</span>
                                 @endif
                             </div>
                         </div>
@@ -150,8 +168,8 @@
                                     <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($bootcamp['original_price'], 0, ',', '.') }}</span>
                                 @endif
                             </div>
-                            <a href="/bootcamp/{{ $bootcamp['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
-                                Learn More
+                            <a href="{{ $baseUrl }}/bootcamp/{{ $bootcamp['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                                {{ $bootcamp_details['learn_more'] }}
                             </a>
                         </div>
                     </div>
@@ -162,7 +180,7 @@
         <!-- Load More Button -->
         <div class="text-center mt-12">
             <button class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
-                Load More Bootcamps
+                {{ $load_more['bootcamps'] }}
             </button>
         </div>
     </div>
@@ -172,8 +190,8 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Success Stories</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Hear from our graduates who have transformed their careers through our bootcamps.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $success_stories['title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $success_stories['subtitle'] }}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="bg-gray-100 rounded-xl p-6 text-center">
@@ -205,44 +223,44 @@
 <section class="py-16 bg-light" x-data="{ open: 0 }">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Got questions about our bootcamps? We've got answers.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $faq['title'] }}</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $faq['subtitle'] }}</p>
         </div>
         <div class="max-w-3xl mx-auto">
             <div class="mb-4">
                 <button @click="open = 0" class="w-full text-left bg-white p-4 rounded-lg shadow-md flex justify-between items-center hover:bg-gray-50 transition">
-                    <span class="font-semibold">How long are the bootcamps?</span>
+                    <span class="font-semibold">{{ $faq['how_long']['question'] }}</span>
                     <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === 0 }"></i>
                 </button>
                 <div x-show="open === 0" x-transition class="bg-white p-4 rounded-b-lg shadow-md">
-                    <p class="text-gray-600">Our bootcamps range from 8 to 14 weeks, depending on the program. Each bootcamp includes intensive training, projects, and career support.</p>
+                    <p class="text-gray-600">{{ $faq['how_long']['answer'] }}</p>
                 </div>
             </div>
             <div class="mb-4">
                 <button @click="open = 1" class="w-full text-left bg-white p-4 rounded-lg shadow-md flex justify-between items-center hover:bg-gray-50 transition">
-                    <span class="font-semibold">Do I need prior experience?</span>
+                    <span class="font-semibold">{{ $faq['prior_experience']['question'] }}</span>
                     <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === 1 }"></i>
                 </button>
                 <div x-show="open === 1" x-transition class="bg-white p-4 rounded-b-lg shadow-md">
-                    <p class="text-gray-600">It depends on the bootcamp. We offer beginner-friendly programs as well as intermediate-level bootcamps. Check the requirements for each specific program.</p>
+                    <p class="text-gray-600">{{ $faq['prior_experience']['answer'] }}</p>
                 </div>
             </div>
             <div class="mb-4">
                 <button @click="open = 2" class="w-full text-left bg-white p-4 rounded-lg shadow-md flex justify-between items-center hover:bg-gray-50 transition">
-                    <span class="font-semibold">Is job placement guaranteed?</span>
+                    <span class="font-semibold">{{ $faq['job_placement']['question'] }}</span>
                     <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === 2 }"></i>
                 </button>
                 <div x-show="open === 2" x-transition class="bg-white p-4 rounded-b-lg shadow-md">
-                    <p class="text-gray-600">While we can't guarantee job placement, we provide comprehensive career support including resume building, interview preparation, and networking opportunities. Our job placement rate is over 85%.</p>
+                    <p class="text-gray-600">{{ $faq['job_placement']['answer'] }}</p>
                 </div>
             </div>
             <div class="mb-4">
                 <button @click="open = 3" class="w-full text-left bg-white p-4 rounded-lg shadow-md flex justify-between items-center hover:bg-gray-50 transition">
-                    <span class="font-semibold">Are payment plans available?</span>
+                    <span class="font-semibold">{{ $faq['payment_plans']['question'] }}</span>
                     <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === 3 }"></i>
                 </button>
                 <div x-show="open === 3" x-transition class="bg-white p-4 rounded-b-lg shadow-md">
-                    <p class="text-gray-600">Yes, we offer flexible payment plans and financing options to make our bootcamps accessible. Contact our admissions team for more information.</p>
+                    <p class="text-gray-600">{{ $faq['payment_plans']['answer'] }}</p>
                 </div>
             </div>
         </div>
@@ -252,14 +270,14 @@
 <!-- CTA Section -->
 <section class="py-16 gradient-bg text-white">
     <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Career?</h2>
-        <p class="text-xl mb-8 max-w-3xl mx-auto">Take the first step towards a new career in tech. Apply now and join our next cohort!</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
+        <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
-                Apply Now
+            <a href="{{ $baseUrl }}/contact" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                {{ $cta['apply_now'] }}
             </a>
-            <a href="/contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
-                Schedule a Consultation
+            <a href="{{ $baseUrl }}/contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                {{ $cta['schedule_consultation'] }}
             </a>
         </div>
     </div>

@@ -4,19 +4,27 @@
     $blogs = $data['blogs'];
     $blog = null;
 
+    // Extract the blog ID from the current URL
+    $currentPath = request()->path();
+    $pathParts = explode('/', $currentPath);
+    $blogId = end($pathParts); // Get the last part of the URL
+
     // Find the blog by ID
     foreach($blogs as $b) {
-        if($b['id'] == $id) {
+        if($b['id'] == intval($blogId)) {
             $blog = $b;
             break;
         }
     }
 
     // Get related articles (same category, excluding current article)
-    $relatedArticles = array_filter($blogs, function($b) use ($blog) {
-        return $b['category'] === $blog['category'] && $b['id'] != $blog['id'];
-    });
-    $relatedArticles = array_slice($relatedArticles, 0, 3);
+    $relatedArticles = [];
+    if($blog) {
+        $relatedArticles = array_filter($blogs, function($b) use ($blog) {
+            return $b['category'] === $blog['category'] && $b['id'] != $blog['id'];
+        });
+        $relatedArticles = array_slice($relatedArticles, 0, 3);
+    }
 @endphp
 
 @if(!$blog)
