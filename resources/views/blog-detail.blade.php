@@ -1,7 +1,12 @@
 @php
-    $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
-    $site = $data['site'];
-    $blogs = $data['blogs'];
+    // Get current locale from middleware
+    $locale = app()->getLocale();
+
+    // Load language file for blog page
+    $translations = include lang_path("{$locale}/blog.php");
+
+    // Get blogs from language file
+    $blogs = $translations['blogs'];
     $blog = null;
 
     // Extract the blog ID from the current URL
@@ -32,7 +37,7 @@
         <div class="text-center">
             <h1 class="text-4xl font-bold text-gray-800 mb-4">Article Not Found</h1>
             <p class="text-gray-600 mb-8">The article you're looking for doesn't exist.</p>
-            <a href="/blog" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300">
+            <a href="/{{ $locale }}/blog" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300">
                 Browse All Articles
             </a>
         </div>
@@ -50,14 +55,14 @@
                 <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">{{ $blog['title'] }}</h1>
 
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 pb-8 border-b">
-                    <div class="flex items-center mb-4 sm:mb-0">
+                    {{-- <div class="flex items-center mb-4 sm:mb-0">
                         <img src="{{ $blog['avatar'] }}" alt="{{ $blog['author'] }}" class="w-12 h-12 rounded-full mr-4">
                         <div>
                             <p class="font-semibold">{{ $blog['author'] }}</p>
                             <p class="text-sm text-gray-500">{{ $blog['date'] }} • {{ $blog['read_time'] }}</p>
                         </div>
-                    </div>
-                    <div class="flex items-center space-x-4">
+                    </div> --}}
+                    {{-- <div class="flex items-center space-x-4">
                         <button class="text-gray-600 hover:text-primary transition-colors">
                             <i class="fab fa-facebook text-xl"></i>
                         </button>
@@ -70,7 +75,7 @@
                         <button class="text-gray-600 hover:text-primary transition-colors">
                             <i class="fas fa-link text-xl"></i>
                         </button>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <img src="{{ $blog['image'] }}" alt="{{ $blog['title'] }}" class="w-full h-64 md:h-96 object-cover rounded-lg mb-8">
@@ -78,7 +83,7 @@
                 <div class="prose prose-lg max-w-none">
                     <p class="text-lg text-gray-600 mb-6 leading-relaxed">{{ $blog['content'] }}</p>
 
-                    <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Key Takeaways</h2>
+                    {{-- <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Key Takeaways</h2>
                     <ul class="list-disc pl-6 space-y-2 text-gray-600 mb-8">
                         <li>Understanding the fundamental concepts and best practices in {{ $blog['category'] }}</li>
                         <li>Practical applications and real-world examples you can implement immediately</li>
@@ -94,7 +99,7 @@
                     <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Getting Started</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">
                         If you're interested in diving deeper into this topic, consider exploring our comprehensive courses that cover these concepts in detail. Our expert instructors provide hands-on training and real-world projects to help you master these skills.
-                    </p>
+                    </p> --}}
                 </div>
 
                 <!-- Tags -->
@@ -109,7 +114,7 @@
                 </div>
 
                 <!-- Author Bio -->
-                <div class="bg-gray-100 rounded-lg p-8 mt-8">
+                {{-- <div class="bg-gray-100 rounded-lg p-8 mt-8">
                     <div class="flex items-start gap-6">
                         <img src="{{ $blog['avatar'] }}" alt="{{ $blog['author'] }}" class="w-20 h-20 rounded-full object-cover">
                         <div class="flex-1">
@@ -127,7 +132,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -157,7 +162,7 @@
                                             <p class="text-xs text-gray-500">{{ $article['date'] }}</p>
                                         </div>
                                     </div>
-                                    <a href="/blog/{{ $article['id'] }}" class="text-primary hover:text-primary-dark font-medium">
+                                    <a href="/{{ $locale }}/blog/{{ $article['id'] }}" class="text-primary hover:text-primary-dark font-medium">
                                         Read More <i class="fas fa-arrow-right ml-1"></i>
                                     </a>
                                 </div>
@@ -170,8 +175,69 @@
     </section>
     @endif
 
-    <!-- Comments Section -->
+    <!-- Other Blogs Section -->
     <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">Blog Lainnya</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <?php
+                    // Get other blogs (excluding current blog and related articles)
+                    $otherBlogs = [];
+                    $excludedIds = [$blog['id']];
+                    foreach($relatedArticles as $article) {
+                        $excludedIds[] = $article['id'];
+                    }
+
+                    foreach($blogs as $b) {
+                        if(!in_array($b['id'], $excludedIds)) {
+                            $otherBlogs[] = $b;
+                        }
+                    }
+
+                    // Randomly select 3 blogs or take first 3 if less than 3
+                    if(count($otherBlogs) > 3) {
+                        shuffle($otherBlogs);
+                        $otherBlogs = array_slice($otherBlogs, 0, 3);
+                    }
+                    ?>
+                    @foreach($otherBlogs as $otherBlog)
+                        <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover">
+                            <img src="{{ $otherBlog['image'] }}" alt="{{ $otherBlog['title'] }}" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">{{ $otherBlog['category'] }}</span>
+                                    <span class="text-sm text-gray-500">{{ $otherBlog['read_time'] }}</span>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2">{{ $otherBlog['title'] }}</h3>
+                                <p class="text-gray-600 mb-4">{{ $otherBlog['excerpt'] }}</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <img src="{{ $otherBlog['avatar'] }}" alt="{{ $otherBlog['author'] }}" class="w-8 h-8 rounded-full mr-2">
+                                        <div>
+                                            <p class="text-sm font-medium">{{ $otherBlog['author'] }}</p>
+                                            <p class="text-xs text-gray-500">{{ $otherBlog['date'] }}</p>
+                                        </div>
+                                    </div>
+                                    <a href="/{{ $locale }}/blog/{{ $otherBlog['id'] }}" class="text-primary hover:text-primary-dark font-medium">
+                                        Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="text-center mt-8">
+                    <a href="/{{ $locale }}/blog" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                        Lihat Semua Blog <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comments Section -->
+    {{-- <section class="py-16 bg-white">
         <div class="container mx-auto px-6">
             <div class="max-w-4xl mx-auto">
                 <h2 class="text-3xl font-bold text-gray-800 mb-8">Comments (3)</h2>
@@ -243,10 +309,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- CTA Section -->
-    <section class="py-16 gradient-bg text-white">
+    {{-- <section class="py-16 gradient-bg text-white">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Enjoyed This Article?</h2>
             <p class="text-xl mb-8 max-w-3xl mx-auto">Subscribe to our newsletter to get the latest articles and insights delivered to your inbox.</p>
@@ -257,7 +323,7 @@
                 </button>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     @include('components.footer')
 @endif

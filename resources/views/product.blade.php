@@ -11,10 +11,8 @@
     $load_more = $translations['load_more'];
     $cta = $translations['cta'];
 
-    // Load data from JSON for dynamic content
-    $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
-    $site = $data['site'];
-    $products = $data['products'];
+    // Get products from language file
+    $products = $translations['products'];
     $categories = array_unique(array_column($products, 'category'));
 
     // Build URLs with current locale

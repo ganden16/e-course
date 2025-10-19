@@ -86,7 +86,7 @@
                     </ul>
 
                     <!-- Newsletter -->
-                    <div class="mt-6">
+                    {{-- <div class="mt-6">
                         <h5 class="font-semibold mb-2">{{ $footer['newsletter'] }}</h5>
                         <div class="flex">
                             <input type="email" placeholder="{{ $footer['your_email'] }}" class="flex-1 px-3 py-2 bg-gray-800 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary">
@@ -94,7 +94,7 @@
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 

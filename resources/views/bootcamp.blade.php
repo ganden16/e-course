@@ -13,10 +13,8 @@
     $faq = $translations['faq'];
     $cta = $translations['cta'];
 
-    // Load data from JSON for dynamic content
-    $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
-    $site = $data['site'];
-    $bootcamps = $data['bootcamps'];
+    // Get bootcamps from language file
+    $bootcamps = $translations['bootcamps'];
     $categories = array_unique(array_column($bootcamps, 'category'));
 
     // Build URLs with current locale

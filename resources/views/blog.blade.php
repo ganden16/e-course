@@ -13,10 +13,8 @@
     $popular_tags = $translations['popular_tags'];
     $newsletter = $translations['newsletter'];
 
-    // Load data from JSON for dynamic content
-    $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
-    $site = $data['site'];
-    $blogs = $data['blogs'];
+    // Get blogs from language file
+    $blogs = $translations['blogs'];
     $categories = array_unique(array_column($blogs, 'category'));
 
     // Get all unique tags
@@ -163,7 +161,7 @@
 </section>
 
 <!-- Newsletter Section -->
-<section class="py-16 gradient-bg text-white">
+{{-- <section class="py-16 gradient-bg text-white">
     <div class="container mx-auto px-6">
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $newsletter['title'] }}</h2>
@@ -176,7 +174,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 @include('components.footer')
 

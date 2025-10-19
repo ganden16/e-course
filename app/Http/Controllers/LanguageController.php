@@ -28,18 +28,18 @@ class LanguageController extends Controller
         $parsedUrl = parse_url($previousUrl);
         $path = $parsedUrl['path'] ?? '';
 
+        // Extract query string if exists
+        $query = isset($parsedUrl['query']) ? '?' . $parsedUrl['query'] : '';
 
         // Check if the URL already has a language prefix
         if (preg_match('/^\/(id|en)\//', $path, $matches)) {
             // Replace the existing language prefix
             $newPath = preg_replace('/^\/(id|en)\//', '/' . $locale . '/', $path);
-            dd($matches, $path, $newPath);
         } else {
             // Check if the path is just '/' (root)
             if ($path === '/') {
                 // For root path, just add the language prefix
                 $newPath = '/' . $locale;
-                dd($path, $newPath);
             } else {
                 // Add new language prefix after the base URL
                 $newPath = '/' . $locale;
@@ -47,7 +47,7 @@ class LanguageController extends Controller
         }
 
         // Build the new URL
-        $newUrl = url($newPath);
+        $newUrl = url($newPath . $query);
 
         // Redirect to the same page with new language
         return redirect($newUrl);
