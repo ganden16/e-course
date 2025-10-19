@@ -10,7 +10,7 @@ Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('langu
 Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'id|en']], function () {
     Route::get('/', function () {
         return view('welcome');
-    })->name('home');
+    })->name('welcome');
 
     Route::get('/about-us', function () {
         return view('about-us');

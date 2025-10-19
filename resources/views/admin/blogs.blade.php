@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manajemen Blog - EduTech Academy</title>
+    <title>Manajemen Blog - HealthCare Academy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -33,7 +33,7 @@
 </head>
 <body class="bg-gray-50" x-data="{ sidebarOpen: false, showCreateModal: false, showEditModal: false, selectedBlog: null }">
     <!-- Mobile Sidebar Overlay -->
-    <div x-show="sidebarOpen" 
+    <div x-show="sidebarOpen"
          x-transition:enter="transition-opacity ease-linear duration-300"
          x-transition:enter-start="opacity-0"
          x-transition:enter-end="opacity-100"
@@ -47,7 +47,7 @@
 
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <div x-show="sidebarOpen" 
+        <div x-show="sidebarOpen"
              x-transition:enter="transition ease-in-out duration-300 transform"
              x-transition:enter-start="-translate-x-full"
              x-transition:enter-end="translate-x-0"
@@ -58,7 +58,7 @@
             <div class="flex items-center justify-between h-16 px-6 bg-sidebar border-b border-gray-700">
                 <div class="flex items-center">
                     <i class="fas fa-graduation-cap text-2xl text-primary mr-3"></i>
-                    <span class="text-xl font-bold">EduTech Admin</span>
+                    <span class="text-xl font-bold">HealthCare Admin</span>
                 </div>
                 <button @click="sidebarOpen = false" class="lg:hidden">
                     <i class="fas fa-times text-xl"></i>
@@ -119,7 +119,7 @@
                     </div>
 
                     <div class="flex items-center space-x-4">
-                        <button @click="showCreateModal = true" 
+                        <button @click="showCreateModal = true"
                                 class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center">
                             <i class="fas fa-plus mr-2"></i>
                             Tulis Blog Baru
@@ -192,8 +192,8 @@
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
                             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                                 <div class="relative">
-                                    <input type="text" 
-                                           placeholder="Cari blog..." 
+                                    <input type="text"
+                                           placeholder="Cari blog..."
                                            class="w-full md:w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                         <i class="fas fa-search text-gray-400"></i>
@@ -250,8 +250,8 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
-                                                    <img class="h-10 w-10 rounded-lg object-cover" 
-                                                         src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" 
+                                                    <img class="h-10 w-10 rounded-lg object-cover"
+                                                         src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
                                                          alt="{{ $blog['title'] }}">
                                                 </div>
                                                 <div class="ml-4">
@@ -263,8 +263,8 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-8 w-8">
-                                                    <img class="h-8 w-8 rounded-full" 
-                                                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                                                    <img class="h-8 w-8 rounded-full"
+                                                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                                                          alt="{{ $blog['author'] }}">
                                                 </div>
                                                 <div class="ml-2">
@@ -295,7 +295,7 @@
                                             {{ $blog['date'] }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                            <button @click="selectedBlog = {{ json_encode($blog) }}; showEditModal = true" 
+                                            <button @click="selectedBlog = {{ json_encode($blog) }}; showEditModal = true"
                                                     class="text-primary hover:text-primary-dark mr-3">
                                                 <i class="fas fa-edit"></i>
                                             </button>
@@ -315,7 +315,7 @@
     </div>
 
     <!-- Create Blog Modal -->
-    <div x-show="showCreateModal" 
+    <div x-show="showCreateModal"
          x-transition:enter="transition ease-out duration-300"
          x-transition:enter-start="opacity-0"
          x-transition:enter-end="opacity-100"
@@ -337,7 +337,7 @@
                     <form class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Judul Blog</label>
-                            <input type="text" 
+                            <input type="text"
                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                    placeholder="Masukkan judul blog">
                         </div>
@@ -361,13 +361,13 @@
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Excerpt</label>
-                            <textarea rows="3" 
+                            <textarea rows="3"
                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                       placeholder="Masukkan excerpt blog"></textarea>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Konten</label>
-                            <textarea rows="8" 
+                            <textarea rows="8"
                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                       placeholder="Masukkan konten blog"></textarea>
                         </div>
@@ -375,11 +375,11 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">Featured Image</label>
                             <div class="flex items-center space-x-4">
                                 <div class="flex-shrink-0">
-                                    <img class="h-20 w-20 object-cover rounded-lg" 
-                                         src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" 
+                                    <img class="h-20 w-20 object-cover rounded-lg"
+                                         src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
                                          alt="Featured image">
                                 </div>
-                                <button type="button" 
+                                <button type="button"
                                         class="bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
                                     Upload Image
                                 </button>
@@ -388,12 +388,12 @@
                     </form>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button type="button" 
+                    <button type="button"
                             @click="showCreateModal = false"
                             class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:ml-3 sm:w-auto sm:text-sm">
                         Simpan
                     </button>
-                    <button type="button" 
+                    <button type="button"
                             @click="showCreateModal = false"
                             class="mt-3 w-full inline-flex justify-center rounded-lg border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                         Batal
@@ -404,7 +404,7 @@
     </div>
 
     <!-- Edit Blog Modal -->
-    <div x-show="showEditModal" 
+    <div x-show="showEditModal"
          x-transition:enter="transition ease-out duration-300"
          x-transition:enter-start="opacity-0"
          x-transition:enter-end="opacity-100"
@@ -426,7 +426,7 @@
                     <form class="space-y-4" x-show="selectedBlog">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Judul Blog</label>
-                            <input type="text" 
+                            <input type="text"
                                    x-model="selectedBlog.title"
                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                         </div>
@@ -450,25 +450,25 @@
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Excerpt</label>
-                            <textarea rows="3" 
+                            <textarea rows="3"
                                       x-model="selectedBlog.excerpt"
                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Konten</label>
-                            <textarea rows="8" 
+                            <textarea rows="8"
                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                       placeholder="Masukkan konten blog"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button type="button" 
+                    <button type="button"
                             @click="showEditModal = false"
                             class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:ml-3 sm:w-auto sm:text-sm">
                         Update
                     </button>
-                    <button type="button" 
+                    <button type="button"
                             @click="showEditModal = false"
                             class="mt-3 w-full inline-flex justify-center rounded-lg border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                         Batal

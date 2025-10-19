@@ -2,11 +2,11 @@
 return [
     // Site Information
     'site' => [
-        'name' => 'EduTech Academy',
+        'name' => 'HealthCare Academy',
         'tagline' => 'Unlock Your Potential with Digital Learning',
         'description' => 'Leading e-learning platform providing quality digital courses and bootcamps to advance your career.',
         'logo' => 'fas fa-graduation-cap',
-        'email' => 'info@edutechacademy.com',
+        'email' => 'info@HealthCarea.com',
         'phone' => '+1 (555) 123-4567',
         'address' => 'New York, USA'
     ],
@@ -42,7 +42,7 @@ return [
 
     // Features Section
     'features' => [
-        'title' => 'Why Choose EduTech Academy?',
+        'title' => 'Why Choose HealthCare Academy?',
         'subtitle' => 'We provide the best learning experience with comprehensive features designed to help you succeed.',
         'learn_anywhere' => [
             'title' => 'Learn Anywhere',

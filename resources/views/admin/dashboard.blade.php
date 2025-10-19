@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - EduTech Academy</title>
+    <title>Admin Dashboard - HealthCare Academy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -48,7 +48,7 @@
 </head>
 <body class="bg-gray-50" x-data="{ sidebarOpen: false }">
     <!-- Mobile Sidebar Overlay -->
-    <div x-show="sidebarOpen" 
+    <div x-show="sidebarOpen"
          x-transition:enter="transition-opacity ease-linear duration-300"
          x-transition:enter-start="opacity-0"
          x-transition:enter-end="opacity-100"
@@ -62,7 +62,7 @@
 
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <div x-show="sidebarOpen" 
+        <div x-show="sidebarOpen"
              x-transition:enter="transition ease-in-out duration-300 transform"
              x-transition:enter-start="-translate-x-full"
              x-transition:enter-end="translate-x-0"
@@ -73,7 +73,7 @@
             <div class="flex items-center justify-between h-16 px-6 bg-sidebar border-b border-gray-700">
                 <div class="flex items-center">
                     <i class="fas fa-graduation-cap text-2xl text-primary mr-3"></i>
-                    <span class="text-xl font-bold">EduTech Admin</span>
+                    <span class="text-xl font-bold">HealthCare Admin</span>
                 </div>
                 <button @click="sidebarOpen = false" class="lg:hidden">
                     <i class="fas fa-times text-xl"></i>
@@ -137,8 +137,8 @@
                         <!-- Search -->
                         <div class="hidden md:block">
                             <div class="relative">
-                                <input type="text" 
-                                       placeholder="Search..." 
+                                <input type="text"
+                                       placeholder="Search..."
                                        class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <i class="fas fa-search text-gray-400"></i>
@@ -148,13 +148,13 @@
 
                         <!-- Notifications -->
                         <div class="relative" x-data="{ notificationOpen: false }">
-                            <button @click="notificationOpen = !notificationOpen" 
+                            <button @click="notificationOpen = !notificationOpen"
                                     class="relative p-2 text-gray-400 hover:text-gray-600 focus:outline-none">
                                 <i class="fas fa-bell text-xl"></i>
                                 <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-400"></span>
                             </button>
-                            
-                            <div x-show="notificationOpen" 
+
+                            <div x-show="notificationOpen"
                                  x-transition:enter="transition ease-out duration-100"
                                  x-transition:enter-start="transform opacity-0 scale-95"
                                  x-transition:enter-end="transform opacity-100 scale-100"
@@ -181,16 +181,16 @@
 
                         <!-- User Profile -->
                         <div class="relative" x-data="{ profileOpen: false }">
-                            <button @click="profileOpen = !profileOpen" 
+                            <button @click="profileOpen = !profileOpen"
                                     class="flex items-center space-x-3 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
-                                <img class="h-8 w-8 rounded-full" 
-                                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                                <img class="h-8 w-8 rounded-full"
+                                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                                      alt="Admin">
                                 <span class="hidden md:block font-medium text-gray-700">Admin User</span>
                                 <i class="fas fa-chevron-down text-gray-400"></i>
                             </button>
 
-                            <div x-show="profileOpen" 
+                            <div x-show="profileOpen"
                                  x-transition:enter="transition ease-out duration-100"
                                  x-transition:enter-start="transform opacity-0 scale-95"
                                  x-transition:enter-end="transform opacity-100 scale-100"
@@ -286,8 +286,8 @@
                             <div class="space-y-4">
                                 @foreach($recentActivities as $activity)
                                 <div class="flex items-start space-x-3">
-                                    <img class="h-8 w-8 rounded-full" 
-                                         src="{{ $activity['avatar'] }}" 
+                                    <img class="h-8 w-8 rounded-full"
+                                         src="{{ $activity['avatar'] }}"
                                          alt="{{ $activity['user'] }}">
                                     <div class="flex-1">
                                         <p class="text-sm text-gray-800">

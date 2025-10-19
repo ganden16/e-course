@@ -231,7 +231,7 @@
             <a href="{{ $baseUrl }}/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                 {{ $cta['start_learning'] }}
             </a>
-            <a href="https://discord.gg/edutechacademy" target="_blank" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+            <a href="https://discord.gg/HealthCare" target="_blank" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
                 {{ $cta['join_discord'] }}
             </a>
         </div>

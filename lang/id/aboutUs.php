@@ -2,7 +2,7 @@
 return [
     // Hero Section
     'hero' => [
-        'title' => 'Tentang EduTech Academy',
+        'title' => 'Tentang HealthCare Academy',
         'subtitle' => 'Memberdayakan Pelajar di Seluruh Dunia Sejak 2020'
     ],
 
@@ -56,7 +56,7 @@ return [
     // Team Section
     'team' => [
         'title' => 'Temui Tim Kami',
-        'subtitle' => 'Individu-individu bersemangat di balik EduTech Academy.'
+        'subtitle' => 'Individu-individu bersemangat di balik HealthCare Academy.'
     ],
 
     // Achievements Section

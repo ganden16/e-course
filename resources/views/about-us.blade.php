@@ -182,7 +182,7 @@
 </section>
 
 <!-- Partners Section -->
-<section class="py-16 bg-white">
+{{-- <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $partners['title'] }}</h2>
@@ -209,7 +209,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <!-- CTA Section -->
 <section class="py-16 gradient-bg text-white">

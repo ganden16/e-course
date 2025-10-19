@@ -175,7 +175,7 @@
     {
       "id": 1,
       "name": "David Anderson",
-      "email": "david.anderson@edutechacademy.com",
+      "email": "david.anderson@HealthCare.com",
       "specialization": "Web Development",
       "rating": 4.9,
       "students": 3420,
@@ -188,7 +188,7 @@
     {
       "id": 2,
       "name": "Dr. Sarah Mitchell",
-      "email": "sarah.mitchell@edutechacademy.com",
+      "email": "sarah.mitchell@HealthCare.com",
       "specialization": "Data Science",
       "rating": 4.8,
       "students": 2850,
@@ -201,7 +201,7 @@
     {
       "id": 3,
       "name": "Emma Thompson",
-      "email": "emma.thompson@edutechacademy.com",
+      "email": "emma.thompson@HealthCare.com",
       "specialization": "Marketing",
       "rating": 4.7,
       "students": 1980,
@@ -214,7 +214,7 @@
     {
       "id": 4,
       "name": "Alex Rodriguez",
-      "email": "alex.rodriguez@edutechacademy.com",
+      "email": "alex.rodriguez@HealthCare.com",
       "specialization": "UI/UX Design",
       "rating": 4.6,
       "students": 2150,

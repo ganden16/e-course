@@ -2,11 +2,11 @@
 return [
     // Site Information
     'site' => [
-        'name' => 'EduTech Academy',
+        'name' => 'HEALTHCARE',
         'tagline' => 'Buka Potensi Anda dengan Pembelajaran Digital',
         'description' => 'Platform e-learning terdepan yang menyediakan kursus digital dan bootcamp berkualitas untuk meningkatkan karir Anda.',
-        'logo' => 'fas fa-graduation-cap',
-        'email' => 'info@edutechacademy.com',
+        'logo' => 'assets/images/logo1.png',
+        'email' => 'info@HealthCare.com',
         'phone' => '+62 812-3456-7890',
         'address' => 'Jakarta, Indonesia'
     ],
@@ -42,7 +42,7 @@ return [
 
     // Features Section
     'features' => [
-        'title' => 'Mengapa Memilih EduTech Academy?',
+        'title' => 'Mengapa Memilih HealthCare Academy?',
         'subtitle' => 'Kami menyediakan pengalaman belajar terbaik dengan fitur-fitur komprehensif yang dirancang untuk membantu Anda berhasil.',
         'learn_anywhere' => [
             'title' => 'Belajar di Mana Saja',

@@ -86,7 +86,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <a href="{{ $baseUrl }}" class="text-2xl font-bold text-primary flex items-center">
-                        <i class="{{ $site['logo'] }} mr-2"></i>{{ $site['name'] }}
+                        <img src="{{ asset($site['logo']) }}" alt="{{ $site['name'] }}" class="w-8 h-8 mr-2 float-animation"> {{ $site['name'] }}
                     </a>
                 </div>
 

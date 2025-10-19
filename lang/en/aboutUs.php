@@ -2,7 +2,7 @@
 return [
     // Hero Section
     'hero' => [
-        'title' => 'About EduTech Academy',
+        'title' => 'About HealthCare Academy',
         'subtitle' => 'Empowering Learners Worldwide Since 2020'
     ],
 
@@ -56,7 +56,7 @@ return [
     // Team Section
     'team' => [
         'title' => 'Meet Our Team',
-        'subtitle' => 'The passionate individuals behind EduTech Academy.'
+        'subtitle' => 'The passionate individuals behind HealthCare Academy.'
     ],
 
     // Achievements Section

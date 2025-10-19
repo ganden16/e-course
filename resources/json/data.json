@@ -1,10 +1,10 @@
 {
   "site": {
-    "name": "EduTech Academy",
+    "name": "HealthCare Academy",
     "tagline": "Buka Potensi Anda dengan Pembelajaran Digital",
     "description": "Platform e-learning terdepan yang menyediakan kursus digital dan bootcamp berkualitas untuk meningkatkan karir Anda.",
     "logo": "fas fa-graduation-cap",
-    "email": "info@edutechacademy.com",
+    "email": "info@HealthCare.com",
     "phone": "+62 812-3456-7890",
     "address": "Jakarta, Indonesia"
   },
@@ -108,7 +108,7 @@
       "name": "Sarah Johnson",
       "role": "Pengembang Web",
       "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-      "content": "EduTech Academy benar-benar mengubah karir saya. Kursusnya sangat komprehensif dan instrukturnya luar biasa!"
+      "content": "HealthCare Academy benar-benar mengubah karir saya. Kursusnya sangat komprehensif dan instrukturnya luar biasa!"
     },
     {
       "name": "Michael Chen",
@@ -534,48 +534,48 @@
     "social_links": [
       {
         "name": "Facebook",
-        "url": "https://facebook.com/edutechacademy",
+        "url": "https://facebook.com/HealthCare",
         "icon": "fab fa-facebook",
         "description": "Bergabunglah dengan komunitas Facebook kami untuk pembaruan dan diskusi harian"
       },
       {
         "name": "Discord",
-        "url": "https://discord.gg/edutechacademy",
+        "url": "https://discord.gg/HealthCare",
         "icon": "fab fa-discord",
         "description": "Terhubung dengan siswa dan instruktur secara real-time"
       },
       {
         "name": "LinkedIn",
-        "url": "https://linkedin.com/company/edutechacademy",
+        "url": "https://linkedin.com/company/HealthCare",
         "icon": "fab fa-linkedin",
         "description": "Jaringan profesional dan peluang karir"
       },
       {
         "name": "Twitter",
-        "url": "https://twitter.com/edutechacademy",
+        "url": "https://twitter.com/HealthCare",
         "icon": "fab fa-twitter",
         "description": "Ikuti kami untuk berita industri dan pembaruan"
       },
       {
         "name": "Instagram",
-        "url": "https://instagram.com/edutechacademy",
+        "url": "https://instagram.com/HealthCare",
         "icon": "fab fa-instagram",
         "description": "Konten di balik layar dan sorotan siswa"
       },
       {
         "name": "YouTube",
-        "url": "https://youtube.com/edutechacademy",
+        "url": "https://youtube.com/HealthCare",
         "icon": "fab fa-youtube",
         "description": "Tutorial gratis dan pratinjau kursus"
       }
     ]
   },
   "about": {
-    "title": "Tentang EduTech Academy",
+    "title": "Tentang HealthCare Academy",
     "subtitle": "Memberdayakan Pelajar di Seluruh Dunia Sejak 2020",
-    "description": "EduTech Academy adalah platform pembelajaran online terkemuka yang didedikasikan untuk menyediakan pendidikan berkualitas tinggi kepada siswa di seluruh dunia. Misi kami adalah membuat pendidikan dapat diakses, terjangkau, dan efektif untuk semua orang.",
+    "description": "HealthCare Academy adalah platform pembelajaran online terkemuka yang didedikasikan untuk menyediakan pendidikan berkualitas tinggi kepada siswa di seluruh dunia. Misi kami adalah membuat pendidikan dapat diakses, terjangkau, dan efektif untuk semua orang.",
     "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    "story": "Didirikan pada tahun 2020, EduTech Academy dimulai dengan visi sederhana: mendemokratisasi pendidikan dengan memanfaatkan teknologi. Yang dimulai sebagai startup kecil telah berkembang menjadi komunitas pembelajaran global dengan lebih dari 15.000 siswa di lebih dari 50 negara.",
+    "story": "Didirikan pada tahun 2020, HealthCare Academy dimulai dengan visi sederhana: mendemokratisasi pendidikan dengan memanfaatkan teknologi. Yang dimulai sebagai startup kecil telah berkembang menjadi komunitas pembelajaran global dengan lebih dari 15.000 siswa di lebih dari 50 negara.",
     "mission": "Misi kami adalah mengubah hidup melalui pendidikan dengan menyediakan pengalaman pembelajaran yang dapat diakses dan berkualitas tinggi yang memberdayakan individu untuk mencapai tujuan karir mereka dan memberikan dampak positif di dunia.",
     "values": [
       {
@@ -634,7 +634,7 @@
     "contact_info": [
       {
         "type": "Email",
-        "value": "info@edutechacademy.com",
+        "value": "info@HealthCare.com",
         "icon": "fas fa-envelope"
       },
       {
@@ -665,22 +665,22 @@
     "social_links": [
       {
         "name": "Facebook",
-        "url": "https://facebook.com/edutechacademy",
+        "url": "https://facebook.com/HealthCare",
         "icon": "fab fa-facebook"
       },
       {
         "name": "Twitter",
-        "url": "https://twitter.com/edutechacademy",
+        "url": "https://twitter.com/HealthCare",
         "icon": "fab fa-twitter"
       },
       {
         "name": "LinkedIn",
-        "url": "https://linkedin.com/company/edutechacademy",
+        "url": "https://linkedin.com/company/HealthCare",
         "icon": "fab fa-linkedin"
       },
       {
         "name": "Instagram",
-        "url": "https://instagram.com/edutechacademy",
+        "url": "https://instagram.com/HealthCare",
         "icon": "fab fa-instagram"
       }
     ]
