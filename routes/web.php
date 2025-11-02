@@ -69,25 +69,67 @@ Route::prefix('admin')->group(function () {
         return view('admin.users');
     })->name('admin.users');
 
+    // Product Routes
     Route::get('/products', function () {
-        return view('admin.products');
+        return view('admin.products.index');
     })->name('admin.products');
 
+    Route::get('/products/create', function () {
+        return view('admin.products.form');
+    })->name('admin.products.create');
+
+    Route::get('/products/{id}/edit', function ($id) {
+        return view('admin.products.form', ['product' => $id]);
+    })->name('admin.products.edit');
+
+    // Bootcamp Routes
     Route::get('/bootcamps', function () {
-        return view('admin.bootcamps');
+        return view('admin.bootcamps.index');
     })->name('admin.bootcamps');
 
+    Route::get('/bootcamps/create', function () {
+        return view('admin.bootcamps.form');
+    })->name('admin.bootcamps.create');
+
+    Route::get('/bootcamps/{id}/edit', function ($id) {
+        return view('admin.bootcamps.form', ['bootcamp' => $id]);
+    })->name('admin.bootcamps.edit');
+
+    // Mentor Routes
     Route::get('/mentors', function () {
-        return view('admin.mentors');
+        return view('admin.mentors.index');
     })->name('admin.mentors');
 
+    Route::get('/mentors/create', function () {
+        return view('admin.mentors.form');
+    })->name('admin.mentors.create');
+
+    Route::get('/mentors/{id}/edit', function ($id) {
+        return view('admin.mentors.form', ['mentor' => $id]);
+    })->name('admin.mentors.edit');
+
+    // Blog Routes
     Route::get('/blogs', function () {
         return view('admin.blogs');
     })->name('admin.blogs');
 
+    Route::get('/blogs/create', function () {
+        return view('admin.blogs.form');
+    })->name('admin.blogs.create');
+
+    Route::get('/blogs/{id}/edit', function ($id) {
+        return view('admin.blogs.form', ['blog' => $id]);
+    })->name('admin.blogs.edit');
+
+    // Settings
     Route::get('/settings', function () {
         return view('admin.settings');
     })->name('admin.settings');
+
+    // Profile
+    Route::get('/profile', function () {
+        return view('admin.profile');
+    })->name('admin.profile');
 });
 
 // Mentor Routes

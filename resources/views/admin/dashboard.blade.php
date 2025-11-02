@@ -1,3 +1,8 @@
+@extends('admin.layouts.app')
+
+@section('title', 'Dashboard')
+@section('header', 'Dashboard')
+
 @php
     $data = json_decode(file_get_contents(resource_path('json/admin-data.json')), true);
     $dashboard = $data['dashboard'];
@@ -5,48 +10,7 @@
     $recentActivities = $dashboard['recentActivities'];
 @endphp
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - HealthCare Academy</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#3b82f6',
-                        'primary-dark': '#1e40af',
-                        'secondary': '#10b981',
-                        'accent': '#f59e0b',
-                        'dark': '#1f2937',
-                        'sidebar': '#1e293b',
-                        'sidebar-hover': '#334155',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-        .slide-in {
-            animation: slideIn 0.3s ease-out;
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
-        }
-    </style>
-</head>
-<body class="bg-gray-50" x-data="{ sidebarOpen: false }">
+@section('content')
     <!-- Mobile Sidebar Overlay -->
     <div x-show="sidebarOpen"
          x-transition:enter="transition-opacity ease-linear duration-300"
@@ -346,5 +310,4 @@
             </main>
         </div>
     </div>
-</body>
-</html>
+@endsection

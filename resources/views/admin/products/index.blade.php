@@ -1,60 +1,12 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Blog Management')
-@section('header', 'Blog Management')
+@section('title', 'Products Management')
+@section('header', 'Products Management')
 
 @php
-    // Load language file for blog page
-    $translations = include lang_path('id/admin.php');
-    $blogs = $translations['blogs'];
-
-    // Sample blog data
-    $blogData = [
-        [
-            'id' => 1,
-            'title' => 'Panduan Lengkap Belajar Web Development',
-            'excerpt' => 'Pelajari langkah demi langkah cara menjadi web developer profesional dengan panduan komprehensif ini.',
-            'author' => 'John Doe',
-            'category' => 'Web Development',
-            'status' => 'published',
-            'views' => 1250,
-            'date' => '2024-01-15',
-            'image' => 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
-        ],
-        [
-            'id' => 2,
-            'title' => 'Tren Data Science di Indonesia 2024',
-            'excerpt' => 'Analisis mendalam tentang perkembangan dan peluang karir di bidang data science di Indonesia.',
-            'author' => 'Jane Smith',
-            'category' => 'Data Science',
-            'status' => 'published',
-            'views' => 980,
-            'date' => '2024-01-12',
-            'image' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
-        ],
-        [
-            'id' => 3,
-            'title' => 'Strategi Digital Marketing untuk Startup',
-            'excerpt' => 'Tips dan trik efektif untuk membangun strategi digital marketing yang sukses untuk startup Anda.',
-            'author' => 'Mike Johnson',
-            'category' => 'Marketing',
-            'status' => 'draft',
-            'views' => 0,
-            'date' => '2024-01-10',
-            'image' => 'https://images.unsplash.com/photo-1557838923-2985c318be48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
-        ],
-        [
-            'id' => 4,
-            'title' => 'Prinsip Desain UI/UX Modern',
-            'excerpt' => 'Pahami prinsip fundamental desain UI/UX yang akan membuat aplikasi Anda menonjol.',
-            'author' => 'Sarah Williams',
-            'category' => 'Design',
-            'status' => 'published',
-            'views' => 756,
-            'date' => '2024-01-08',
-            'image' => 'https://images.unsplash.com/photo-1559028006-44a26fcd9aee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
-        ]
-    ];
+    // Load language file for product page
+    $translations = include lang_path('id/product.php');
+    $products = $translations['products'];
 @endphp
 
 @section('content')
@@ -63,13 +15,13 @@
     <div class="mb-8">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
-                <h1 class="text-3xl font-bold text-gray-900">Blog Management</h1>
-                <p class="mt-2 text-sm text-gray-600">Manage and monitor all blog content</p>
+                <h1 class="text-3xl font-bold text-gray-900">Products Management</h1>
+                <p class="mt-2 text-sm text-gray-600">Manage and monitor all educational products</p>
             </div>
             <div class="mt-4 md:mt-0">
-                <a href="/admin/blogs/create" class="inline-flex items-center px-4 py-2 bg-primary border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
+                <a href="/admin/products/create" class="inline-flex items-center px-4 py-2 bg-primary border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
                     <i class="fas fa-plus mr-2 -ml-1"></i>
-                    Create New Blog
+                    Add New Product
                 </a>
             </div>
         </div>
@@ -82,12 +34,12 @@
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
                         <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
-                            <i class="fas fa-newspaper text-white text-xl"></i>
+                            <i class="fas fa-book text-white text-xl"></i>
                         </div>
                     </div>
                     <div class="ml-4">
-                        <p class="text-sm font-medium text-gray-500">Total Blogs</p>
-                        <p class="text-2xl font-bold text-gray-900">{{ count($blogData) }}</p>
+                        <p class="text-sm font-medium text-gray-500">Total Products</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ count($products) }}</p>
                     </div>
                 </div>
                 <div class="mt-4">
@@ -108,8 +60,8 @@
                         </div>
                     </div>
                     <div class="ml-4">
-                        <p class="text-sm font-medium text-gray-500">Published</p>
-                        <p class="text-2xl font-bold text-gray-900">{{ collect($blogData)->where('status', 'published')->count() }}</p>
+                        <p class="text-sm font-medium text-gray-500">Active</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ collect($products)->where('status', 'active')->count() }}</p>
                     </div>
                 </div>
                 <div class="mt-4">
@@ -126,12 +78,12 @@
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
                         <div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-xl flex items-center justify-center shadow-lg">
-                            <i class="fas fa-edit text-white text-xl"></i>
+                            <i class="fas fa-pause-circle text-white text-xl"></i>
                         </div>
                     </div>
                     <div class="ml-4">
-                        <p class="text-sm font-medium text-gray-500">Draft</p>
-                        <p class="text-2xl font-bold text-gray-900">{{ collect($blogData)->where('status', 'draft')->count() }}</p>
+                        <p class="text-sm font-medium text-gray-500">Inactive</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ collect($products)->where('status', 'inactive')->count() }}</p>
                     </div>
                 </div>
                 <div class="mt-4">
@@ -148,17 +100,17 @@
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
                         <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                            <i class="fas fa-eye text-white text-xl"></i>
+                            <i class="fas fa-users text-white text-xl"></i>
                         </div>
                     </div>
                     <div class="ml-4">
-                        <p class="text-sm font-medium text-gray-500">Total Views</p>
-                        <p class="text-2xl font-bold text-gray-900">{{ number_format(collect($blogData)->sum('views'), 0, ',', '.') }}</p>
+                        <p class="text-sm font-medium text-gray-500">Total Students</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ number_format(collect($products)->sum('enrolled'), 0, ',', '.') }}</p>
                     </div>
                 </div>
                 <div class="mt-4">
                     <div class="flex items-center text-sm">
-                        <span class="font-medium text-green-600">25%</span>
+                        <span class="font-medium text-green-600">18%</span>
                         <span class="text-gray-500 ml-2">from last month</span>
                     </div>
                 </div>
@@ -172,7 +124,7 @@
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 w-full lg:w-auto">
                 <div class="relative">
                     <input type="text"
-                           placeholder="Search blogs..."
+                           placeholder="Search products..."
                            class="w-full md:w-64 pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <i class="fas fa-search text-gray-400"></i>
@@ -180,8 +132,8 @@
                 </div>
                 <select class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50">
                     <option value="">All Status</option>
-                    <option value="published">Published</option>
-                    <option value="draft">Draft</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
                 </select>
                 <select class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50">
                     <option value="">All Categories</option>
@@ -189,6 +141,8 @@
                     <option value="data-science">Data Science</option>
                     <option value="marketing">Marketing</option>
                     <option value="design">Design</option>
+                    <option value="mobile-development">Mobile Development</option>
+                    <option value="security">Security</option>
                 </select>
             </div>
             <div class="flex space-x-3">
@@ -200,29 +154,32 @@
         </div>
     </div>
 
-    <!-- Blogs Table -->
+    <!-- Products Table -->
     <div class="bg-white shadow-lg rounded-xl overflow-hidden border-0">
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Blog
+                            Product
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Author
+                            Instructor
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Category
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Price
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Students
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Rating
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Status
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Views
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Date
                         </th>
                         <th scope="col" class="relative px-6 py-3">
                             <span class="sr-only">Actions</span>
@@ -230,66 +187,67 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach($blogData as $blog)
+                    @foreach($products as $product)
                     <tr class="hover:bg-gray-50 transition-colors duration-150">
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
-                                <div class="flex-shrink-0 h-12 w-12">
-                                    <img class="h-12 w-12 rounded-lg object-cover shadow-sm" src="{{ $blog['image'] }}" alt="{{ $blog['title'] }}">
+                                <div class="flex-shrink-0 h-10 w-10">
+                                    <img class="h-10 w-10 rounded-lg object-cover" src="{{ $product['image'] }}" alt="{{ $product['title'] }}">
                                 </div>
                                 <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900 hover:text-primary transition-colors duration-200">
-                                        <a href="/admin/blogs/{{ $blog['id'] }}/edit" class="hover:underline">{{ $blog['title'] }}</a>
-                                    </div>
-                                    <div class="text-sm text-gray-500 mt-1">{{ Str::limit($blog['excerpt'], 80) }}</div>
+                                    <div class="text-sm font-medium text-gray-900">{{ $product['title'] }}</div>
+                                    <div class="text-sm text-gray-500">Created: </div>
                                 </div>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 h-8 w-8">
-                                    <img class="h-8 w-8 rounded-full ring-2 ring-gray-200" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="{{ $blog['author'] }}">
+                                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="{{ $product['instructor'] }}">
                                 </div>
-                                <div class="ml-3">
-                                    <div class="text-sm font-medium text-gray-900">{{ $blog['author'] }}</div>
+                                <div class="ml-2">
+                                    <div class="text-sm font-medium text-gray-900">{{ $product['instructor'] }}</div>
                                 </div>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                {{ $blog['category'] }}
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                                {{ $product['category'] }}
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            @if($blog['status'] === 'published')
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                    <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
-                                        <circle cx="4" cy="4" r="3"/>
-                                    </svg>
-                                    Published
-                                </span>
-                            @else
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                    <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-yellow-400" fill="currentColor" viewBox="0 0 8 8">
-                                        <circle cx="4" cy="4" r="3"/>
-                                    </svg>
-                                    Draft
-                                </span>
-                            @endif
+                            <div class="text-sm text-gray-900">Rp {{ number_format($product['price'], 0, ',', '.') }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900 font-medium">{{ number_format($blog['views'], 0, ',', '.') }}</div>
-                            <div class="text-xs text-gray-500">views</div>
+                            <div class="text-sm text-gray-900">{{ $product['students'] }}</div>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            {{ $blog['date'] }}
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                                <div class="flex text-yellow-400 mr-2">
+                                    @for($i = 1; $i <= 5; $i++)
+                                        @if($i <= floor($product['rating']))
+                                            <i class="fas fa-star text-xs"></i>
+                                        @elseif($i - 0.5 <= $product['rating'])
+                                            <i class="fas fa-star-half-alt text-xs"></i>
+                                        @else
+                                            <i class="far fa-star text-xs"></i>
+                                        @endif
+                                    @endfor
+                                </div>
+                                <span class="text-sm text-gray-900">{{ $product['rating'] }}</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                Active
+                            </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex justify-end space-x-2">
-                                <a href="/admin/blogs/{{ $blog['id'] }}/edit" class="text-indigo-600 hover:text-indigo-900 transition-colors duration-200">
+                                <a href="/admin/products/{{ $product['id'] }}/edit" class="text-indigo-600 hover:text-indigo-900">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <button class="text-red-600 hover:text-red-900 transition-colors duration-200">
+                                <button class="text-red-600 hover:text-red-900">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
@@ -314,7 +272,7 @@
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
                 <p class="text-sm text-gray-700">
-                    Showing <span class="font-medium">1</span> to <span class="font-medium">{{ count($blogData) }}</span> of <span class="font-medium">{{ count($blogData) }}</span> results
+                    Showing <span class="font-medium">1</span> to <span class="font-medium">{{ count($products) }}</span> of <span class="font-medium">{{ count($products) }}</span> results
                 </p>
             </div>
             <div>
