@@ -10,10 +10,8 @@
     $faq = $translations['faq'];
     $cta = $translations['cta'];
 
-    // Load data from JSON for dynamic content
-    $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
-    $site = $data['site'];
-    $contact = $data['contact'];
+    // Get data from language files
+    $contact = $translations['contact'];
 
     // Build URLs with current locale
     $baseUrl = '/' . $locale;

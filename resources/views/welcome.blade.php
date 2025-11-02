@@ -14,14 +14,13 @@
     $testimonials = $translations['testimonials'];
     $cta = $translations['cta'];
 
-    // Load data from JSON for dynamic content
-    $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
-    $statsData = $data['stats'];
-    $featuresData = $data['features'];
-    $testimonialsData = $data['testimonials'];
-    $products = array_slice($data['products'], 0, 3); // Get first 3 products
-    $blogs = array_slice($data['blogs'], 0, 3); // Get first 3 blogs
-    $bootcamps = array_slice($data['bootcamps'], 0, 2); // Get first 2 bootcamps
+    // Get data from language files
+    $statsData = $stats['data'];
+    $featuresData = $features['data'];
+    $testimonialsData = $testimonials['data'];
+    $products = array_slice($featured_courses['data'], 0, 3); // Get first 3 products
+    $blogs = array_slice($latest_blog['data'], 0, 3); // Get first 3 blogs
+    $bootcamps = array_slice($upcoming_bootcamps['data'], 0, 2); // Get first 2 bootcamps
 
     // Build URLs with current locale
     $baseUrl = '/' . $locale;
@@ -53,7 +52,7 @@
                 </div>
             </div>
             <div class="lg:w-1/2 mt-10 lg:mt-0">
-                <img src="{{ $data['hero']['image'] }}" alt="E-Learning Platform" class="w-full h-auto rounded-lg shadow-2xl">
+                <img src="{{ $hero['image'] }}" alt="E-Learning Platform" class="w-full h-auto rounded-lg shadow-2xl">
             </div>
         </div>
     </div>
@@ -83,8 +82,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($featuresData as $index => $feature)
                 <div class="text-center bg-white p-8 rounded-xl shadow-lg card-hover">
-                    <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
-                        <i class="{{ $feature['icon'] }} text-2xl"></i>
+                    <div class="text-white rounded-full h-16 flex items-center justify-center mx-auto mb-4 float-animation text-2xl">
+                        <span class="material-icons-outlined text-4xl">{{ $feature['emoji'] }}</span>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">{{ $feature['title'] }}</h3>
                     <p class="text-gray-600">{{ $feature['description'] }}</p>

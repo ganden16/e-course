@@ -80,13 +80,13 @@
     <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
         <!-- Progress Bar -->
         <div class="bg-gray-200 h-1">
-            <div class="bg-primary h-1 w-3/5"></div>
+            <div class="bg-orange h-1 w-3/5"></div>
         </div>
 
         <!-- Tab Navigation -->
         <div class="border-b border-gray-200">
             <nav class="flex -mb-px">
-                <button class="py-4 px-6 text-center border-b-2 border-primary font-medium text-sm text-primary">
+                <button class="py-4 px-6 text-center border-b-2 border-orange font-medium text-sm text-orange">
                     Basic Information
                 </button>
                 <button class="py-4 px-6 text-center border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
@@ -108,7 +108,7 @@
                     <!-- Basic Information -->
                     <div>
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full mr-3 text-sm">1</span>
+                            <span class="flex items-center justify-center w-8 h-8 bg-orange text-white rounded-full mr-3 text-sm">1</span>
                             Basic Information
                         </h2>
                         <div class="space-y-6">
@@ -117,7 +117,7 @@
                                 <input type="text"
                                        name="title"
                                        value="{{ $currentBlog['title'] ?? '' }}"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                                        placeholder="Enter an engaging title for your blog">
                             </div>
 
@@ -125,7 +125,7 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Excerpt</label>
                                 <textarea rows="3"
                                           name="excerpt"
-                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
+                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                                           placeholder="Write a brief summary of your blog post">{{ $currentBlog['excerpt'] ?? '' }}</textarea>
                                 <p class="text-xs text-gray-500 mt-2">This will be displayed in blog listings and search results</p>
                             </div>
@@ -133,7 +133,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                                    <select name="category" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200">
+                                    <select name="category" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
                                         <option value="">Select Category</option>
                                         <option value="Web Development" {{ ($currentBlog['category'] ?? '') === 'Web Development' ? 'selected' : '' }}>Web Development</option>
                                         <option value="Data Science" {{ ($currentBlog['category'] ?? '') === 'Data Science' ? 'selected' : '' }}>Data Science</option>
@@ -149,7 +149,7 @@
                                     <input type="text"
                                            name="author"
                                            value="{{ $currentBlog['author'] ?? '' }}"
-                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                                            placeholder="Author name">
                                 </div>
                             </div>
@@ -217,7 +217,7 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">SEO Title</label>
                                 <input type="text"
                                        name="seo_title"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                                        placeholder="Enter SEO title (max 60 characters)"
                                        maxlength="60">
                                 <p class="text-xs text-gray-500 mt-2">Optimal length: 50-60 characters</p>
@@ -227,7 +227,7 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Meta Description</label>
                                 <textarea rows="3"
                                           name="meta_description"
-                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
+                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                                           placeholder="Enter meta description (max 160 characters)"
                                           maxlength="160"></textarea>
                                 <p class="text-xs text-gray-500 mt-2">Optimal length: 150-160 characters</p>
@@ -237,7 +237,7 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Tags</label>
                                 <input type="text"
                                        name="tags"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                                        placeholder="Enter tags separated by commas">
                                 <p class="text-xs text-gray-500 mt-2">Example: web development, tutorial, javascript</p>
                             </div>
@@ -262,7 +262,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <button type="button" class="w-full bg-white border border-gray-300 rounded-lg py-3 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
+                            <button type="button" class="w-full bg-white border border-gray-300 rounded-lg py-3 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
                                 <i class="fas fa-upload mr-2"></i>
                                 Upload New Image
                             </button>
@@ -275,7 +275,7 @@
                         <div class="space-y-4">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                                <select name="status" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200">
+                                <select name="status" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
                                     <option value="draft" {{ ($currentBlog['status'] ?? '') === 'draft' ? 'selected' : '' }}>Draft</option>
                                     <option value="published" {{ ($currentBlog['status'] ?? '') === 'published' ? 'selected' : '' }}>Published</option>
                                     <option value="scheduled">Scheduled</option>
@@ -286,12 +286,12 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Publish Date</label>
                                 <input type="datetime-local"
                                        name="publish_date"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200">
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                             </div>
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Visibility</label>
-                                <select name="visibility" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200">
+                                <select name="visibility" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
                                     <option value="public">Public</option>
                                     <option value="private">Private</option>
                                     <option value="password">Password Protected</option>
@@ -305,19 +305,19 @@
                         <h3 class="text-lg font-semibold text-gray-900 mb-4">Categories</h3>
                         <div class="space-y-2">
                             <label class="flex items-center">
-                                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" name="categories[]" value="web-development">
+                                <input type="checkbox" class="rounded border-gray-300 text-orange focus:ring-orange" name="categories[]" value="web-development">
                                 <span class="ml-2 text-sm text-gray-700">Web Development</span>
                             </label>
                             <label class="flex items-center">
-                                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" name="categories[]" value="data-science">
+                                <input type="checkbox" class="rounded border-gray-300 text-orange focus:ring-orange" name="categories[]" value="data-science">
                                 <span class="ml-2 text-sm text-gray-700">Data Science</span>
                             </label>
                             <label class="flex items-center">
-                                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" name="categories[]" value="marketing">
+                                <input type="checkbox" class="rounded border-gray-300 text-orange focus:ring-orange" name="categories[]" value="marketing">
                                 <span class="ml-2 text-sm text-gray-700">Marketing</span>
                             </label>
                             <label class="flex items-center">
-                                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" name="categories[]" value="design">
+                                <input type="checkbox" class="rounded border-gray-300 text-orange focus:ring-orange" name="categories[]" value="design">
                                 <span class="ml-2 text-sm text-gray-700">Design</span>
                             </label>
                         </div>
@@ -326,7 +326,7 @@
                     <!-- Actions -->
                     <div class="bg-gray-50 rounded-xl p-6">
                         <div class="flex flex-col space-y-3">
-                            <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 shadow-lg">
+                            <button type="submit" class="w-full bg-orange hover:bg-orange-dark text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 shadow-lg">
                                 {{ isset($blog) ? 'Update Blog' : 'Publish Blog' }}
                             </button>
                             <button type="button" class="w-full bg-white hover:bg-gray-50 text-gray-700 font-medium py-3 px-4 rounded-lg border border-gray-300 transition-colors duration-200">

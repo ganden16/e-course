@@ -22,7 +22,7 @@
                 <div>
                     <div class="flex items-center mb-4">
                         <i class="{{ $site['logo'] }} text-2xl mr-2"></i>
-                        <h3 class="text-xl font-bold">{{ $site['name'] }}</h3>
+                        <h3 class="text-xl font-bold">HRC</h3>
                     </div>
                     <p class="text-sm text-gray-300 mb-4">{{ $site['description'] }}</p>
                     <div class="flex space-x-3">
@@ -72,15 +72,15 @@
                     <h4 class="font-semibold mb-4 text-lg">{{ $footer['contact_info'] }}</h4>
                     <ul class="space-y-3 text-sm">
                         <li class="flex items-start">
-                            <i class="fas fa-envelope mt-1 mr-3 text-primary"></i>
+                            <i class="fas fa-envelope mt-1 mr-3 text-orange"></i>
                             <span class="text-gray-300">{{ $site['email'] }}</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-phone mt-1 mr-3 text-primary"></i>
+                            <i class="fas fa-phone mt-1 mr-3 text-orange"></i>
                             <span class="text-gray-300">{{ $site['phone'] }}</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary"></i>
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-orange"></i>
                             <span class="text-gray-300">{{ $site['address'] }}</span>
                         </li>
                     </ul>
@@ -90,7 +90,7 @@
                         <h5 class="font-semibold mb-2">{{ $footer['newsletter'] }}</h5>
                         <div class="flex">
                             <input type="email" placeholder="{{ $footer['your_email'] }}" class="flex-1 px-3 py-2 bg-gray-800 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary">
-                            <button class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-r-md transition duration-300">
+                            <button class="bg-orange hover:bg-orange-dark text-white px-4 py-2 rounded-r-md transition duration-300">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                         </div>
@@ -100,13 +100,13 @@
 
             <!-- Copyright -->
             <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
-                <p>&copy; {{ date('Y') }} {{ $site['name'] }}. {{ $footer['all_rights_reserved'] }}.</p>
+                <p>&copy; {{ date('Y') }} Healthcare Remote Circle. {{ $footer['all_rights_reserved'] }}.</p>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary hover:bg-primary-dark text-white p-3 rounded-full shadow-lg transition duration-300 transform hover:scale-105 opacity-0 invisible">
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-orange hover:bg-orange-dark text-white p-3 rounded-full shadow-lg transition duration-300 transform hover:scale-105 opacity-0 invisible">
         <i class="fas fa-arrow-up"></i>
     </button>
 

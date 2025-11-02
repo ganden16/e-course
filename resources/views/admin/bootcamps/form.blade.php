@@ -46,7 +46,7 @@
                                 <input type="text"
                                        name="title"
                                        value="{{ $bootcampData['title'] ?? '' }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                        placeholder="Masukkan judul bootcamp">
                             </div>
 
@@ -54,14 +54,14 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
                                 <textarea rows="4"
                                           name="description"
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                           placeholder="Masukkan deskripsi bootcamp">{{ $bootcampData['description'] ?? '' }}</textarea>
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
-                                    <select name="category" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <select name="category" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent">
                                         <option value="">Pilih Kategori</option>
                                         <option value="Web Development" {{ ($bootcampData['category'] ?? '') === 'Web Development' ? 'selected' : '' }}>Web Development</option>
                                         <option value="Data Science" {{ ($bootcampData['category'] ?? '') === 'Data Science' ? 'selected' : '' }}>Data Science</option>
@@ -73,7 +73,7 @@
 
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Level</label>
-                                    <select name="level" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <select name="level" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent">
                                         <option value="">Pilih Level</option>
                                         <option value="Beginner" {{ ($bootcampData['level'] ?? '') === 'Beginner' ? 'selected' : '' }}>Pemula</option>
                                         <option value="Intermediate" {{ ($bootcampData['level'] ?? '') === 'Intermediate' ? 'selected' : '' }}>Menengah</option>
@@ -89,7 +89,7 @@
                                     <input type="text"
                                            name="duration"
                                            value="{{ $bootcampData['duration'] ?? '' }}"
-                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                            placeholder="Contoh: 12 weeks">
                                 </div>
 
@@ -98,7 +98,7 @@
                                     <input type="date"
                                            name="start_date"
                                            value="{{ $bootcampData['start_date'] ?? '' }}"
-                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                 </div>
 
                                 <div>
@@ -106,14 +106,14 @@
                                     <input type="text"
                                            name="schedule"
                                            value="{{ $bootcampData['schedule'] ?? '' }}"
-                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                            placeholder="Contoh: Senin - Jumat, 09:00 - 17:00">
                                 </div>
                             </div>
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Mentor</label>
-                                <select name="mentor" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <select name="mentor" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent">
                                     <option value="">Pilih Mentor</option>
                                     @foreach($mentors as $mentor)
                                         <option value="{{ $mentor['name'] }}" {{ ($bootcampData['mentor'] ?? '') === $mentor['name'] ? 'selected' : '' }}>
@@ -133,7 +133,7 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Fitur (satu per baris)</label>
                                 <textarea rows="6"
                                           name="features"
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                           placeholder="Masukkan fitur bootcamp, satu per baris">{{ implode("\n", $bootcampData['features'] ?? []) }}</textarea>
                                 <p class="text-xs text-gray-500 mt-1">Masukkan setiap fitur pada baris baru</p>
                             </div>
@@ -148,7 +148,7 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Kurikulum (satu per baris)</label>
                                 <textarea rows="6"
                                           name="curriculum"
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                           placeholder="Masukkan kurikulum, satu per baris">{{ implode("\n", $bootcampData['curriculum'] ?? []) }}</textarea>
                                 <p class="text-xs text-gray-500 mt-1">Masukkan setiap topik kurikulum pada baris baru</p>
                             </div>
@@ -163,7 +163,7 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Hasil pembelajaran (satu per baris)</label>
                                 <textarea rows="6"
                                           name="learning_outcomes"
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                           placeholder="Masukkan hasil pembelajaran, satu per baris">{{ implode("\n", $bootcampData['learning_outcomes'] ?? []) }}</textarea>
                                 <p class="text-xs text-gray-500 mt-1">Masukkan setiap hasil pembelajaran pada baris baru</p>
                             </div>
@@ -178,7 +178,7 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Dukungan karir (satu per baris)</label>
                                 <textarea rows="6"
                                           name="career_support"
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                           placeholder="Masukkan dukungan karir, satu per baris">{{ implode("\n", $bootcampData['career_support'] ?? []) }}</textarea>
                                 <p class="text-xs text-gray-500 mt-1">Masukkan setiap dukungan karir pada baris baru</p>
                             </div>
@@ -198,7 +198,7 @@
                                      alt="Bootcamp image">
                             </div>
                             <div>
-                                <button type="button" class="w-full bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                <button type="button" class="w-full bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange">
                                     Upload Image
                                 </button>
                             </div>
@@ -214,7 +214,7 @@
                                 <input type="number"
                                        name="price"
                                        value="{{ $bootcampData['price'] ?? '' }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                        placeholder="0">
                             </div>
 
@@ -223,7 +223,7 @@
                                 <input type="number"
                                        name="original_price"
                                        value="{{ $bootcampData['original_price'] ?? '' }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                        placeholder="0">
                             </div>
                         </div>
@@ -235,7 +235,7 @@
                         <div class="space-y-4">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Status Bootcamp</label>
-                                <select name="status" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <select name="status" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent">
                                     <option value="active" {{ ($bootcampData['status'] ?? '') === 'active' ? 'selected' : '' }}>Aktif</option>
                                     <option value="upcoming" {{ ($bootcampData['status'] ?? '') === 'upcoming' ? 'selected' : '' }}>Akan Datang</option>
                                     <option value="inactive" {{ ($bootcampData['status'] ?? '') === 'inactive' ? 'selected' : '' }}>Tidak Aktif</option>
@@ -247,7 +247,7 @@
                     <!-- Actions -->
                     <div class="pt-4">
                         <div class="flex flex-col space-y-3">
-                            <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200">
+                            <button type="submit" class="w-full bg-orange hover:bg-orange-dark text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200">
                                 {{ isset($bootcamp) ? 'Update Bootcamp' : 'Simpan Bootcamp' }}
                             </button>
                             <a href="/admin/bootcamps" class="w-full bg-white hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-lg border border-gray-300 text-center transition-colors duration-200">

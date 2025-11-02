@@ -16,15 +16,18 @@
             theme: {
                 extend: {
                     colors: {
-                        'hc-green': '#10b981',
-                        'hc-dark': '#065f46',
+                        'hc-green': '#009b77',
+                        'hc-dark': '#174e47',
+                        'hc-orange': '#ffb433',
+                        'hc-orange-dark': '#ff9500',
+                        'hc-beige': '#fcf8ef',
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-hc-beige">
 
     <!-- Navigation -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
@@ -32,16 +35,16 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <a href="#" class="text-2xl font-bold text-hc-green">
-                        <i class="fas fa-heartbeat mr-2"></i>HEALTHCARE
+                        <i class="fas fa-heartbeat mr-2 text-hc-orange"></i>HRC
                     </a>
                 </div>
                 <div class="hidden md:flex space-x-6">
-                    <a href="#" class="text-gray-700 hover:text-hc-green transition">Home</a>
-                    <a href="#" class="text-gray-700 hover:text-hc-green transition">About Us</a>
-                    <a href="#" class="text-gray-700 hover:text-hc-green transition">Program</a>
-                    <a href="#" class="text-gray-700 hover:text-hc-green transition">Mentor</a>
-                    <a href="#" class="text-gray-700 hover:text-hc-green transition">Testimoni</a>
-                    <a href="#" class="text-gray-700 hover:text-hc-green transition">FAQ</a>
+                    <a href="#" class="text-gray-700 hover:text-hc-orange transition">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-hc-orange transition">About Us</a>
+                    <a href="#" class="text-gray-700 hover:text-hc-orange transition">Program</a>
+                    <a href="#" class="text-gray-700 hover:text-hc-orange transition">Mentor</a>
+                    <a href="#" class="text-gray-700 hover:text-hc-orange transition">Testimoni</a>
+                    <a href="#" class="text-gray-700 hover:text-hc-orange transition">FAQ</a>
                 </div>
                 <button class="md:hidden text-gray-700">
                     <i class="fas fa-bars text-2xl"></i>
@@ -65,7 +68,7 @@
                         <p class="text-base mb-8 opacity-90">
                             Bergabunglah dengan komunitas profesional kesehatan terdepan yang siap mendukung karir Anda dari mana saja.
                         </p>
-                        <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                        <button class="bg-hc-orange hover:bg-hc-orange-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                             Ask Now
                         </button>
                     </div>
@@ -99,7 +102,7 @@
                 <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Benefit Healthcare</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="text-center p-6 bg-white rounded-lg shadow-md">
-                        <div class="bg-hc-green text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <div class="bg-hc-orange text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-users text-2xl"></i>
                         </div>
                         <h3 class="text-xl font-semibold mb-2">Komunitas Luas</h3>
@@ -113,7 +116,7 @@
                         <p class="text-gray-600">Akses berbagai materi pembelajaran untuk meningkatkan kompetensi Anda.</p>
                     </div>
                     <div class="text-center p-6 bg-white rounded-lg shadow-md">
-                        <div class="bg-hc-green text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <div class="bg-hc-orange text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-briefcase text-2xl"></i>
                         </div>
                         <h3 class="text-xl font-semibold mb-2">Peluang Karir</h3>
@@ -174,9 +177,9 @@
                         <h3 class="text-2xl font-bold text-gray-800 mb-4">Program Unggulan Kami</h3>
                         <p class="text-gray-600 mb-4">Kami menawarkan berbagai program dirancang khusus untuk meningkatkan kemampuan hard skill dan soft skill Anda di dunia kesehatan modern.</p>
                         <ul class="space-y-2 text-gray-600">
-                            <li><i class="fas fa-check-circle text-hc-green mr-2"></i> Remote Nursing Academy</li>
+                            <li><i class="fas fa-check-circle text-hc-orange mr-2"></i> Remote Nursing Academy</li>
                             <li><i class="fas fa-check-circle text-hc-green mr-2"></i> Digital Health Literacy</li>
-                            <li><i class="fas fa-check-circle text-hc-green mr-2"></i> Telehealth Practitioner Certification</li>
+                            <li><i class="fas fa-check-circle text-hc-orange mr-2"></i> Telehealth Practitioner Certification</li>
                         </ul>
                     </div>
                 </div>
@@ -251,16 +254,16 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-2xl font-bold mb-4">
-                        <i class="fas fa-heartbeat mr-2"></i>HEALTHCARE
+                        <i class="fas fa-heartbeat mr-2"></i>HRC
                     </h3>
-                    <p class="text-sm">Academy And Community for a better future in healthcare.</p>
+                    <p class="text-sm">Remote Circle Academy for a better future in healthcare.</p>
                 </div>
                 <div>
                     <h4 class="font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-hc-green transition">Tentang Kami</a></li>
-                        <li><a href="#" class="hover:text-hc-green transition">Program</a></li>
-                        <li><a href="#" class="hover:text-hc-green transition">Mentor</a></li>
+                        <li><a href="#" class="hover:text-hc-orange transition">Tentang Kami</a></li>
+                        <li><a href="#" class="hover:text-hc-orange transition">Program</a></li>
+                        <li><a href="#" class="hover:text-hc-orange transition">Mentor</a></li>
                     </ul>
                 </div>
                 <div>
@@ -273,10 +276,10 @@
                 <div>
                     <h4 class="font-semibold mb-4">Ikuti Kami</h4>
                     <div class="flex space-x-4">
-                        <a href="#" class="hover:text-hc-green transition"><i class="fab fa-facebook text-xl"></i></a>
-                        <a href="#" class="hover:text-hc-green transition"><i class="fab fa-twitter text-xl"></i></a>
-                        <a href="#" class="hover:text-hc-green transition"><i class="fab fa-instagram text-xl"></i></a>
-                        <a href="#" class="hover:text-hc-green transition"><i class="fab fa-linkedin text-xl"></i></a>
+                        <a href="#" class="hover:text-hc-orange transition"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="hover:text-hc-orange transition"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="hover:text-hc-orange transition"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="hover:text-hc-orange transition"><i class="fab fa-linkedin text-xl"></i></a>
                     </div>
                 </div>
             </div>

@@ -86,7 +86,7 @@
                                     <input type="text"
                                            name="first_name"
                                            value="{{ $mentorData['first_name'] ?? '' }}"
-                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                            placeholder="Masukkan nama depan">
                                 </div>
                                 <div>
@@ -94,7 +94,7 @@
                                     <input type="text"
                                            name="last_name"
                                            value="{{ $mentorData['last_name'] ?? '' }}"
-                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                            placeholder="Masukkan nama belakang">
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                                 <input type="email"
                                        name="email"
                                        value="{{ $mentorData['email'] ?? '' }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                        placeholder="Masukkan email">
                             </div>
 
@@ -112,14 +112,14 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Bio</label>
                                 <textarea rows="4"
                                           name="bio"
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                           placeholder="Masukkan bio mentor">{{ $mentorData['bio'] ?? '' }}</textarea>
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Spesialisasi</label>
-                                    <select name="specialization" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <select name="specialization" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent">
                                         <option value="">Pilih Spesialisasi</option>
                                         <option value="Web Development" {{ ($mentorData['specialization'] ?? '') === 'Web Development' ? 'selected' : '' }}>Web Development</option>
                                         <option value="Data Science" {{ ($mentorData['specialization'] ?? '') === 'Data Science' ? 'selected' : '' }}>Data Science</option>
@@ -130,7 +130,7 @@
 
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                                    <select name="status" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <select name="status" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent">
                                         <option value="active" {{ ($mentorData['status'] ?? '') === 'active' ? 'selected' : '' }}>Aktif</option>
                                         <option value="inactive" {{ ($mentorData['status'] ?? '') === 'inactive' ? 'selected' : '' }}>Tidak Aktif</option>
                                     </select>
@@ -156,7 +156,7 @@
                                 <input type="number"
                                        name="experience_years"
                                        value="{{ $mentorData['experience_years'] ?? '' }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                        placeholder="Contoh: 10">
                             </div>
 
@@ -165,7 +165,7 @@
                                 <input type="text"
                                        name="previous_companies"
                                        value="{{ $mentorData['previous_companies'] ?? '' }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                        placeholder="Contoh: Google, Microsoft, Apple">
                             </div>
 
@@ -173,7 +173,7 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Sertifikat</label>
                                 <textarea rows="3"
                                           name="certifications"
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                           placeholder="Masukkan sertifikat, satu per baris">{{ implode("\n", $mentorData['certifications'] ?? []) }}</textarea>
                                 <p class="text-xs text-gray-500 mt-1">Masukkan setiap sertifikat pada baris baru</p>
                             </div>
@@ -189,7 +189,7 @@
                                 <input type="url"
                                        name="linkedin"
                                        value="{{ $mentorData['linkedin'] ?? '' }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                        placeholder="https://linkedin.com/in/username">
                             </div>
 
@@ -198,7 +198,7 @@
                                 <input type="url"
                                        name="twitter"
                                        value="{{ $mentorData['twitter'] ?? '' }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                        placeholder="https://twitter.com/username">
                             </div>
 
@@ -207,7 +207,7 @@
                                 <input type="url"
                                        name="website"
                                        value="{{ $mentorData['website'] ?? '' }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                        placeholder="https://website.com">
                             </div>
                         </div>
@@ -226,7 +226,7 @@
                                      alt="Profile image">
                             </div>
                             <div>
-                                <button type="button" class="w-full bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                <button type="button" class="w-full bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange">
                                     Upload Photo
                                 </button>
                             </div>
@@ -245,7 +245,7 @@
                                        step="0.1"
                                        min="0"
                                        max="5"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                        placeholder="0.0 - 5.0">
                             </div>
 
@@ -254,7 +254,7 @@
                                 <input type="number"
                                        name="students"
                                        value="{{ $mentorData['students'] ?? '' }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                        placeholder="0">
                             </div>
 
@@ -263,7 +263,7 @@
                                 <input type="number"
                                        name="courses"
                                        value="{{ $mentorData['courses'] ?? '' }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                        placeholder="0">
                             </div>
 
@@ -272,7 +272,7 @@
                                 <input type="number"
                                        name="bootcamps"
                                        value="{{ $mentorData['bootcamps'] ?? '' }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                        placeholder="0">
                             </div>
                         </div>
@@ -281,7 +281,7 @@
                     <!-- Actions -->
                     <div class="pt-4">
                         <div class="flex flex-col space-y-3">
-                            <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200">
+                            <button type="submit" class="w-full bg-orange hover:bg-orange-dark text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200">
                                 {{ isset($mentor) ? 'Update Mentor' : 'Simpan Mentor' }}
                             </button>
                             <a href="/admin/mentors" class="w-full bg-white hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-lg border border-gray-300 text-center transition-colors duration-200">

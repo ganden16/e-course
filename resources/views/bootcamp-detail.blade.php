@@ -6,6 +6,7 @@
     $translations = include lang_path("{$locale}/bootcamp.php");
     $detail = $translations['detail'];
     $bootcamp_details = $translations['bootcamp_details'];
+    $training_modules = $translations['training_modules'];
 
     // Get bootcamps from language file
     $bootcamps = $translations['bootcamps'];
@@ -108,10 +109,10 @@
                             <span class="ml-2 font-medium">{{ $bootcamp['rating'] }}</span>
                             <span class="ml-1 text-gray-500">({{ $bootcamp['students'] }} {{ $bootcamp_details['students'] }})</span>
                         </div>
-                        <div class="flex items-center text-gray-600">
+                        {{-- <div class="flex items-center text-gray-600">
                             <i class="fas fa-user-tie mr-2"></i>
                             <span>{{ $bootcamp['instructor'] }}</span>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <p class="text-lg text-gray-600 mb-8">{{ $bootcamp['description'] }}</p>
@@ -130,9 +131,9 @@
                             <button class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 flex-1">
                                 <i class="fas fa-shopping-cart mr-2"></i> {{ $detail['enroll_now'] }}
                             </button>
-                            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-lg transition duration-300">
+                            {{-- <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-lg transition duration-300">
                                 <i class="fas fa-calendar mr-2"></i> {{ $detail['schedule_call'] }}
-                            </button>
+                            </button> --}}
                         </div>
                     </div>
                 </div>
@@ -141,7 +142,7 @@
     </section>
 
     <!-- What You'll Learn Section -->
-    <section class="py-16 bg-light">
+    {{-- <section class="py-16 bg-light">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $detail['what_youll_learn'] }}</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -187,10 +188,223 @@
                 </div>
             </div>
         </div>
+    </section> --}}
+
+    <!-- Training Modules Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $training_modules['title'] }}</h2>
+                <p class="text-lg text-gray-600 max-w-4xl mx-auto">{{ $training_modules['subtitle'] }}</p>
+            </div>
+
+            <!-- Weeks 1-6 Training Modules -->
+            <div class="mb-16">
+                <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 shadow-lg">
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-[600px]">
+                            <thead>
+                                <tr class="border-b-2 border-indigo-200">
+                                    <th class="text-left py-4 px-4 font-semibold text-indigo-700">{{ $training_modules['week'] }}</th>
+                                    <th class="text-left py-4 px-4 font-semibold text-indigo-700">{{ $training_modules['module'] }}</th>
+                                    <th class="text-left py-4 px-4 font-semibold text-indigo-700">{{ $training_modules['objective'] }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($training_modules['weeks_1_6'] as $weekKey => $weekData)
+                                    <tr class="border-b border-gray-200 hover:bg-indigo-50 transition-colors">
+                                        <td class="py-4 px-4">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                                                    {{ str_replace(['week_', 'week_'], '', $weekKey) }}
+                                                </div>
+                                                <span class="font-medium text-gray-700">{{ $training_modules['week'] }} {{ str_replace(['week_', 'week_'], '', $weekKey) }}</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 px-4">
+                                            <div class="font-medium text-gray-800">{{ $weekData['module'] }}</div>
+                                        </td>
+                                        <td class="py-4 px-4">
+                                            <div class="text-gray-600">{{ $weekData['objective'] }}</div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weeks 7-12 Internship Program -->
+            <div>
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">{{ $training_modules['internship_program'] }}</h3>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $training_modules['internship_subtitle'] }}</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Week 7 -->
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 shadow-lg">
+                        <div class="mb-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                                    7
+                                </div>
+                                <h4 class="text-xl font-bold text-gray-800">{{ $training_modules['week'] }} 7</h4>
+                            </div>
+
+                            <!-- Final Test -->
+                            <div class="bg-white rounded-lg p-4 mb-4 shadow-sm">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-clipboard-check text-green-600 mr-2"></i>
+                                    <h5 class="font-semibold text-gray-800">{{ $training_modules['weeks_7_12']['week_7']['final_test']['session'] }}</h5>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2"><strong>{{ $training_modules['topic'] }}:</strong> {{ $training_modules['weeks_7_12']['week_7']['final_test']['topic'] }}</p>
+                                <p class="text-sm text-gray-600">{{ $training_modules['weeks_7_12']['week_7']['final_test']['objective'] }}</p>
+                            </div>
+
+                            <!-- Internship Onboarding -->
+                            <div class="bg-white rounded-lg p-4 shadow-sm">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-user-plus text-green-600 mr-2"></i>
+                                    <h5 class="font-semibold text-gray-800">{{ $training_modules['weeks_7_12']['week_7']['internship_onboarding']['session'] }}</h5>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2"><strong>{{ $training_modules['topic'] }}:</strong> {{ $training_modules['weeks_7_12']['week_7']['internship_onboarding']['topic'] }}</p>
+                                <p class="text-sm text-gray-600">{{ $training_modules['weeks_7_12']['week_7']['internship_onboarding']['objective'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weeks 8-11 -->
+                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 shadow-lg">
+                        <div class="mb-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                                    8-11
+                                </div>
+                                <h4 class="text-xl font-bold text-gray-800">{{ $training_modules['weeks_7_12']['weeks_8_11']['session'] }}</h4>
+                            </div>
+
+                            <div class="bg-white rounded-lg p-4 shadow-sm">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-briefcase text-blue-600 mr-2"></i>
+                                    <h5 class="font-semibold text-gray-800">{{ $training_modules['weeks_7_12']['weeks_8_11']['topic'] }}</h5>
+                                </div>
+                                <p class="text-sm text-gray-600">{{ $training_modules['weeks_7_12']['weeks_8_11']['objective'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 12 -->
+                <div class="mt-8">
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                                12
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800">{{ $training_modules['week'] }} 12</h4>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- 1-on-1 Coaching -->
+                            <div class="bg-white rounded-lg p-4 shadow-sm">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-chalkboard-teacher text-purple-600 mr-2"></i>
+                                    <h5 class="font-semibold text-gray-800">{{ $training_modules['weeks_7_12']['week_12']['coaching']['session'] }}</h5>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2"><strong>{{ $training_modules['topic'] }}:</strong> {{ $training_modules['weeks_7_12']['week_12']['coaching']['topic'] }}</p>
+                                <p class="text-sm text-gray-600">{{ $training_modules['weeks_7_12']['week_12']['coaching']['objective'] }}</p>
+                            </div>
+
+                            <!-- Farewell Session -->
+                            <div class="bg-white rounded-lg p-4 shadow-sm">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-glass-cheers text-pink-600 mr-2"></i>
+                                    <h5 class="font-semibold text-gray-800">{{ $training_modules['weeks_7_12']['week_12']['farewell']['session'] }}</h5>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2"><strong>{{ $training_modules['topic'] }}:</strong> {{ $training_modules['weeks_7_12']['week_12']['farewell']['topic'] }}</p>
+                                <p class="text-sm text-gray-600">{{ $training_modules['weeks_7_12']['week_12']['farewell']['objective'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Get After Completing Bootcamp Section -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $translations['what_youll_get']['title'] }}</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Certificates -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                            <i class="fas fa-certificate text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">{{ $translations['what_youll_get']['certificates']['title'] }}</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-award text-blue-500 mt-1 mr-3"></i>
+                            <span>{{ $translations['what_youll_get']['certificates']['completion'] }}</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-shield-alt text-blue-500 mt-1 mr-3"></i>
+                            <span>{{ $translations['what_youll_get']['certificates']['hipaa'] }}</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-briefcase text-blue-500 mt-1 mr-3"></i>
+                            <span>{{ $translations['what_youll_get']['certificates']['internship'] }}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Career Support -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                            <i class="fas fa-users text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">{{ $translations['what_youll_get']['career_support']['title'] }}</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-network-wired text-green-500 mt-1 mr-3"></i>
+                            <span>{{ $translations['what_youll_get']['career_support']['networking'] }}</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-video text-green-500 mt-1 mr-3"></i>
+                            <span>{{ $translations['what_youll_get']['career_support']['talks'] }}</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-globe text-green-500 mt-1 mr-3"></i>
+                            <span>{{ $translations['what_youll_get']['career_support']['community'] }}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Unlimited Mentoring -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                            <i class="fas fa-comments text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">{{ $translations['what_youll_get']['unlimited_mentoring']['title'] }}</h3>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">{{ $translations['what_youll_get']['unlimited_mentoring']['description'] }}</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Bootcamp Features Section -->
-    <section class="py-16 bg-white">
+    {{-- <section class="py-16 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $detail['bootcamp_features'] }}</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -204,7 +418,7 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Instructor Section -->
     <section class="py-16 bg-light">
@@ -216,6 +430,10 @@
                     <div>
                         <h3 class="text-2xl font-semibold mb-2">{{ $bootcamp['instructor'] }}</h3>
                         <p class="text-gray-600 mb-4">{{ str_replace('{category}', $bootcamp['category'], $detail['instructor_bio']) }}</p>
+                        <div class="mt-6 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg">
+                            <h4 class="text-lg font-semibold text-indigo-800 mb-3">{{ $locale === 'id' ? 'Mentor HRC' : 'HRC Mentors' }}</h4>
+                            <p class="text-gray-700">{{ $training_modules['hrc_mentors'] }}</p>
+                        </div>
                         <div class="flex items-center gap-6 text-sm text-gray-600">
                             <div class="flex items-center">
                                 <i class="fas fa-star text-yellow-400 mr-1"></i>
@@ -235,6 +453,49 @@
             </div>
         </div>
     </section>
+
+    <!-- Partner Clinics Section -->
+    {{-- <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ $translations['partner_clinics']['title'] }}</h2>
+                <p class="text-lg text-gray-600 max-w-4xl mx-auto">{{ $translations['partner_clinics']['subtitle'] }}</p>
+            </div>
+
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Benefits for Partner Clinics -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-indigo-800 mb-6 text-center">{{ $locale === 'id' ? 'Manfaat bagi Klinik Mitra' : 'Benefits for Partner Clinics' }}</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        @foreach($translations['partner_clinics']['benefits'] as $benefit)
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                                    <i class="fas fa-hospital text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">{{ $benefit['title'] }}</h4>
+                                <p class="text-gray-600">{{ $benefit['description'] }}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Benefits for Students -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-green-800 mb-6 text-center">{{ $locale === 'id' ? 'Manfaat bagi Siswa' : 'Benefits for Students' }}</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        @foreach($translations['partner_clinics']['for_students'] as $key => $benefit)
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                                    <i class="fas fa-user-graduate text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">{{ $benefit }}</h4>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> --}}
 
     <!-- Career Support Section -->
     <section class="py-16 bg-white">
@@ -421,9 +682,9 @@
                 <button class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                     <i class="fas fa-shopping-cart mr-2"></i> {{ $detail['enroll_bootcamp'] }}
                 </button>
-                <a href="/contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                {{-- <a href="/contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
                     {{ $detail['schedule_consultation'] }}
-                </a>
+                </a> --}}
             </div>
         </div>
     </section>

@@ -1,6 +1,6 @@
 {
   "site": {
-    "name": "HealthCare Academy",
+    "name": "Healthcare Remote Circle",
     "tagline": "Buka Potensi Anda dengan Pembelajaran Digital",
     "description": "Platform e-learning terdepan yang menyediakan kursus digital dan bootcamp berkualitas untuk meningkatkan karir Anda.",
     "logo": "fas fa-graduation-cap",
@@ -73,34 +73,39 @@
   ],
   "features": [
     {
-      "icon": "fas fa-laptop-code",
-      "title": "Belajar di Mana Saja",
-      "description": "Akses kursus kami dari perangkat apa pun, di mana pun di dunia. Belajar dengan kecepatan Anda sendiri."
+      "emoji": "🌍",
+      "title": "Belajar dari Mana Saja",
+      "description": "Nikmati fleksibilitas belajar online dari mana saja, kapan saja. Semua kelas kami dirancang untuk mendukung karier kalian di dunia remote healthcare global."
     },
     {
-      "icon": "fas fa-certificate",
-      "title": "Kursus Bersertifikat",
-      "description": "Terima sertifikat yang diakui industri setelah menyelesaikan kursus kami."
+      "emoji": "🎓",
+      "title": "Sertifikat Resmi dengan Penilaian Profesional",
+      "description": "Dapatkan Graded Certificate of Completion, HIPAA Certificate, dan Internship Certificate. Setiap peserta menerima nilai akhir berdasarkan hasil belajar, performa praktik, dan pencapaian magang."
     },
     {
-      "icon": "fas fa-users",
-      "title": "Instruktur Ahli",
-      "description": "Belajar dari ahli industri dengan pengalaman praktis bertahun-tahun."
+      "emoji": "👩‍⚕️",
+      "title": "Mentor Profesional & Internasional",
+      "description": "Belajar langsung dari mentor internasional dan praktisi kesehatan berpengalaman di bidang digital healthcare dan administrasi medis jarak jauh."
     },
     {
-      "icon": "fas fa-headset",
-      "title": "Dukungan 24/7",
-      "description": "Dapatkan bantuan kapan pun Anda membutuhkannya dengan tim dukungan kami yang siaga 24 jam."
+      "emoji": "💬",
+      "title": "Komunitas Global yang Supportif",
+      "description": "Bergabunglah dengan komunitas tenaga kesehatan dari berbagai negara. Di sini kita Share, Learn, dan Grow bersama menuju karier digital yang berkelanjutan."
     },
     {
-      "icon": "fas fa-chart-line",
-      "title": "Lacak Kemajuan",
-      "description": "Pantau kemajuan pembelajaran Anda dengan alat analitik canggih kami."
+      "emoji": "💼",
+      "title": "Unlimited Professional Career Coaching",
+      "description": "Dapatkan pendampingan karier tanpa batas melalui personalized 1-on-1 mentoring untuk membantu kalian mengembangkan potensi, membangun portofolio, dan siap menghadapi dunia kerja global."
     },
     {
-      "icon": "fas fa-dollar-sign",
-      "title": "Harga Terjangkau",
-      "description": "Dapatkan pendidikan berkualitas dengan harga yang tidak akan menguras kantong Anda."
+      "emoji": "📈",
+      "title": "Program Berbasis Praktik & Magang",
+      "description": "Bangun portofolio profesional melalui magang dengan klinik mitra, proyek nyata, dan pembimbingan langsung dari mentor berpengalaman."
+    },
+    {
+      "emoji": "💡",
+      "title": "Investasi Terjangkau, Nilai Maksimal",
+      "description": "Nikmati pelatihan berkualitas tinggi dengan harga terjangkau, karena kami percaya setiap tenaga kesehatan berhak sukses di dunia digital."
     }
   ],
   "testimonials": [
@@ -108,7 +113,7 @@
       "name": "Sarah Johnson",
       "role": "Pengembang Web",
       "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-      "content": "HealthCare Academy benar-benar mengubah karir saya. Kursusnya sangat komprehensif dan instrukturnya luar biasa!"
+      "content": "Healthcare Remote Circle benar-benar mengubah karir saya. Kursusnya sangat komprehensif dan instrukturnya luar biasa!"
     },
     {
       "name": "Michael Chen",
@@ -571,11 +576,11 @@
     ]
   },
   "about": {
-    "title": "Tentang HealthCare Academy",
+    "title": "Tentang Healthcare Remote Circle",
     "subtitle": "Memberdayakan Pelajar di Seluruh Dunia Sejak 2020",
-    "description": "HealthCare Academy adalah platform pembelajaran online terkemuka yang didedikasikan untuk menyediakan pendidikan berkualitas tinggi kepada siswa di seluruh dunia. Misi kami adalah membuat pendidikan dapat diakses, terjangkau, dan efektif untuk semua orang.",
+    "description": "Healthcare Remote Circle adalah platform pembelajaran online terkemuka yang didedikasikan untuk menyediakan pendidikan berkualitas tinggi kepada siswa di seluruh dunia. Misi kami adalah membuat pendidikan dapat diakses, terjangkau, dan efektif untuk semua orang.",
     "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    "story": "Didirikan pada tahun 2020, HealthCare Academy dimulai dengan visi sederhana: mendemokratisasi pendidikan dengan memanfaatkan teknologi. Yang dimulai sebagai startup kecil telah berkembang menjadi komunitas pembelajaran global dengan lebih dari 15.000 siswa di lebih dari 50 negara.",
+    "story": "Didirikan pada tahun 2020, Healthcare Remote Circle dimulai dengan visi sederhana: mendemokratisasi pendidikan dengan memanfaatkan teknologi. Yang dimulai sebagai startup kecil telah berkembang menjadi komunitas pembelajaran global dengan lebih dari 15.000 siswa di lebih dari 50 negara.",
     "mission": "Misi kami adalah mengubah hidup melalui pendidikan dengan menyediakan pengalaman pembelajaran yang dapat diakses dan berkualitas tinggi yang memberdayakan individu untuk mencapai tujuan karir mereka dan memberikan dampak positif di dunia.",
     "values": [
       {

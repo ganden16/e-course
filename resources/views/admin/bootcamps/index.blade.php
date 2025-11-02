@@ -19,7 +19,7 @@
                 <p class="mt-2 text-sm text-gray-600">Manage and monitor all intensive bootcamp programs</p>
             </div>
             <div class="mt-4 md:mt-0">
-                <a href="/admin/bootcamps/create" class="inline-flex items-center px-4 py-2 bg-primary border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
+                <a href="/admin/bootcamps/create" class="inline-flex items-center px-4 py-2 bg-orange border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-orange-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
                     <i class="fas fa-plus mr-2 -ml-1"></i>
                     Add New Bootcamp
                 </a>
@@ -33,7 +33,7 @@
             <div class="p-6">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange to-orange-dark rounded-xl flex items-center justify-center shadow-lg">
                             <i class="fas fa-campground text-white text-xl"></i>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
             <div class="p-6">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center shadow-lg">
                             <i class="fas fa-check-circle text-white text-xl"></i>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
             <div class="p-6">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange to-orange-dark rounded-xl flex items-center justify-center shadow-lg">
                             <i class="fas fa-clock text-white text-xl"></i>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
             <div class="p-6">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center shadow-lg">
                             <i class="fas fa-users text-white text-xl"></i>
                         </div>
                     </div>
@@ -125,17 +125,17 @@
                 <div class="relative">
                     <input type="text"
                            placeholder="Search bootcamps..."
-                           class="w-full md:w-64 pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50">
+                           class="w-full md:w-64 pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-gray-50">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <i class="fas fa-search text-gray-400"></i>
                     </div>
                 </div>
-                <select class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50">
+                <select class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-gray-50">
                     <option value="">All Status</option>
                     <option value="active">Active</option>
                     <option value="upcoming">Upcoming</option>
                 </select>
-                <select class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50">
+                <select class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-gray-50">
                     <option value="">All Categories</option>
                     <option value="web-development">Web Development</option>
                     <option value="data-science">Data Science</option>
@@ -145,7 +145,7 @@
                 </select>
             </div>
             <div class="flex space-x-3">
-                <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange">
                     <i class="fas fa-filter mr-2"></i>
                     More Filters
                 </button>
@@ -212,7 +212,7 @@
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
                                 {{ $bootcamp['category'] }}
                             </span>
                         </td>
@@ -281,7 +281,7 @@
                     <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                         <i class="fas fa-chevron-left"></i>
                     </a>
-                    <a href="#" aria-current="page" class="relative inline-flex items-center px-4 py-2 border border-primary bg-primary text-sm font-medium text-white">
+                    <a href="#" aria-current="page" class="relative inline-flex items-center px-4 py-2 border border-orange bg-orange text-sm font-medium text-white">
                         1
                     </a>
                     <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
@@ -294,6 +294,69 @@
                         <i class="fas fa-chevron-right"></i>
                     </a>
                 </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose HRC Academy Bootcamp Section -->
+    <div class="mt-12 bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Mengapa Memilih HRC Academy Bootcamp?</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-gradient-to-br from-orange-light to-orange rounded-lg p-6 text-white">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-globe text-2xl mr-3"></i>
+                    <h3 class="text-lg font-semibold">Belajar dari Mana Saja</h3>
+                </div>
+                <p class="text-sm opacity-90">Nikmati fleksibilitas belajar online dari mana saja, kapan saja. Semua kelas kami dirancang untuk mendukung karier Anda di dunia remote healthcare global.</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-primary to-primary-dark rounded-lg p-6 text-white">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-certificate text-2xl mr-3"></i>
+                    <h3 class="text-lg font-semibold">Sertifikat Resmi dengan Penilaian Profesional</h3>
+                </div>
+                <p class="text-sm opacity-90">Dapatkan Graded Certificate of Completion, HIPAA Certificate, dan Internship Certificate. Setiap peserta menerima nilai akhir berdasarkan hasil belajar.</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-orange-light to-orange rounded-lg p-6 text-white">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-chalkboard-teacher text-2xl mr-3"></i>
+                    <h3 class="text-lg font-semibold">Mentor Profesional & Internasional</h3>
+                </div>
+                <p class="text-sm opacity-90">Belajar langsung dari mentor internasional dan praktisi kesehatan berpengalaman di bidang digital healthcare.</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-primary to-primary-dark rounded-lg p-6 text-white">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-users text-2xl mr-3"></i>
+                    <h3 class="text-lg font-semibold">Komunitas Global yang Supportif</h3>
+                </div>
+                <p class="text-sm opacity-90">Bergabunglah dengan komunitas tenaga kesehatan dari berbagai negara. Di sini kita Share, Learn, dan Grow bersama.</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-orange-light to-orange rounded-lg p-6 text-white">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-user-tie text-2xl mr-3"></i>
+                    <h3 class="text-lg font-semibold">Unlimited Professional Career Coaching</h3>
+                </div>
+                <p class="text-sm opacity-90">Dapatkan pendampingan karier tanpa batas melalui personalized 1-on-1 mentoring untuk membantu Anda mengembangkan potensi.</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-primary to-primary-dark rounded-lg p-6 text-white">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-briefcase text-2xl mr-3"></i>
+                    <h3 class="text-lg font-semibold">Program Berbasis Praktik & Magang</h3>
+                </div>
+                <p class="text-sm opacity-90">Bangun portofolio profesional melalui magang dengan klinik mitra, proyek nyata, dan pembimbingan langsung.</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-orange-light to-orange rounded-lg p-6 text-white">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-piggy-bank text-2xl mr-3"></i>
+                    <h3 class="text-lg font-semibold">Investasi Terjangkau, Nilai Maksimal</h3>
+                </div>
+                <p class="text-sm opacity-90">Nikmati pelatihan berkualitas tinggi dengan harga terjangkau, karena kami percaya setiap tenaga kesehatan berhak sukses.</p>
             </div>
         </div>
     </div>

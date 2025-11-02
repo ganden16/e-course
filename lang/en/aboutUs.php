@@ -2,8 +2,66 @@
 return [
     // Hero Section
     'hero' => [
-        'title' => 'About HealthCare Academy',
+        'title' => 'About Healthcare Remote Circle',
         'subtitle' => 'Empowering Learners Worldwide Since 2020'
+    ],
+
+    // About Data
+    'about' => [
+        'title' => 'About Healthcare Remote Circle',
+        'subtitle' => 'Empowering Learners Worldwide Since 2020',
+        'description' => 'Healthcare Remote Circle is a leading online learning platform dedicated to providing high-quality education to students worldwide. Our mission is to make education accessible, affordable, and effective for everyone.',
+        'image' => 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+        'story' => 'Founded in 2020, Healthcare Remote Circle started with a simple vision: to democratize education by leveraging technology. What started as a small startup has grown into a global learning community with over 15,000 students in more than 50 countries.',
+        'mission' => 'Our mission is to transform lives through education by providing accessible and high-quality learning experiences that empower individuals to achieve their career goals and make a positive impact in the world.',
+        'values' => [
+            [
+                'title' => 'Quality Education',
+                'description' => 'We are committed to providing the highest quality educational content, taught by industry experts and designed to deliver real-world skills.',
+                'icon' => 'fas fa-graduation-cap'
+            ],
+            [
+                'title' => 'Accessibility',
+                'description' => 'We believe education should be accessible to everyone, regardless of their background, location, or financial situation.',
+                'icon' => 'fas fa-universal-access'
+            ],
+            [
+                'title' => 'Innovation',
+                'description' => 'We constantly innovate our teaching methods and technologies to deliver the most effective learning experience.',
+                'icon' => 'fas fa-lightbulb'
+            ],
+            [
+                'title' => 'Community',
+                'description' => 'We foster a supportive learning community where students can connect, collaborate, and grow together.',
+                'icon' => 'fas fa-users'
+            ]
+        ],
+        'team' => [
+            [
+                'name' => 'Sarah Johnson',
+                'role' => 'CEO & Founder',
+                'avatar' => 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+                'bio' => 'Sarah is a passionate educator with over 15 years of experience in educational technology and online learning.'
+            ],
+            [
+                'name' => 'Michael Chen',
+                'role' => 'CTO & Co-Founder',
+                'avatar' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+                'bio' => 'Michael is a technology visionary with extensive experience in building scalable educational platforms.'
+            ],
+            [
+                'name' => 'Amanda Rodriguez',
+                'role' => 'Head of Curriculum',
+                'avatar' => 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                'bio' => 'Amanda ensures our curriculum remains relevant, comprehensive, and aligned with industry needs.'
+            ],
+            [
+                'name' => 'David Wilson',
+                'role' => 'Head of Student Success',
+                'avatar' => 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                'bio' => 'David is dedicated to ensuring our students have the support they need to succeed in their learning journey.'
+            ]
+        ]
     ],
 
     // About Story Section
@@ -28,7 +86,25 @@ return [
     // Stats Section
     'stats' => [
         'title' => 'Our Impact',
-        'subtitle' => 'Numbers that speak volumes about our commitment to education.'
+        'subtitle' => 'Numbers that speak volumes about our commitment to education.',
+        'data' => [
+            [
+                'number' => '15,000+',
+                'label' => 'Active Students'
+            ],
+            [
+                'number' => '50+',
+                'label' => 'Expert Instructors'
+            ],
+            [
+                'number' => '100+',
+                'label' => 'Courses Available'
+            ],
+            [
+                'number' => '95%',
+                'label' => 'Satisfaction Rate'
+            ]
+        ]
     ],
 
     // Values Section
@@ -56,7 +132,7 @@ return [
     // Team Section
     'team' => [
         'title' => 'Meet Our Team',
-        'subtitle' => 'The passionate individuals behind HealthCare Academy.'
+        'subtitle' => 'The passionate individuals behind Healthcare Remote Circle.'
     ],
 
     // Achievements Section

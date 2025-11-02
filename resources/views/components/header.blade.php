@@ -36,14 +36,16 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary': '#10b981',
-                        'primary-dark': '#065f46',
+                        'primary': '#009b77',
+                        'primary-dark': '#174e47',
                         'primary-light': '#d1fae5',
-                        'secondary': '#059669',
-                        'secondary-dark': '#047857',
-                        'accent': '#059669',
+                        'secondary': '#ffb433',
+                        'secondary-dark': '#ff9500',
+                        'accent': '#ffb433',
                         'dark': '#064e3b',
-                        'light': '#f0fdf4',
+                        'light': '#fcf8ef',
+                        'orange': '#ffb433',
+                        'orange-dark': '#ff9500',
                     }
                 }
             }
@@ -68,7 +70,7 @@
             animation: pulse 2s ease-in-out infinite;
         }
         .gradient-bg {
-            background: linear-gradient(135deg, #10b981 0%, #065f46 100%);
+            background: linear-gradient(135deg, #009b77 0%, #174e47 100%);
         }
         .card-hover {
             transition: all 0.3s ease;
@@ -86,7 +88,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <a href="{{ $baseUrl }}" class="text-2xl font-bold text-primary flex items-center">
-                        <img src="{{ asset($site['logo']) }}" alt="{{ $site['name'] }}" class="w-8 h-8 mr-2 float-animation"> {{ $site['name'] }}
+                        <img src="{{ asset($site['logo']) }}" alt="{{ $site['name'] }}" class="w-8 h-8 mr-2 float-animation"> Healthcare
                     </a>
                 </div>
 
@@ -94,7 +96,7 @@
                 <div class="hidden md:flex items-center space-x-6">
                     @foreach($navItems as $item)
                         <a href="{{ $item['url'] }}"
-                           class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium {{ $item['active'] ? 'text-primary' : '' }}">
+                           class="text-gray-700 hover:text-orange transition-colors duration-200 font-medium {{ $item['active'] ? 'text-primary' : '' }}">
                             {{ $item['name'] }}
                         </a>
                     @endforeach
@@ -129,7 +131,7 @@
                         </div>
                     </div>
 
-                    <a href="{{ $baseUrl }}/product" class="bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-full transition duration-300 transform hover:scale-105 shadow-md">
+                    <a href="{{ $baseUrl }}/product" class="bg-orange hover:bg-orange-dark text-white font-semibold py-2 px-6 rounded-full transition duration-300 transform hover:scale-105 shadow-md">
                         {{ $navigation['browse_courses'] }}
                     </a>
                 </div>
@@ -144,7 +146,7 @@
             <div x-show="mobileMenu" x-transition class="md:hidden mt-4 pb-4">
                 @foreach($navItems as $item)
                     <a href="{{ $item['url'] }}"
-                       class="block py-2 text-gray-700 hover:text-primary transition-colors duration-200 font-medium {{ $item['active'] ? 'text-primary' : '' }}">
+                       class="block py-2 text-gray-700 hover:text-orange transition-colors duration-200 font-medium {{ $item['active'] ? 'text-primary' : '' }}">
                         {{ $item['name'] }}
                     </a>
                 @endforeach
@@ -154,7 +156,7 @@
                     <div class="text-sm text-gray-600 mb-2">Language:</div>
                     <div class="flex space-x-2">
                         @foreach($availableLangs as $code => $lang)
-                            <a href="/lang/{{ $code }}" class="flex items-center space-x-1 px-3 py-2 text-sm rounded-lg {{ $code === $locale ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }} transition-colors">
+                            <a href="/lang/{{ $code }}" class="flex items-center space-x-1 px-3 py-2 text-sm rounded-lg {{ $code === $locale ? 'bg-orange text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }} transition-colors">
                                 <span>{{ $lang['flag'] }}</span>
                                 <span>{{ $lang['name'] }}</span>
                             </a>
@@ -163,7 +165,7 @@
                 </div>
 
                 <div class="mt-4">
-                    <a href="{{ $baseUrl }}/product" class="block w-full bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-center">
+                    <a href="{{ $baseUrl }}/product" class="block w-full bg-orange hover:bg-orange-dark text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-center">
                         {{ $navigation['browse_courses'] }}
                     </a>
                 </div>

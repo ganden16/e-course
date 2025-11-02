@@ -6,6 +6,64 @@ return [
         'subtitle' => 'We\'re here to help you on your learning journey'
     ],
 
+    // Contact Data
+    'contact' => [
+        'image' => 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+        'contact_info' => [
+            [
+                'type' => 'Email',
+                'value' => 'info@HealthCarea.com',
+                'icon' => 'fas fa-envelope'
+            ],
+            [
+                'type' => 'Phone',
+                'value' => '+1 (555) 123-4567',
+                'icon' => 'fas fa-phone'
+            ],
+            [
+                'type' => 'Address',
+                'value' => 'New York, USA',
+                'icon' => 'fas fa-map-marker-alt'
+            ]
+        ],
+        'office_hours' => [
+            [
+                'day' => 'Monday - Friday',
+                'hours' => '09:00 - 18:00'
+            ],
+            [
+                'day' => 'Saturday',
+                'hours' => '10:00 - 16:00'
+            ],
+            [
+                'day' => 'Sunday',
+                'hours' => 'Closed'
+            ]
+        ],
+        'social_links' => [
+            [
+                'name' => 'Facebook',
+                'url' => 'https://facebook.com/HealthCare',
+                'icon' => 'fab fa-facebook'
+            ],
+            [
+                'name' => 'Twitter',
+                'url' => 'https://twitter.com/HealthCare',
+                'icon' => 'fab fa-twitter'
+            ],
+            [
+                'name' => 'LinkedIn',
+                'url' => 'https://linkedin.com/company/HealthCare',
+                'icon' => 'fab fa-linkedin'
+            ],
+            [
+                'name' => 'Instagram',
+                'url' => 'https://instagram.com/HealthCare',
+                'icon' => 'fab fa-instagram'
+            ]
+        ]
+    ],
+
     // Contact Info Section
     'contact_info' => [
         'description' => 'Have questions about our courses, bootcamps, or need help with enrollment? Our team is here to help you.',

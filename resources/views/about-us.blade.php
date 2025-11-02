@@ -14,11 +14,9 @@
     $partners = $translations['partners'];
     $cta = $translations['cta'];
 
-    // Load data from JSON for dynamic content
-    $data = json_decode(file_get_contents(resource_path('json/data.json')), true);
-    $site = $data['site'];
-    $about = $data['about'];
-    $statsData = $data['stats'];
+    // Get data from language files
+    $about = $translations['about'];
+    $statsData = $stats['data'];
 
     // Build URLs with current locale
     $baseUrl = '/' . $locale;

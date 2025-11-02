@@ -7,37 +7,106 @@ return [
         'stats_title' => 'Komunitas Kami yang Berkembang',
         'stats_subtitle' => 'Bergabunglah dengan ribuan pelajar dari seluruh dunia',
         'connect_title' => 'Bergabunglah dengan Komunitas Online Kami',
-        'connect_subtitle' => 'Terhubung dengan kami di media sosial untuk pembaruan, diskusi, dan peluang jaringan.',
+        'connect_subtitle' => 'Terhubung dengan kami di media sosial untuk pembaruan, diskusi, dan Peluang jaringan.',
         'join_now' => 'Bergabung Sekarang'
+    ],
+
+    // Community Data
+    'community' => [
+        'title' => 'Bergabunglah dengan Komunitas Pembelajaran yang Berkembang Pesat',
+        'description' => 'Terhubung dengan ribuan pelajar, instruktur, dan profesional industri dari seluruh dunia.',
+        'image' => 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+        'stats' => [
+            [
+                'number' => '15,000+',
+                'label' => 'Anggota Aktif'
+            ],
+            [
+                'number' => '50+',
+                'label' => 'Negara'
+            ],
+            [
+                'number' => '1000+',
+                'label' => 'Interaksi Harian'
+            ],
+            [
+                'number' => '24/7',
+                'label' => 'Dukungan Komunitas'
+            ]
+        ],
+        'social_links' => [
+            [
+                'name' => 'Facebook',
+                'url' => 'https://www.facebook.com/share/1FgpWiY3hC/',
+                'icon' => 'fab fa-facebook',
+                'description' => 'Bergabunglah dengan komunitas Facebook kami untuk pembaruan dan diskusi harian'
+            ],
+            [
+                'name' => 'Discord',
+                'url' => 'https://discord.gg/HealthCare',
+                'icon' => 'fab fa-discord',
+                'description' => 'Terhubung dengan siswa dan instruktur secara real-time'
+            ],
+            [
+                'name' => 'LinkedIn',
+                'url' => 'https://bit.ly/3IHNbcK',
+                'icon' => 'fab fa-linkedin',
+                'description' => 'Jaringan profesional dan peluang karir'
+            ],
+            [
+                'name' => 'Twitter',
+                'url' => 'https://dub.sh/k8eqlEQ',
+                'icon' => 'fab fa-twitter',
+                'description' => 'Ikuti kami untuk berita industri dan pembaruan'
+            ],
+            [
+                'name' => 'Instagram',
+                'url' => 'https://bit.ly/InstagramHRC',
+                'icon' => 'fab fa-instagram',
+                'description' => 'Konten di balik layar dan sorotan siswa'
+            ],
+            [
+                'name' => 'YouTube',
+                'url' => 'https://dub.sh/Bnfb8p0',
+                'icon' => 'fab fa-youtube',
+                'description' => 'Tutorial gratis dan pratinjau kursus'
+            ],
+            [
+                'name' => 'TikTok',
+                'url' => 'https://dub.sh/k8eqlEQ',
+                'icon' => 'fab fa-tiktok',
+                'description' => 'Konten singkat dan tren terkini'
+            ]
+        ]
     ],
 
     // Community Benefits Section
     'benefits' => [
-        'title' => 'Mengapa Bergabung dengan Komunitas Kami?',
-        'subtitle' => 'Temukan manfaat menjadi bagian dari ekosistem pembelajaran kami.',
+        'title' => 'Mengapa Bergabung dengan Komunitas Healthcare Remote Circle?',
+        'subtitle' => 'Temukan manfaat menjadi bagian dari ekosistem belajar yang kolaboratif dan mendukung.',
         'network_peers' => [
-            'title' => 'Jaringan dengan Rekan',
-            'description' => 'Terhubung dengan pelajar dan profesional yang sehaluan dari seluruh dunia.'
+            'title' => 'Terhubung dengan Rekan Seperjuangan',
+            'description' => 'Bangun koneksi dengan sesama tenaga kesehatan, mahasiswa, dan profesional dari berbagai negara yang memiliki visi sama: sukses di dunia digital healthcare.'
         ],
         'learn_experts' => [
-            'title' => 'Pelajari dari Ahli',
-            'description' => 'Dapatkan wawasan dan saran dari ahli industri dan profesional berpengalaman.'
+            'title' => 'Belajar dari Mentor & Ahli Internasional',
+            'description' => 'Dapatkan wawasan langsung dari praktisi dan mentor berpengalaman di bidang medical virtual assistant, telehealth, hingga manajemen klinik digital.'
         ],
         'career_opportunities' => [
-            'title' => 'Peluang Karir',
-            'description' => 'Akses lowongan kerja eksklusif dan peluang kemajuan karir.'
+            'title' => 'Peluang Karir & Magang',
+            'description' => 'Akses peluang magang dengan klinik mitra, proyek nyata, dan exclusive job leads yang membantu kalian siap menghadapi dunia kerja global.'
         ],
         'share_knowledge' => [
-            'title' => 'Bagikan Pengetahuan',
-            'description' => 'Berkontribusi pada diskusi dan bagikan wawasan dan pengalaman Anda sendiri.'
+            'title' => 'Berbagi Pengetahuan & Pengalaman',
+            'description' => 'Ikuti dalam sesi diskusi, RemoteCare Talks, dan ruang belajar interaktif untuk saling berbagi wawasan, pengalaman, dan tips seputar kerja remote di bidang kesehatan.'
         ],
         'events_workshops' => [
-            'title' => 'Acara & Workshop',
-            'description' => 'Partisipasi dalam acara eksklusif, workshop, dan webinar.'
+            'title' => 'Kelas, Workshop, & Event Eksklusif',
+            'description' => 'Ikuti berbagai kegiatan seperti live webinars, Q&A sessions, dan career talks yang dirancang untuk meningkatkan keterampilan profesional kalian.'
         ],
         'achievements' => [
-            'title' => 'Pencapaian',
-            'description' => 'Rayakan tonggak sejarah Anda dan dapatkan pengakuan untuk prestasi Anda.'
+            'title' => 'Penghargaan & Apresiasi Anggota',
+            'description' => 'Kami percaya setiap kontribusi pantas dirayakan! Dapatkan kesempatan tampil di Member Spotlight, menerima reward khusus, dan menjadi inspirasi bagi anggota lain atas dedikasi dan pencapaian kalian di komunitas.'
         ]
     ],
 
@@ -63,6 +132,32 @@ return [
         ]
     ],
 
+    // Our Community Program Section
+    'our_community_program' => [
+        'title' => 'Program Komunitas Kami',
+        'description' => 'Di Healthcare Remote Circle (HRC), kami percaya bahwa pembelajaran terbaik terjadi ketika tenaga kesehatan saling berbagi, belajar bersama, dan tumbuh bersama. Melalui berbagai kegiatan komunitas, kami menghadirkan ruang interaktif untuk mendukung karier digital di bidang kesehatan.',
+        'remote_care_talk' => [
+            'title' => 'RemoteCare Talk',
+            'description' => 'Sesi webinar gratis yang menghadirkan mentor dan praktisi kesehatan dari seluruh dunia untuk berbagi wawasan tentang Medical Virtual Assistant (MVA), telehealth, dan karier di dunia digital healthcare.',
+            'icon' => 'fas fa-video'
+        ],
+        'remote_care_qa_live' => [
+            'title' => 'RemoteCare Q&A Live',
+            'description' => 'Sesi live interaktif di media sosial tempat anggota komunitas dan audiens bisa bertanya langsung tentang dunia Medical Virtual Assistant. Diskusi ringan namun penuh makna ini mencakup topik seperti EHR, telehealth, medical admin skills, dan pengalaman kerja remote.',
+            'icon' => 'fas fa-comments'
+        ],
+        'mva_discussion_room' => [
+            'title' => 'MVA Discussion Room',
+            'description' => 'Ruang belajar kolaboratif tempat para anggota belajar bersama dan saling mendukung dalam mengasah keterampilan sebagai Medical Virtual Assistant.',
+            'icon' => 'fas fa-users'
+        ],
+        'networking_job_opportunities' => [
+            'title' => 'Networking & Peluang Kerja',
+            'description' => 'Akses langsung ke berbagai peluang kerja remote dan proyek internasional di bidang kesehatan digital. Anggota komunitas HRC mendapatkan informasi untuk internship, kerja sama, dan klien global.',
+            'icon' => 'fas fa-briefcase'
+        ],
+    ],
+
     // Testimonials Section
     'testimonials' => [
         'title' => 'Cerita Komunitas',
@@ -75,5 +170,19 @@ return [
         'subtitle' => 'Ambil langkah pertama untuk terhubung dengan ribuan pelajar dan profesional di seluruh dunia.',
         'start_learning' => 'Mulai Belajar',
         'join_discord' => 'Bergabung dengan Discord'
+    ],
+
+    // Main Community Join Section
+    'main_join' => [
+        'title' => 'Bergabung dengan Komunitas Utama Kami',
+        'subtitle' => 'Dapatkan akses eksklusif ke sumber daya, mentorship, dan jaringan profesional yang akan mempercepat karir Anda di dunia kesehatan digital.',
+        'description' => 'Bergabunglah dengan ribuan profesional kesehatan yang telah memulai perjalanan mereka menuju karir digital yang sukses.',
+        'button_text' => 'Bergabung Sekarang via WhatsApp',
+        'benefits' => [
+            'Mentorship langsung dari ahli industri',
+            'Akses ke peluang karir eksklusif',
+            'Komunitas pendukung 24/7',
+            'Sumber daya pembelajaran gratis'
+        ]
     ]
 ];

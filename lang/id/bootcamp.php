@@ -131,6 +131,127 @@ return [
         'schedule_consultation' => 'Jadwalkan Konsultasi'
     ],
 
+    // What You'll Get After Completing Bootcamp Section
+    'what_youll_get' => [
+        'title' => 'Apa yang Akan Anda Dapatkan Setelah Menyelesaikan Bootcamp',
+        'certificates' => [
+            'title' => 'Sertifikat',
+            'completion' => 'Sertifikat Penyelesaian Berperingkat',
+            'hipaa' => 'Sertifikat Kepatuhan HIPAA',
+            'internship' => 'Sertifikat Magang'
+        ],
+        'career_support' => [
+            'title' => 'Dukungan Karir',
+            'networking' => 'Akses ke Peluang Jaringan & Kerja',
+            'talks' => 'Undangan Eksklusif ke RemoteCare Talks & Sesi Tanya Jawab',
+            'community' => 'Mentorship komunitas berkelanjutan melalui Jaringan Global HRC'
+        ],
+        'unlimited_mentoring' => [
+            'title' => 'Mentoring & Umpan Balik Tanpa Batas',
+            'description' => 'Dapatkan panduan personal dari mentor yang mendukung pertumbuhan Anda di luar bootcamp.'
+        ]
+    ],
+
+    // Partner Clinics Section
+    'partner_clinics' => [
+        'title' => 'Klinik Mitra & Kolaborasi Kami',
+        'subtitle' => 'Melalui kemitraan dengan klinik swasta dan penyedia layanan kesehatan, siswa mendapatkan kesempatan magang dan paparan lingkungan digital kesehatan.',
+        'benefits' => [
+            [
+                'title' => 'Bantuan Terawasi dari Asisten Medis (Medical VA) yang Terlatih',
+                'description' => 'Bantuan terawasi dari Asisten Medis (Medical VA) yang telah terlatih'
+            ],
+            [
+                'title' => 'Dukungan Sistem EHR, Koordinasi Telehealth, dan Manajemen Alur Kerja Digital',
+                'description' => 'Dukungan dalam penggunaan sistem EHR, koordinasi telehealth, serta manajemen alur kerja digital'
+            ],
+            [
+                'title' => 'Kepatuhan terhadap Standar HIPAA dan Keamanan Data Pasien',
+                'description' => 'Mematuhi standar HIPAA dan menjamin keamanan data pasien'
+            ],
+            [
+                'title' => 'Siap Bekerja dengan Klien Layanan Kesehatan Global',
+                'description' => 'Siap mendukung dan bekerja sama dengan klien layanan kesehatan di seluruh dunia'
+            ]
+        ],
+        'for_students' => [
+            'real_world_experience' => 'Pengalaman magang dunia nyata',
+            'international_exposure' => 'Paparan lingkungan dan referensi internasional',
+            'job_readiness' => 'Kesiapan bekerja dengan klien kesehatan global'
+        ]
+    ],
+
+    // Training Modules Section
+    'training_modules' => [
+        'title' => 'Apa yang Akan Anda Pelajari – Modul Pelatihan Kami',
+        'subtitle' => 'Program terstruktur 6 minggu kami menggabungkan sesi langsung, latihan praktis, proyek portofolio, dan mentorship nyata — mempersiapkan Anda untuk menjadi Medical Virtual Assistant siap kerja.',
+        'week' => 'Minggu',
+        'module' => 'Modul',
+        'objective' => 'Tujuan',
+        'internship_program' => 'Program Magang & Bimbingan Minggu 7–12',
+        'internship_subtitle' => 'Pengalaman Hands-on & Bimbingan Karir',
+        'session' => 'Sesi',
+        'topic' => 'Topik',
+        'hrc_mentors' => 'Di HRC, Anda akan belajar langsung dari mentor internasional dan profesional kesehatan berpengalaman yang membawa wawasan dunia nyata dari lapangan. Mentor kami berasal dari berbagai latar belakang kesehatan, termasuk keperawatan, administrasi medis, telehealth, dan bantuan virtual, memastikan setiap sesi menghubungkan teori dengan aplikasi praktis.',
+        'weeks_1_6' => [
+            'week_1' => [
+                'module' => 'Ikhtisar MVA & Personal Branding',
+                'objective' => 'Pahami jalur karir MVA dan bangun identitas profesional.'
+            ],
+            'week_2' => [
+                'module' => 'Terminologi Medis & Dasar HIPAA',
+                'objective' => 'Berkomunikasi secara efektif dan terapkan standar privasi data pasien internasional.'
+            ],
+            'week_3' => [
+                'module' => 'Prosedur Administrasi & Verifikasi Asuransi',
+                'objective' => 'Lakukan tugas administrasi klinik, pemeriksaan asuransi, dan otorisasi sebelumnya.'
+            ],
+            'week_4' => [
+                'module' => 'Komunikasi & Manajemen EHR',
+                'objective' => 'Kuasai komunikasi kesehatan dan dokumentasi Rekam Medis Elektronik (EHR).'
+            ],
+            'week_5' => [
+                'module' => 'Penagihan Medis, Koding & Pembuatan Catatan',
+                'objective' => 'Pelajari prinsip koding, proses penagihan, dan dokumentasi medis yang akurat.'
+            ],
+            'week_6' => [
+                'module' => 'Portofolio & Persiapan Karir',
+                'objective' => 'Bangun portofolio Anda, presentasikan studi kasus, dan siapkan wawancara kerja.'
+            ]
+        ],
+        'weeks_7_12' => [
+            'week_7' => [
+                'final_test' => [
+                    'session' => 'Ujian Akhir',
+                    'topic' => 'Tinjauan Akhir & Penilaian',
+                    'objective' => 'Menilai penguasaan siswa terhadap semua materi Bootcamp untuk memastikan kesiapan untuk tugas nyata.'
+                ],
+                'internship_onboarding' => [
+                    'session' => 'Onboarding Magang',
+                    'topic' => 'Orientasi & Penempatan Magang',
+                    'objective' => 'Membimbing trainee melalui proses onboarding dan memastikan penempatan yang berhasil dengan klinik mitra.'
+                ]
+            ],
+            'weeks_8_11' => [
+                'session' => 'Magang',
+                'topic' => 'Praktik Dunia Nyata',
+                'objective' => 'Memberikan siswa pengalaman praktis, hands-on di lingkungan klinis dan kesehatan digital yang nyata.'
+            ],
+            'week_12' => [
+                'coaching' => [
+                    'session' => 'Bimbingan 1-on-1',
+                    'topic' => 'Mentorship Personalized',
+                    'objective' => 'Mendukung setiap siswa dengan bimbingan individu untuk memperkuat keterampilan dan kepercayaan diri mereka.'
+                ],
+                'farewell' => [
+                    'session' => 'Sesi Perpisahan',
+                    'topic' => 'Refleksi & Perayaan',
+                    'objective' => 'Merayakan pencapaian, merefleksikan perjalanan pembelajaran, dan menginspirasi lulusan saat mereka memulai karir MVA mereka.'
+                ]
+            ]
+        ]
+    ],
+
     // CTA Section
     'cta' => [
         'title' => 'Siap Mengubah Karir Anda?',

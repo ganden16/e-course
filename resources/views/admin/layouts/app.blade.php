@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Admin Dashboard') - HealthCare Academy</title>
+    <title>@yield('title', 'Admin Dashboard') - Healthcare Remote Circle</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -18,13 +18,16 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary': '#3b82f6',
-                        'primary-dark': '#1e40af',
-                        'secondary': '#10b981',
-                        'accent': '#f59e0b',
+                        'primary': '#009b77',
+                        'primary-dark': '#174e47',
+                        'secondary': '#ffb433',
+                        'accent': '#ffb433',
                         'dark': '#1f2937',
                         'sidebar': '#1e293b',
                         'sidebar-hover': '#334155',
+                        'orange': '#ffb433',
+                        'orange-dark': '#ff9500',
+                        'beige': '#fcf8ef',
                     }
                 }
             }
@@ -40,12 +43,15 @@
             animation: slideIn 0.3s ease-out;
         }
         .gradient-bg {
-            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            background: linear-gradient(135deg, #009b77 0%, #174e47 100%);
+        }
+        .gradient-orange {
+            background: linear-gradient(135deg, #ffb433 0%, #ff9500 100%);
         }
     </style>
     @stack('styles')
 </head>
-<body class="bg-gray-50" x-data="{ sidebarOpen: false }">
+<body class="bg-beige" x-data="{ sidebarOpen: false }">
     <!-- Mobile Sidebar Overlay -->
     <div x-show="sidebarOpen"
          x-transition:enter="transition-opacity ease-linear duration-300"
@@ -68,7 +74,7 @@
              x-transition:leave="transition ease-in-out duration-300 transform"
              x-transition:leave-start="translate-x-0"
              x-transition:leave-end="-translate-x-full"
-             class="fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-gray-900 to-gray-800 text-white lg:static lg:inset-0 transform lg:transform-none shadow-2xl">
+             class="fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-primary to-primary-dark text-white lg:static lg:inset-0 transform lg:transform-none shadow-2xl">
 
             <!-- Sidebar Header -->
             <div class="flex items-center justify-between h-16 px-6 bg-gradient-to-r from-primary to-primary-dark border-b border-gray-700">
@@ -77,7 +83,7 @@
                         <i class="fas fa-graduation-cap text-2xl text-primary"></i>
                     </div>
                     <div>
-                        <span class="text-xl font-bold">HealthCare</span>
+                        <span class="text-xl font-bold">HRC</span>
                         <p class="text-xs text-gray-300">Admin Panel</p>
                     </div>
                 </div>
@@ -102,7 +108,7 @@
             <!-- Navigation -->
             <nav class="mt-6 px-3">
                 <div class="space-y-1">
-                    <a href="/admin/dashboard" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/dashboard') ? 'bg-primary text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
+                    <a href="/admin/dashboard" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/dashboard') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-tachometer-alt mr-3 {{ request()->is('admin/dashboard') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Dashboard</span>
                         @if(request()->is('admin/dashboard'))
@@ -115,7 +121,7 @@
                         <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Content Management</p>
                     </div>
 
-                    <a href="/admin/products" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/products*') ? 'bg-primary text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
+                    <a href="/admin/products" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/products*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-book mr-3 {{ request()->is('admin/products*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Products</span>
                         @if(request()->is('admin/products*'))
@@ -123,7 +129,7 @@
                         @endif
                     </a>
 
-                    <a href="/admin/bootcamps" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/bootcamps*') ? 'bg-primary text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
+                    <a href="/admin/bootcamps" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/bootcamps*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-campground mr-3 {{ request()->is('admin/bootcamps*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Bootcamps</span>
                         @if(request()->is('admin/bootcamps*'))
@@ -131,7 +137,7 @@
                         @endif
                     </a>
 
-                    <a href="/admin/blogs" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/blogs*') ? 'bg-primary text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
+                    <a href="/admin/blogs" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/blogs*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-blog mr-3 {{ request()->is('admin/blogs*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Blogs</span>
                         @if(request()->is('admin/blogs*'))
@@ -144,7 +150,7 @@
                         <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">People Management</p>
                     </div>
 
-                    <a href="/admin/users" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/users*') ? 'bg-primary text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
+                    <a href="/admin/users" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/users*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-users mr-3 {{ request()->is('admin/users*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Users</span>
                         @if(request()->is('admin/users*'))
@@ -152,7 +158,7 @@
                         @endif
                     </a>
 
-                    <a href="/admin/mentors" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/mentors*') ? 'bg-primary text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
+                    <a href="/admin/mentors" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/mentors*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-chalkboard-teacher mr-3 {{ request()->is('admin/mentors*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Mentors</span>
                         @if(request()->is('admin/mentors*'))
@@ -165,7 +171,7 @@
                         <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">System</p>
                     </div>
 
-                    <a href="/admin/settings" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/settings*') ? 'bg-primary text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
+                    <a href="/admin/settings" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/settings*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-cog mr-3 {{ request()->is('admin/settings*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Settings</span>
                         @if(request()->is('admin/settings*'))
@@ -175,7 +181,7 @@
                 </div>
 
                 <div class="mt-8 pt-6 border-t border-gray-700">
-                    <a href="/logout" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg text-gray-300 hover:bg-red-600 hover:text-white transition-all duration-200 group">
+                    <a href="/logout" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg text-gray-300 hover:bg-orange hover:text-white transition-all duration-200 group">
                         <i class="fas fa-sign-out-alt mr-3 text-gray-400 group-hover:text-white transition-colors duration-200"></i>
                         <span>Logout</span>
                     </a>
@@ -186,7 +192,7 @@
             <div class="absolute bottom-0 left-0 right-0 p-4">
                 <div class="flex items-center justify-between text-xs text-gray-400">
                     <span>Version 1.0.0</span>
-                    <span>© 2024 HealthCare</span>
+                    <span>© 2024 Healthcare Remote Circle</span>
                 </div>
             </div>
         </div>
@@ -197,7 +203,7 @@
             <header class="bg-white shadow-sm">
                 <div class="flex items-center justify-between px-6 py-4">
                     <div class="flex items-center">
-                        <button @click="sidebarOpen = true" class="lg:hidden p-2 rounded-md text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+                        <button @click="sidebarOpen = true" class="lg:hidden p-2 rounded-md text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange">
                             <i class="fas fa-bars text-xl"></i>
                         </button>
                         <h1 class="ml-4 lg:ml-0 text-2xl font-semibold text-gray-800">@yield('header', 'Dashboard')</h1>
@@ -209,7 +215,7 @@
                             <div class="relative">
                                 <input type="text"
                                        placeholder="Search..."
-                                       class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                       class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <i class="fas fa-search text-gray-400"></i>
                                 </div>
@@ -252,7 +258,7 @@
                         <!-- User Profile -->
                         <div class="relative" x-data="{ profileOpen: false }">
                             <button @click="profileOpen = !profileOpen"
-                                    class="flex items-center space-x-3 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                    class="flex items-center space-x-3 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange">
                                 <img class="h-8 w-8 rounded-full"
                                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                                      alt="Admin">
@@ -287,7 +293,7 @@
             </header>
 
             <!-- Main Content Area -->
-            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50">
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-beige">
                 @yield('content')
             </main>
         </div>

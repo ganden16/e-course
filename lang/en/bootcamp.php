@@ -131,6 +131,127 @@ return [
         'schedule_consultation' => 'Schedule a Consultation'
     ],
 
+    // What You'll Get After Completing Bootcamp Section
+    'what_youll_get' => [
+        'title' => 'What You\'ll Get After Completing Bootcamp',
+        'certificates' => [
+            'title' => 'Certificates',
+            'completion' => 'Graded Certificate of Completion',
+            'hipaa' => 'HIPAA Compliance Certificate',
+            'internship' => 'Internship Certificate'
+        ],
+        'career_support' => [
+            'title' => 'Career Support',
+            'networking' => 'Access to Networking & Job Opportunities',
+            'talks' => 'Exclusive invites to RemoteCare Talks & Q&A Sessions',
+            'community' => 'Ongoing community mentorship via HRC Global Network'
+        ],
+        'unlimited_mentoring' => [
+            'title' => 'Unlimited Mentoring & Feedback',
+            'description' => 'Get personalized guidance from mentors who support your growth beyond the bootcamp.'
+        ]
+    ],
+
+    // Partner Clinics Section
+    'partner_clinics' => [
+        'title' => 'Our Partner Clinics & Collaborations',
+        'subtitle' => 'Through our partnerships with private clinics and healthcare providers, students gain hands-on internship opportunities and exposure to real digital healthcare environments.',
+        'benefits' => [
+            [
+                'title' => 'Supervised assistance from trained Medical VAs',
+                'description' => 'Supervised assistance from trained Medical VAs'
+            ],
+            [
+                'title' => 'Support with EHR systems, telehealth coordination, and digital workflow management',
+                'description' => 'Support with EHR systems, telehealth coordination, and digital workflow management'
+            ],
+            [
+                'title' => 'Compliance with HIPAA standards and patient data security',
+                'description' => 'Compliance with HIPAA standards and patient data security'
+            ],
+            [
+                'title' => 'Readiness to work with global healthcare clients',
+                'description' => 'Readiness to work with global healthcare clients'
+            ]
+        ],
+        'for_students' => [
+            'real_world_experience' => 'Real-world internship experience',
+            'international_exposure' => 'International exposure and references',
+            'job_readiness' => 'Job readiness to work with global healthcare clients'
+        ]
+    ],
+
+    // Training Modules Section
+    'training_modules' => [
+        'title' => 'What You\'ll Learn – Our Training Modules',
+        'subtitle' => 'Our 6-week structured program combines live sessions, practical exercises, portfolio projects, and real mentorship — preparing you to become a job-ready Medical Virtual Assistant.',
+        'week' => 'Week',
+        'module' => 'Module',
+        'objective' => 'Objective',
+        'internship_program' => 'Weeks 7–12: Internship & Coaching Program',
+        'internship_subtitle' => 'Hands-on Experience & Career Mentorship',
+        'session' => 'Session',
+        'topic' => 'Topic',
+        'hrc_mentors' => 'At HRC, you\'ll learn directly from international mentors and experienced healthcare professionals who bring real-world insights from the field. Our mentors come from diverse healthcare backgrounds, including nursing, medical administration, telehealth, and virtual assistance, ensuring every session connects theory with practical application.',
+        'weeks_1_6' => [
+            'week_1' => [
+                'module' => 'MVA Overview & Personal Branding',
+                'objective' => 'Understand MVA career path and build a professional identity.'
+            ],
+            'week_2' => [
+                'module' => 'Medical Terminology & HIPAA Basics',
+                'objective' => 'Communicate effectively and apply international patient data privacy standards.'
+            ],
+            'week_3' => [
+                'module' => 'Admin Procedures & Insurance Verification',
+                'objective' => 'Perform clinic administrative tasks, insurance checks, and prior authorizations.'
+            ],
+            'week_4' => [
+                'module' => 'Communication & EHR Management',
+                'objective' => 'Master healthcare communication and Electronic Health Records (EHR) documentation.'
+            ],
+            'week_5' => [
+                'module' => 'Medical Billing, Coding & Scribing',
+                'objective' => 'Learn coding principles, billing process, and accurate medical documentation.'
+            ],
+            'week_6' => [
+                'module' => 'Portfolio & Career Preparation',
+                'objective' => 'Build your portfolio, present case studies, and prepare for job interviews.'
+            ]
+        ],
+        'weeks_7_12' => [
+            'week_7' => [
+                'final_test' => [
+                    'session' => 'Final Test',
+                    'topic' => 'Final Review & Assessment',
+                    'objective' => 'Assess students\' mastery of all Bootcamp materials to ensure readiness for real tasks.'
+                ],
+                'internship_onboarding' => [
+                    'session' => 'Internship Onboarding',
+                    'topic' => 'Internship Orientation & Placement',
+                    'objective' => 'Guide trainees through onboarding process and ensure successful placement with partner clinics.'
+                ]
+            ],
+            'weeks_8_11' => [
+                'session' => 'Internship',
+                'topic' => 'Real-World Practice',
+                'objective' => 'Provide students with practical, hands-on experience in real clinical and digital healthcare environments.'
+            ],
+            'week_12' => [
+                'coaching' => [
+                    'session' => '1-on-1 Coaching',
+                    'topic' => 'Personalized Mentorship',
+                    'objective' => 'Support each student with individual coaching to strengthen their skills and confidence.'
+                ],
+                'farewell' => [
+                    'session' => 'Farewell Session',
+                    'topic' => 'Reflection & Celebration',
+                    'objective' => 'Celebrate achievements, reflect on learning journey, and inspire graduates as they begin their MVA careers.'
+                ]
+            ]
+        ]
+    ],
+
     // CTA Section
     'cta' => [
         'title' => 'Ready to Transform Your Career?',

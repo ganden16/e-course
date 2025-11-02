@@ -45,13 +45,13 @@
     <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
         <!-- Progress Bar -->
         <div class="bg-gray-200 h-1">
-            <div class="bg-primary h-1 w-3/5"></div>
+            <div class="bg-orange h-1 w-3/5"></div>
         </div>
 
         <!-- Tab Navigation -->
         <div class="border-b border-gray-200">
             <nav class="flex -mb-px">
-                <button class="py-4 px-6 text-center border-b-2 border-primary font-medium text-sm text-primary">
+                <button class="py-4 px-6 text-center border-b-2 border-orange font-medium text-sm text-orange">
                     Basic Information
                 </button>
                 <button class="py-4 px-6 text-center border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
@@ -73,7 +73,7 @@
                     <!-- Basic Information -->
                     <div>
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full mr-3 text-sm">1</span>
+                            <span class="flex items-center justify-center w-8 h-8 bg-orange text-white rounded-full mr-3 text-sm">1</span>
                             Basic Information
                         </h2>
                         <div class="space-y-6">
@@ -82,7 +82,7 @@
                                 <input type="text"
                                        name="title"
                                        value="{{ $productData['title'] ?? '' }}"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                                        placeholder="Enter product title">
                             </div>
 
@@ -90,14 +90,14 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
                                 <textarea rows="5"
                                           name="description"
-                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
+                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                                           placeholder="Describe your product">{{ $productData['description'] ?? '' }}</textarea>
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                                    <select name="category" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200">
+                                    <select name="category" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
                                         <option value="">Select Category</option>
                                         <option value="Web Development" {{ ($productData['category'] ?? '') === 'Web Development' ? 'selected' : '' }}>Web Development</option>
                                         <option value="Data Science" {{ ($productData['category'] ?? '') === 'Data Science' ? 'selected' : '' }}>Data Science</option>
@@ -110,7 +110,7 @@
 
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Level</label>
-                                    <select name="level" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200">
+                                    <select name="level" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
                                         <option value="">Select Level</option>
                                         <option value="Beginner" {{ ($productData['level'] ?? '') === 'Beginner' ? 'selected' : '' }}>Beginner</option>
                                         <option value="Intermediate" {{ ($productData['level'] ?? '') === 'Intermediate' ? 'selected' : '' }}>Intermediate</option>
@@ -126,13 +126,13 @@
                                     <input type="text"
                                            name="duration"
                                            value="{{ $productData['duration'] ?? '' }}"
-                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                                            placeholder="e.g. 42 hours">
                                 </div>
 
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Instructor</label>
-                                    <select name="instructor" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200">
+                                    <select name="instructor" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
                                         <option value="">Select Instructor</option>
                                         @foreach($mentors as $mentor)
                                             <option value="{{ $mentor['name'] }}" {{ ($productData['instructor'] ?? '') === $mentor['name'] ? 'selected' : '' }}>
@@ -156,7 +156,7 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Features (one per line)</label>
                                 <textarea rows="6"
                                           name="features"
-                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
+                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                                           placeholder="Enter product features, one per line">{{ implode("\n", $productData['features'] ?? []) }}</textarea>
                                 <p class="text-xs text-gray-500 mt-2">Enter each feature on a new line</p>
                             </div>
@@ -174,7 +174,7 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Curriculum (one per line)</label>
                                 <textarea rows="6"
                                           name="curriculum"
-                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
+                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                                           placeholder="Enter curriculum topics, one per line">{{ implode("\n", $productData['curriculum'] ?? []) }}</textarea>
                                 <p class="text-xs text-gray-500 mt-2">Enter each curriculum topic on a new line</p>
                             </div>
@@ -199,7 +199,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <button type="button" class="w-full bg-white border border-gray-300 rounded-lg py-3 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
+                            <button type="button" class="w-full bg-white border border-gray-300 rounded-lg py-3 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
                                 <i class="fas fa-upload mr-2"></i>
                                 Upload New Image
                             </button>
@@ -215,7 +215,7 @@
                                 <input type="number"
                                        name="price"
                                        value="{{ $productData['price'] ?? '' }}"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                                        placeholder="0">
                             </div>
 
@@ -224,7 +224,7 @@
                                 <input type="number"
                                        name="original_price"
                                        value="{{ $productData['original_price'] ?? '' }}"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200"
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
                                        placeholder="0">
                             </div>
                         </div>
@@ -236,7 +236,7 @@
                         <div class="space-y-4">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Product Status</label>
-                                <select name="status" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200">
+                                <select name="status" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
                                     <option value="active" {{ ($productData['status'] ?? '') === 'active' ? 'selected' : '' }}>Active</option>
                                     <option value="inactive" {{ ($productData['status'] ?? '') === 'inactive' ? 'selected' : '' }}>Inactive</option>
                                 </select>
@@ -247,7 +247,7 @@
                     <!-- Actions -->
                     <div class="bg-gray-50 rounded-xl p-6">
                         <div class="flex flex-col space-y-3">
-                            <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 shadow-lg">
+                            <button type="submit" class="w-full bg-orange hover:bg-orange-dark text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 shadow-lg">
                                 {{ isset($product) ? 'Update Product' : 'Create Product' }}
                             </button>
                             <a href="/admin/products" class="w-full bg-white hover:bg-gray-50 text-gray-700 font-medium py-3 px-4 rounded-lg border border-gray-300 text-center transition-colors duration-200">

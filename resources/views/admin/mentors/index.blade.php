@@ -71,7 +71,7 @@
                 <p class="mt-2 text-sm text-gray-600">Manage and monitor all expert mentors and instructors</p>
             </div>
             <div class="mt-4 md:mt-0">
-                <a href="/admin/mentors/create" class="inline-flex items-center px-4 py-2 bg-primary border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
+                <a href="/admin/mentors/create" class="inline-flex items-center px-4 py-2 bg-orange border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-orange-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
                     <i class="fas fa-plus mr-2 -ml-1"></i>
                     Add New Mentor
                 </a>
@@ -85,7 +85,7 @@
             <div class="p-6">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange to-orange-dark rounded-xl flex items-center justify-center shadow-lg">
                             <i class="fas fa-chalkboard-teacher text-white text-xl"></i>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
             <div class="p-6">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center shadow-lg">
                             <i class="fas fa-check-circle text-white text-xl"></i>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
             <div class="p-6">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange to-orange-dark rounded-xl flex items-center justify-center shadow-lg">
                             <i class="fas fa-pause-circle text-white text-xl"></i>
                         </div>
                     </div>
@@ -151,7 +151,7 @@
             <div class="p-6">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center shadow-lg">
                             <i class="fas fa-users text-white text-xl"></i>
                         </div>
                     </div>
@@ -177,17 +177,17 @@
                 <div class="relative">
                     <input type="text"
                            placeholder="Search mentors..."
-                           class="w-full md:w-64 pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50">
+                           class="w-full md:w-64 pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-gray-50">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <i class="fas fa-search text-gray-400"></i>
                     </div>
                 </div>
-                <select class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50">
+                <select class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-gray-50">
                     <option value="">All Status</option>
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
                 </select>
-                <select class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50">
+                <select class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-gray-50">
                     <option value="">All Specializations</option>
                     <option value="web-development">Web Development</option>
                     <option value="data-science">Data Science</option>
@@ -196,7 +196,7 @@
                 </select>
             </div>
             <div class="flex space-x-3">
-                <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange">
                     <i class="fas fa-filter mr-2"></i>
                     More Filters
                 </button>
@@ -222,7 +222,7 @@
                     @endif
                 </div>
                 <div class="absolute top-0 left-0 m-3">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
                         {{ $mentor['specialization'] }}
                     </span>
                 </div>
@@ -266,7 +266,7 @@
                     </div>
                 </div>
                 <div class="flex space-x-2">
-                    <a href="/admin/mentors/{{ $mentor['id'] }}/edit" class="flex-1 inline-flex justify-center items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                    <a href="/admin/mentors/{{ $mentor['id'] }}/edit" class="flex-1 inline-flex justify-center items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange">
                         <i class="fas fa-edit mr-1"></i>
                         Edit
                     </a>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - HealthCare Academy</title>
+    <title>Login - Healthcare Remote Circle</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -53,7 +53,7 @@
                         <div class="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-full mb-4 float-animation">
                             <i class="fas fa-graduation-cap text-white text-2xl"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-800">HealthCare Academy</h2>
+                        <h2 class="text-2xl font-bold text-gray-800">Healthcare Remote Circle</h2>
                         <p class="text-gray-600 mt-2">Selamat datang kembali!</p>
                     </div>
 
@@ -256,7 +256,7 @@
 
             <!-- Footer Links -->
             <div class="text-center mt-8 text-sm text-gray-600">
-                <p>&copy; 2024 HealthCare Academy. All rights reserved.</p>
+                <p>&copy; 2024 Healthcare Remote Circle. All rights reserved.</p>
                 <div class="mt-2 space-x-4">
                     <a href="#" class="hover:text-primary transition-colors duration-200">Privacy Policy</a>
                     <a href="#" class="hover:text-primary transition-colors duration-200">Terms of Service</a>
