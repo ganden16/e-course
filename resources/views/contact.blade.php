@@ -129,7 +129,7 @@
                         </div>
                     </div>
 
-                    <div class="mb-6">
+                    {{-- <div class="mb-6">
                         <label for="subject" class="block text-gray-700 font-medium mb-2">{{ $contact_form['subject'] }}</label>
                         <select id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
                             <option value="">{{ $contact_form['select_subject'] }}</option>
@@ -140,19 +140,19 @@
                             <option value="billing">{{ $contact_form['billing_payment'] }}</option>
                             <option value="partnership">{{ $contact_form['partnership_opportunities'] }}</option>
                         </select>
-                    </div>
+                    </div> --}}
 
                     <div class="mb-6">
                         <label for="message" class="block text-gray-700 font-medium mb-2">{{ $contact_form['message'] }}</label>
                         <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
                     </div>
 
-                    <div class="mb-6">
+                    {{-- <div class="mb-6">
                         <label class="flex items-center">
                             <input type="checkbox" class="mr-2">
                             <span class="text-gray-700">{!! $contact_form['privacy_terms'] !!}</span>
                         </label>
-                    </div>
+                    </div> --}}
 
                     <button type="submit" class="w-full bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
                         {{ $contact_form['send_message'] }}

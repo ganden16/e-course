@@ -82,7 +82,7 @@
                             <div class="flex items-center">
                                 <i class="fas fa-clock text-secondary mr-3"></i>
                                 <div>
-                                    <p class="text-sm text-gray-500">Jadwal</p>
+                                    <p class="text-sm text-gray-500">{{ $locale == 'id' ? 'Jadwal' : 'Schedule' }}</p>
                                     <p class="font-medium">{{ $bootcamp['schedule'] }}</p>
                                 </div>
                             </div>
@@ -344,8 +344,8 @@
                 <!-- Certificates -->
                 <div class="bg-white rounded-2xl p-8 shadow-lg">
                     <div class="text-center mb-6">
-                        <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
-                            <i class="fas fa-certificate text-3xl"></i>
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                            <i class="fa-solid fa-certificate text-secondary text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-800 mb-6">{{ $translations['what_youll_get']['certificates']['title'] }}</h3>
                     </div>
@@ -368,8 +368,8 @@
                 <!-- Career Support -->
                 <div class="bg-white rounded-2xl p-8 shadow-lg">
                     <div class="text-center mb-6">
-                        <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
-                            <i class="fas fa-users text-3xl"></i>
+                        <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                            <i class="text-secondary fas fa-users text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-800 mb-6">{{ $translations['what_youll_get']['career_support']['title'] }}</h3>
                     </div>
@@ -392,8 +392,8 @@
                 <!-- Unlimited Mentoring -->
                 <div class="bg-white rounded-2xl p-8 shadow-lg">
                     <div class="text-center mb-6">
-                        <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
-                            <i class="fas fa-comments text-3xl"></i>
+                        <div class="bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                            <i class="text-secondary fas fa-comments text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-800 mb-6">{{ $translations['what_youll_get']['unlimited_mentoring']['title'] }}</h3>
                     </div>

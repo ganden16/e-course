@@ -1,693 +1,693 @@
-{
-  "site": {
-    "name": "Healthcare Remote Circle",
-    "tagline": "Buka Potensi Anda dengan Pembelajaran Digital",
-    "description": "Platform e-learning terdepan yang menyediakan kursus digital dan bootcamp berkualitas untuk meningkatkan karir Anda.",
-    "logo": "fas fa-graduation-cap",
-    "email": "info@HealthCare.com",
-    "phone": "+62 812-3456-7890",
-    "address": "Jakarta, Indonesia"
-  },
-  "navigation": [
-    {
-      "name": "Beranda",
-      "url": "/",
-      "active": true
-    },
-    {
-      "name": "Tentang Kami",
-      "url": "/about-us",
-      "active": false
-    },
-    {
-      "name": "Produk",
-      "url": "/product",
-      "active": false
-    },
-    {
-      "name": "Blog",
-      "url": "/blog",
-      "active": false
-    },
-    {
-      "name": "Kontak",
-      "url": "/contact",
-      "active": false
-    },
-    {
-      "name": "Bootcamp",
-      "url": "/bootcamp",
-      "active": false
-    },
-    {
-      "name": "Komunitas Kami",
-      "url": "/community",
-      "active": false
-    }
-  ],
-  "hero": {
-    "title": "Ubah Karir Anda dengan Pembelajaran Digital",
-    "subtitle": "Bergabunglah dengan ribuan siswa yang telah mengembangkan karir mereka melalui kursus dan bootcamp komprehensif kami",
-    "description": "Akses kursus digital berkualitas tinggi dan bootcamp intensif yang diajarkan oleh ahli industri. Belajar dengan kecepatan Anda sendiri, kapan saja, di mana saja.",
-    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
-    "cta_text": "Jelajahi Kursus",
-    "cta_secondary": "Bergabung dengan Komunitas"
-  },
-  "stats": [
-    {
-      "number": "15,000+",
-      "label": "Siswa Aktif"
-    },
-    {
-      "number": "50+",
-      "label": "Instruktur Ahli"
-    },
-    {
-      "number": "100+",
-      "label": "Kursus Tersedia"
-    },
-    {
-      "number": "95%",
-      "label": "Tingkat Kepuasan"
-    }
-  ],
-  "features": [
-    {
-      "emoji": "🌍",
-      "title": "Belajar dari Mana Saja",
-      "description": "Nikmati fleksibilitas belajar online dari mana saja, kapan saja. Semua kelas kami dirancang untuk mendukung karier kalian di dunia remote healthcare global."
-    },
-    {
-      "emoji": "🎓",
-      "title": "Sertifikat Resmi dengan Penilaian Profesional",
-      "description": "Dapatkan Graded Certificate of Completion, HIPAA Certificate, dan Internship Certificate. Setiap peserta menerima nilai akhir berdasarkan hasil belajar, performa praktik, dan pencapaian magang."
-    },
-    {
-      "emoji": "👩‍⚕️",
-      "title": "Mentor Profesional & Internasional",
-      "description": "Belajar langsung dari mentor internasional dan praktisi kesehatan berpengalaman di bidang digital healthcare dan administrasi medis jarak jauh."
-    },
-    {
-      "emoji": "💬",
-      "title": "Komunitas Global yang Supportif",
-      "description": "Bergabunglah dengan komunitas tenaga kesehatan dari berbagai negara. Di sini kita Share, Learn, dan Grow bersama menuju karier digital yang berkelanjutan."
-    },
-    {
-      "emoji": "💼",
-      "title": "Unlimited Professional Career Coaching",
-      "description": "Dapatkan pendampingan karier tanpa batas melalui personalized 1-on-1 mentoring untuk membantu kalian mengembangkan potensi, membangun portofolio, dan siap menghadapi dunia kerja global."
-    },
-    {
-      "emoji": "📈",
-      "title": "Program Berbasis Praktik & Magang",
-      "description": "Bangun portofolio profesional melalui magang dengan klinik mitra, proyek nyata, dan pembimbingan langsung dari mentor berpengalaman."
-    },
-    {
-      "emoji": "💡",
-      "title": "Investasi Terjangkau, Nilai Maksimal",
-      "description": "Nikmati pelatihan berkualitas tinggi dengan harga terjangkau, karena kami percaya setiap tenaga kesehatan berhak sukses di dunia digital."
-    }
-  ],
-  "testimonials": [
-    {
-      "name": "Sarah Johnson",
-      "role": "Pengembang Web",
-      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-      "content": "Healthcare Remote Circle benar-benar mengubah karir saya. Kursusnya sangat komprehensif dan instrukturnya luar biasa!"
-    },
-    {
-      "name": "Michael Chen",
-      "role": "Ilmuwan Data",
-      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-      "content": "Bootcamp yang saya ikuti sangat intensif dan praktis. Saya mendapatkan pekerjaan dalam sebulan setelah menyelesaikannya."
-    },
-    {
-      "name": "Amanda Rodriguez",
-      "role": "Desainer UX",
-      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      "content": "Fleksibilitas belajar dengan kecepatan saya sendiri sambil bekerja penuh waktu sangat berharga. Sangat direkomendasikan!"
-    }
-  ],
-  "products": [
-    {
-      "id": 1,
-      "title": "Bootcamp Pengembangan Web Lengkap",
-      "category": "Pengembangan Web",
-      "price": 899000,
-      "original_price": 1499000,
-      "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-      "instructor": "David Anderson",
-      "rating": 4.8,
-      "students": 3420,
-      "duration": "42 hours",
-      "level": "Pemula hingga Lanjutan",
-      "description": "Pelajari pengembangan web dari nol dengan HTML, CSS, JavaScript, React, Node.js, dan lainnya.",
-      "features": [
-        "42 jam konten video",
-        "100+ latihan coding",
-        "5 proyek dunia nyata",
-        "Sertifikat penyelesaian",
-        "Akses seumur hidup",
-        "Akses aplikasi mobile"
-      ]
-    },
-    {
-      "id": 2,
-      "title": "Python untuk Ilmu Data",
-      "category": "Ilmu Data",
-      "price": 799000,
-      "original_price": 1299000,
-      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "instructor": "Dr. Sarah Mitchell",
-      "rating": 4.9,
-      "students": 2850,
-      "duration": "36 hours",
-      "level": "Menengah",
-      "description": "Kuasai pemrograman Python untuk ilmu data, machine learning, dan analisis data.",
-      "features": [
-        "36 jam konten video",
-        "80+ latihan coding",
-        "10 proyek dunia nyata",
-        "Sertifikat penyelesaian",
-        "Akses seumur hidup",
-        "Sumber daya yang dapat diunduh"
-      ]
-    },
-    {
-      "id": 3,
-      "title": "Penguasaan Pemasaran Digital",
-      "category": "Pemasaran",
-      "price": 699000,
-      "original_price": 1199000,
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
-      "instructor": "Emma Thompson",
-      "rating": 4.7,
-      "students": 1980,
-      "duration": "28 hours",
-      "level": "Pemula",
-      "description": "Pelajari strategi pemasaran digital termasuk SEO, media sosial, pemasaran konten, dan lainnya.",
-      "features": [
-        "28 jam konten video",
-        "50+ tugas praktis",
-        "8 proyek dunia nyata",
-        "Sertifikat penyelesaian",
-        "Akses seumur hidup",
-        "Dukungan komunitas"
-      ]
-    },
-    {
-      "id": 4,
-      "title": "Dasar-dasar Desain UI/UX",
-      "category": "Desain",
-      "price": 749000,
-      "original_price": 1249000,
-      "image": "https://images.unsplash.com/photo-1559028006-44a26f024d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "instructor": "Alex Rodriguez",
-      "rating": 4.8,
-      "students": 2150,
-      "duration": "32 hours",
-      "level": "Pemula hingga Menengah",
-      "description": "Kuasai prinsip-prinsip desain antarmuka pengguna dan pengalaman pengguna.",
-      "features": [
-        "32 jam konten video",
-        "60+ latihan desain",
-        "6 proyek portofolio",
-        "Sertifikat penyelesaian",
-        "Akses seumur hidup",
-        "Akses alat desain"
-      ]
-    },
-    {
-      "id": 5,
-      "title": "Pengembangan Aplikasi Mobile dengan Flutter",
-      "category": "Pengembangan Mobile",
-      "price": 849000,
-      "original_price": 1399000,
-      "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "instructor": "James Wilson",
-      "rating": 4.6,
-      "students": 1680,
-      "duration": "38 hours",
-      "level": "Menengah",
-      "description": "Bangun aplikasi mobile yang indah untuk iOS dan Android menggunakan Flutter dan Dart.",
-      "features": [
-        "38 jam konten video",
-        "70+ latihan coding",
-        "8 aplikasi lengkap",
-        "Sertifikat penyelesaian",
-        "Akses seumur hidup",
-        "Kode sumber termasuk"
-      ]
-    },
-    {
-      "id": 6,
-      "title": "Dasar-dasar Keamanan Siber",
-      "category": "Keamanan",
-      "price": 899000,
-      "original_price": 1499000,
-      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "instructor": "Robert Chang",
-      "rating": 4.9,
-      "students": 1230,
-      "duration": "40 hours",
-      "level": "Menengah",
-      "description": "Pelajari dasar-dasar keamanan siber, peretasan etis, dan keamanan jaringan.",
-      "features": [
-        "40 jam konten video",
-        "90+ latihan praktis",
-        "10 proyek keamanan",
-        "Sertifikat penyelesaian",
-        "Akses seumur hidup",
-        "Akses lab virtual"
-      ]
-    }
-  ],
-  "blogs": [
-    {
-      "id": 1,
-      "title": "Masa Depan Pengembangan Web: Tren yang Perlu Diperhatikan di 2024",
-      "excerpt": "Jelajahi tren terbaru yang membentuk masa depan pengembangan web, dari alat bertenaga AI hingga kerangka kerja canggih.",
-      "content": "Pengembangan web terus berkembang, dan tetap menjadi yang terdepan sangat penting bagi para pengembang. Dalam panduan komprehensif ini, kami akan menjelajahi tren-tren kunci yang akan mendefinisikan lanskap pengembangan web di 2024. Dari munculnya coding berbantuan AI hingga pentingnya kinerja web yang semakin meningkat, kami akan membahas semua yang perlu Anda ketahui untuk tetap kompetitif di bidang yang berubah dengan cepat ini.",
-      "author": "David Anderson",
-      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      "date": "2024-01-15",
-      "read_time": "8 min read",
-      "category": "Pengembangan Web",
-      "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-      "tags": ["Pengembangan Web", "Tren", "2024", "Teknologi"]
-    },
-    {
-      "id": 2,
-      "title": "Memulai dengan Machine Learning: Panduan untuk Pemula",
-      "excerpt": "Pelajari dasar-dasar machine learning dan cara memulai perjalanan Anda untuk menjadi insinyur ML.",
-      "content": "Machine learning merevolusi industri di seluruh dunia, tetapi memulainya bisa terasa menakutkan. Panduan ini menguraikan dasar-dasar ML, dari konsep dasar hingga implementasi praktis. Kami akan membahas algoritma, alat, dan teknik penting yang Anda butuhkan untuk memulai perjalanan machine learning Anda, bersama dengan contoh dunia nyata dan proyek hands-on untuk memperkuat pemahaman Anda.",
-      "author": "Dr. Sarah Mitchell",
-      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-      "date": "2024-01-12",
-      "read_time": "12 min read",
-      "category": "Ilmu Data",
-      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "tags": ["Machine Learning", "Ilmu Data", "Pemula", "AI"]
-    },
-    {
-      "id": 3,
-      "title": "Strategi Pemasaran Digital yang Efektif untuk Usaha Kecil",
-      "excerpt": "Temukan strategi pemasaran digital yang hemat biaya yang dapat membantu usaha kecil bersaing dengan pesaing yang lebih besar.",
-      "content": "Pemasaran digital tidak harus mahal, terutama untuk usaha kecil. Dalam artikel ini, kami menjelajahi strategi terbukti yang memberikan dampak maksimal dengan investasi minimal. Dari pemasaran media sosial hingga pembuatan konten, kampanye email hingga optimasi SEO, kami akan membahas taktik penting yang dapat membantu usaha kecil Anda berkembang di lanskap digital.",
-      "author": "Emma Thompson",
-      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      "date": "2024-01-10",
-      "read_time": "10 min read",
-      "category": "Pemasaran",
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
-      "tags": ["Pemasaran Digital", "Usaha Kecil", "Strategi", "SEO"]
-    },
-    {
-      "id": 4,
-      "title": "Psikologi Desain UX yang Hebat",
-      "excerpt": "Memahami prinsip-prinsip psikologis yang mendasari desain pengalaman pengguna yang efektif.",
-      "content": "Desain UX yang hebat melampaui estetika - ini tentang memahami bagaimana pengguna berpikir, merasa, dan berperilaku. Artikel ini menggali prinsip-prinsip psikologis yang menginformasikan keputusan desain yang efektif, dari teori beban kognitif hingga desain emosional. Pelajari cara membuat antarmuka yang tidak hanya terlihat bagus tetapi juga terasa intuitif dan memuaskan untuk digunakan.",
-      "author": "Alex Rodriguez",
-      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-      "date": "2024-01-08",
-      "read_time": "7 min read",
-      "category": "Desain",
-      "image": "https://images.unsplash.com/photo-1559028006-44a26f024d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "tags": ["Desain UX", "Psikologi", "Pengalaman Pengguna", "Prinsip Desain"]
-    },
-    {
-      "id": 5,
-      "title": "Pengembangan Mobile-First: Praktik Terbaik dan Teknik",
-      "excerpt": "Pelajari cara menerapkan strategi pengembangan mobile-first untuk membuat aplikasi web responsif yang lebih baik.",
-      "content": "Dengan perangkat mobile menyumbang lebih dari setengah dari semua lalu lintas web, pengembangan mobile-first tidak lagi opsional - ini sangat penting. Panduan komprehensif ini mencakup praktik terbaik, teknik, dan alat untuk menerapkan pendekatan mobile-first. Dari prinsip desain responsif hingga optimasi kinerja, kami akan membantu Anda membuat aplikasi web yang berfungsi dengan mulus di semua perangkat.",
-      "author": "James Wilson",
-      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      "date": "2024-01-05",
-      "read_time": "9 min read",
-      "category": "Pengembangan Mobile",
-      "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "tags": ["Pengembangan Mobile", "Desain Responsif", "Praktik Terbaik", "Pengembangan Web"]
-    },
-    {
-      "id": 6,
-      "title": "Keamanan Siber di Era Kerja Jarak Jauh",
-      "excerpt": "Praktik keamanan siber penting untuk melindungi data dan sistem Anda di lingkungan kerja jarak jauh yang semakin meningkat.",
-      "content": "Pergeseran ke kerja jarak jauh telah menciptakan tantangan keamanan siber baru bagi organisasi dan individu. Artikel ini mengeksplorasi praktik dan alat penting yang diperlukan untuk menjaga keamanan di lingkungan kerja yang terdistribusi. Dari metode koneksi yang aman hingga strategi perlindungan data, kami akan membahas semua yang perlu Anda ketahui untuk tetap aman saat bekerja dari jarak jauh.",
-      "author": "Robert Chang",
-      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-      "date": "2024-01-03",
-      "read_time": "11 min read",
-      "category": "Keamanan",
-      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "tags": ["Keamanan Siber", "Kerja Jarak Jauh", "Perlindungan Data", "Praktik Keamanan Terbaik"]
-    }
-  ],
-  "bootcamps": [
-    {
-      "id": 1,
-      "title": "Bootcamp Pengembangan Web Full Stack",
-      "category": "Pengembangan Web",
-      "price": 5999000,
-      "original_price": 8999000,
-      "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-      "instructor": "David Anderson",
-      "rating": 4.9,
-      "students": 450,
-      "duration": "12 weeks",
-      "level": "Pemula hingga Lanjutan",
-      "schedule": "Senin - Jumat, 09:00 - 17:00",
-      "start_date": "2024-02-01",
-      "description": "Bootcamp intensif 12 minggu yang mencakup pengembangan front-end dan back-end, database, dan deployment.",
-      "features": [
-        "480 jam pelatihan intensif",
-        "20+ proyek dunia nyata",
-        "Mentor 1-on-1",
-        "Layanan karir dan penempatan kerja",
-        "Sertifikat penyelesaian",
-        "Akses jaringan alumni"
-      ],
-      "curriculum": [
-        "Dasar-dasar HTML, CSS, JavaScript",
-        "React.js dan kerangka kerja front-end modern",
-        "Node.js, Express.js dan pengembangan back-end",
-        "Desain dan manajemen database",
-        "Pengembangan dan integrasi API",
-        "Strategi DevOps dan deployment",
-        "Kontrol versi dengan Git",
-        "Metodologi pengembangan Agile"
-      ]
-    },
-    {
-      "id": 2,
-      "title": "Bootcamp Ilmu Data & Machine Learning",
-      "category": "Ilmu Data",
-      "price": 6999000,
-      "original_price": 9999000,
-      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "instructor": "Dr. Sarah Mitchell",
-      "rating": 4.8,
-      "students": 320,
-      "duration": "14 weeks",
-      "level": "Menengah",
-      "schedule": "Senin - Jumat, 09:00 - 17:00",
-      "start_date": "2024-02-15",
-      "description": "Bootcamp ilmu data komprehensif yang mencakup statistik, machine learning, dan visualisasi data.",
-      "features": [
-        "560 jam pelatihan intensif",
-        "25+ proyek dunia nyata",
-        "Mentor 1-on-1",
-        "Layanan karir dan penempatan kerja",
-        "Sertifikat penyelesaian",
-        "Acara jaringan industri"
-      ],
-      "curriculum": [
-        "Pemrograman Python untuk ilmu data",
-        "Analisis statistik dan pengujian hipotesis",
-        "Algoritma dan teknik machine learning",
-        "Deep learning dan jaringan saraf",
-        "Visualisasi data dengan Tableau dan Power BI",
-        "Teknologi big data (Hadoop, Spark)",
-        "Pemrosesan bahasa alami",
-        "Dasar-dasar visi komputer"
-      ]
-    },
-    {
-      "id": 3,
-      "title": "Bootcamp Desain UX/UI",
-      "category": "Desain",
-      "price": 5499000,
-      "original_price": 7999000,
-      "image": "https://images.unsplash.com/photo-1559028006-44a26f024d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "instructor": "Alex Rodriguez",
-      "rating": 4.7,
-      "students": 280,
-      "duration": "10 weeks",
-      "level": "Pemula hingga Menengah",
-      "schedule": "Senin - Jumat, 09:00 - 17:00",
-      "start_date": "2024-03-01",
-      "description": "Bootcamp desain intensif yang mencakup penelitian pengguna, desain antarmuka, dan prototyping.",
-      "features": [
-        "400 jam pelatihan intensif",
-        "15+ proyek portofolio",
-        "Mentor 1-on-1",
-        "Layanan karir dan penempatan kerja",
-        "Sertifikat penyelesaian",
-        "Akses alat desain"
-      ],
-      "curriculum": [
-        "Berpikir desain dan penelitian pengguna",
-        "Arsitektur informasi dan wireframing",
-        "Prinsip desain visual dan tipografi",
-        "Prototyping dengan Figma dan Adobe XD",
-        "Pengujian kegunaan dan iterasi",
-        "Desain responsif untuk web dan mobile",
-        "Sistem desain dan pustaka komponen",
-        "Pengembangan dan presentasi portofolio"
-      ]
-    },
-    {
-      "id": 4,
-      "title": "Bootcamp Penguasaan Pemasaran Digital",
-      "category": "Pemasaran",
-      "price": 4999000,
-      "original_price": 7499000,
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
-      "instructor": "Emma Thompson",
-      "rating": 4.6,
-      "students": 350,
-      "duration": "8 weeks",
-      "level": "Pemula",
-      "schedule": "Senin - Jumat, 09:00 - 17:00",
-      "start_date": "2024-03-15",
-      "description": "Bootcamp pemasaran digital komprehensif yang mencakup SEO, media sosial, pemasaran konten, dan analitik.",
-      "features": [
-        "320 jam pelatihan intensif",
-        "12+ kampanye dunia nyata",
-        "Mentor 1-on-1",
-        "Layanan karir dan penempatan kerja",
-        "Sertifikat penyelesaian",
-        "Persiapan sertifikasi industri"
-      ],
-      "curriculum": [
-        "Dasar-dasar pemasaran digital",
-        "Optimasi mesin pencari (SEO)",
-        "Strategi pemasaran media sosial",
-        "Pemasaran konten dan copywriting",
-        "Otomasi pemasaran email",
-        "Iklan bayar per klik (PPC)",
-        "Analitik dan pemasaran berbasis data",
-        "Otomasi pemasaran dan CRM"
-      ]
-    },
-    {
-      "id": 5,
-      "title": "Bootcamp Pengembangan Aplikasi Mobile",
-      "category": "Pengembangan Mobile",
-      "price": 6499000,
-      "original_price": 9499000,
-      "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      "instructor": "James Wilson",
-      "rating": 4.8,
-      "students": 220,
-      "duration": "12 weeks",
-      "level": "Menengah",
-      "schedule": "Senin - Jumat, 09:00 - 17:00",
-      "start_date": "2024-04-01",
-      "description": "Bootcamp pengembangan mobile intensif yang mencakup iOS, Android, dan pengembangan lintas platform.",
-      "features": [
-        "480 jam pelatihan intensif",
-        "18+ aplikasi mobile lengkap",
-        "Mentor 1-on-1",
-        "Layanan karir dan penempatan kerja",
-        "Sertifikat penyelesaian",
-        "Bimbingan deployment toko aplikasi"
-      ],
-      "curriculum": [
-        "Dasar-dasar pengembangan mobile",
-        "Swift dan pengembangan iOS",
-        "Kotlin dan pengembangan Android",
-        "Pengembangan lintas platform dengan Flutter",
-        "Prinsip desain UI/UX mobile",
-        "Integrasi API dan manajemen data",
-        "Pengujian dan debugging aplikasi mobile",
-        "Deployment dan pemeliharaan aplikasi"
-      ]
-    }
-  ],
-  "community": {
-    "title": "Bergabunglah dengan Komunitas Pembelajaran yang Berkembang Pesat",
-    "description": "Terhubung dengan ribuan pelajar, instruktur, dan profesional industri dari seluruh dunia.",
-    "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    "stats": [
-      {
-        "number": "15,000+",
-        "label": "Anggota Aktif"
-      },
-      {
-        "number": "50+",
-        "label": "Negara"
-      },
-      {
-        "number": "1000+",
-        "label": "Interaksi Harian"
-      },
-      {
-        "number": "24/7",
-        "label": "Dukungan Komunitas"
-      }
-    ],
-    "social_links": [
-      {
-        "name": "Facebook",
-        "url": "https://facebook.com/HealthCare",
-        "icon": "fab fa-facebook",
-        "description": "Bergabunglah dengan komunitas Facebook kami untuk pembaruan dan diskusi harian"
-      },
-      {
-        "name": "Discord",
-        "url": "https://discord.gg/HealthCare",
-        "icon": "fab fa-discord",
-        "description": "Terhubung dengan siswa dan instruktur secara real-time"
-      },
-      {
-        "name": "LinkedIn",
-        "url": "https://linkedin.com/company/HealthCare",
-        "icon": "fab fa-linkedin",
-        "description": "Jaringan profesional dan peluang karir"
-      },
-      {
-        "name": "Twitter",
-        "url": "https://twitter.com/HealthCare",
-        "icon": "fab fa-twitter",
-        "description": "Ikuti kami untuk berita industri dan pembaruan"
-      },
-      {
-        "name": "Instagram",
-        "url": "https://instagram.com/HealthCare",
-        "icon": "fab fa-instagram",
-        "description": "Konten di balik layar dan sorotan siswa"
-      },
-      {
-        "name": "YouTube",
-        "url": "https://youtube.com/HealthCare",
-        "icon": "fab fa-youtube",
-        "description": "Tutorial gratis dan pratinjau kursus"
-      }
-    ]
-  },
-  "about": {
-    "title": "Tentang Healthcare Remote Circle",
-    "subtitle": "Memberdayakan Pelajar di Seluruh Dunia Sejak 2020",
-    "description": "Healthcare Remote Circle adalah platform pembelajaran online terkemuka yang didedikasikan untuk menyediakan pendidikan berkualitas tinggi kepada siswa di seluruh dunia. Misi kami adalah membuat pendidikan dapat diakses, terjangkau, dan efektif untuk semua orang.",
-    "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    "story": "Didirikan pada tahun 2020, Healthcare Remote Circle dimulai dengan visi sederhana: mendemokratisasi pendidikan dengan memanfaatkan teknologi. Yang dimulai sebagai startup kecil telah berkembang menjadi komunitas pembelajaran global dengan lebih dari 15.000 siswa di lebih dari 50 negara.",
-    "mission": "Misi kami adalah mengubah hidup melalui pendidikan dengan menyediakan pengalaman pembelajaran yang dapat diakses dan berkualitas tinggi yang memberdayakan individu untuk mencapai tujuan karir mereka dan memberikan dampak positif di dunia.",
-    "values": [
-      {
-        "title": "Pendidikan Berkualitas",
-        "description": "Kami berkomitmen untuk memberikan konten pendidikan berkualitas tertinggi, diajarkan oleh ahli industri dan dirancang untuk memberikan keterampilan dunia nyata.",
-        "icon": "fas fa-graduation-cap"
-      },
-      {
-        "title": "Aksesibilitas",
-        "description": "Kami percaya pendidikan harus dapat diakses oleh semua orang, terlepas dari latar belakang, lokasi, atau situasi keuangan mereka.",
-        "icon": "fas fa-universal-access"
-      },
-      {
-        "title": "Inovasi",
-        "description": "Kami terus-menerus menginovasi metode pengajaran dan teknologi kami untuk memberikan pengalaman pembelajaran yang paling efektif.",
-        "icon": "fas fa-lightbulb"
-      },
-      {
-        "title": "Komunitas",
-        "description": "Kami memupuk komunitas pembelajaran yang mendukung di mana siswa dapat terhubung, berkolaborasi, dan tumbuh bersama.",
-        "icon": "fas fa-users"
-      }
-    ],
-    "team": [
-      {
-        "name": "Sarah Johnson",
-        "role": "CEO & Pendiri",
-        "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-        "bio": "Sarah adalah pendidik yang bersemangat dengan pengalaman lebih dari 15 tahun dalam teknologi pendidikan dan pembelajaran online."
-      },
-      {
-        "name": "Michael Chen",
-        "role": "CTO & Co-Pendiri",
-        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-        "bio": "Michael adalah visioner teknologi dengan pengalaman luas dalam membangun platform pendidikan yang skalabel."
-      },
-      {
-        "name": "Amanda Rodriguez",
-        "role": "Kepala Kurikulum",
-        "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-        "bio": "Amanda memastikan kurikulum kami tetap relevan, komprehensif, dan selaras dengan kebutuhan industri."
-      },
-      {
-        "name": "David Wilson",
-        "role": "Kepala Kesuksesan Siswa",
-        "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-        "bio": "David didedikasikan untuk memastikan siswa kami memiliki dukungan yang mereka butuhkan untuk berhasil dalam perjalanan pembelajaran mereka."
-      }
-    ]
-  },
-  "contact": {
-    "title": "Hubungi Kami",
-    "subtitle": "Kami di sini untuk membantu Anda dalam perjalanan pembelajaran Anda",
-    "description": "Punya pertanyaan tentang kursus kami, bootcamp, atau butuh bantuan dengan pendaftaran? Tim kami di sini untuk membantu Anda.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    "contact_info": [
-      {
-        "type": "Email",
-        "value": "info@HealthCare.com",
-        "icon": "fas fa-envelope"
-      },
-      {
-        "type": "Telepon",
-        "value": "+62 812-3456-7890",
-        "icon": "fas fa-phone"
-      },
-      {
-        "type": "Alamat",
-        "value": "Jakarta, Indonesia",
-        "icon": "fas fa-map-marker-alt"
-      }
-    ],
-    "office_hours": [
-      {
-        "day": "Senin - Jumat",
-        "hours": "09:00 - 18:00"
-      },
-      {
-        "day": "Sabtu",
-        "hours": "10:00 - 16:00"
-      },
-      {
-        "day": "Minggu",
-        "hours": "Tutup"
-      }
-    ],
-    "social_links": [
-      {
-        "name": "Facebook",
-        "url": "https://facebook.com/HealthCare",
-        "icon": "fab fa-facebook"
-      },
-      {
-        "name": "Twitter",
-        "url": "https://twitter.com/HealthCare",
-        "icon": "fab fa-twitter"
-      },
-      {
-        "name": "LinkedIn",
-        "url": "https://linkedin.com/company/HealthCare",
-        "icon": "fab fa-linkedin"
-      },
-      {
-        "name": "Instagram",
-        "url": "https://instagram.com/HealthCare",
-        "icon": "fab fa-instagram"
-      }
-    ]
-  }
-}
+// {
+//   "site": {
+//     "name": "Healthcare Remote Circle",
+//     "tagline": "Buka Potensi Anda dengan Pembelajaran Digital",
+//     "description": "Platform e-learning terdepan yang menyediakan kursus digital dan bootcamp berkualitas untuk meningkatkan karir Anda.",
+//     "logo": "fas fa-graduation-cap",
+//     "email": "info@HealthCare.com",
+//     "phone": "+62 812-3456-7890",
+//     "address": "Jakarta, Indonesia"
+//   },
+//   "navigation": [
+//     {
+//       "name": "Beranda",
+//       "url": "/",
+//       "active": true
+//     },
+//     {
+//       "name": "Tentang Kami",
+//       "url": "/about-us",
+//       "active": false
+//     },
+//     {
+//       "name": "Produk",
+//       "url": "/product",
+//       "active": false
+//     },
+//     {
+//       "name": "Blog",
+//       "url": "/blog",
+//       "active": false
+//     },
+//     {
+//       "name": "Kontak",
+//       "url": "/contact",
+//       "active": false
+//     },
+//     {
+//       "name": "Bootcamp",
+//       "url": "/bootcamp",
+//       "active": false
+//     },
+//     {
+//       "name": "Komunitas Kami",
+//       "url": "/community",
+//       "active": false
+//     }
+//   ],
+//   "hero": {
+//     "title": "Ubah Karir Anda dengan Pembelajaran Digital",
+//     "subtitle": "Bergabunglah dengan ribuan siswa yang telah mengembangkan karir mereka melalui kursus dan bootcamp komprehensif kami",
+//     "description": "Akses kursus digital berkualitas tinggi dan bootcamp intensif yang diajarkan oleh ahli industri. Belajar dengan kecepatan Anda sendiri, kapan saja, di mana saja.",
+//     "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+//     "cta_text": "Jelajahi Kursus",
+//     "cta_secondary": "Bergabung dengan Komunitas"
+//   },
+//   "stats": [
+//     {
+//       "number": "15,000+",
+//       "label": "Siswa Aktif"
+//     },
+//     {
+//       "number": "50+",
+//       "label": "Instruktur Ahli"
+//     },
+//     {
+//       "number": "100+",
+//       "label": "Kursus Tersedia"
+//     },
+//     {
+//       "number": "95%",
+//       "label": "Tingkat Kepuasan"
+//     }
+//   ],
+//   "features": [
+//     {
+//       "emoji": "🌍",
+//       "title": "Belajar dari Mana Saja",
+//       "description": "Nikmati fleksibilitas belajar online dari mana saja, kapan saja. Semua kelas kami dirancang untuk mendukung karier kalian di dunia remote healthcare global."
+//     },
+//     {
+//       "emoji": "🎓",
+//       "title": "Sertifikat Resmi dengan Penilaian Profesional",
+//       "description": "Dapatkan Graded Certificate of Completion, HIPAA Certificate, dan Internship Certificate. Setiap peserta menerima nilai akhir berdasarkan hasil belajar, performa praktik, dan pencapaian magang."
+//     },
+//     {
+//       "emoji": "👩‍⚕️",
+//       "title": "Mentor Profesional & Internasional",
+//       "description": "Belajar langsung dari mentor internasional dan praktisi kesehatan berpengalaman di bidang digital healthcare dan administrasi medis jarak jauh."
+//     },
+//     {
+//       "emoji": "💬",
+//       "title": "Komunitas Global yang Supportif",
+//       "description": "Bergabunglah dengan komunitas tenaga kesehatan dari berbagai negara. Di sini kita Share, Learn, dan Grow bersama menuju karier digital yang berkelanjutan."
+//     },
+//     {
+//       "emoji": "💼",
+//       "title": "Unlimited Professional Career Coaching",
+//       "description": "Dapatkan pendampingan karier tanpa batas melalui personalized 1-on-1 mentoring untuk membantu kalian mengembangkan potensi, membangun portofolio, dan siap menghadapi dunia kerja global."
+//     },
+//     {
+//       "emoji": "📈",
+//       "title": "Program Berbasis Praktik & Magang",
+//       "description": "Bangun portofolio profesional melalui magang dengan klinik mitra, proyek nyata, dan pembimbingan langsung dari mentor berpengalaman."
+//     },
+//     {
+//       "emoji": "💡",
+//       "title": "Investasi Terjangkau, Nilai Maksimal",
+//       "description": "Nikmati pelatihan berkualitas tinggi dengan harga terjangkau, karena kami percaya setiap tenaga kesehatan berhak sukses di dunia digital."
+//     }
+//   ],
+//   "testimonials": [
+//     {
+//       "name": "Sarah Johnson",
+//       "role": "Pengembang Web",
+//       "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+//       "content": "Healthcare Remote Circle benar-benar mengubah karir saya. Kursusnya sangat komprehensif dan instrukturnya luar biasa!"
+//     },
+//     {
+//       "name": "Michael Chen",
+//       "role": "Ilmuwan Data",
+//       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+//       "content": "Bootcamp yang saya ikuti sangat intensif dan praktis. Saya mendapatkan pekerjaan dalam sebulan setelah menyelesaikannya."
+//     },
+//     {
+//       "name": "Amanda Rodriguez",
+//       "role": "Desainer UX",
+//       "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+//       "content": "Fleksibilitas belajar dengan kecepatan saya sendiri sambil bekerja penuh waktu sangat berharga. Sangat direkomendasikan!"
+//     }
+//   ],
+//   "products": [
+//     {
+//       "id": 1,
+//       "title": "Bootcamp Pengembangan Web Lengkap",
+//       "category": "Pengembangan Web",
+//       "price": 899000,
+//       "original_price": 1499000,
+//       "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+//       "instructor": "David Anderson",
+//       "rating": 4.8,
+//       "students": 3420,
+//       "duration": "42 hours",
+//       "level": "Pemula hingga Lanjutan",
+//       "description": "Pelajari pengembangan web dari nol dengan HTML, CSS, JavaScript, React, Node.js, dan lainnya.",
+//       "features": [
+//         "42 jam konten video",
+//         "100+ latihan coding",
+//         "5 proyek dunia nyata",
+//         "Sertifikat penyelesaian",
+//         "Akses seumur hidup",
+//         "Akses aplikasi mobile"
+//       ]
+//     },
+//     {
+//       "id": 2,
+//       "title": "Python untuk Ilmu Data",
+//       "category": "Ilmu Data",
+//       "price": 799000,
+//       "original_price": 1299000,
+//       "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//       "instructor": "Dr. Sarah Mitchell",
+//       "rating": 4.9,
+//       "students": 2850,
+//       "duration": "36 hours",
+//       "level": "Menengah",
+//       "description": "Kuasai pemrograman Python untuk ilmu data, machine learning, dan analisis data.",
+//       "features": [
+//         "36 jam konten video",
+//         "80+ latihan coding",
+//         "10 proyek dunia nyata",
+//         "Sertifikat penyelesaian",
+//         "Akses seumur hidup",
+//         "Sumber daya yang dapat diunduh"
+//       ]
+//     },
+//     {
+//       "id": 3,
+//       "title": "Penguasaan Pemasaran Digital",
+//       "category": "Pemasaran",
+//       "price": 699000,
+//       "original_price": 1199000,
+//       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
+//       "instructor": "Emma Thompson",
+//       "rating": 4.7,
+//       "students": 1980,
+//       "duration": "28 hours",
+//       "level": "Pemula",
+//       "description": "Pelajari strategi pemasaran digital termasuk SEO, media sosial, pemasaran konten, dan lainnya.",
+//       "features": [
+//         "28 jam konten video",
+//         "50+ tugas praktis",
+//         "8 proyek dunia nyata",
+//         "Sertifikat penyelesaian",
+//         "Akses seumur hidup",
+//         "Dukungan komunitas"
+//       ]
+//     },
+//     {
+//       "id": 4,
+//       "title": "Dasar-dasar Desain UI/UX",
+//       "category": "Desain",
+//       "price": 749000,
+//       "original_price": 1249000,
+//       "image": "https://images.unsplash.com/photo-1559028006-44a26f024d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//       "instructor": "Alex Rodriguez",
+//       "rating": 4.8,
+//       "students": 2150,
+//       "duration": "32 hours",
+//       "level": "Pemula hingga Menengah",
+//       "description": "Kuasai prinsip-prinsip desain antarmuka pengguna dan pengalaman pengguna.",
+//       "features": [
+//         "32 jam konten video",
+//         "60+ latihan desain",
+//         "6 proyek portofolio",
+//         "Sertifikat penyelesaian",
+//         "Akses seumur hidup",
+//         "Akses alat desain"
+//       ]
+//     },
+//     {
+//       "id": 5,
+//       "title": "Pengembangan Aplikasi Mobile dengan Flutter",
+//       "category": "Pengembangan Mobile",
+//       "price": 849000,
+//       "original_price": 1399000,
+//       "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//       "instructor": "James Wilson",
+//       "rating": 4.6,
+//       "students": 1680,
+//       "duration": "38 hours",
+//       "level": "Menengah",
+//       "description": "Bangun aplikasi mobile yang indah untuk iOS dan Android menggunakan Flutter dan Dart.",
+//       "features": [
+//         "38 jam konten video",
+//         "70+ latihan coding",
+//         "8 aplikasi lengkap",
+//         "Sertifikat penyelesaian",
+//         "Akses seumur hidup",
+//         "Kode sumber termasuk"
+//       ]
+//     },
+//     {
+//       "id": 6,
+//       "title": "Dasar-dasar Keamanan Siber",
+//       "category": "Keamanan",
+//       "price": 899000,
+//       "original_price": 1499000,
+//       "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//       "instructor": "Robert Chang",
+//       "rating": 4.9,
+//       "students": 1230,
+//       "duration": "40 hours",
+//       "level": "Menengah",
+//       "description": "Pelajari dasar-dasar keamanan siber, peretasan etis, dan keamanan jaringan.",
+//       "features": [
+//         "40 jam konten video",
+//         "90+ latihan praktis",
+//         "10 proyek keamanan",
+//         "Sertifikat penyelesaian",
+//         "Akses seumur hidup",
+//         "Akses lab virtual"
+//       ]
+//     }
+//   ],
+//   "blogs": [
+//     {
+//       "id": 1,
+//       "title": "Masa Depan Pengembangan Web: Tren yang Perlu Diperhatikan di 2024",
+//       "excerpt": "Jelajahi tren terbaru yang membentuk masa depan pengembangan web, dari alat bertenaga AI hingga kerangka kerja canggih.",
+//       "content": "Pengembangan web terus berkembang, dan tetap menjadi yang terdepan sangat penting bagi para pengembang. Dalam panduan komprehensif ini, kami akan menjelajahi tren-tren kunci yang akan mendefinisikan lanskap pengembangan web di 2024. Dari munculnya coding berbantuan AI hingga pentingnya kinerja web yang semakin meningkat, kami akan membahas semua yang perlu Anda ketahui untuk tetap kompetitif di bidang yang berubah dengan cepat ini.",
+//       "author": "David Anderson",
+//       "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+//       "date": "2024-01-15",
+//       "read_time": "8 min read",
+//       "category": "Pengembangan Web",
+//       "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+//       "tags": ["Pengembangan Web", "Tren", "2024", "Teknologi"]
+//     },
+//     {
+//       "id": 2,
+//       "title": "Memulai dengan Machine Learning: Panduan untuk Pemula",
+//       "excerpt": "Pelajari dasar-dasar machine learning dan cara memulai perjalanan Anda untuk menjadi insinyur ML.",
+//       "content": "Machine learning merevolusi industri di seluruh dunia, tetapi memulainya bisa terasa menakutkan. Panduan ini menguraikan dasar-dasar ML, dari konsep dasar hingga implementasi praktis. Kami akan membahas algoritma, alat, dan teknik penting yang Anda butuhkan untuk memulai perjalanan machine learning Anda, bersama dengan contoh dunia nyata dan proyek hands-on untuk memperkuat pemahaman Anda.",
+//       "author": "Dr. Sarah Mitchell",
+//       "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+//       "date": "2024-01-12",
+//       "read_time": "12 min read",
+//       "category": "Ilmu Data",
+//       "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//       "tags": ["Machine Learning", "Ilmu Data", "Pemula", "AI"]
+//     },
+//     {
+//       "id": 3,
+//       "title": "Strategi Pemasaran Digital yang Efektif untuk Usaha Kecil",
+//       "excerpt": "Temukan strategi pemasaran digital yang hemat biaya yang dapat membantu usaha kecil bersaing dengan pesaing yang lebih besar.",
+//       "content": "Pemasaran digital tidak harus mahal, terutama untuk usaha kecil. Dalam artikel ini, kami menjelajahi strategi terbukti yang memberikan dampak maksimal dengan investasi minimal. Dari pemasaran media sosial hingga pembuatan konten, kampanye email hingga optimasi SEO, kami akan membahas taktik penting yang dapat membantu usaha kecil Anda berkembang di lanskap digital.",
+//       "author": "Emma Thompson",
+//       "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+//       "date": "2024-01-10",
+//       "read_time": "10 min read",
+//       "category": "Pemasaran",
+//       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
+//       "tags": ["Pemasaran Digital", "Usaha Kecil", "Strategi", "SEO"]
+//     },
+//     {
+//       "id": 4,
+//       "title": "Psikologi Desain UX yang Hebat",
+//       "excerpt": "Memahami prinsip-prinsip psikologis yang mendasari desain pengalaman pengguna yang efektif.",
+//       "content": "Desain UX yang hebat melampaui estetika - ini tentang memahami bagaimana pengguna berpikir, merasa, dan berperilaku. Artikel ini menggali prinsip-prinsip psikologis yang menginformasikan keputusan desain yang efektif, dari teori beban kognitif hingga desain emosional. Pelajari cara membuat antarmuka yang tidak hanya terlihat bagus tetapi juga terasa intuitif dan memuaskan untuk digunakan.",
+//       "author": "Alex Rodriguez",
+//       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+//       "date": "2024-01-08",
+//       "read_time": "7 min read",
+//       "category": "Desain",
+//       "image": "https://images.unsplash.com/photo-1559028006-44a26f024d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//       "tags": ["Desain UX", "Psikologi", "Pengalaman Pengguna", "Prinsip Desain"]
+//     },
+//     {
+//       "id": 5,
+//       "title": "Pengembangan Mobile-First: Praktik Terbaik dan Teknik",
+//       "excerpt": "Pelajari cara menerapkan strategi pengembangan mobile-first untuk membuat aplikasi web responsif yang lebih baik.",
+//       "content": "Dengan perangkat mobile menyumbang lebih dari setengah dari semua lalu lintas web, pengembangan mobile-first tidak lagi opsional - ini sangat penting. Panduan komprehensif ini mencakup praktik terbaik, teknik, dan alat untuk menerapkan pendekatan mobile-first. Dari prinsip desain responsif hingga optimasi kinerja, kami akan membantu Anda membuat aplikasi web yang berfungsi dengan mulus di semua perangkat.",
+//       "author": "James Wilson",
+//       "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+//       "date": "2024-01-05",
+//       "read_time": "9 min read",
+//       "category": "Pengembangan Mobile",
+//       "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//       "tags": ["Pengembangan Mobile", "Desain Responsif", "Praktik Terbaik", "Pengembangan Web"]
+//     },
+//     {
+//       "id": 6,
+//       "title": "Keamanan Siber di Era Kerja Jarak Jauh",
+//       "excerpt": "Praktik keamanan siber penting untuk melindungi data dan sistem Anda di lingkungan kerja jarak jauh yang semakin meningkat.",
+//       "content": "Pergeseran ke kerja jarak jauh telah menciptakan tantangan keamanan siber baru bagi organisasi dan individu. Artikel ini mengeksplorasi praktik dan alat penting yang diperlukan untuk menjaga keamanan di lingkungan kerja yang terdistribusi. Dari metode koneksi yang aman hingga strategi perlindungan data, kami akan membahas semua yang perlu Anda ketahui untuk tetap aman saat bekerja dari jarak jauh.",
+//       "author": "Robert Chang",
+//       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+//       "date": "2024-01-03",
+//       "read_time": "11 min read",
+//       "category": "Keamanan",
+//       "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//       "tags": ["Keamanan Siber", "Kerja Jarak Jauh", "Perlindungan Data", "Praktik Keamanan Terbaik"]
+//     }
+//   ],
+//   "bootcamps": [
+//     {
+//       "id": 1,
+//       "title": "Bootcamp Pengembangan Web Full Stack",
+//       "category": "Pengembangan Web",
+//       "price": 5999000,
+//       "original_price": 8999000,
+//       "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+//       "instructor": "David Anderson",
+//       "rating": 4.9,
+//       "students": 450,
+//       "duration": "12 weeks",
+//       "level": "Pemula hingga Lanjutan",
+//       "schedule": "Senin - Jumat, 09:00 - 17:00",
+//       "start_date": "2024-02-01",
+//       "description": "Bootcamp intensif 12 minggu yang mencakup pengembangan front-end dan back-end, database, dan deployment.",
+//       "features": [
+//         "480 jam pelatihan intensif",
+//         "20+ proyek dunia nyata",
+//         "Mentor 1-on-1",
+//         "Layanan karir dan penempatan kerja",
+//         "Sertifikat penyelesaian",
+//         "Akses jaringan alumni"
+//       ],
+//       "curriculum": [
+//         "Dasar-dasar HTML, CSS, JavaScript",
+//         "React.js dan kerangka kerja front-end modern",
+//         "Node.js, Express.js dan pengembangan back-end",
+//         "Desain dan manajemen database",
+//         "Pengembangan dan integrasi API",
+//         "Strategi DevOps dan deployment",
+//         "Kontrol versi dengan Git",
+//         "Metodologi pengembangan Agile"
+//       ]
+//     },
+//     {
+//       "id": 2,
+//       "title": "Bootcamp Ilmu Data & Machine Learning",
+//       "category": "Ilmu Data",
+//       "price": 6999000,
+//       "original_price": 9999000,
+//       "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//       "instructor": "Dr. Sarah Mitchell",
+//       "rating": 4.8,
+//       "students": 320,
+//       "duration": "14 weeks",
+//       "level": "Menengah",
+//       "schedule": "Senin - Jumat, 09:00 - 17:00",
+//       "start_date": "2024-02-15",
+//       "description": "Bootcamp ilmu data komprehensif yang mencakup statistik, machine learning, dan visualisasi data.",
+//       "features": [
+//         "560 jam pelatihan intensif",
+//         "25+ proyek dunia nyata",
+//         "Mentor 1-on-1",
+//         "Layanan karir dan penempatan kerja",
+//         "Sertifikat penyelesaian",
+//         "Acara jaringan industri"
+//       ],
+//       "curriculum": [
+//         "Pemrograman Python untuk ilmu data",
+//         "Analisis statistik dan pengujian hipotesis",
+//         "Algoritma dan teknik machine learning",
+//         "Deep learning dan jaringan saraf",
+//         "Visualisasi data dengan Tableau dan Power BI",
+//         "Teknologi big data (Hadoop, Spark)",
+//         "Pemrosesan bahasa alami",
+//         "Dasar-dasar visi komputer"
+//       ]
+//     },
+//     {
+//       "id": 3,
+//       "title": "Bootcamp Desain UX/UI",
+//       "category": "Desain",
+//       "price": 5499000,
+//       "original_price": 7999000,
+//       "image": "https://images.unsplash.com/photo-1559028006-44a26f024d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//       "instructor": "Alex Rodriguez",
+//       "rating": 4.7,
+//       "students": 280,
+//       "duration": "10 weeks",
+//       "level": "Pemula hingga Menengah",
+//       "schedule": "Senin - Jumat, 09:00 - 17:00",
+//       "start_date": "2024-03-01",
+//       "description": "Bootcamp desain intensif yang mencakup penelitian pengguna, desain antarmuka, dan prototyping.",
+//       "features": [
+//         "400 jam pelatihan intensif",
+//         "15+ proyek portofolio",
+//         "Mentor 1-on-1",
+//         "Layanan karir dan penempatan kerja",
+//         "Sertifikat penyelesaian",
+//         "Akses alat desain"
+//       ],
+//       "curriculum": [
+//         "Berpikir desain dan penelitian pengguna",
+//         "Arsitektur informasi dan wireframing",
+//         "Prinsip desain visual dan tipografi",
+//         "Prototyping dengan Figma dan Adobe XD",
+//         "Pengujian kegunaan dan iterasi",
+//         "Desain responsif untuk web dan mobile",
+//         "Sistem desain dan pustaka komponen",
+//         "Pengembangan dan presentasi portofolio"
+//       ]
+//     },
+//     {
+//       "id": 4,
+//       "title": "Bootcamp Penguasaan Pemasaran Digital",
+//       "category": "Pemasaran",
+//       "price": 4999000,
+//       "original_price": 7499000,
+//       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
+//       "instructor": "Emma Thompson",
+//       "rating": 4.6,
+//       "students": 350,
+//       "duration": "8 weeks",
+//       "level": "Pemula",
+//       "schedule": "Senin - Jumat, 09:00 - 17:00",
+//       "start_date": "2024-03-15",
+//       "description": "Bootcamp pemasaran digital komprehensif yang mencakup SEO, media sosial, pemasaran konten, dan analitik.",
+//       "features": [
+//         "320 jam pelatihan intensif",
+//         "12+ kampanye dunia nyata",
+//         "Mentor 1-on-1",
+//         "Layanan karir dan penempatan kerja",
+//         "Sertifikat penyelesaian",
+//         "Persiapan sertifikasi industri"
+//       ],
+//       "curriculum": [
+//         "Dasar-dasar pemasaran digital",
+//         "Optimasi mesin pencari (SEO)",
+//         "Strategi pemasaran media sosial",
+//         "Pemasaran konten dan copywriting",
+//         "Otomasi pemasaran email",
+//         "Iklan bayar per klik (PPC)",
+//         "Analitik dan pemasaran berbasis data",
+//         "Otomasi pemasaran dan CRM"
+//       ]
+//     },
+//     {
+//       "id": 5,
+//       "title": "Bootcamp Pengembangan Aplikasi Mobile",
+//       "category": "Pengembangan Mobile",
+//       "price": 6499000,
+//       "original_price": 9499000,
+//       "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//       "instructor": "James Wilson",
+//       "rating": 4.8,
+//       "students": 220,
+//       "duration": "12 weeks",
+//       "level": "Menengah",
+//       "schedule": "Senin - Jumat, 09:00 - 17:00",
+//       "start_date": "2024-04-01",
+//       "description": "Bootcamp pengembangan mobile intensif yang mencakup iOS, Android, dan pengembangan lintas platform.",
+//       "features": [
+//         "480 jam pelatihan intensif",
+//         "18+ aplikasi mobile lengkap",
+//         "Mentor 1-on-1",
+//         "Layanan karir dan penempatan kerja",
+//         "Sertifikat penyelesaian",
+//         "Bimbingan deployment toko aplikasi"
+//       ],
+//       "curriculum": [
+//         "Dasar-dasar pengembangan mobile",
+//         "Swift dan pengembangan iOS",
+//         "Kotlin dan pengembangan Android",
+//         "Pengembangan lintas platform dengan Flutter",
+//         "Prinsip desain UI/UX mobile",
+//         "Integrasi API dan manajemen data",
+//         "Pengujian dan debugging aplikasi mobile",
+//         "Deployment dan pemeliharaan aplikasi"
+//       ]
+//     }
+//   ],
+//   "community": {
+//     "title": "Bergabunglah dengan Komunitas Pembelajaran yang Berkembang Pesat",
+//     "description": "Terhubung dengan ribuan pelajar, instruktur, dan profesional industri dari seluruh dunia.",
+//     "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//     "stats": [
+//       {
+//         "number": "15,000+",
+//         "label": "Anggota Aktif"
+//       },
+//       {
+//         "number": "50+",
+//         "label": "Negara"
+//       },
+//       {
+//         "number": "1000+",
+//         "label": "Interaksi Harian"
+//       },
+//       {
+//         "number": "24/7",
+//         "label": "Dukungan Komunitas"
+//       }
+//     ],
+//     "social_links": [
+//       {
+//         "name": "Facebook",
+//         "url": "https://facebook.com/HealthCare",
+//         "icon": "fab fa-facebook",
+//         "description": "Bergabunglah dengan komunitas Facebook kami untuk pembaruan dan diskusi harian"
+//       },
+//       {
+//         "name": "Discord",
+//         "url": "https://discord.gg/HealthCare",
+//         "icon": "fab fa-discord",
+//         "description": "Terhubung dengan siswa dan instruktur secara real-time"
+//       },
+//       {
+//         "name": "LinkedIn",
+//         "url": "https://linkedin.com/company/HealthCare",
+//         "icon": "fab fa-linkedin",
+//         "description": "Jaringan profesional dan peluang karir"
+//       },
+//       {
+//         "name": "Twitter",
+//         "url": "https://twitter.com/HealthCare",
+//         "icon": "fab fa-twitter",
+//         "description": "Ikuti kami untuk berita industri dan pembaruan"
+//       },
+//       {
+//         "name": "Instagram",
+//         "url": "https://instagram.com/HealthCare",
+//         "icon": "fab fa-instagram",
+//         "description": "Konten di balik layar dan sorotan siswa"
+//       },
+//       {
+//         "name": "YouTube",
+//         "url": "https://youtube.com/HealthCare",
+//         "icon": "fab fa-youtube",
+//         "description": "Tutorial gratis dan pratinjau kursus"
+//       }
+//     ]
+//   },
+//   "about": {
+//     "title": "Tentang Healthcare Remote Circle",
+//     "subtitle": "Memberdayakan Pelajar di Seluruh Dunia Sejak 2020",
+//     "description": "Healthcare Remote Circle adalah platform pembelajaran online terkemuka yang didedikasikan untuk menyediakan pendidikan berkualitas tinggi kepada siswa di seluruh dunia. Misi kami adalah membuat pendidikan dapat diakses, terjangkau, dan efektif untuk semua orang.",
+//     "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//     "story": "Didirikan pada tahun 2020, Healthcare Remote Circle dimulai dengan visi sederhana: mendemokratisasi pendidikan dengan memanfaatkan teknologi. Yang dimulai sebagai startup kecil telah berkembang menjadi komunitas pembelajaran global dengan lebih dari 15.000 siswa di lebih dari 50 negara.",
+//     "mission": "Misi kami adalah mengubah hidup melalui pendidikan dengan menyediakan pengalaman pembelajaran yang dapat diakses dan berkualitas tinggi yang memberdayakan individu untuk mencapai tujuan karir mereka dan memberikan dampak positif di dunia.",
+//     "values": [
+//       {
+//         "title": "Pendidikan Berkualitas",
+//         "description": "Kami berkomitmen untuk memberikan konten pendidikan berkualitas tertinggi, diajarkan oleh ahli industri dan dirancang untuk memberikan keterampilan dunia nyata.",
+//         "icon": "fas fa-graduation-cap"
+//       },
+//       {
+//         "title": "Aksesibilitas",
+//         "description": "Kami percaya pendidikan harus dapat diakses oleh semua orang, terlepas dari latar belakang, lokasi, atau situasi keuangan mereka.",
+//         "icon": "fas fa-universal-access"
+//       },
+//       {
+//         "title": "Inovasi",
+//         "description": "Kami terus-menerus menginovasi metode pengajaran dan teknologi kami untuk memberikan pengalaman pembelajaran yang paling efektif.",
+//         "icon": "fas fa-lightbulb"
+//       },
+//       {
+//         "title": "Komunitas",
+//         "description": "Kami memupuk komunitas pembelajaran yang mendukung di mana siswa dapat terhubung, berkolaborasi, dan tumbuh bersama.",
+//         "icon": "fas fa-users"
+//       }
+//     ],
+//     "team": [
+//       {
+//         "name": "Sarah Johnson",
+//         "role": "CEO & Pendiri",
+//         "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+//         "bio": "Sarah adalah pendidik yang bersemangat dengan pengalaman lebih dari 15 tahun dalam teknologi pendidikan dan pembelajaran online."
+//       },
+//       {
+//         "name": "Michael Chen",
+//         "role": "CTO & Co-Pendiri",
+//         "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+//         "bio": "Michael adalah visioner teknologi dengan pengalaman luas dalam membangun platform pendidikan yang skalabel."
+//       },
+//       {
+//         "name": "Amanda Rodriguez",
+//         "role": "Kepala Kurikulum",
+//         "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+//         "bio": "Amanda memastikan kurikulum kami tetap relevan, komprehensif, dan selaras dengan kebutuhan industri."
+//       },
+//       {
+//         "name": "David Wilson",
+//         "role": "Kepala Kesuksesan Siswa",
+//         "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+//         "bio": "David didedikasikan untuk memastikan siswa kami memiliki dukungan yang mereka butuhkan untuk berhasil dalam perjalanan pembelajaran mereka."
+//       }
+//     ]
+//   },
+//   "contact": {
+//     "title": "Hubungi Kami",
+//     "subtitle": "Kami di sini untuk membantu Anda dalam perjalanan pembelajaran Anda",
+//     "description": "Punya pertanyaan tentang kursus kami, bootcamp, atau butuh bantuan dengan pendaftaran? Tim kami di sini untuk membantu Anda.",
+//     "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+//     "contact_info": [
+//       {
+//         "type": "Email",
+//         "value": "info@HealthCare.com",
+//         "icon": "fas fa-envelope"
+//       },
+//       {
+//         "type": "Telepon",
+//         "value": "+62 812-3456-7890",
+//         "icon": "fas fa-phone"
+//       },
+//       {
+//         "type": "Alamat",
+//         "value": "Jakarta, Indonesia",
+//         "icon": "fas fa-map-marker-alt"
+//       }
+//     ],
+//     "office_hours": [
+//       {
+//         "day": "Senin - Jumat",
+//         "hours": "09:00 - 18:00"
+//       },
+//       {
+//         "day": "Sabtu",
+//         "hours": "10:00 - 16:00"
+//       },
+//       {
+//         "day": "Minggu",
+//         "hours": "Tutup"
+//       }
+//     ],
+//     "social_links": [
+//       {
+//         "name": "Facebook",
+//         "url": "https://facebook.com/HealthCare",
+//         "icon": "fab fa-facebook"
+//       },
+//       {
+//         "name": "Twitter",
+//         "url": "https://twitter.com/HealthCare",
+//         "icon": "fab fa-twitter"
+//       },
+//       {
+//         "name": "LinkedIn",
+//         "url": "https://linkedin.com/company/HealthCare",
+//         "icon": "fab fa-linkedin"
+//       },
+//       {
+//         "name": "Instagram",
+//         "url": "https://instagram.com/HealthCare",
+//         "icon": "fab fa-instagram"
+//       }
+//     ]
+//   }
+// }

@@ -22,7 +22,7 @@
                 <div>
                     <div class="flex items-center mb-4">
                         <i class="{{ $site['logo'] }} text-2xl mr-2"></i>
-                        <h3 class="text-xl font-bold">HRC</h3>
+                        <h3 class="text-xl font-bold">HRC Academy</h3>
                     </div>
                     <p class="text-sm text-gray-300 mb-4">{{ $site['description'] }}</p>
                     <div class="flex space-x-3">
