@@ -25,8 +25,23 @@
 @include('components.header', ['title' => 'About Us'])
 
 <!-- Hero Section -->
-<section class="gradient-bg text-white py-16">
-    <div class="container mx-auto px-6">
+<section class="bg-primary-dark text-white relative overflow-hidden py-16">
+    <!-- Animated Background with Orange Spiral Pattern -->
+    <div class="absolute inset-0 opacity-40 z-10">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute top-0 left-0 w-96 h-40 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute top-20 right-0 w-64 h-64 bg-secondary/80 rounded-full filter blur-2xl transform translate-x-1/3 translate-y-1/3"></div>
+        <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-secondary/60 rounded-full filter blur-xl transform translate-x-1/4 translate-y-1/4"></div>
+        <div class="absolute bottom-0 right-1/3 w-72 h-72 bg-secondary/40 rounded-full filter blur-lg transform translate-x-1/3 translate-y-1/3"></div>
+        <div class="absolute top-1/2 left-1/2 w-32 h-32 bg-accent rounded-full filter blur-md transform rotate-45"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-40 h-40 bg-accent/80 rounded-full filter blur-md transform -rotate-12"></div>
+        <div class="absolute top-1/3 right-1/2 w-24 h-24 bg-accent/60 rounded-full filter blur-sm transform rotate-12"></div>
+        <div class="absolute top-1/4 left-1/3 w-16 h-16 bg-secondary rounded-full"></div>
+        <div class="absolute top-1/2 right-1/3 w-20 h-20 bg-secondary/90 rounded-full"></div>
+        <div class="absolute bottom-1/3 left-1/2 w-24 h-24 bg-secondary/70 rounded-full"></div>
+        <div class="absolute bottom-1/4 right-1/2 w-32 h-32 bg-secondary/50 rounded-full"></div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
         <div class="text-center">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ $hero['title'] }}</h1>
             <p class="text-xl max-w-3xl mx-auto">{{ $hero['subtitle'] }}</p>
@@ -46,7 +61,7 @@
                 <p class="text-lg text-gray-600 mb-6">{{ $about['story'] }}</p>
                 <p class="text-lg text-gray-600 mb-6">{{ $about['description'] }}</p>
                 <p class="text-lg text-gray-600 mb-8">{{ $story['description'] }}</p>
-                <a href="{{ $baseUrl }}/product" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                <a href="{{ $baseUrl }}/product" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
                     {{ $story['explore_courses'] }}
                 </a>
             </div>
@@ -59,14 +74,14 @@
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div class="text-center">
-                <div class="bg-primary text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <div class="bg-secondary text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                     <i class="fas fa-bullseye text-3xl"></i>
                 </div>
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ $mission_vision['mission']['title'] }}</h2>
                 <p class="text-lg text-gray-600">{{ $mission_vision['mission']['description'] }}</p>
             </div>
             <div class="text-center">
-                <div class="bg-primary text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <div class="bg-secondary text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                     <i class="fas fa-eye text-3xl"></i>
                 </div>
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ $mission_vision['vision']['title'] }}</h2>
@@ -86,7 +101,7 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             @foreach($statsData as $stat)
                 <div class="text-center">
-                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2 pulse-animation">{{ $stat['number'] }}</div>
+                    <div class="text-3xl md:text-4xl font-bold text-secondary mb-2 pulse-animation">{{ $stat['number'] }}</div>
                     <div class="text-gray-600">{{ $stat['label'] }}</div>
                 </div>
             @endforeach
@@ -130,13 +145,13 @@
                     <p class="text-gray-500 mb-3">{{ $member['role'] }}</p>
                     <p class="text-gray-600 text-sm">{{ $member['bio'] }}</p>
                     <div class="flex justify-center space-x-3 mt-4">
-                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <a href="#" class="text-gray-400 hover:text-secondary transition-colors">
                             <i class="fab fa-linkedin text-xl"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <a href="#" class="text-gray-400 hover:text-secondary transition-colors">
                             <i class="fab fa-twitter text-xl"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <a href="#" class="text-gray-400 hover:text-secondary transition-colors">
                             <i class="fas fa-envelope text-xl"></i>
                         </a>
                     </div>
@@ -155,21 +170,21 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover">
-                <div class="bg-accent text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-trophy text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $achievements['best_platform']['title'] }}</h3>
                 <p class="text-gray-600">{{ $achievements['best_platform']['description'] }}</p>
             </div>
             <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover">
-                <div class="bg-accent text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-globe text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $achievements['global_reach']['title'] }}</h3>
                 <p class="text-gray-600">{{ $achievements['global_reach']['description'] }}</p>
             </div>
             <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover">
-                <div class="bg-accent text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-certificate text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $achievements['industry_recognition']['title'] }}</h3>
@@ -210,15 +225,58 @@
 </section> --}}
 
 <!-- CTA Section -->
-<section class="py-16 gradient-bg text-white">
-    <div class="container mx-auto px-6 text-center">
+<section class="py-16 bg-primary text-white relative overflow-hidden">
+    <!-- Animated Background with Secondary-Dark Wave Ribbon Pattern -->
+    <div class="absolute inset-0 z-10">
+        <!-- Wave Ribbon 1 - Top Left -->
+        <svg class="absolute top-0 left-0 w-80 h-80" viewBox="0 0 300 300">
+            <path d="M0,50 Q75,0 150,50 T300,50 L300,100 Q225,150 150,100 T0,100 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+            <path d="M0,150 Q75,100 150,150 T300,150 L300,200 Q225,250 150,200 T0,200 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+        </svg>
+
+        <!-- Wave Ribbon 2 - Top Right -->
+        <svg class="absolute top-0 right-0 w-80 h-80" viewBox="0 0 300 300">
+            <path d="M300,50 Q225,0 150,50 T0,50 L0,100 Q75,150 150,100 T300,100 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+            <path d="M300,150 Q225,100 150,150 T0,150 L0,200 Q75,250 150,200 T300,200 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+        </svg>
+
+        <!-- Wave Ribbon 3 - Bottom Left -->
+        <svg class="absolute bottom-0 left-0 w-80 h-80" viewBox="0 0 300 300">
+            <path d="M0,250 Q75,300 150,250 T300,250 L300,200 Q225,150 150,200 T0,200 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+            <path d="M0,150 Q75,200 150,150 T300,150 L300,100 Q225,50 150,100 T0,100 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+        </svg>
+
+        <!-- Wave Ribbon 4 - Bottom Right -->
+        <svg class="absolute bottom-0 right-0 w-80 h-80" viewBox="0 0 300 300">
+            <path d="M300,250 Q225,300 150,250 T0,250 L0,200 Q75,150 150,200 T300,200 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+            <path d="M300,150 Q225,200 150,150 T0,150 L0,100 Q75,50 150,100 T300,100 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+        </svg>
+    </div>
+
+    <div class="container mx-auto px-6 text-center relative z-10">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
         <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ $baseUrl }}/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+            <a href="{{ $baseUrl }}/product" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                 {{ $cta['start_learning'] }}
             </a>
-            <a href="{{ $baseUrl }}/contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+            <a href="{{ $baseUrl }}/contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-secondary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
                 {{ $cta['contact_us'] }}
             </a>
         </div>

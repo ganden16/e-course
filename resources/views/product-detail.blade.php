@@ -47,7 +47,7 @@
         <div class="text-center">
             <h1 class="text-4xl font-bold text-gray-800 mb-4">{{ $product_details['not_found'] }}</h1>
             <p class="text-gray-600 mb-8">{{ $product_details['not_exist'] }}</p>
-            <a href="{{ $baseUrl }}/product" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300">
+            <a href="{{ $baseUrl }}/product" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300">
                 {{ $product_details['browse_all'] }}
             </a>
         </div>
@@ -67,7 +67,7 @@
                         <ul class="space-y-2">
                             @foreach($product['features'] as $feature)
                                 <li class="flex items-start">
-                                    <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                                    <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
                                     <span>{{ $feature }}</span>
                                 </li>
                             @endforeach
@@ -78,7 +78,7 @@
                 <!-- Course Details -->
                 <div class="lg:w-3/5">
                     <div class="mb-2">
-                        <span class="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">{{ $product['category'] }}</span>
+                        <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $product['category'] }}</span>
                     </div>
                     <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $product['title'] }}</h1>
 
@@ -86,9 +86,9 @@
                         <div class="flex items-center mr-6">
                             @for($i = 0; $i < 5; $i++)
                                 @if($i < floor($product['rating']))
-                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-secondary"></i>
                                 @else
-                                    <i class="far fa-star text-yellow-400"></i>
+                                    <i class="far fa-star text-secondary"></i>
                                 @endif
                             @endfor
                             <span class="ml-2 font-medium">{{ $product['rating'] }}</span>
@@ -105,7 +105,7 @@
                     <div class="grid grid-cols-2 gap-4 mb-8">
                         <div class="bg-gray-100 rounded-lg p-4">
                             <div class="flex items-center">
-                                <i class="fas fa-clock text-primary text-xl mr-3"></i>
+                                <i class="fas fa-clock text-secondary text-xl mr-3"></i>
                                 <div>
                                     <p class="text-sm text-gray-500">{{ $product_details['duration'] }}</p>
                                     <p class="font-semibold">{{ $product['duration'] }}</p>
@@ -114,7 +114,7 @@
                         </div>
                         <div class="bg-gray-100 rounded-lg p-4">
                             <div class="flex items-center">
-                                <i class="fas fa-signal text-primary text-xl mr-3"></i>
+                                <i class="fas fa-signal text-secondary text-xl mr-3"></i>
                                 <div>
                                     <p class="text-sm text-gray-500">{{ $product_details['level'] }}</p>
                                     <p class="font-semibold">{{ $product['level'] }}</p>
@@ -126,7 +126,7 @@
                     <div class="bg-gray-100 rounded-lg p-6 mb-8">
                         <div class="flex items-center justify-between mb-4">
                             <div>
-                                <span class="text-3xl font-bold text-primary">Rp {{ number_format($product['price'], 0, ',', '.') }}</span>
+                                <span class="text-3xl font-bold text-secondary">Rp {{ number_format($product['price'], 0, ',', '.') }}</span>
                                 @if($product['price'] < $product['original_price'])
                                     <span class="text-lg text-gray-500 line-through ml-2">Rp {{ number_format($product['original_price'], 0, ',', '.') }}</span>
                                     <span class="ml-2 text-red-500 font-semibold">{{ $product_details['save'] }} {{ round((1 - $product['price'] / $product['original_price']) * 100) }}%</span>
@@ -134,7 +134,7 @@
                             </div>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-2">
-                            <button class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-3 rounded-lg transition duration-300 transform hover:scale-105 flex-1">
+                            <button class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-3 rounded-lg transition duration-300 transform hover:scale-105 flex-1">
                                 <i class="fas fa-shopping-cart mr-2"></i> {{ $product_details['enroll_now'] }}
                             </button>
                             {{-- <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-lg transition duration-300">
@@ -156,19 +156,19 @@
                     <h3 class="font-semibold text-lg mb-4">{{ $product_details['key_skills'] }}</h3>
                     <ul class="space-y-3">
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
                             <span>{{ $detail['master_fundamentals'] }} {{ $product['category'] }}</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
                             <span>{{ $detail['build_projects'] }}</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
                             <span>{{ $detail['learn_practices'] }}</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
                             <span>{{ $detail['develop_skills'] }}</span>
                         </li>
                     </ul>
@@ -177,19 +177,19 @@
                     <h3 class="font-semibold text-lg mb-4">{{ $product_details['career_benefits'] }}</h3>
                     <ul class="space-y-3">
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
                             <span>{{ $detail['enhance_resume'] }}</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
                             <span>{{ $detail['increase_earning'] }}</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
                             <span>{{ $detail['access_opportunities'] }}</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
                             <span>{{ $detail['join_community'] }}</span>
                         </li>
                     </ul>
@@ -239,9 +239,9 @@
                         <img src="{{ $relatedProduct['image'] }}" alt="{{ $relatedProduct['title'] }}" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-2">
-                                <span class="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">{{ $relatedProduct['category'] }}</span>
+                                <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $relatedProduct['category'] }}</span>
                                 <div class="flex items-center">
-                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-secondary"></i>
                                     <span class="ml-1 text-sm font-medium">{{ $relatedProduct['rating'] }}</span>
                                 </div>
                             </div>
@@ -249,12 +249,12 @@
                             <p class="text-gray-600 mb-4">{{ $relatedProduct['description'] }}</p>
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <span class="text-xl font-bold text-primary">Rp {{ number_format($relatedProduct['price'], 0, ',', '.') }}</span>
+                                    <span class="text-xl font-bold text-secondary">Rp {{ number_format($relatedProduct['price'], 0, ',', '.') }}</span>
                                     @if($relatedProduct['price'] < $relatedProduct['original_price'])
                                         <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($relatedProduct['original_price'], 0, ',', '.') }}</span>
                                     @endif
                                 </div>
-                                <a href="{{ $baseUrl }}/product/{{ $relatedProduct['id'] }}" class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                                <a href="{{ $baseUrl }}/product/{{ $relatedProduct['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
                                     {{ $related_courses['view_details'] }}
                                 </a>
                             </div>
@@ -303,9 +303,9 @@
                         </div>
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-2">
-                                <span class="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">{{ $otherProduct['category'] }}</span>
+                                <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $otherProduct['category'] }}</span>
                                 <div class="flex items-center">
-                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-secondary"></i>
                                     <span class="ml-1 text-sm font-medium">{{ $otherProduct['rating'] }}</span>
                                 </div>
                             </div>
@@ -319,12 +319,12 @@
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <span class="text-xl font-bold text-primary">Rp {{ number_format($otherProduct['price'], 0, ',', '.') }}</span>
+                                    <span class="text-xl font-bold text-secondary">Rp {{ number_format($otherProduct['price'], 0, ',', '.') }}</span>
                                     @if($otherProduct['price'] < $otherProduct['original_price'])
                                         <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($otherProduct['original_price'], 0, ',', '.') }}</span>
                                     @endif
                                 </div>
-                                <a href="{{ $baseUrl }}/product/{{ $otherProduct['id'] }}" class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                                <a href="{{ $baseUrl }}/product/{{ $otherProduct['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
                                     Lihat Detail
                                 </a>
                             </div>
@@ -333,7 +333,7 @@
                 @endforeach
             </div>
             <div class="text-center mt-8">
-                <a href="{{ $baseUrl }}/product" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                <a href="{{ $baseUrl }}/product" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300">
                     Lihat Semua Product <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -341,8 +341,75 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 gradient-bg text-white">
-        <div class="container mx-auto px-6 text-center">
+    <section class="py-16 bg-primary text-white relative overflow-hidden">
+        <!-- Animated Background with Secondary-Dark Diamond Ribbon Pattern -->
+        <div class="absolute inset-0 z-10">
+            <!-- Diamond Ribbon 1 - Top Left -->
+            <svg class="absolute top-0 left-0 w-80 h-80" viewBox="0 0 300 300">
+                <path d="M150,50 L200,100 L150,150 L100,100 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark"/>
+                <path d="M150,150 L200,200 L150,250 L100,200 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+                <path d="M50,100 L100,150 L50,200 L0,150 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark"/>
+                <path d="M250,100 L300,150 L250,200 L200,150 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+            </svg>
+
+            <!-- Diamond Ribbon 2 - Top Right -->
+            <svg class="absolute top-0 right-0 w-80 h-80" viewBox="0 0 300 300">
+                <path d="M150,50 L100,100 L150,150 L200,100 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark"/>
+                <path d="M150,150 L100,200 L150,250 L200,200 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+                <path d="M250,100 L200,150 L250,200 L300,150 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark"/>
+                <path d="M50,100 L100,150 L50,200 L0,150 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+            </svg>
+
+            <!-- Diamond Ribbon 3 - Bottom Left -->
+            <svg class="absolute bottom-0 left-0 w-80 h-80" viewBox="0 0 300 300">
+                <path d="M150,250 L200,200 L150,150 L100,200 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark"/>
+                <path d="M150,150 L200,100 L150,50 L100,100 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+                <path d="M50,200 L100,150 L50,100 L0,150 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark"/>
+                <path d="M250,200 L200,150 L250,100 L200,150 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+            </svg>
+
+            <!-- Diamond Ribbon 4 - Bottom Right -->
+            <svg class="absolute bottom-0 right-0 w-80 h-80" viewBox="0 0 300 300">
+                <path d="M150,250 L100,200 L150,150 L200,200 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark"/>
+                <path d="M150,150 L100,100 L150,50 L200,100 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+                <path d="M250,200 L200,150 L250,100 L300,150 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark"/>
+                <path d="M50,200 L100,150 L50,100 L0,150 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+            </svg>
+        </div>
+
+        <div class="container mx-auto px-6 text-center relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
             <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
             <button class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">

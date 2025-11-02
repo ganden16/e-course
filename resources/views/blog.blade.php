@@ -31,8 +31,23 @@
 @include('components.header', ['title' => 'Blog'])
 
 <!-- Hero Section -->
-<section class="gradient-bg text-white py-16">
-    <div class="container mx-auto px-6">
+<section class="bg-primary-dark text-white relative overflow-hidden py-16">
+    <!-- Animated Background with Orange Spiral Pattern -->
+    <div class="absolute inset-0 opacity-40 z-10">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute top-0 left-0 w-96 h-40 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute top-20 right-0 w-64 h-64 bg-secondary/80 rounded-full filter blur-2xl transform translate-x-1/3 translate-y-1/3"></div>
+        <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-secondary/60 rounded-full filter blur-xl transform translate-x-1/4 translate-y-1/4"></div>
+        <div class="absolute bottom-0 right-1/3 w-72 h-72 bg-secondary/40 rounded-full filter blur-lg transform translate-x-1/3 translate-y-1/3"></div>
+        <div class="absolute top-1/2 left-1/2 w-32 h-32 bg-accent rounded-full filter blur-md transform rotate-45"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-40 h-40 bg-accent/80 rounded-full filter blur-md transform -rotate-12"></div>
+        <div class="absolute top-1/3 right-1/2 w-24 h-24 bg-accent/60 rounded-full filter blur-sm transform rotate-12"></div>
+        <div class="absolute top-1/4 left-1/3 w-16 h-16 bg-secondary rounded-full"></div>
+        <div class="absolute top-1/2 right-1/3 w-20 h-20 bg-secondary/90 rounded-full"></div>
+        <div class="absolute bottom-1/3 left-1/2 w-24 h-24 bg-secondary/70 rounded-full"></div>
+        <div class="absolute bottom-1/4 right-1/2 w-32 h-32 bg-secondary/50 rounded-full"></div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
         <div class="text-center">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ $hero['title'] }}</h1>
             <p class="text-xl max-w-3xl mx-auto">{{ $hero['subtitle'] }}</p>
@@ -51,7 +66,7 @@
                 </div>
                 <div class="md:w-3/5 p-8">
                     <div class="flex items-center justify-between mb-4">
-                        <span class="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">{{ $blogs[0]['category'] }}</span>
+                        <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $blogs[0]['category'] }}</span>
                         <span class="text-sm text-gray-500">{{ $blogs[0]['read_time'] }}</span>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-bold mb-4">{{ $blogs[0]['title'] }}</h3>
@@ -64,7 +79,7 @@
                                 <p class="text-sm text-gray-500">{{ $blogs[0]['date'] }}</p>
                             </div>
                         </div>
-                        <a href="{{ $baseUrl }}/blog/{{ $blogs[0]['id'] }}" class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+                        <a href="{{ $baseUrl }}/blog/{{ $blogs[0]['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-6 rounded-lg transition duration-300">
                             {{ $featured_post['read_article'] }}
                         </a>
                     </div>
@@ -83,13 +98,13 @@
                 <p class="text-gray-600">{{ count($blogs) }} {{ $filter['articles_available'] }}</p>
             </div>
             <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="categoryFilter">
+                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="categoryFilter">
                     <option value="">{{ $filter['all_categories'] }}</option>
                     @foreach($categories as $category)
                         <option value="{{ $category }}">{{ $category }}</option>
                     @endforeach
                 </select>
-                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="sortFilter">
+                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="sortFilter">
                     <option value="latest">{{ $filter['latest_first'] }}</option>
                     <option value="oldest">{{ $filter['oldest_first'] }}</option>
                 </select>
@@ -107,7 +122,7 @@
                     <img src="{{ $blog['image'] }}" alt="{{ $blog['title'] }}" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">{{ $blog['category'] }}</span>
+                            <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $blog['category'] }}</span>
                             <span class="text-sm text-gray-500">{{ $blog['read_time'] }}</span>
                         </div>
                         <h3 class="text-xl font-semibold mb-2">{{ $blog['title'] }}</h3>
@@ -125,7 +140,7 @@
                                     <p class="text-xs text-gray-500">{{ $blog['date'] }}</p>
                                 </div>
                             </div>
-                            <a href="{{ $baseUrl }}/blog/{{ $blog['id'] }}" class="text-primary hover:text-primary-dark font-medium">
+                            <a href="{{ $baseUrl }}/blog/{{ $blog['id'] }}" class="text-secondary hover:text-secondary-dark font-medium">
                                 {{ $blog_details['read_more'] }} <i class="fas fa-arrow-right ml-1"></i>
                             </a>
                         </div>
@@ -136,7 +151,7 @@
 
         <!-- Load More Button -->
         <div class="text-center mt-12">
-            <button class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+            <button class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
                 {{ $load_more['articles'] }}
             </button>
         </div>
@@ -152,7 +167,7 @@
         </div>
         <div class="flex flex-wrap justify-center gap-3">
             @foreach($tags as $tag)
-                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white text-gray-700 font-medium py-2 px-4 rounded-full transition duration-300">
+                <a href="#" class="bg-gray-100 hover:bg-secondary hover:text-white text-gray-700 font-medium py-2 px-4 rounded-full transition duration-300">
                     #{{ $tag }}
                 </a>
             @endforeach
@@ -167,7 +182,7 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $newsletter['title'] }}</h2>
             <p class="text-xl mb-8">{{ $newsletter['subtitle'] }}</p>
             <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input type="email" placeholder="{{ $newsletter['email_placeholder'] }}" class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                <input type="email" placeholder="{{ $newsletter['email_placeholder'] }}" class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
                 <button class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
                     {{ $newsletter['subscribe'] }}
                 </button>

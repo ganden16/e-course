@@ -674,8 +674,63 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 gradient-bg text-white">
-        <div class="container mx-auto px-6 text-center">
+    <section class="py-16 bg-primary text-white relative overflow-hidden">
+        <!-- Animated Background with Secondary-Dark Hexagon Ribbon Pattern -->
+        <div class="absolute inset-0 z-10">
+            <!-- Hexagon Ribbon 1 - Top Left -->
+            <svg class="absolute top-0 left-0 w-80 h-80" viewBox="0 0 300 300">
+                <path d="M150,50 L200,87.5 L200,162.5 L150,200 L100,162.5 L100,87.5 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark"/>
+                <path d="M50,100 L100,137.5 L100,202.5 L50,240 L0,202.5 L0,137.5 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+                <path d="M250,100 L300,137.5 L300,202.5 L250,240 L200,202.5 L200,137.5 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+            </svg>
+
+            <!-- Hexagon Ribbon 2 - Top Right -->
+            <svg class="absolute top-0 right-0 w-80 h-80" viewBox="0 0 300 300">
+                <path d="M150,50 L100,87.5 L100,162.5 L150,200 L200,162.5 L200,87.5 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark"/>
+                <path d="M250,100 L200,137.5 L200,202.5 L250,240 L300,202.5 L300,137.5 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+                <path d="M50,100 L100,137.5 L100,202.5 L50,240 L0,202.5 L0,137.5 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+            </svg>
+
+            <!-- Hexagon Ribbon 3 - Bottom Left -->
+            <svg class="absolute bottom-0 left-0 w-80 h-80" viewBox="0 0 300 300">
+                <path d="M150,250 L100,212.5 L100,147.5 L150,100 L200,147.5 L200,212.5 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark"/>
+                <path d="M50,200 L100,162.5 L100,97.5 L50,60 L0,97.5 L0,162.5 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+                <path d="M250,200 L200,162.5 L200,97.5 L250,60 L300,97.5 L300,162.5 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+            </svg>
+
+            <!-- Hexagon Ribbon 4 - Bottom Right -->
+            <svg class="absolute bottom-0 right-0 w-80 h-80" viewBox="0 0 300 300">
+                <path d="M150,250 L200,212.5 L200,147.5 L150,100 L100,147.5 L100,212.5 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark"/>
+                <path d="M250,200 L200,162.5 L200,97.5 L250,60 L300,97.5 L300,162.5 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+                <path d="M50,200 L100,162.5 L100,97.5 L50,60 L0,97.5 L0,162.5 Z"
+                      fill="currentColor"
+                      class="text-secondary-dark opacity-80"/>
+            </svg>
+        </div>
+
+        <div class="container mx-auto px-6 text-center relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $detail['ready_transform'] }}</h2>
             <p class="text-xl mb-8 max-w-3xl mx-auto">{{ str_replace('{category}', $bootcamp['category'], $detail['transform_subtitle']) }}</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">

@@ -15,7 +15,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white">
+    <footer class="bg-primary-dark text-white">
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <!-- Company Info -->

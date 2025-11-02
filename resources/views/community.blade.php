@@ -22,8 +22,23 @@
 @include('components.header', ['title' => 'Our Community'])
 
 <!-- Hero Section -->
-<section class="gradient-bg text-white py-16">
-    <div class="container mx-auto px-6">
+<section class="bg-primary-dark text-white relative overflow-hidden py-16">
+    <!-- Animated Background with Orange Spiral Pattern -->
+    <div class="absolute inset-0 opacity-40 z-10">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute top-0 left-0 w-96 h-40 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute top-20 right-0 w-64 h-64 bg-secondary/80 rounded-full filter blur-2xl transform translate-x-1/3 translate-y-1/3"></div>
+        <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-secondary/60 rounded-full filter blur-xl transform translate-x-1/4 translate-y-1/4"></div>
+        <div class="absolute bottom-0 right-1/3 w-72 h-72 bg-secondary/40 rounded-full filter blur-lg transform translate-x-1/3 translate-y-1/3"></div>
+        <div class="absolute top-1/2 left-1/2 w-32 h-32 bg-accent rounded-full filter blur-md transform rotate-45"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-40 h-40 bg-accent/80 rounded-full filter blur-md transform -rotate-12"></div>
+        <div class="absolute top-1/3 right-1/2 w-24 h-24 bg-accent/60 rounded-full filter blur-sm transform rotate-12"></div>
+        <div class="absolute top-1/4 left-1/3 w-16 h-16 bg-secondary rounded-full"></div>
+        <div class="absolute top-1/2 right-1/3 w-20 h-20 bg-secondary/90 rounded-full"></div>
+        <div class="absolute bottom-1/3 left-1/2 w-24 h-24 bg-secondary/70 rounded-full"></div>
+        <div class="absolute bottom-1/4 right-1/2 w-32 h-32 bg-secondary/50 rounded-full"></div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
         <div class="text-center">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ $hero['title'] }}</h1>
             <p class="text-xl max-w-3xl mx-auto">{{ $hero['subtitle'] }}</p>
@@ -41,7 +56,7 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             @foreach($community['stats'] as $stat)
                 <div class="text-center">
-                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2 pulse-animation">{{ $stat['number'] }}</div>
+                    <div class="text-3xl md:text-4xl font-bold text-secondary mb-2 pulse-animation">{{ $stat['number'] }}</div>
                     <div class="text-gray-600">{{ $stat['label'] }}</div>
                 </div>
             @endforeach
@@ -103,7 +118,7 @@
                         <div class="space-y-4 mb-8">
                             @foreach($main_join['benefits'] as $benefit)
                                 <div class="flex items-start space-x-3">
-                                    <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mt-1">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-secondary to-secondary-dark rounded-full flex items-center justify-center mt-1">
                                         <i class="fas fa-check text-white text-sm"></i>
                                     </div>
                                     <p class="text-gray-200">{{ $benefit }}</p>
@@ -130,9 +145,9 @@
 
                     <!-- Right Column - CTA -->
                     <div class="text-center">
-                        <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-8 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                        <div class="bg-gradient-to-br from-secondary to-secondary-dark rounded-2xl p-8 shadow-2xl transform hover:scale-105 transition-transform duration-300">
                             <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-                                <i class="fab fa-whatsapp text-5xl text-green-500"></i>
+                                <i class="fab fa-whatsapp text-5xl text-secondary"></i>
                             </div>
                             <h4 class="text-2xl font-bold text-white mb-4">
                                 {{ $locale === 'id' ? 'Bergabung Sekarang!' : 'Join Now!' }}
@@ -164,7 +179,7 @@
                     </div>
                     <p class="text-white font-medium">
                         <span class="font-bold">99+</span>
-                        {{ $locale === 'id' ? 'orang bergabung minggu ini' : 'people joined this week' }}
+                        {{ $locale === 'id' ? 'orang bergabung' : 'people joined' }}
                     </p>
                 </div>
             </div>
@@ -189,7 +204,7 @@
                         </div>
                         <h3 class="text-2xl font-semibold mb-3">{{ $social['name'] }}</h3>
                         <p class="text-gray-600 mb-6">{{ $social['description'] }}</p>
-                        <a href="{{ $social['url'] }}" target="_blank" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-xl transition duration-300 transform hover:scale-105">
+                        <a href="{{ $social['url'] }}" target="_blank" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-6 rounded-xl transition duration-300 transform hover:scale-105">
                             {{ $hero['join_now'] }}
                         </a>
                     </div>
@@ -266,25 +281,25 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-gray-50 rounded-lg p-6">
                     <h3 class="text-xl font-semibold mb-4 flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i> {{ $guidelines['be_respectful']['title'] }}
+                        <i class="fas fa-check-circle text-secondary mr-3"></i> {{ $guidelines['be_respectful']['title'] }}
                     </h3>
                     <p class="text-gray-600">{{ $guidelines['be_respectful']['description'] }}</p>
                 </div>
                 <div class="bg-gray-50 rounded-lg p-6">
                     <h3 class="text-xl font-semibold mb-4 flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i> {{ $guidelines['stay_relevant']['title'] }}
+                        <i class="fas fa-check-circle text-secondary mr-3"></i> {{ $guidelines['stay_relevant']['title'] }}
                     </h3>
                     <p class="text-gray-600">{{ $guidelines['stay_relevant']['description'] }}</p>
                 </div>
                 <div class="bg-gray-50 rounded-lg p-6">
                     <h3 class="text-xl font-semibold mb-4 flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i> {{ $guidelines['help_others']['title'] }}
+                        <i class="fas fa-check-circle text-secondary mr-3"></i> {{ $guidelines['help_others']['title'] }}
                     </h3>
                     <p class="text-gray-600">{{ $guidelines['help_others']['description'] }}</p>
                 </div>
                 <div class="bg-gray-50 rounded-lg p-6">
                     <h3 class="text-xl font-semibold mb-4 flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i> {{ $guidelines['no_spam']['title'] }}
+                        <i class="fas fa-check-circle text-secondary mr-3"></i> {{ $guidelines['no_spam']['title'] }}
                     </h3>
                     <p class="text-gray-600">{{ $guidelines['no_spam']['description'] }}</p>
                 </div>
@@ -377,15 +392,58 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-16 gradient-bg text-white">
-    <div class="container mx-auto px-6 text-center">
+<section class="py-16 bg-primary text-white relative overflow-hidden">
+    <!-- Animated Background with Secondary-Dark Curved Ribbon Pattern -->
+    <div class="absolute inset-0 z-10">
+        <!-- Curved Ribbon 1 - Top Left -->
+        <svg class="absolute top-0 left-0 w-96 h-96" viewBox="0 0 400 400">
+            <path d="M0,100 Q100,0 200,100 T400,100 L400,150 Q300,250 200,150 T0,150 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+            <path d="M0,250 Q100,150 200,250 T400,250 L400,300 Q300,400 200,300 T0,300 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+        </svg>
+
+        <!-- Curved Ribbon 2 - Top Right -->
+        <svg class="absolute top-0 right-0 w-96 h-96" viewBox="0 0 400 400">
+            <path d="M400,100 Q300,0 200,100 T0,100 L0,150 Q100,250 200,150 T400,150 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+            <path d="M400,250 Q300,150 200,250 T0,250 L0,300 Q100,400 200,300 T400,300 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+        </svg>
+
+        <!-- Curved Ribbon 3 - Bottom Left -->
+        <svg class="absolute bottom-0 left-0 w-96 h-96" viewBox="0 0 400 400">
+            <path d="M0,300 Q100,400 200,300 T400,300 L400,250 Q300,150 200,250 T0,250 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+            <path d="M0,150 Q100,250 200,150 T400,150 L400,100 Q300,0 200,100 T0,100 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+        </svg>
+
+        <!-- Curved Ribbon 4 - Bottom Right -->
+        <svg class="absolute bottom-0 right-0 w-96 h-96" viewBox="0 0 400 400">
+            <path d="M400,300 Q300,400 200,300 T0,300 L0,250 Q100,150 200,250 T400,250 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+            <path d="M400,150 Q300,250 200,150 T0,150 L0,100 Q100,0 200,100 T400,100 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+        </svg>
+    </div>
+
+    <div class="container mx-auto px-6 text-center relative z-10">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
         <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ $baseUrl }}/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+            <a href="{{ $baseUrl }}/product" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                 {{ $cta['start_learning'] }}
             </a>
-            <a href="https://discord.gg/HealthCare" target="_blank" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+            <a href="https://discord.gg/HealthCare" target="_blank" class="bg-transparent border-2 border-white hover:bg-white hover:text-secondary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
                 {{ $cta['join_discord'] }}
             </a>
         </div>

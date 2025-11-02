@@ -20,8 +20,23 @@
 @include('components.header', ['title' => 'Contact Us'])
 
 <!-- Hero Section -->
-<section class="gradient-bg text-white py-16">
-    <div class="container mx-auto px-6">
+<section class="bg-primary-dark text-white relative overflow-hidden py-16">
+    <!-- Animated Background with Orange Spiral Pattern -->
+    <div class="absolute inset-0 opacity-40 z-10">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute top-0 left-0 w-96 h-40 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute top-20 right-0 w-64 h-64 bg-secondary/80 rounded-full filter blur-2xl transform translate-x-1/3 translate-y-1/3"></div>
+        <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-secondary/60 rounded-full filter blur-xl transform translate-x-1/4 translate-y-1/4"></div>
+        <div class="absolute bottom-0 right-1/3 w-72 h-72 bg-secondary/40 rounded-full filter blur-lg transform translate-x-1/3 translate-y-1/3"></div>
+        <div class="absolute top-1/2 left-1/2 w-32 h-32 bg-accent rounded-full filter blur-md transform rotate-45"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-40 h-40 bg-accent/80 rounded-full filter blur-md transform -rotate-12"></div>
+        <div class="absolute top-1/3 right-1/2 w-24 h-24 bg-accent/60 rounded-full filter blur-sm transform rotate-12"></div>
+        <div class="absolute top-1/4 left-1/3 w-16 h-16 bg-secondary rounded-full"></div>
+        <div class="absolute top-1/2 right-1/3 w-20 h-20 bg-secondary/90 rounded-full"></div>
+        <div class="absolute bottom-1/3 left-1/2 w-24 h-24 bg-secondary/70 rounded-full"></div>
+        <div class="absolute bottom-1/4 right-1/2 w-32 h-32 bg-secondary/50 rounded-full"></div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
         <div class="text-center">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ $hero['title'] }}</h1>
             <p class="text-xl max-w-3xl mx-auto">{{ $hero['subtitle'] }}</p>
@@ -43,7 +58,7 @@
                 <div class="space-y-6">
                     @foreach($contact['contact_info'] as $info)
                         <div class="flex items-start">
-                            <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
+                            <div class="bg-secondary text-white rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
                                 <i class="{{ $info['icon'] }}"></i>
                             </div>
                             <div>
@@ -70,7 +85,7 @@
                     <h3 class="text-xl font-semibold mb-4">{{ $contact_info['follow_us'] }}</h3>
                     <div class="flex space-x-4">
                         @foreach($contact['social_links'] as $social)
-                            <a href="{{ $social['url'] }}" class="bg-gray-100 hover:bg-primary hover:text-white text-gray-700 w-12 h-12 rounded-full flex items-center justify-center transition duration-300">
+                            <a href="{{ $social['url'] }}" class="bg-gray-100 hover:bg-secondary hover:text-white text-gray-700 w-12 h-12 rounded-full flex items-center justify-center transition duration-300">
                                 <i class="{{ $social['icon'] }}"></i>
                             </a>
                         @endforeach
@@ -95,28 +110,28 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label for="firstName" class="block text-gray-700 font-medium mb-2">{{ $contact_form['first_name'] }}</label>
-                            <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
                         </div>
                         <div>
                             <label for="lastName" class="block text-gray-700 font-medium mb-2">{{ $contact_form['last_name'] }}</label>
-                            <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label for="email" class="block text-gray-700 font-medium mb-2">{{ $contact_form['email_address'] }}</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
                         </div>
                         <div>
                             <label for="phone" class="block text-gray-700 font-medium mb-2">{{ $contact_form['phone_number'] }}</label>
-                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
                         </div>
                     </div>
 
                     <div class="mb-6">
                         <label for="subject" class="block text-gray-700 font-medium mb-2">{{ $contact_form['subject'] }}</label>
-                        <select id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        <select id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
                             <option value="">{{ $contact_form['select_subject'] }}</option>
                             <option value="general">{{ $contact_form['general_inquiry'] }}</option>
                             <option value="course">{{ $contact_form['course_information'] }}</option>
@@ -129,7 +144,7 @@
 
                     <div class="mb-6">
                         <label for="message" class="block text-gray-700 font-medium mb-2">{{ $contact_form['message'] }}</label>
-                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
                     </div>
 
                     <div class="mb-6">
@@ -139,7 +154,7 @@
                         </label>
                     </div>
 
-                    <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
+                    <button type="submit" class="w-full bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
                         {{ $contact_form['send_message'] }}
                     </button>
                 </form>
@@ -216,7 +231,7 @@
                 <h3 class="text-2xl font-semibold mb-4">{{ $site['name'] }} Headquarters</h3>
                 <p class="text-gray-600 mb-4">{{ $site['address'] }}</p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://maps.google.com/?q={{ $site['address'] }}" target="_blank" class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+                    <a href="https://maps.google.com/?q={{ $site['address'] }}" target="_blank" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-6 rounded-lg transition duration-300">
                         <i class="fas fa-directions mr-2"></i> Get Directions
                     </a>
                     <a href="tel:{{ str_replace([' ', '-'], '', $site['phone']) }}" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-6 rounded-lg transition duration-300">
@@ -229,15 +244,58 @@
 </section> --}}
 
 <!-- CTA Section -->
-<section class="py-16 gradient-bg text-white">
-    <div class="container mx-auto px-6 text-center">
+<section class="py-16 bg-primary text-white relative overflow-hidden">
+    <!-- Animated Background with Secondary-Dark Circular Ribbon Pattern -->
+    <div class="absolute inset-0 z-10">
+        <!-- Circular Ribbon 1 - Top Left -->
+        <svg class="absolute top-0 left-0 w-96 h-96" viewBox="0 0 400 400">
+            <path d="M200,50 A150,150 0 0,1 350,200 L300,200 A100,100 0 0,0 200,100 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+            <path d="M200,350 A150,150 0 0,1 50,200 L100,200 A100,100 0 0,0 200,300 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+        </svg>
+
+        <!-- Circular Ribbon 2 - Top Right -->
+        <svg class="absolute top-0 right-0 w-96 h-96" viewBox="0 0 400 400">
+            <path d="M200,50 A150,150 0 0,0 50,200 L100,200 A100,100 0 0,1 200,100 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+            <path d="M200,350 A150,150 0 0,0 350,200 L300,200 A100,100 0 0,1 200,300 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+        </svg>
+
+        <!-- Circular Ribbon 3 - Bottom Left -->
+        <svg class="absolute bottom-0 left-0 w-96 h-96" viewBox="0 0 400 400">
+            <path d="M200,50 A150,150 0 0,0 50,200 L100,200 A100,100 0 0,1 200,100 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+            <path d="M200,350 A150,150 0 0,1 350,200 L300,200 A100,100 0 0,0 200,300 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+        </svg>
+
+        <!-- Circular Ribbon 4 - Bottom Right -->
+        <svg class="absolute bottom-0 right-0 w-96 h-96" viewBox="0 0 400 400">
+            <path d="M200,50 A150,150 0 0,1 350,200 L300,200 A100,100 0 0,0 200,100 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+            <path d="M200,350 A150,150 0 0,0 50,200 L100,200 A100,100 0 0,1 200,300 Z"
+                  fill="currentColor"
+                  class="text-secondary-dark"/>
+        </svg>
+    </div>
+
+    <div class="container mx-auto px-6 text-center relative z-10">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
         <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ $baseUrl }}/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+            <a href="{{ $baseUrl }}/product" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                 {{ $cta['browse_courses'] }}
             </a>
-            <a href="{{ $baseUrl }}/bootcamp" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+            <a href="{{ $baseUrl }}/bootcamp" class="bg-transparent border-2 border-white hover:bg-white hover:text-secondary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
                 {{ $cta['explore_bootcamps'] }}
             </a>
         </div>
