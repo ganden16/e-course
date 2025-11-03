@@ -41,12 +41,20 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'id|en']], functio
     })->name('product.detail');
 
     Route::get('/bootcamp', function () {
-        return view('bootcamp');
+        return view('bootcamp-new');
     })->name('bootcamp');
 
     Route::get('/bootcamp/{id}', function ($id) {
-        return view('bootcamp-detail', ['id' => $id]);
+        return view('bootcamp-detail-new', ['id' => $id]);
     })->name('bootcamp.detail');
+
+    // Route::get('/bootcamp-new', function () {
+    //     return view('bootcamp-new');
+    // })->name('bootcamp.new');
+
+    // Route::get('/bootcamp-new/{id}', function ($id) {
+    //     return view('bootcamp-detail-new', ['id' => $id]);
+    // })->name('bootcamp.new.detail');
 });
 
 // Redirect root to default language (Indonesian)
