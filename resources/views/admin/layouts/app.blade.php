@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Admin Dashboard') - Healthcare Remote Circle</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -141,6 +142,14 @@
                         <i class="fas fa-blog mr-3 {{ request()->is('admin/blogs*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Blogs</span>
                         @if(request()->is('admin/blogs*'))
+                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
+                        @endif
+                    </a>
+
+                    <a href="/admin/categories" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/categories*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
+                        <i class="fas fa-folder mr-3 {{ request()->is('admin/categories*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
+                        <span>Categories</span>
+                        @if(request()->is('admin/categories*'))
                             <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
                         @endif
                     </a>

@@ -42,6 +42,7 @@ return [
 
     // Bootcamp Details
     'bootcamp_details' => [
+        'back_to_bootcamps' => 'Kembali ke Bootcamp',
         'learn_more' => 'Pelajari Lebih Lanjut',
         'what_youll_learn' => 'Apa yang Akan Anda Pelajari:',
         'more' => 'lebih',
@@ -50,7 +51,15 @@ return [
         'level' => 'Level',
         'start_date' => 'Tanggal Mulai',
         'students' => 'siswa',
-        'off' => 'DISKON'
+        'off' => 'DISKON',
+        'limited_spots' => 'Slot Terbatas',
+        'reserve_spot' => 'Reservasi Slot',
+        'ready_to_start' => 'Siap Memulai',
+        'learning_outcomes' => 'Hasil Pembelajaran',
+        'career_support' => 'Dukungan Karir',
+        'requirements' => 'Persyaratan',
+        'pricing' => 'Harga',
+        'meet_your_mentors' => 'Temui Mentor Anda'
     ],
 
     // Load More

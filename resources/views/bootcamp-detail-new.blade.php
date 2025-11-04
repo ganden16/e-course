@@ -2,38 +2,12 @@
     // Get current locale from middleware
     $locale = app()->getLocale();
 
-    // Load language file for bootcamp page
+    // Load language file for bootcamp page (only for translations, not data)
     $translations = include lang_path("{$locale}/bootcamp-new.php");
     $detail = $translations['detail'];
     $bootcamp_details = $translations['bootcamp_details'];
     $training_modules = $translations['training_modules'];
     $what_youll_get = $translations['what_youll_get'];
-
-    // Get bootcamps from language file
-    $bootcamps = $translations['bootcamps'];
-    $bootcamp = null;
-
-    // Extract the bootcamp ID from the current URL
-    $currentPath = request()->path();
-    $pathParts = explode('/', $currentPath);
-    $bootcampId = end($pathParts); // Get the last part of the URL
-
-    // Find the bootcamp by ID
-    foreach($bootcamps as $b) {
-        if($b['id'] == intval($bootcampId)) {
-            $bootcamp = $b;
-            break;
-        }
-    }
-
-    // Get related bootcamps (same category, excluding current bootcamp)
-    $relatedBootcamps = [];
-    if($bootcamp) {
-        $relatedBootcamps = array_filter($bootcamps, function($b) use ($bootcamp) {
-            return $b['category'] === $bootcamp['category'] && $b['id'] != $bootcamp['id'];
-        });
-        $relatedBootcamps = array_slice($relatedBootcamps, 0, 2);
-    }
 @endphp
 
 @if(!$bootcamp)
@@ -47,7 +21,7 @@
         </div>
     </div>
 @else
-    @include('components.header', ['title' => $bootcamp['title']])
+    @include('components.header', ['title' => $bootcamp->title])
 
     <!-- Bootcamp Hero Section -->
     <section class="py-16 bg-white">
@@ -55,7 +29,7 @@
             <div class="flex flex-col lg:flex-row gap-12">
                 <!-- Bootcamp Image -->
                 <div class="lg:w-2/5">
-                    <img src="{{ $bootcamp['image'] }}" alt="{{ $bootcamp['title'] }}" class="w-full rounded-lg shadow-lg">
+                    <img src="{{ $bootcamp->image }}" alt="{{ $bootcamp->title }}" class="w-full rounded-lg shadow-lg">
                     <div class="mt-6 bg-gray-100 rounded-lg p-6">
                         <h3 class="font-semibold text-lg mb-4">{{ $detail['key_information'] }}</h3>
                         <div class="space-y-3">
@@ -63,28 +37,28 @@
                                 <i class="fas fa-clock text-secondary mr-3"></i>
                                 <div>
                                     <p class="text-sm text-gray-500">{{ $bootcamp_details['duration'] }}</p>
-                                    <p class="font-medium">{{ $bootcamp['duration'] }}</p>
+                                    <p class="font-medium">{{ $bootcamp->duration }}</p>
                                 </div>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-signal text-secondary mr-3"></i>
                                 <div>
                                     <p class="text-sm text-gray-500">{{ $bootcamp_details['level'] }}</p>
-                                    <p class="font-medium">{{ $bootcamp['level'] }}</p>
+                                    <p class="font-medium">{{ $bootcamp->level }}</p>
                                 </div>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-calendar text-secondary mr-3"></i>
                                 <div>
                                     <p class="text-sm text-gray-500">{{ $bootcamp_details['start_date'] }}</p>
-                                    <p class="font-medium">{{ $bootcamp['start_date'] }}</p>
+                                    <p class="font-medium">{{ $bootcamp->start_date->format('Y-m-d') }}</p>
                                 </div>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-clock text-secondary mr-3"></i>
                                 <div>
                                     <p class="text-sm text-gray-500">{{ $bootcamp_details['schedule'] }}</p>
-                                    <p class="font-medium">{{ $bootcamp['schedule'] }}</p>
+                                    <p class="font-medium">{{ $bootcamp->schedule }}</p>
                                 </div>
                             </div>
                         </div>
@@ -94,33 +68,33 @@
                 <!-- Bootcamp Details -->
                 <div class="lg:w-3/5">
                     <div class="mb-2">
-                        <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $bootcamp['category'] }}</span>
+                        <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $bootcamp->category?->name }}</span>
                     </div>
-                    <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $bootcamp['title'] }}</h1>
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $bootcamp->title }}</h1>
 
                     <div class="flex items-center mb-6">
                         <div class="flex items-center mr-6">
                             @for($i = 0; $i < 5; $i++)
-                                @if($i < floor($bootcamp['rating']))
+                                @if($i < floor($bootcamp->rating))
                                     <i class="fas fa-star text-yellow-400"></i>
                                 @else
                                     <i class="far fa-star text-yellow-400"></i>
                                 @endif
                             @endfor
-                            <span class="ml-2 font-medium">{{ $bootcamp['rating'] }}</span>
-                            <span class="ml-1 text-gray-500">({{ $bootcamp['students'] }} {{ $bootcamp_details['students'] }})</span>
+                            <span class="ml-2 font-medium">{{ $bootcamp->rating }}</span>
+                            <span class="ml-1 text-gray-500">({{ $bootcamp->students }} {{ $bootcamp_details['students'] }})</span>
                         </div>
                     </div>
 
-                    <p class="text-lg text-gray-600 mb-8">{{ $bootcamp['description'] }}</p>
+                    <p class="text-lg text-gray-600 mb-8">{{ $bootcamp->description }}</p>
 
                     <div class="bg-gray-100 rounded-lg p-6 mb-8">
                         <div class="flex items-center justify-between mb-4">
                             <div>
-                                <span class="text-3xl font-bold text-secondary">Rp {{ number_format($bootcamp['price'], 0, ',', '.') }}</span>
-                                @if($bootcamp['price'] < $bootcamp['original_price'])
-                                    <span class="text-lg text-gray-500 line-through ml-2">Rp {{ number_format($bootcamp['original_price'], 0, ',', '.') }}</span>
-                                    <span class="ml-2 text-red-500 font-semibold">{{ $detail['save'] }} {{ round((1 - $bootcamp['price'] / $bootcamp['original_price']) * 100) }}%</span>
+                                <span class="text-3xl font-bold text-secondary">Rp {{ number_format($bootcamp->price, 0, ',', '.') }}</span>
+                                @if($bootcamp->price < $bootcamp->original_price)
+                                    <span class="text-lg text-gray-500 line-through ml-2">Rp {{ number_format($bootcamp->original_price, 0, ',', '.') }}</span>
+                                    <span class="ml-2 text-red-500 font-semibold">{{ $detail['save'] }} {{ $bootcamp->discount_percentage }}%</span>
                                 @endif
                             </div>
                         </div>
@@ -156,22 +130,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($training_modules['weeks'] as $week)
-                                    @if(isset($week['module']))
+                                @foreach($bootcamp->modules as $week)
+                                    @if(isset($week->module))
                                         <tr class="border-b border-gray-200 hover:bg-indigo-50 transition-colors">
                                             <td class="py-4 px-4">
                                                 <div class="flex items-center">
                                                     <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
-                                                        {{ $week['week_number'] }}
+                                                        {{ $week->week_number }}
                                                     </div>
-                                                    <span class="font-medium text-gray-700">{{ $training_modules['week'] }} {{ $week['week_number'] }}</span>
+                                                    <span class="font-medium text-gray-700">{{ $training_modules['week'] }} {{ $week->week_number }}</span>
                                                 </div>
                                             </td>
                                             <td class="py-4 px-4">
-                                                <div class="font-medium text-gray-800">{{ $week['module'] }}</div>
+                                                <div class="font-medium text-gray-800">{{ $week->module }}</div>
                                             </td>
                                             <td class="py-4 px-4">
-                                                <div class="text-gray-600">{{ $week['objective'] }}</div>
+                                                <div class="text-gray-600">{{ $week->objective }}</div>
                                             </td>
                                         </tr>
                                     @endif
@@ -180,6 +154,151 @@
                         </table>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootcamp Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $locale === 'id' ? 'Fitur Bootcamp' : 'Bootcamp Features' }}</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $locale === 'id' ? 'Temukan fitur lengkap yang membuat bootcamp kami unggul' : 'Discover comprehensive features that make our bootcamp exceptional' }}</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @if($bootcamp->features)
+                    @foreach($bootcamp->features as $index => $feature)
+                        <div class="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl p-6 shadow-lg border-l-4 border-indigo-500">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-full flex items-center justify-center text-white">
+                                        <i class="fas fa-star text-lg"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-indigo-800 mb-2">{{ $feature }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $locale === 'id' ? 'Kurikulum' : 'Curriculum' }}</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $locale === 'id' ? 'Struktur pembelajaran komprehensif yang dirancang untuk transformasi karir Anda' : 'Comprehensive learning structure designed for your career transformation' }}</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                @if($bootcamp->curriculum)
+                    <div class="grid md:grid-cols-2 gap-6">
+                        @foreach($bootcamp->curriculum as $index => $module)
+                            <div class="flex items-start space-y-3">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                                        {{ $index + 1 }}
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-2">{{ $module }}</h4>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Outcomes Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $locale === 'id' ? 'Hasil Pembelajaran' : 'Learning Outcomes' }}</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $locale === 'id' ? 'Keterampilan yang akan Anda kuasai setelah menyelesaikan bootcamp' : 'Skills you will master after completing the bootcamp' }}</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @if($bootcamp->learning_outcomes)
+                    @foreach($bootcamp->learning_outcomes as $outcome)
+                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 shadow-lg">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white">
+                                        <i class="fas fa-check text-lg"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-2">{{ $outcome }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Support Details Section -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $locale === 'id' ? 'Detail Dukungan Karir' : 'Career Support Details' }}</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $locale === 'id' ? 'Layanan lengkap untuk mendukung kesuksesan karir Anda' : 'Comprehensive services to support your career success' }}</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                @if($bootcamp->career_support)
+                    <div class="grid md:grid-cols-2 gap-6">
+                        @foreach($bootcamp->career_support as $support)
+                            <div class="flex items-start space-y-3">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white">
+                                        <i class="fas fa-briefcase text-lg"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-2">{{ $support }}</h4>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $locale === 'id' ? 'Persyaratan' : 'Requirements' }}</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $locale === 'id' ? 'Apa yang Anda butuhkan untuk bergabung dengan bootcamp ini' : 'What you need to join this bootcamp' }}</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                @if($bootcamp->requirements)
+                    <div class="grid md:grid-cols-2 gap-6">
+                        @foreach($bootcamp->requirements as $requirement)
+                            <div class="flex items-start space-y-3">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center text-white">
+                                        <i class="fas fa-check-circle text-lg"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-2">{{ $requirement }}</h4>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
     </section>
@@ -245,30 +364,30 @@
     <!-- Instructor Section -->
     <section class="py-16 bg-light">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ count($bootcamp['instructors']) > 1 ? ($locale === 'id' ? 'Tim Instruktur' : 'Meet Our Instructors') : $detail['meet_instructor'] }}</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $bootcamp->mentors->count() > 1 ? ($locale === 'id' ? 'Tim Instruktur' : 'Meet Our Instructors') : $detail['meet_instructor'] }}</h2>
 
-            @foreach($bootcamp['instructors'] as $index => $instructor)
+            @foreach($bootcamp->mentors as $index => $instructor)
                 <div class="bg-white rounded-lg p-8 mb-8 {{ $index > 0 ? 'border-t-4 border-secondary' : '' }}">
                     <div class="flex flex-col md:flex-row items-center gap-8">
-                        <img src="{{ $instructor['image'] }}" alt="{{ $instructor['name'] }}" class="w-32 h-32 rounded-full object-cover">
+                        <img src="{{ $instructor->image }}" alt="{{ $instructor->name }}" class="w-32 h-32 rounded-full object-cover">
                         <div class="flex-1">
                             <div class="flex items-center mb-2">
-                                <h3 class="text-2xl font-semibold mr-3">{{ $instructor['name'] }}</h3>
-                                <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">{{ $instructor['specialization'] }}</span>
+                                <h3 class="text-2xl font-semibold mr-3">{{ $instructor->name }}</h3>
+                                <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">{{ $instructor->specialization }}</span>
                             </div>
-                            <p class="text-gray-600 mb-4">{{ $instructor['bio'] }}</p>
+                            <p class="text-gray-600 mb-4">{{ $instructor->bio }}</p>
                             <div class="flex items-center gap-6 text-sm text-gray-600">
                                 <div class="flex items-center">
                                     <i class="fas fa-briefcase text-secondary mr-2"></i>
-                                    <span>{{ $instructor['experience'] }} {{ $detail['experience'] }}</span>
+                                    <span>{{ $instructor->experience }} {{ $detail['experience'] }}</span>
                                 </div>
                                 <div class="flex items-center">
                                     <i class="fas fa-star text-yellow-400 mr-1"></i>
-                                    <span>{{ $instructor['rating'] }} {{ $detail['rating'] }}</span>
+                                    <span>{{ $instructor->rating }} {{ $detail['rating'] }}</span>
                                 </div>
                                 <div class="flex items-center">
                                     <i class="fas fa-users mr-2"></i>
-                                    <span>{{ $instructor['students_taught'] }} {{ $locale === 'id' ? 'siswa' : 'students' }}</span>
+                                    <span>{{ $instructor->students_taught }} {{ $locale === 'id' ? 'siswa' : 'students' }}</span>
                                 </div>
                             </div>
                         </div>
@@ -507,32 +626,32 @@
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
                         <div class="md:flex">
                             <div class="md:w-2/5">
-                                <img src="{{ $relatedBootcamp['image'] }}" alt="{{ $relatedBootcamp['title'] }}" class="w-full h-48 md:h-full object-cover">
+                                <img src="{{ $relatedBootcamp->image }}" alt="{{ $relatedBootcamp->title }}" class="w-full h-48 md:h-full object-cover">
                             </div>
                             <div class="md:w-3/5 p-6">
                                 <div class="flex items-center justify-between mb-2">
-                                    <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $relatedBootcamp['category'] }}</span>
+                                    <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $relatedBootcamp->category->name }}</span>
                                     <div class="flex items-center">
                                         <i class="fas fa-star text-yellow-400"></i>
-                                        <span class="ml-1 text-sm font-medium">{{ $relatedBootcamp['rating'] }}</span>
+                                        <span class="ml-1 text-sm font-medium">{{ $relatedBootcamp->rating }}</span>
                                     </div>
                                 </div>
-                                <h3 class="text-xl font-semibold mb-2">{{ $relatedBootcamp['title'] }}</h3>
-                                <p class="text-gray-600 mb-4">{{ $relatedBootcamp['description'] }}</p>
+                                <h3 class="text-xl font-semibold mb-2">{{ $relatedBootcamp->title }}</h3>
+                                <p class="text-gray-600 mb-4">{{ $relatedBootcamp->description }}</p>
                                 <div class="flex items-center text-sm text-gray-500 mb-4">
                                     <i class="fas fa-clock mr-2"></i>
-                                    <span class="mr-4">{{ $relatedBootcamp['duration'] }}</span>
+                                    <span class="mr-4">{{ $relatedBootcamp->duration }}</span>
                                     <i class="fas fa-calendar mr-2"></i>
-                                    <span>{{ $relatedBootcamp['start_date'] }}</span>
+                                    <span>{{ $relatedBootcamp->start_date->format('Y-m-d') }}</span>
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div>
-                                        <span class="text-xl font-bold text-secondary">Rp {{ number_format($relatedBootcamp['price'], 0, ',', '.') }}</span>
-                                        @if($relatedBootcamp['price'] < $relatedBootcamp['original_price'])
-                                            <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($relatedBootcamp['original_price'], 0, ',', '.') }}</span>
+                                        <span class="text-xl font-bold text-secondary">Rp {{ number_format($relatedBootcamp->price, 0, ',', '.') }}</span>
+                                        @if($relatedBootcamp->price < $relatedBootcamp->original_price)
+                                            <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($relatedBootcamp->original_price, 0, ',', '.') }}</span>
                                         @endif
                                     </div>
-                                    <a href="/{{ $locale }}/bootcamp/{{ $relatedBootcamp['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                                    <a href="/{{ $locale }}/bootcamp/{{ $relatedBootcamp->id }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
                                         {{ $detail['learn_more'] }}
                                     </a>
                                 </div>
@@ -550,56 +669,36 @@
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $detail['other_bootcamps'] }}</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <?php
-                // Get other bootcamps (excluding current bootcamp and related bootcamps)
-                $otherBootcamps = [];
-                $excludedIds = [$bootcamp['id']];
-                foreach($relatedBootcamps as $relatedBootcamp) {
-                    $excludedIds[] = $relatedBootcamp['id'];
-                }
-
-                foreach($bootcamps as $b) {
-                    if(!in_array($b['id'], $excludedIds)) {
-                        $otherBootcamps[] = $b;
-                    }
-                }
-
-                // Randomly select 2 bootcamps or take first 2 if less than 2
-                if(count($otherBootcamps) > 2) {
-                    shuffle($otherBootcamps);
-                    $otherBootcamps = array_slice($otherBootcamps, 0, 2);
-                }
-                ?>
                 @foreach($otherBootcamps as $otherBootcamp)
                     <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover">
                         <div class="md:flex">
                             <div class="md:w-2/5">
-                                <img src="{{ $otherBootcamp['image'] }}" alt="{{ $otherBootcamp['title'] }}" class="w-full h-48 md:h-full object-cover">
+                                <img src="{{ $otherBootcamp->image }}" alt="{{ $otherBootcamp->title }}" class="w-full h-48 md:h-full object-cover">
                             </div>
                             <div class="md:w-3/5 p-6">
                                 <div class="flex items-center justify-between mb-2">
-                                    <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $otherBootcamp['category'] }}</span>
+                                    <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $otherBootcamp->category->name }}</span>
                                     <div class="flex items-center">
                                         <i class="fas fa-star text-yellow-400"></i>
-                                        <span class="ml-1 text-sm font-medium">{{ $otherBootcamp['rating'] }}</span>
+                                        <span class="ml-1 text-sm font-medium">{{ $otherBootcamp->rating }}</span>
                                     </div>
                                 </div>
-                                <h3 class="text-xl font-semibold mb-2">{{ $otherBootcamp['title'] }}</h3>
-                                <p class="text-gray-600 mb-4">{{ $otherBootcamp['description'] }}</p>
+                                <h3 class="text-xl font-semibold mb-2">{{ $otherBootcamp->title }}</h3>
+                                <p class="text-gray-600 mb-4">{{ $otherBootcamp->description }}</p>
                                 <div class="flex items-center text-sm text-gray-500 mb-4">
                                     <i class="fas fa-clock mr-2"></i>
-                                    <span class="mr-4">{{ $otherBootcamp['duration'] }}</span>
+                                    <span class="mr-4">{{ $otherBootcamp->duration }}</span>
                                     <i class="fas fa-calendar mr-2"></i>
-                                    <span>{{ $otherBootcamp['start_date'] }}</span>
+                                    <span>{{ $otherBootcamp->start_date->format('Y-m-d') }}</span>
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div>
-                                        <span class="text-xl font-bold text-secondary">Rp {{ number_format($otherBootcamp['price'], 0, ',', '.') }}</span>
-                                        @if($otherBootcamp['price'] < $otherBootcamp['original_price'])
-                                            <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($otherBootcamp['original_price'], 0, ',', '.') }}</span>
+                                        <span class="text-xl font-bold text-secondary">Rp {{ number_format($otherBootcamp->price, 0, ',', '.') }}</span>
+                                        @if($otherBootcamp->price < $otherBootcamp->original_price)
+                                            <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($otherBootcamp->original_price, 0, ',', '.') }}</span>
                                         @endif
                                     </div>
-                                    <a href="/{{ $locale }}/bootcamp/{{ $otherBootcamp['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                                    <a href="/{{ $locale }}/bootcamp/{{ $otherBootcamp->id }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
                                         {{ $detail['learn_more'] }}
                                     </a>
                                 </div>
@@ -675,7 +774,7 @@
 
         <div class="container mx-auto px-6 text-center relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $detail['ready_transform'] }}</h2>
-            <p class="text-xl mb-8 max-w-3xl mx-auto">{{ str_replace('{category}', $bootcamp['category'], $detail['transform_subtitle']) }}</p>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">{{ str_replace('{category}', $bootcamp->category->name, $detail['transform_subtitle']) }}</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <button class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                     <i class="fas fa-shopping-cart mr-2"></i> {{ $detail['enroll_bootcamp'] }}

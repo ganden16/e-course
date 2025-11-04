@@ -3,12 +3,6 @@
 @section('title', 'Bootcamps Management')
 @section('header', 'Bootcamps Management')
 
-@php
-    // Load language file for bootcamp page
-    $translations = include lang_path('id/bootcamp.php');
-    $bootcamps = $translations['bootcamps'];
-@endphp
-
 @section('content')
 <div class="container mx-auto px-6 py-8">
     <!-- Page Header -->
@@ -19,7 +13,7 @@
                 <p class="mt-2 text-sm text-gray-600">Manage and monitor all intensive bootcamp programs</p>
             </div>
             <div class="mt-4 md:mt-0">
-                <a href="/admin/bootcamps/create" class="inline-flex items-center px-4 py-2 bg-orange border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-orange-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
+                <a href="{{ route('admin.bootcamps.create') }}" class="inline-flex items-center px-4 py-2 bg-orange border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-orange-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
                     <i class="fas fa-plus mr-2 -ml-1"></i>
                     Add New Bootcamp
                 </a>
@@ -39,15 +33,15 @@
                     </div>
                     <div class="ml-4">
                         <p class="text-sm font-medium text-gray-500">Total Bootcamps</p>
-                        <p class="text-2xl font-bold text-gray-900">{{ count($bootcamps) }}</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ $bootcamps->total() }}</p>
                     </div>
                 </div>
-                <div class="mt-4">
+                {{-- <div class="mt-4">
                     <div class="flex items-center text-sm">
                         <span class="font-medium text-green-600">15%</span>
                         <span class="text-gray-500 ml-2">from last month</span>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 
@@ -61,15 +55,15 @@
                     </div>
                     <div class="ml-4">
                         <p class="text-sm font-medium text-gray-500">Active</p>
-                        <p class="text-2xl font-bold text-gray-900">{{ collect($bootcamps)->where('status', 'active')->count() }}</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ $bootcamps->where('is_active', true)->count() }}</p>
                     </div>
                 </div>
-                <div class="mt-4">
+                {{-- <div class="mt-4">
                     <div class="flex items-center text-sm">
                         <span class="font-medium text-green-600">10%</span>
                         <span class="text-gray-500 ml-2">from last month</span>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 
@@ -82,16 +76,16 @@
                         </div>
                     </div>
                     <div class="ml-4">
-                        <p class="text-sm font-medium text-gray-500">Upcoming</p>
-                        <p class="text-2xl font-bold text-gray-900">{{ collect($bootcamps)->where('status', 'upcoming')->count() }}</p>
+                        <p class="text-sm font-medium text-gray-500">Total Students</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ number_format($bootcamps->sum('students'), 0, ',', '.') }}</p>
                     </div>
                 </div>
-                <div class="mt-4">
+                {{-- <div class="mt-4">
                     <div class="flex items-center text-sm">
                         <span class="font-medium text-yellow-600">5%</span>
                         <span class="text-gray-500 ml-2">from last month</span>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 
@@ -100,58 +94,78 @@
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
                         <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center shadow-lg">
-                            <i class="fas fa-users text-white text-xl"></i>
+                            <i class="fas fa-star text-white text-xl"></i>
                         </div>
                     </div>
                     <div class="ml-4">
-                        <p class="text-sm font-medium text-gray-500">Total Participants</p>
-                        <p class="text-2xl font-bold text-gray-900">{{ number_format(collect($bootcamps)->sum('enrolled'), 0, ',', '.') }}</p>
+                        <p class="text-sm font-medium text-gray-500">Avg Rating</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ number_format($bootcamps->avg('rating') ?? 0, 1) }}</p>
                     </div>
                 </div>
-                <div class="mt-4">
+                {{-- <div class="mt-4">
                     <div class="flex items-center text-sm">
                         <span class="font-medium text-green-600">22%</span>
                         <span class="text-gray-500 ml-2">from last month</span>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
 
     <!-- Search and Filter -->
-    <div class="bg-white shadow-lg rounded-xl p-6 mb-8 border-0">
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+    {{-- <div class="bg-white shadow-lg rounded-xl p-6 mb-8 border-0">
+        <form action="{{ route('admin.bootcamps') }}" method="GET" class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 w-full lg:w-auto">
                 <div class="relative">
                     <input type="text"
+                           name="search"
+                           value="{{ request('search') }}"
                            placeholder="Search bootcamps..."
                            class="w-full md:w-64 pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-gray-50">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <i class="fas fa-search text-gray-400"></i>
                     </div>
                 </div>
-                <select class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-gray-50">
+                <select name="status" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-gray-50">
                     <option value="">All Status</option>
-                    <option value="active">Active</option>
-                    <option value="upcoming">Upcoming</option>
+                    <option value="1" {{ request('status') == '1' ? 'selected' : '' }}>Active</option>
+                    <option value="0" {{ request('status') == '0' ? 'selected' : '' }}>Inactive</option>
                 </select>
-                <select class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-gray-50">
+                <select name="category" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-gray-50">
                     <option value="">All Categories</option>
-                    <option value="web-development">Web Development</option>
-                    <option value="data-science">Data Science</option>
-                    <option value="design">Design</option>
-                    <option value="marketing">Marketing</option>
-                    <option value="mobile-development">Mobile Development</option>
+                    <option value="web-development" {{ request('category') == 'web-development' ? 'selected' : '' }}>Web Development</option>
+                    <option value="data-science" {{ request('category') == 'data-science' ? 'selected' : '' }}>Data Science</option>
+                    <option value="design" {{ request('category') == 'design' ? 'selected' : '' }}>Design</option>
+                    <option value="marketing" {{ request('category') == 'marketing' ? 'selected' : '' }}>Marketing</option>
+                    <option value="mobile-development" {{ request('category') == 'mobile-development' ? 'selected' : '' }}>Mobile Development</option>
                 </select>
             </div>
             <div class="flex space-x-3">
-                <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange">
+                <button type="submit" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange">
                     <i class="fas fa-filter mr-2"></i>
-                    More Filters
+                    Filter
                 </button>
+                <a href="{{ route('admin.bootcamps') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange">
+                    <i class="fas fa-times mr-2"></i>
+                    Clear
+                </a>
+            </div>
+        </form>
+    </div> --}}
+
+    <!-- Success Message -->
+    @if(session('success'))
+    <div class="mb-6 bg-green-50 border-l-4 border-green-400 p-4 rounded-lg shadow-md">
+        <div class="flex">
+            <div class="flex-shrink-0">
+                <i class="fas fa-check-circle text-green-400"></i>
+            </div>
+            <div class="ml-3">
+                <p class="text-sm text-green-700">{{ session('success') }}</p>
             </div>
         </div>
     </div>
+    @endif
 
     <!-- Bootcamps Table -->
     <div class="bg-white shadow-lg rounded-xl overflow-hidden border-0">
@@ -163,7 +177,7 @@
                             Bootcamp
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Mentor
+                            Mentors
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Category
@@ -178,7 +192,7 @@
                             Price
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Enrolled
+                            Students
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Status
@@ -189,176 +203,118 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach($bootcamps as $bootcamp)
+                    @forelse($bootcamps as $bootcamp)
                     <tr class="hover:bg-gray-50 transition-colors duration-150">
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 h-10 w-10">
-                                    <img class="h-10 w-10 rounded-lg object-cover" src="{{ $bootcamp['image'] }}" alt="{{ $bootcamp['title'] }}">
+                                    @if($bootcamp->image)
+                                        <img class="h-10 w-10 rounded-lg object-cover" src="{{ Storage::url('bootcamps/' . $bootcamp->image) }}" alt="{{ $bootcamp->title }}">
+                                    @else
+                                        <div class="h-10 w-10 rounded-lg bg-gray-200 flex items-center justify-center">
+                                            <i class="fas fa-image text-gray-400"></i>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900">{{ $bootcamp['title'] }}</div>
+                                    <div class="text-sm font-medium text-gray-900">{{ $bootcamp->title }}</div>
+                                    <div class="text-sm text-gray-500">{{ $bootcamp->level }}</div>
                                 </div>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0 h-8 w-8">
-                                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="{{ $bootcamp['mentor'] }}">
-                                </div>
-                                <div class="ml-2">
-                                    <div class="text-sm font-medium text-gray-900">{{ $bootcamp['mentor'] }}</div>
-                                </div>
+                            <div class="text-sm text-gray-900">
+                                @if($bootcamp->mentors->count() > 0)
+                                    {{ $bootcamp->mentors->pluck('name')->take(2)->join(', ') }}
+                                    @if($bootcamp->mentors->count() > 2)
+                                        <span class="text-gray-500">+{{ $bootcamp->mentors->count() - 2 }} more</span>
+                                    @endif
+                                @else
+                                    <span class="text-gray-400">No mentors</span>
+                                @endif
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">
-                                {{ $bootcamp['category'] }}
+                                {{ $bootcamp->category?->name }}
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {{ $bootcamp['duration'] }}
+                            {{ $bootcamp->duration }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {{ $bootcamp['start_date'] }}
+                            {{ $bootcamp->start_date ? $bootcamp->start_date->format('M d, Y') : '-' }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            Rp {{ number_format($bootcamp['price'], 0, ',', '.') }}
+                            {{ $bootcamp->formatted_price }}
+                            @if($bootcamp->discount_percentage > 0)
+                                <div class="text-xs text-red-600 line-through">{{ $bootcamp->formatted_original_price }}</div>
+                            @endif
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {{ $bootcamp['enrolled'] }}
+                            {{ $bootcamp->students ?? 0 }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            @if($bootcamp['status'] === 'active')
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    Active
-                                </span>
-                            @elseif($bootcamp['status'] === 'upcoming')
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                    Upcoming
-                                </span>
-                            @else
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                                    Inactive
-                                </span>
-                            @endif
+                            <form action="{{ route('admin.bootcamps.toggle-active', $bootcamp) }}" method="POST" class="inline">
+                                @csrf
+                                @method('PATCH')
+                                <button type="submit" class="inline-flex items-center">
+                                    @if($bootcamp->is_active)
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 hover:bg-green-200 cursor-pointer">
+                                            Active
+                                        </span>
+                                    @else
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800 hover:bg-red-200 cursor-pointer">
+                                            Inactive
+                                        </span>
+                                    @endif
+                                </button>
+                            </form>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex justify-end space-x-2">
-                                <a href="/admin/bootcamps/{{ $bootcamp['id'] }}/edit" class="text-indigo-600 hover:text-indigo-900">
+                                <a href="{{ route('admin.bootcamps.edit', $bootcamp) }}" class="text-indigo-600 hover:text-indigo-900">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <button class="text-red-600 hover:text-red-900">
-                                    <i class="fas fa-trash"></i>
-                                </button>
+                                <form action="{{ route('admin.bootcamps.destroy', $bootcamp) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this bootcamp?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-600 hover:text-red-900">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
                             </div>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="9" class="px-6 py-4 text-center text-gray-500">
+                            No bootcamps found.
+                        </td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
     </div>
 
     <!-- Pagination -->
+    @if($bootcamps->hasPages())
     <div class="mt-6 bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6 rounded-lg shadow-lg">
         <div class="flex-1 flex justify-between sm:hidden">
-            <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                Previous
-            </a>
-            <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                Next
-            </a>
+            {{ $bootcamps->links() }}
         </div>
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
                 <p class="text-sm text-gray-700">
-                    Showing <span class="font-medium">1</span> to <span class="font-medium">{{ count($bootcamps) }}</span> of <span class="font-medium">{{ count($bootcamps) }}</span> results
+                    Showing <span class="font-medium">{{ $bootcamps->firstItem() }}</span> to <span class="font-medium">{{ $bootcamps->lastItem() }}</span> of <span class="font-medium">{{ $bootcamps->total() }}</span> results
                 </p>
             </div>
             <div>
-                <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-                    <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                        <i class="fas fa-chevron-left"></i>
-                    </a>
-                    <a href="#" aria-current="page" class="relative inline-flex items-center px-4 py-2 border border-orange bg-orange text-sm font-medium text-white">
-                        1
-                    </a>
-                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                        2
-                    </a>
-                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                        3
-                    </a>
-                    <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                        <i class="fas fa-chevron-right"></i>
-                    </a>
-                </nav>
+                {{ $bootcamps->links() }}
             </div>
         </div>
     </div>
-
-    <!-- Why Choose HRC Academy Bootcamp Section -->
-    <div class="mt-12 bg-white rounded-xl shadow-lg p-8">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Mengapa Memilih HRC Academy Bootcamp?</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-gradient-to-br from-orange-light to-orange rounded-lg p-6 text-white">
-                <div class="flex items-center mb-4">
-                    <i class="fas fa-globe text-2xl mr-3"></i>
-                    <h3 class="text-lg font-semibold">Belajar dari Mana Saja</h3>
-                </div>
-                <p class="text-sm opacity-90">Nikmati fleksibilitas belajar online dari mana saja, kapan saja. Semua kelas kami dirancang untuk mendukung karier Anda di dunia remote healthcare global.</p>
-            </div>
-
-            <div class="bg-gradient-to-br from-primary to-primary-dark rounded-lg p-6 text-white">
-                <div class="flex items-center mb-4">
-                    <i class="fas fa-certificate text-2xl mr-3"></i>
-                    <h3 class="text-lg font-semibold">Sertifikat Resmi dengan Penilaian Profesional</h3>
-                </div>
-                <p class="text-sm opacity-90">Dapatkan Graded Certificate of Completion, HIPAA Certificate, dan Internship Certificate. Setiap peserta menerima nilai akhir berdasarkan hasil belajar.</p>
-            </div>
-
-            <div class="bg-gradient-to-br from-orange-light to-orange rounded-lg p-6 text-white">
-                <div class="flex items-center mb-4">
-                    <i class="fas fa-chalkboard-teacher text-2xl mr-3"></i>
-                    <h3 class="text-lg font-semibold">Mentor Profesional & Internasional</h3>
-                </div>
-                <p class="text-sm opacity-90">Belajar langsung dari mentor internasional dan praktisi kesehatan berpengalaman di bidang digital healthcare.</p>
-            </div>
-
-            <div class="bg-gradient-to-br from-primary to-primary-dark rounded-lg p-6 text-white">
-                <div class="flex items-center mb-4">
-                    <i class="fas fa-users text-2xl mr-3"></i>
-                    <h3 class="text-lg font-semibold">Komunitas Global yang Supportif</h3>
-                </div>
-                <p class="text-sm opacity-90">Bergabunglah dengan komunitas tenaga kesehatan dari berbagai negara. Di sini kita Share, Learn, dan Grow bersama.</p>
-            </div>
-
-            <div class="bg-gradient-to-br from-orange-light to-orange rounded-lg p-6 text-white">
-                <div class="flex items-center mb-4">
-                    <i class="fas fa-user-tie text-2xl mr-3"></i>
-                    <h3 class="text-lg font-semibold">Unlimited Professional Career Coaching</h3>
-                </div>
-                <p class="text-sm opacity-90">Dapatkan pendampingan karier tanpa batas melalui personalized 1-on-1 mentoring untuk membantu Anda mengembangkan potensi.</p>
-            </div>
-
-            <div class="bg-gradient-to-br from-primary to-primary-dark rounded-lg p-6 text-white">
-                <div class="flex items-center mb-4">
-                    <i class="fas fa-briefcase text-2xl mr-3"></i>
-                    <h3 class="text-lg font-semibold">Program Berbasis Praktik & Magang</h3>
-                </div>
-                <p class="text-sm opacity-90">Bangun portofolio profesional melalui magang dengan klinik mitra, proyek nyata, dan pembimbingan langsung.</p>
-            </div>
-
-            <div class="bg-gradient-to-br from-orange-light to-orange rounded-lg p-6 text-white">
-                <div class="flex items-center mb-4">
-                    <i class="fas fa-piggy-bank text-2xl mr-3"></i>
-                    <h3 class="text-lg font-semibold">Investasi Terjangkau, Nilai Maksimal</h3>
-                </div>
-                <p class="text-sm opacity-90">Nikmati pelatihan berkualitas tinggi dengan harga terjangkau, karena kami percaya setiap tenaga kesehatan berhak sukses.</p>
-            </div>
-        </div>
-    </div>
+    @endif
 </div>
 @endsection

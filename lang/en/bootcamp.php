@@ -42,6 +42,7 @@ return [
 
     // Bootcamp Details
     'bootcamp_details' => [
+        'back_to_bootcamps' => 'Back to Bootcamps',
         'learn_more' => 'Learn More',
         'what_youll_learn' => 'What You\'ll Learn:',
         'more' => 'more',
@@ -50,7 +51,15 @@ return [
         'level' => 'Level',
         'start_date' => 'Start Date',
         'students' => 'students',
-        'off' => 'OFF'
+        'off' => 'OFF',
+        'limited_spots' => 'Limited Spots',
+        'reserve_spot' => 'Reserve Spot',
+        'ready_to_start' => 'Ready to Start',
+        'learning_outcomes' => 'Learning Outcomes',
+        'career_support' => 'Career Support',
+        'requirements' => 'Requirements',
+        'pricing' => 'Pricing',
+        'meet_your_mentors' => 'Meet Your Mentors'
     ],
 
     // Load More

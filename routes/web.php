@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\BootcampController;
 
 // Language switch route
 Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('language.switch');
@@ -40,21 +41,18 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'id|en']], functio
         return view('product-detail', ['id' => $id]);
     })->name('product.detail');
 
-    Route::get('/bootcamp', function () {
+    Route::get('/bootcamp', [BootcampController::class, 'index'])->name('bootcamp');
+
+    Route::get('/bootcamp/{id}', [BootcampController::class, 'show'])->name('bootcamp.detail');
+    Route::get('/bootcamp-new/{id}', [BootcampController::class, 'showNew'])->name('bootcamp.new.detail');
+
+    Route::get('/bootcamp-new', function () {
         return view('bootcamp-new');
-    })->name('bootcamp');
+    })->name('bootcamp.new');
 
-    Route::get('/bootcamp/{id}', function ($id) {
+    Route::get('/bootcamp-new/{id}', function ($id) {
         return view('bootcamp-detail-new', ['id' => $id]);
-    })->name('bootcamp.detail');
-
-    // Route::get('/bootcamp-new', function () {
-    //     return view('bootcamp-new');
-    // })->name('bootcamp.new');
-
-    // Route::get('/bootcamp-new/{id}', function ($id) {
-    //     return view('bootcamp-detail-new', ['id' => $id]);
-    // })->name('bootcamp.new.detail');
+    })->name('bootcamp.new.detail');
 });
 
 // Redirect root to default language (Indonesian)
@@ -91,17 +89,23 @@ Route::prefix('admin')->group(function () {
     })->name('admin.products.edit');
 
     // Bootcamp Routes
-    Route::get('/bootcamps', function () {
-        return view('admin.bootcamps.index');
-    })->name('admin.bootcamps');
+    Route::get('/bootcamps', [App\Http\Controllers\Admin\BootcampController::class, 'index'])->name('admin.bootcamps');
+    Route::get('/bootcamps/create', [App\Http\Controllers\Admin\BootcampController::class, 'create'])->name('admin.bootcamps.create');
+    Route::post('/bootcamps', [App\Http\Controllers\Admin\BootcampController::class, 'store'])->name('admin.bootcamps.store');
+    Route::get('/bootcamps/{bootcamp}/edit', [App\Http\Controllers\Admin\BootcampController::class, 'edit'])->name('admin.bootcamps.edit');
+    Route::put('/bootcamps/{bootcamp}', [App\Http\Controllers\Admin\BootcampController::class, 'update'])->name('admin.bootcamps.update');
+    Route::delete('/bootcamps/{bootcamp}', [App\Http\Controllers\Admin\BootcampController::class, 'destroy'])->name('admin.bootcamps.destroy');
+    Route::patch('/bootcamps/{bootcamp}/toggle-active', [App\Http\Controllers\Admin\BootcampController::class, 'toggleActive'])->name('admin.bootcamps.toggle-active');
 
-    Route::get('/bootcamps/create', function () {
-        return view('admin.bootcamps.form');
-    })->name('admin.bootcamps.create');
-
-    Route::get('/bootcamps/{id}/edit', function ($id) {
-        return view('admin.bootcamps.form', ['bootcamp' => $id]);
-    })->name('admin.bootcamps.edit');
+    // Category Routes
+    Route::get('/categories', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin.categories');
+    Route::get('/categories/create', [App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('admin.categories.create');
+    Route::post('/categories', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('admin.categories.store');
+    Route::get('/categories/{category}/edit', [App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('admin.categories.edit');
+    Route::put('/categories/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('admin.categories.update');
+    Route::delete('/categories/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+    Route::patch('/categories/{category}/toggle-active', [App\Http\Controllers\Admin\CategoryController::class, 'toggleActive'])->name('admin.categories.toggle-active');
+    Route::post('/categories/update-sort', [App\Http\Controllers\Admin\CategoryController::class, 'updateSort'])->name('admin.categories.update-sort');
 
     // Mentor Routes
     Route::get('/mentors', function () {

@@ -3,7 +3,7 @@
     $locale = app()->getLocale();
 
     // Load language file for bootcamp page
-    $translations = include lang_path("{$locale}/bootcamp-new.php");
+    $translations = include lang_path("{$locale}/bootcamp.php");
     $hero = $translations['hero'];
     $filter = $translations['filter'];
     $bootcamp_details = $translations['bootcamp_details'];
@@ -12,10 +12,6 @@
     $success_stories = $translations['success_stories'];
     $faq = $translations['faq'];
     $cta = $translations['cta'];
-
-    // Get bootcamps from language file
-    $bootcamps = $translations['bootcamps'];
-    $categories = array_unique(array_column($bootcamps, 'category'));
 
     // Build URLs with current locale
     $baseUrl = '/' . $locale;
@@ -56,15 +52,34 @@
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $benefits['subtitle'] }}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            @foreach($benefits['items'] as $key => $item)
-                <div class="text-center">
-                    <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                        <i class="{{ $item['icon'] }} text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">{{ $item['title'] }}</h3>
-                    <p class="text-gray-600">{{ $item['description'] }}</p>
+            <div class="text-center">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-rocket text-2xl"></i>
                 </div>
-            @endforeach
+                <h3 class="text-xl font-semibold mb-2">{{ $benefits['fast_track_learning']['title'] }}</h3>
+                <p class="text-gray-600">{{ $benefits['fast_track_learning']['description'] }}</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-briefcase text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">{{ $benefits['career_support']['title'] }}</h3>
+                <p class="text-gray-600">{{ $benefits['career_support']['description'] }}</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-users text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">{{ $benefits['expert_mentors']['title'] }}</h3>
+                <p class="text-gray-600">{{ $benefits['expert_mentors']['description'] }}</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-project-diagram text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">{{ $benefits['real_projects']['title'] }}</h3>
+                <p class="text-gray-600">{{ $benefits['real_projects']['description'] }}</p>
+            </div>
         </div>
     </div>
 </section>
@@ -81,13 +96,15 @@
                 <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="categoryFilter">
                     <option value="">{{ $filter['all_categories'] }}</option>
                     @foreach($categories as $category)
-                        <option value="{{ $category }}">{{ $category }}</option>
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
                 <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="sortFilter">
-                    @foreach($filter['options'] as $value => $label)
-                        <option value="{{ $value }}">{{ $label }}</option>
-                    @endforeach
+                    <option value="default">{{ $filter['sort_by'] }}</option>
+                    <option value="price-low">{{ $filter['price_low_high'] }}</option>
+                    <option value="price-high">{{ $filter['price_high_low'] }}</option>
+                    <option value="rating">{{ $filter['highest_rated'] }}</option>
+                    <option value="duration">{{ $filter['shortest_first'] }}</option>
                 </select>
             </div>
         </div>
@@ -99,68 +116,68 @@
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="bootcampsGrid">
             @foreach($bootcamps as $bootcamp)
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover bootcamp-item" data-category="{{ $bootcamp['category'] }}" data-price="{{ $bootcamp['price'] }}" data-rating="{{ $bootcamp['rating'] }}" data-duration="{{ $bootcamp['duration'] }}">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover bootcamp-item" data-category="{{ $bootcamp->category_id }}" data-price="{{ $bootcamp->price }}" data-rating="{{ $bootcamp->rating }}" data-duration="{{ $bootcamp->duration }}">
                     <div class="relative">
-                        <img src="{{ $bootcamp['image'] }}" alt="{{ $bootcamp['title'] }}" class="w-full h-64 object-cover">
-                        @if($bootcamp['price'] < $bootcamp['original_price'])
+                        <img src="{{ $bootcamp->image ? Storage::url('bootcamps/' . $bootcamp->image) : 'https://images.unsplash.com/photo-1523240795611-d4d5ec7a66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' }}" alt="{{ $bootcamp->title }}" class="w-full h-64 object-cover">
+                        @if($bootcamp->price < $bootcamp->original_price)
                             <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                                {{ round((1 - $bootcamp['price'] / $bootcamp['original_price']) * 100) }}% {{ $bootcamp_details['off'] }}
+                                {{ round((1 - $bootcamp->price / $bootcamp->original_price) * 100) }}% {{ $bootcamp_details['off'] }}
                             </div>
                         @endif
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
                             <div class="flex items-center justify-between">
-                                <span class="text-sm font-medium text-white bg-secondary/80 px-3 py-1 rounded-full">{{ $bootcamp['category'] }}</span>
+                                <span class="text-sm font-medium text-white bg-secondary/80 px-3 py-1 rounded-full">{{ $bootcamp->category->name ?? 'Uncategorized' }}</span>
                                 <div class="flex items-center">
                                     <i class="fas fa-star text-secondary"></i>
-                                    <span class="ml-1 text-sm font-medium text-white">{{ $bootcamp['rating'] }}</span>
-                                    <span class="ml-1 text-sm text-white">({{ $bootcamp['students'] }})</span>
+                                    <span class="ml-1 text-sm font-medium text-white">{{ $bootcamp->rating ?? 0 }}</span>
+                                    <span class="ml-1 text-sm text-white">({{ $bootcamp->students ?? 0 }})</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">{{ $bootcamp['title'] }}</h3>
-                        <p class="text-gray-600 mb-4">{{ $bootcamp['description'] }}</p>
+                        <h3 class="text-xl font-semibold mb-2">{{ $bootcamp->title }}</h3>
+                        <p class="text-gray-600 mb-4">{{ $bootcamp->description }}</p>
 
                         <div class="grid grid-cols-2 gap-4 mb-4">
                             <div class="flex items-center text-sm text-gray-500">
                                 <i class="fas fa-clock mr-2 text-secondary"></i>
-                                <span>{{ $bootcamp['duration'] }}</span>
+                                <span>{{ $bootcamp->duration }}</span>
                             </div>
                             <div class="flex items-center text-sm text-gray-500">
                                 <i class="fas fa-signal mr-2 text-secondary"></i>
-                                <span>{{ $bootcamp['level'] }}</span>
+                                <span>{{ $bootcamp->level }}</span>
                             </div>
                             <div class="flex items-center text-sm text-gray-500">
                                 <i class="fas fa-calendar mr-2 text-secondary"></i>
-                                <span>{{ $bootcamp['start_date'] }}</span>
+                                <span>{{ $bootcamp->start_date ? $bootcamp->start_date->format('M d, Y') : '-' }}</span>
                             </div>
                             <div class="flex items-center text-sm text-gray-500">
                                 <i class="fas fa-user-tie mr-2 text-secondary"></i>
-                                <span>{{ $bootcamp['instructor'] }}</span>
+                                <span>{{ $bootcamp->mentors->pluck('name')->take(2)->join(', ') ?? 'No mentors' }}</span>
                             </div>
                         </div>
 
                         <div class="border-t pt-4 mb-4">
                             <h4 class="font-semibold mb-2">{{ $bootcamp_details['what_youll_learn'] }}:</h4>
                             <div class="flex flex-wrap gap-2">
-                                @foreach(array_slice($bootcamp['curriculum'], 0, 3) as $item)
+                                @foreach(array_slice($bootcamp->curriculum ?? [], 0, 3) as $item)
                                     <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">{{ $item }}</span>
                                 @endforeach
-                                @if(count($bootcamp['curriculum']) > 3)
-                                    <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">+{{ count($bootcamp['curriculum']) - 3 }} {{ $bootcamp_details['more'] }}</span>
+                                @if(count($bootcamp->curriculum ?? []) > 3)
+                                    <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">+{{ count($bootcamp->curriculum) - 3 }} {{ $bootcamp_details['more'] }}</span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between">
                             <div>
-                                <span class="text-2xl font-bold text-secondary">Rp {{ number_format($bootcamp['price'], 0, ',', '.') }}</span>
-                                @if($bootcamp['price'] < $bootcamp['original_price'])
-                                    <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($bootcamp['original_price'], 0, ',', '.') }}</span>
+                                <span class="text-2xl font-bold text-secondary">Rp {{ number_format($bootcamp->price, 0, ',', '.') }}</span>
+                                @if($bootcamp->price < $bootcamp->original_price)
+                                    <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($bootcamp->original_price, 0, ',', '.') }}</span>
                                 @endif
                             </div>
-                            <a href="{{ $baseUrl }}/bootcamp/{{ $bootcamp['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                            <a href="{{ $baseUrl }}/bootcamp/{{ $bootcamp->id }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
                                 {{ $bootcamp_details['learn_more'] }}
                             </a>
                         </div>
@@ -186,15 +203,27 @@
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $success_stories['subtitle'] }}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            @foreach($success_stories['stories'] as $story)
-                <div class="bg-gray-100 rounded-xl p-6 text-center">
-                    <img src="{{ $story['image'] }}" alt="{{ $story['name'] }}" class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
-                    <h3 class="text-xl font-semibold mb-2">{{ $story['name'] }}</h3>
-                    <p class="text-gray-600 mb-2">{{ $story['position'] }}</p>
-                    <p class="text-sm text-gray-500 mb-4">{{ $success_stories['graduated'] }} {{ $story['graduated'] }}</p>
-                    <p class="text-gray-600 italic">{{ $story['testimonial'] }}</p>
-                </div>
-            @endforeach
+            <div class="bg-gray-100 rounded-xl p-6 text-center">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Graduate" class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-semibold mb-2">Michael Chen</h3>
+                <p class="text-gray-600 mb-2">Full Stack Developer</p>
+                <p class="text-sm text-gray-500 mb-4">Graduated: Web Development Bootcamp</p>
+                <p class="text-gray-600 italic">"The bootcamp completely transformed my career. I went from zero coding knowledge to landing my dream job in just 3 months!"</p>
+            </div>
+            <div class="bg-gray-100 rounded-xl p-6 text-center">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Graduate" class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-semibold mb-2">Sarah Johnson</h3>
+                <p class="text-gray-600 mb-2">Data Scientist</p>
+                <p class="text-sm text-gray-500 mb-4">Graduated: Data Science Bootcamp</p>
+                <p class="text-gray-600 italic">"The hands-on projects and mentorship were invaluable. I now work as a data scientist at a leading tech company."</p>
+            </div>
+            <div class="bg-gray-100 rounded-xl p-6 text-center">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Graduate" class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-semibold mb-2">Alex Rodriguez</h3>
+                <p class="text-gray-600 mb-2">UX Designer</p>
+                <p class="text-sm text-gray-500 mb-4">Graduated: UX/UI Design Bootcamp</p>
+                <p class="text-gray-600 italic">"The bootcamp gave me both skills and confidence to pursue my passion. I'm now working on products used by millions!"</p>
+            </div>
         </div>
     </div>
 </section>
@@ -207,17 +236,42 @@
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $faq['subtitle'] }}</p>
         </div>
         <div class="max-w-3xl mx-auto">
-            @foreach($faq['items'] as $index => $item)
-                <div class="mb-4">
-                    <button @click="open = {{ $index }}" class="w-full text-left bg-white p-4 rounded-lg shadow-md flex justify-between items-center hover:bg-gray-50 transition">
-                        <span class="font-semibold">{{ $item['question'] }}</span>
-                        <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === {{ $index}} }"></i>
-                    </button>
-                    <div x-show="open === {{ $index }}" x-transition class="bg-white p-4 rounded-b-lg shadow-md">
-                        <p class="text-gray-600">{{ $item['answer'] }}</p>
-                    </div>
+            <div class="mb-4">
+                <button @click="open = 0" class="w-full text-left bg-white p-4 rounded-lg shadow-md flex justify-between items-center hover:bg-gray-50 transition">
+                    <span class="font-semibold">{{ $faq['how_long']['question'] }}</span>
+                    <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === 0 }"></i>
+                </button>
+                <div x-show="open === 0" x-transition class="bg-white p-4 rounded-b-lg shadow-md">
+                    <p class="text-gray-600">{{ $faq['how_long']['answer'] }}</p>
                 </div>
-            @endforeach
+            </div>
+            <div class="mb-4">
+                <button @click="open = 1" class="w-full text-left bg-white p-4 rounded-lg shadow-md flex justify-between items-center hover:bg-gray-50 transition">
+                    <span class="font-semibold">{{ $faq['prior_experience']['question'] }}</span>
+                    <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === 1 }"></i>
+                </button>
+                <div x-show="open === 1" x-transition class="bg-white p-4 rounded-b-lg shadow-md">
+                    <p class="text-gray-600">{{ $faq['prior_experience']['answer'] }}</p>
+                </div>
+            </div>
+            <div class="mb-4">
+                <button @click="open = 2" class="w-full text-left bg-white p-4 rounded-lg shadow-md flex justify-between items-center hover:bg-gray-50 transition">
+                    <span class="font-semibold">{{ $faq['job_placement']['question'] }}</span>
+                    <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === 2 }"></i>
+                </button>
+                <div x-show="open === 2" x-transition class="bg-white p-4 rounded-b-lg shadow-md">
+                    <p class="text-gray-600">{{ $faq['job_placement']['answer'] }}</p>
+                </div>
+            </div>
+            <div class="mb-4">
+                <button @click="open = 3" class="w-full text-left bg-white p-4 rounded-lg shadow-md flex justify-between items-center hover:bg-gray-50 transition">
+                    <span class="font-semibold">{{ $faq['payment_plans']['question'] }}</span>
+                    <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === 3 }"></i>
+                </button>
+                <div x-show="open === 3" x-transition class="bg-white p-4 rounded-b-lg shadow-md">
+                    <p class="text-gray-600">{{ $faq['payment_plans']['answer'] }}</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -300,12 +354,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     return parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price'));
                 });
                 break;
-            case 'highest_rated':
+            case 'rating':
                 sortedItems.sort((a, b) => {
                     return parseFloat(b.getAttribute('data-rating')) - parseFloat(a.getAttribute('data-rating'));
                 });
                 break;
-            case 'shortest_first':
+            case 'duration':
                 sortedItems.sort((a, b) => {
                     const durationA = parseInt(a.getAttribute('data-duration'));
                     const durationB = parseInt(b.getAttribute('data-duration'));
