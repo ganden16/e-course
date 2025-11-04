@@ -130,6 +130,14 @@
                         @endif
                     </a>
 
+                    <a href="/admin/product-categories" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/product-categories*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
+                        <i class="fas fa-tags mr-3 {{ request()->is('admin/product-categories*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
+                        <span>Product Categories</span>
+                        @if(request()->is('admin/product-categories*'))
+                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
+                        @endif
+                    </a>
+
                     <a href="/admin/bootcamps" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/bootcamps*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-campground mr-3 {{ request()->is('admin/bootcamps*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Bootcamps</span>

@@ -11,10 +11,6 @@
     $load_more = $translations['load_more'];
     $cta = $translations['cta'];
 
-    // Get products from language file
-    $products = $translations['products'];
-    $categories = array_unique(array_column($products, 'category'));
-
     // Build URLs with current locale
     $baseUrl = '/' . $locale;
 @endphp
@@ -58,7 +54,7 @@
                 <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="categoryFilter">
                     <option value="">{{ $filter['all_categories'] }}</option>
                     @foreach($categories as $category)
-                        <option value="{{ $category }}">{{ $category }}</option>
+                        <option value="{{ $category->slug }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
                 <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="sortFilter">
@@ -78,40 +74,40 @@
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="coursesGrid">
             @foreach($products as $product)
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover course-item" data-category="{{ $product['category'] }}" data-price="{{ $product['price'] }}" data-rating="{{ $product['rating'] }}" data-students="{{ $product['students'] }}">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover course-item" data-category="{{ $product->productCategory->slug }}" data-price="{{ $product->price }}" data-rating="{{ $product->rating }}" data-students="{{ $product->students }}">
                     <div class="relative">
-                        <img src="{{ $product['image'] }}" alt="{{ $product['title'] }}" class="w-full h-48 object-cover">
-                        @if($product['price'] < $product['original_price'])
+                        <img src="{{ $product->image }}" alt="{{ $product->title }}" class="w-full h-48 object-cover">
+                        @if($product->price < $product->original_price)
                             <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                                {{ round((1 - $product['price'] / $product['original_price']) * 100) }}% {{ $course_details['off'] }}
+                                {{ $product->discount_percentage }}% {{ $course_details['off'] }}
                             </div>
                         @endif
                     </div>
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $product['category'] }}</span>
+                            <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $product->productCategory->name }}</span>
                             <div class="flex items-center">
                                 <i class="fas fa-star text-secondary"></i>
-                                <span class="ml-1 text-sm font-medium">{{ $product['rating'] }}</span>
-                                <span class="ml-1 text-sm text-gray-500">({{ $product['students'] }})</span>
+                                <span class="ml-1 text-sm font-medium">{{ $product->rating }}</span>
+                                <span class="ml-1 text-sm text-gray-500">({{ $product->students }})</span>
                             </div>
                         </div>
-                        <h3 class="text-xl font-semibold mb-2">{{ $product['title'] }}</h3>
-                        <p class="text-gray-600 mb-4">{{ $product['description'] }}</p>
+                        <h3 class="text-xl font-semibold mb-2">{{ $product->title }}</h3>
+                        <p class="text-gray-600 mb-4">{{ $product->description }}</p>
                         <div class="flex items-center text-sm text-gray-500 mb-4">
                             <i class="fas fa-user-tie mr-2"></i>
-                            <span class="mr-4">{{ $course_details['instructor'] }}: {{ $product['instructor'] }}</span>
+                            <span class="mr-4">{{ $course_details['instructor'] }}: {{ $product->instructor }}</span>
                             <i class="fas fa-clock mr-2"></i>
-                            <span>{{ $course_details['duration'] }}: {{ $product['duration'] }}</span>
+                            <span>{{ $course_details['duration'] }}: {{ $product->duration }}</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <div>
-                                <span class="text-2xl font-bold text-secondary">Rp {{ number_format($product['price'], 0, ',', '.') }}</span>
-                                @if($product['price'] < $product['original_price'])
-                                    <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($product['original_price'], 0, ',', '.') }}</span>
+                                <span class="text-2xl font-bold text-secondary">{{ $product->formatted_price }}</span>
+                                @if($product->price < $product->original_price)
+                                    <span class="text-sm text-gray-500 line-through ml-2">{{ $product->formatted_original_price }}</span>
                                 @endif
                             </div>
-                            <a href="{{ $baseUrl }}/product/{{ $product['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                            <a href="{{ $baseUrl }}/product/{{ $product->id }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
                                 {{ $course_details['view_details'] }}
                             </a>
                         </div>

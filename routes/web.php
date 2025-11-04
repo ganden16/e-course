@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\BootcampController;
+use App\Http\Controllers\ProductController;
 
 // Language switch route
 Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('language.switch');
@@ -26,20 +27,16 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'id|en']], functio
     })->name('blog');
 
     Route::get('/blog/{id}', function ($id) {
-        return view('blog-detail', ['id' => $id]);
+        return view('blog-detail');
     })->name('blog.detail');
 
     Route::get('/contact', function () {
         return view('contact');
     })->name('contact');
 
-    Route::get('/product', function () {
-        return view('product');
-    })->name('product');
+    Route::get('/product', [ProductController::class, 'index'])->name('product');
 
-    Route::get('/product/{id}', function ($id) {
-        return view('product-detail', ['id' => $id]);
-    })->name('product.detail');
+    Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.detail');
 
     Route::get('/bootcamp', [BootcampController::class, 'index'])->name('bootcamp');
 
@@ -50,9 +47,7 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'id|en']], functio
         return view('bootcamp-new');
     })->name('bootcamp.new');
 
-    Route::get('/bootcamp-new/{id}', function ($id) {
-        return view('bootcamp-detail-new', ['id' => $id]);
-    })->name('bootcamp.new.detail');
+    Route::get('/bootcamp-new/{id}', [BootcampController::class, 'showNew'])->name('bootcamp.new.detail');
 });
 
 // Redirect root to default language (Indonesian)
@@ -76,17 +71,23 @@ Route::prefix('admin')->group(function () {
     })->name('admin.users');
 
     // Product Routes
-    Route::get('/products', function () {
-        return view('admin.products.index');
-    })->name('admin.products');
+    Route::get('/products', [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('admin.products');
+    Route::get('/products/create', [App\Http\Controllers\Admin\ProductController::class, 'create'])->name('admin.products.create');
+    Route::post('/products', [App\Http\Controllers\Admin\ProductController::class, 'store'])->name('admin.products.store');
+    Route::get('/products/{product}/edit', [App\Http\Controllers\Admin\ProductController::class, 'edit'])->name('admin.products.edit');
+    Route::put('/products/{product}', [App\Http\Controllers\Admin\ProductController::class, 'update'])->name('admin.products.update');
+    Route::delete('/products/{product}', [App\Http\Controllers\Admin\ProductController::class, 'destroy'])->name('admin.products.destroy');
+    Route::patch('/products/{product}/toggle-active', [App\Http\Controllers\Admin\ProductController::class, 'toggleActive'])->name('admin.products.toggle-active');
 
-    Route::get('/products/create', function () {
-        return view('admin.products.form');
-    })->name('admin.products.create');
-
-    Route::get('/products/{id}/edit', function ($id) {
-        return view('admin.products.form', ['product' => $id]);
-    })->name('admin.products.edit');
+    // Product Category Routes
+    Route::get('/product-categories', [App\Http\Controllers\Admin\ProductCategoryController::class, 'index'])->name('admin.product-categories');
+    Route::get('/product-categories/create', [App\Http\Controllers\Admin\ProductCategoryController::class, 'create'])->name('admin.product-categories.create');
+    Route::post('/product-categories', [App\Http\Controllers\Admin\ProductCategoryController::class, 'store'])->name('admin.product-categories.store');
+    Route::get('/product-categories/{productCategory}/edit', [App\Http\Controllers\Admin\ProductCategoryController::class, 'edit'])->name('admin.product-categories.edit');
+    Route::put('/product-categories/{productCategory}', [App\Http\Controllers\Admin\ProductCategoryController::class, 'update'])->name('admin.product-categories.update');
+    Route::delete('/product-categories/{productCategory}', [App\Http\Controllers\Admin\ProductCategoryController::class, 'destroy'])->name('admin.product-categories.destroy');
+    Route::patch('/product-categories/{productCategory}/toggle-active', [App\Http\Controllers\Admin\ProductCategoryController::class, 'toggleActive'])->name('admin.product-categories.toggle-active');
+    Route::post('/product-categories/update-sort', [App\Http\Controllers\Admin\ProductCategoryController::class, 'updateSort'])->name('admin.product-categories.update-sort');
 
     // Bootcamp Routes
     Route::get('/bootcamps', [App\Http\Controllers\Admin\BootcampController::class, 'index'])->name('admin.bootcamps');

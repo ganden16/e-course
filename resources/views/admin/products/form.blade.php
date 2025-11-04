@@ -1,263 +1,432 @@
 @extends('admin.layouts.app')
 
-@section('title', isset($product) ? 'Edit Product' : 'Create New Product')
-@section('header', isset($product) ? 'Edit Product' : 'Create New Product')
-
 @php
-    // Load language file for product page
-    $translations = include lang_path('id/product.php');
-    $products = $translations['products'];
-
-    // Create a simple mentors array from the products data
-    $mentors = [];
-    foreach ($products as $prod) {
-        $mentors[] = [
-            'name' => $prod['instructor'],
-            'specialization' => $prod['category']
-        ];
-    }
-    // Remove duplicates
-    $mentors = array_unique($mentors, SORT_REGULAR);
-    $mentors = array_values($mentors);
-
-    // If editing, get the product data
-    if (isset($product)) {
-        $productData = collect($products)->firstWhere('id', $product);
-    }
+use Illuminate\Support\Facades\Storage;
 @endphp
 
+@section('title', isset($product) ? 'Edit Product' : 'Create Product')
+
+@section('page-title', isset($product) ? 'Edit Product' : 'Create Product')
+
 @section('content')
-<div class="container mx-auto px-6 py-8">
-    <!-- Page Header -->
-    <div class="mb-8">
-        <div class="flex items-center">
-            <a href="/admin/products" class="mr-4 text-gray-500 hover:text-gray-700 transition-colors duration-200">
-                <i class="fas fa-arrow-left text-xl"></i>
-            </a>
-            <div>
-                <h1 class="text-3xl font-bold text-gray-900">{{ isset($product) ? 'Edit Product' : 'Create New Product' }}</h1>
-                <p class="mt-2 text-sm text-gray-600">{{ isset($product) ? 'Update product information and settings' : 'Fill in the information to create a new product' }}</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Form Container -->
-    <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
-        <!-- Progress Bar -->
-        <div class="bg-gray-200 h-1">
-            <div class="bg-orange h-1 w-3/5"></div>
-        </div>
-
-        <!-- Tab Navigation -->
-        <div class="border-b border-gray-200">
-            <nav class="flex -mb-px">
-                <button class="py-4 px-6 text-center border-b-2 border-orange font-medium text-sm text-orange">
-                    Basic Information
-                </button>
-                <button class="py-4 px-6 text-center border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
-                    Content & Curriculum
-                </button>
-                <button class="py-4 px-6 text-center border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
-                    Media & Assets
-                </button>
-                <button class="py-4 px-6 text-center border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
-                    Pricing & Settings
-                </button>
-            </nav>
-        </div>
-
-        <form class="p-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Main Content -->
-                <div class="lg:col-span-2 space-y-8">
-                    <!-- Basic Information -->
-                    <div>
-                        <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-orange text-white rounded-full mr-3 text-sm">1</span>
-                            Basic Information
-                        </h2>
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Product Title</label>
-                                <input type="text"
-                                       name="title"
-                                       value="{{ $productData['title'] ?? '' }}"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                                       placeholder="Enter product title">
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
-                                <textarea rows="5"
-                                          name="description"
-                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                                          placeholder="Describe your product">{{ $productData['description'] ?? '' }}</textarea>
-                            </div>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                                    <select name="category" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
-                                        <option value="">Select Category</option>
-                                        <option value="Web Development" {{ ($productData['category'] ?? '') === 'Web Development' ? 'selected' : '' }}>Web Development</option>
-                                        <option value="Data Science" {{ ($productData['category'] ?? '') === 'Data Science' ? 'selected' : '' }}>Data Science</option>
-                                        <option value="Marketing" {{ ($productData['category'] ?? '') === 'Marketing' ? 'selected' : '' }}>Marketing</option>
-                                        <option value="Design" {{ ($productData['category'] ?? '') === 'Design' ? 'selected' : '' }}>Design</option>
-                                        <option value="Mobile Development" {{ ($productData['category'] ?? '') === 'Mobile Development' ? 'selected' : '' }}>Mobile Development</option>
-                                        <option value="Security" {{ ($productData['category'] ?? '') === 'Security' ? 'selected' : '' }}>Security</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Level</label>
-                                    <select name="level" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
-                                        <option value="">Select Level</option>
-                                        <option value="Beginner" {{ ($productData['level'] ?? '') === 'Beginner' ? 'selected' : '' }}>Beginner</option>
-                                        <option value="Intermediate" {{ ($productData['level'] ?? '') === 'Intermediate' ? 'selected' : '' }}>Intermediate</option>
-                                        <option value="Advanced" {{ ($productData['level'] ?? '') === 'Advanced' ? 'selected' : '' }}>Advanced</option>
-                                        <option value="Beginner to Advanced" {{ ($productData['level'] ?? '') === 'Beginner to Advanced' ? 'selected' : '' }}>Beginner to Advanced</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Duration</label>
-                                    <input type="text"
-                                           name="duration"
-                                           value="{{ $productData['duration'] ?? '' }}"
-                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                                           placeholder="e.g. 42 hours">
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Instructor</label>
-                                    <select name="instructor" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
-                                        <option value="">Select Instructor</option>
-                                        @foreach($mentors as $mentor)
-                                            <option value="{{ $mentor['name'] }}" {{ ($productData['instructor'] ?? '') === $mentor['name'] ? 'selected' : '' }}>
-                                                {{ $mentor['name'] }} - {{ $mentor['specialization'] }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Features -->
-                    <div>
-                        <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-gray-400 text-white rounded-full mr-3 text-sm">2</span>
-                            Product Features
-                        </h2>
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Features (one per line)</label>
-                                <textarea rows="6"
-                                          name="features"
-                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                                          placeholder="Enter product features, one per line">{{ implode("\n", $productData['features'] ?? []) }}</textarea>
-                                <p class="text-xs text-gray-500 mt-2">Enter each feature on a new line</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Curriculum -->
-                    <div>
-                        <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-gray-400 text-white rounded-full mr-3 text-sm">3</span>
-                            Curriculum
-                        </h2>
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Curriculum (one per line)</label>
-                                <textarea rows="6"
-                                          name="curriculum"
-                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                                          placeholder="Enter curriculum topics, one per line">{{ implode("\n", $productData['curriculum'] ?? []) }}</textarea>
-                                <p class="text-xs text-gray-500 mt-2">Enter each curriculum topic on a new line</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sidebar -->
-                <div class="space-y-8">
-                    <!-- Product Image -->
-                    <div class="bg-gray-50 rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Product Image</h3>
-                        <div class="space-y-4">
-                            <div class="relative group">
-                                <img class="w-full h-48 object-cover rounded-lg"
-                                     src="{{ $productData['image'] ?? 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' }}"
-                                     alt="Product image">
-                                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg">
-                                    <button type="button" class="bg-white text-gray-800 py-2 px-4 rounded-lg text-sm font-medium">
-                                        <i class="fas fa-camera mr-2"></i>
-                                        Change Image
-                                    </button>
-                                </div>
-                            </div>
-                            <button type="button" class="w-full bg-white border border-gray-300 rounded-lg py-3 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
-                                <i class="fas fa-upload mr-2"></i>
-                                Upload New Image
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Pricing -->
-                    <div class="bg-gray-50 rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Pricing</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Price (Rp)</label>
-                                <input type="number"
-                                       name="price"
-                                       value="{{ $productData['price'] ?? '' }}"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                                       placeholder="0">
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Original Price (Rp)</label>
-                                <input type="number"
-                                       name="original_price"
-                                       value="{{ $productData['original_price'] ?? '' }}"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                                       placeholder="0">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Status -->
-                    <div class="bg-gray-50 rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Status</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Product Status</label>
-                                <select name="status" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
-                                    <option value="active" {{ ($productData['status'] ?? '') === 'active' ? 'selected' : '' }}>Active</option>
-                                    <option value="inactive" {{ ($productData['status'] ?? '') === 'inactive' ? 'selected' : '' }}>Inactive</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="bg-gray-50 rounded-xl p-6">
-                        <div class="flex flex-col space-y-3">
-                            <button type="submit" class="w-full bg-orange hover:bg-orange-dark text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 shadow-lg">
-                                {{ isset($product) ? 'Update Product' : 'Create Product' }}
-                            </button>
-                            <a href="/admin/products" class="w-full bg-white hover:bg-gray-50 text-gray-700 font-medium py-3 px-4 rounded-lg border border-gray-300 text-center transition-colors duration-200">
-                                Cancel
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+<div class="mb-6">
+    <a href="{{ route('admin.products') }}" class="text-purple-600 hover:text-purple-800 flex items-center">
+        <i class="fas fa-arrow-left mr-2"></i>
+        Back to Products
+    </a>
 </div>
+
+<div class="bg-white rounded-xl shadow-md overflow-hidden">
+    <div class="p-6 border-b">
+        <h2 class="text-xl font-semibold text-gray-800">{{ isset($product) ? 'Edit Product' : 'Create New Product' }}</h2>
+        <p class="text-gray-600 mt-1">{{ isset($product) ? 'Update product information' : 'Fill in the product details below' }}</p>
+    </div>
+
+    <form action="{{ isset($product) ? route('admin.products.update', $product) : route('admin.products.store') }}" method="POST" enctype="multipart/form-data" class="p-6">
+        @csrf
+        @if(isset($product))
+            @method('PUT')
+        @endif
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Basic Information -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Basic Information</h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Product Title *</label>
+                            <input type="text" id="title" name="title" value="{{ old('title', $product->title ?? '') }}"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
+                            @error('title')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description *</label>
+                            <textarea id="description" name="description" rows="4"
+                                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>{{ old('description', $product->description ?? '') }}</textarea>
+                            @error('description')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="instructor" class="block text-sm font-medium text-gray-700 mb-1">Instructor *</label>
+                                <input type="text" id="instructor" name="instructor" value="{{ old('instructor', $product->instructor ?? '') }}"
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
+                                @error('instructor')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="product_category_id" class="block text-sm font-medium text-gray-700 mb-1">Category *</label>
+                                <select id="product_category_id" name="product_category_id"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
+                                    <option value="">Select a category</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}" {{ old('product_category_id', $product->product_category_id ?? '') == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('product_category_id')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label for="duration" class="block text-sm font-medium text-gray-700 mb-1">Duration *</label>
+                                <input type="text" id="duration" name="duration" value="{{ old('duration', $product->duration ?? '') }}"
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
+                                @error('duration')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="level" class="block text-sm font-medium text-gray-700 mb-1">Level *</label>
+                                <select id="level" name="level"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
+                                    <option value="">Select level</option>
+                                    <option value="Beginner" {{ old('level', $product->level ?? '') == 'Beginner' ? 'selected' : '' }}>Beginner</option>
+                                    <option value="Intermediate" {{ old('level', $product->level ?? '') == 'Intermediate' ? 'selected' : '' }}>Intermediate</option>
+                                    <option value="Advanced" {{ old('level', $product->level ?? '') == 'Advanced' ? 'selected' : '' }}>Advanced</option>
+                                </select>
+                                @error('level')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="rating" class="block text-sm font-medium text-gray-700 mb-1">Rating *</label>
+                                <input type="number" id="rating" name="rating" value="{{ old('rating', $product->rating ?? '') }}"
+                                       step="0.1" min="0" max="5"
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
+                                @error('rating')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Pricing</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="price" class="block text-sm font-medium text-gray-700 mb-1">Current Price ($) *</label>
+                            <input type="number" id="price" name="price" value="{{ old('price', $product->price ?? '') }}"
+                                   step="0.01" min="0"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
+                            @error('price')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="original_price" class="block text-sm font-medium text-gray-700 mb-1">Original Price ($) *</label>
+                            <input type="number" id="original_price" name="original_price" value="{{ old('original_price', $product->original_price ?? '') }}"
+                                   step="0.01" min="0"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
+                            @error('original_price')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <label for="students" class="block text-sm font-medium text-gray-700 mb-1">Number of Students *</label>
+                        <input type="number" id="students" name="students" value="{{ old('students', $product->students ?? '') }}"
+                               min="0"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
+                        @error('students')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Features</h3>
+
+                    <div id="features-container" class="space-y-2">
+                        @php
+                            $features = isset($product) ? $product->features : [];
+                            if (empty($features)) $features = [''];
+                        @endphp
+                        @foreach($features as $index => $feature)
+                            <div class="flex items-center space-x-2 feature-item">
+                                <input type="text" name="features[]" value="{{ $feature }}"
+                                       class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                       placeholder="Enter feature">
+                                <button type="button" class="text-red-600 hover:text-red-800 remove-feature">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <button type="button" id="add-feature" class="mt-3 text-purple-600 hover:text-purple-800 font-medium">
+                        <i class="fas fa-plus mr-1"></i> Add Feature
+                    </button>
+                </div>
+
+                <!-- Curriculum -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Curriculum</h3>
+
+                    <div id="curriculum-container" class="space-y-2">
+                        @php
+                            $curriculum = isset($product) ? $product->curriculum : [];
+                            if (empty($curriculum)) $curriculum = [''];
+                        @endphp
+                        @foreach($curriculum as $index => $item)
+                            <div class="flex items-center space-x-2 curriculum-item">
+                                <input type="text" name="curriculum[]" value="{{ $item }}"
+                                       class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                       placeholder="Enter curriculum item">
+                                <button type="button" class="text-red-600 hover:text-red-800 remove-curriculum">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <button type="button" id="add-curriculum" class="mt-3 text-purple-600 hover:text-purple-800 font-medium">
+                        <i class="fas fa-plus mr-1"></i> Add Curriculum Item
+                    </button>
+                </div>
+
+                <!-- Requirements -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Requirements</h3>
+
+                    <div id="requirements-container" class="space-y-2">
+                        @php
+                            $requirements = isset($product) ? $product->requirements : [];
+                            if (empty($requirements)) $requirements = [''];
+                        @endphp
+                        @foreach($requirements as $index => $requirement)
+                            <div class="flex items-center space-x-2 requirement-item">
+                                <input type="text" name="requirements[]" value="{{ $requirement }}"
+                                       class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                       placeholder="Enter requirement">
+                                <button type="button" class="text-red-600 hover:text-red-800 remove-requirement">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <button type="button" id="add-requirement" class="mt-3 text-purple-600 hover:text-purple-800 font-medium">
+                        <i class="fas fa-plus mr-1"></i> Add Requirement
+                    </button>
+                </div>
+
+                <!-- What You Will Build -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">What You Will Build</h3>
+
+                    <div id="what-you-will-build-container" class="space-y-2">
+                        @php
+                            $whatYouWillBuild = isset($product) ? $product->what_you_will_build : [];
+                            if (empty($whatYouWillBuild)) $whatYouWillBuild = [''];
+                        @endphp
+                        @foreach($whatYouWillBuild as $index => $item)
+                            <div class="flex items-center space-x-2 what-you-will-build-item">
+                                <input type="text" name="what_you_will_build[]" value="{{ $item }}"
+                                       class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                       placeholder="Enter what you will build">
+                                <button type="button" class="text-red-600 hover:text-red-800 remove-what-you-will-build">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <button type="button" id="add-what-you-will-build" class="mt-3 text-purple-600 hover:text-purple-800 font-medium">
+                        <i class="fas fa-plus mr-1"></i> Add Item
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-6">
+                <!-- Product Image -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Product Image</h3>
+
+                    <div class="space-y-4">
+                        @if(isset($product) && $product->image)
+                            <div class="mb-4">
+                                <img src="{{ Storage::url($product->image) }}" alt="{{ $product->title }}"
+                                     class="w-full h-48 object-cover rounded-lg">
+                                <p class="text-sm text-gray-500 mt-2">Current image</p>
+                            </div>
+                        @endif
+
+                        <div>
+                            <label for="image" class="block text-sm font-medium text-gray-700 mb-1">
+                                {{ isset($product) ? 'Change Image' : 'Product Image' }} {{ !isset($product) ? '*' : '' }}
+                            </label>
+                            <input type="file" id="image" name="image" accept="image/*"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                   {{ !isset($product) ? 'required' : '' }}>
+                            @error('image')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                            <p class="text-sm text-gray-500 mt-1">Allowed formats: JPEG, PNG, JPG, GIF (Max: 2MB)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Status</h3>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="is_active" name="is_active" value="1"
+                                   class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
+                                   {{ old('is_active', $product->is_active ?? true) ? 'checked' : '' }}>
+                            <label for="is_active" class="ml-2 block text-sm text-gray-700">
+                                Active
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="space-y-3">
+                        <button type="submit" class="w-full gradient-bg text-white py-3 rounded-lg hover:opacity-90 transition font-medium">
+                            {{ isset($product) ? 'Update Product' : 'Create Product' }}
+                        </button>
+                        <a href="{{ route('admin.products') }}" class="w-full block text-center bg-gray-200 text-gray-800 py-3 rounded-lg hover:bg-gray-300 transition font-medium">
+                            Cancel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Features management
+    const featuresContainer = document.getElementById('features-container');
+    const addFeatureBtn = document.getElementById('add-feature');
+
+    addFeatureBtn.addEventListener('click', function() {
+        const newFeature = document.createElement('div');
+        newFeature.className = 'flex items-center space-x-2 feature-item';
+        newFeature.innerHTML = `
+            <input type="text" name="features[]" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter feature">
+            <button type="button" class="text-red-600 hover:text-red-800 remove-feature">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+        featuresContainer.appendChild(newFeature);
+    });
+
+    // Remove feature
+    featuresContainer.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-feature')) {
+            const featureItem = e.target.closest('.feature-item');
+            if (featuresContainer.children.length > 1) {
+                featureItem.remove();
+            }
+        }
+    });
+
+    // Curriculum management
+    const curriculumContainer = document.getElementById('curriculum-container');
+    const addCurriculumBtn = document.getElementById('add-curriculum');
+
+    addCurriculumBtn.addEventListener('click', function() {
+        const newCurriculum = document.createElement('div');
+        newCurriculum.className = 'flex items-center space-x-2 curriculum-item';
+        newCurriculum.innerHTML = `
+            <input type="text" name="curriculum[]" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter curriculum item">
+            <button type="button" class="text-red-600 hover:text-red-800 remove-curriculum">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+        curriculumContainer.appendChild(newCurriculum);
+    });
+
+    // Remove curriculum
+    curriculumContainer.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-curriculum')) {
+            const curriculumItem = e.target.closest('.curriculum-item');
+            if (curriculumContainer.children.length > 1) {
+                curriculumItem.remove();
+            }
+        }
+    });
+
+    // Requirements management
+    const requirementsContainer = document.getElementById('requirements-container');
+    const addRequirementBtn = document.getElementById('add-requirement');
+
+    addRequirementBtn.addEventListener('click', function() {
+        const newRequirement = document.createElement('div');
+        newRequirement.className = 'flex items-center space-x-2 requirement-item';
+        newRequirement.innerHTML = `
+            <input type="text" name="requirements[]" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter requirement">
+            <button type="button" class="text-red-600 hover:text-red-800 remove-requirement">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+        requirementsContainer.appendChild(newRequirement);
+    });
+
+    // Remove requirement
+    requirementsContainer.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-requirement')) {
+            const requirementItem = e.target.closest('.requirement-item');
+            if (requirementsContainer.children.length > 1) {
+                requirementItem.remove();
+            }
+        }
+    });
+
+    // What You Will Build management
+    const whatYouWillBuildContainer = document.getElementById('what-you-will-build-container');
+    const addWhatYouWillBuildBtn = document.getElementById('add-what-you-will-build');
+
+    addWhatYouWillBuildBtn.addEventListener('click', function() {
+        const newWhatYouWillBuild = document.createElement('div');
+        newWhatYouWillBuild.className = 'flex items-center space-x-2 what-you-will-build-item';
+        newWhatYouWillBuild.innerHTML = `
+            <input type="text" name="what_you_will_build[]" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter what you will build">
+            <button type="button" class="text-red-600 hover:text-red-800 remove-what-you-will-build">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+        whatYouWillBuildContainer.appendChild(newWhatYouWillBuild);
+    });
+
+    // Remove what you will build
+    whatYouWillBuildContainer.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-what-you-will-build')) {
+            const whatYouWillBuildItem = e.target.closest('.what-you-will-build-item');
+            if (whatYouWillBuildContainer.children.length > 1) {
+                whatYouWillBuildItem.remove();
+            }
+        }
+    });
+});
+</script>
 @endsection
