@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\BootcampController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BlogController;
 
 // Language switch route
 Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('language.switch');
@@ -22,13 +23,9 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'id|en']], functio
         return view('community');
     })->name('community');
 
-    Route::get('/blog', function () {
-        return view('blog');
-    })->name('blog');
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
-    Route::get('/blog/{id}', function ($id) {
-        return view('blog-detail');
-    })->name('blog.detail');
+    Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.detail');
 
     Route::get('/contact', function () {
         return view('contact');
@@ -122,17 +119,22 @@ Route::prefix('admin')->group(function () {
     })->name('admin.mentors.edit');
 
     // Blog Routes
-    Route::get('/blogs', function () {
-        return view('admin.blogs');
-    })->name('admin.blogs');
+    Route::get('/blogs', [App\Http\Controllers\Admin\BlogController::class, 'index'])->name('admin.blogs');
+    Route::get('/blogs/create', [App\Http\Controllers\Admin\BlogController::class, 'create'])->name('admin.blogs.create');
+    Route::post('/blogs', [App\Http\Controllers\Admin\BlogController::class, 'store'])->name('admin.blogs.store');
+    Route::get('/blogs/{blog}/edit', [App\Http\Controllers\Admin\BlogController::class, 'edit'])->name('admin.blogs.edit');
+    Route::put('/blogs/{blog}', [App\Http\Controllers\Admin\BlogController::class, 'update'])->name('admin.blogs.update');
+    Route::delete('/blogs/{blog}', [App\Http\Controllers\Admin\BlogController::class, 'destroy'])->name('admin.blogs.destroy');
+    Route::patch('/blogs/{blog}/toggle-active', [App\Http\Controllers\Admin\BlogController::class, 'toggleActive'])->name('admin.blogs.toggle-active');
 
-    Route::get('/blogs/create', function () {
-        return view('admin.blogs.form');
-    })->name('admin.blogs.create');
-
-    Route::get('/blogs/{id}/edit', function ($id) {
-        return view('admin.blogs.form', ['blog' => $id]);
-    })->name('admin.blogs.edit');
+    // Blog Tag Routes
+    Route::get('/blog-tags', [App\Http\Controllers\Admin\BlogTagController::class, 'index'])->name('admin.blog-tags');
+    Route::get('/blog-tags/create', [App\Http\Controllers\Admin\BlogTagController::class, 'create'])->name('admin.blog-tags.create');
+    Route::post('/blog-tags', [App\Http\Controllers\Admin\BlogTagController::class, 'store'])->name('admin.blog-tags.store');
+    Route::get('/blog-tags/{blogTag}/edit', [App\Http\Controllers\Admin\BlogTagController::class, 'edit'])->name('admin.blog-tags.edit');
+    Route::put('/blog-tags/{blogTag}', [App\Http\Controllers\Admin\BlogTagController::class, 'update'])->name('admin.blog-tags.update');
+    Route::delete('/blog-tags/{blogTag}', [App\Http\Controllers\Admin\BlogTagController::class, 'destroy'])->name('admin.blog-tags.destroy');
+    Route::patch('/blog-tags/{blogTag}/toggle-active', [App\Http\Controllers\Admin\BlogTagController::class, 'toggleActive'])->name('admin.blog-tags.toggle-active');
 
     // Settings
     Route::get('/settings', function () {

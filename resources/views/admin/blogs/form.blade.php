@@ -1,345 +1,190 @@
 @extends('admin.layouts.app')
 
-@php
-    // Sample blog data for editing
-    if (isset($blog)) {
-        $blogData = [
-            1 => [
-                'id' => 1,
-                'title' => 'Panduan Lengkap Belajar Web Development',
-                'excerpt' => 'Pelajari langkah demi langkah cara menjadi web developer profesional dengan panduan komprehensif ini.',
-                'author' => 'John Doe',
-                'category' => 'Web Development',
-                'status' => 'published',
-                'views' => 1250,
-                'date' => '2024-01-15',
-                'image' => 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-                'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            ],
-            2 => [
-                'id' => 2,
-                'title' => 'Tren Data Science di Indonesia 2024',
-                'excerpt' => 'Analisis mendalam tentang perkembangan dan peluang karir di bidang data science di Indonesia.',
-                'author' => 'Jane Smith',
-                'category' => 'Data Science',
-                'status' => 'published',
-                'views' => 980,
-                'date' => '2024-01-12',
-                'image' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-                'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            ],
-            3 => [
-                'id' => 3,
-                'title' => 'Strategi Digital Marketing untuk Startup',
-                'excerpt' => 'Tips dan trik efektif untuk membangun strategi digital marketing yang sukses untuk startup Anda.',
-                'author' => 'Mike Johnson',
-                'category' => 'Marketing',
-                'status' => 'draft',
-                'views' => 0,
-                'date' => '2024-01-10',
-                'image' => 'https://images.unsplash.com/photo-1557838923-2985c318be48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-                'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            ],
-            4 => [
-                'id' => 4,
-                'title' => 'Prinsip Desain UI/UX Modern',
-                'excerpt' => 'Pahami prinsip fundamental desain UI/UX yang akan membuat aplikasi Anda menonjol.',
-                'author' => 'Sarah Williams',
-                'category' => 'Design',
-                'status' => 'published',
-                'views' => 756,
-                'date' => '2024-01-08',
-                'image' => 'https://images.unsplash.com/photo-1559028006-44a26fcd9aee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-                'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            ]
-        ];
-
-        $currentBlog = $blogData[$blog] ?? null;
-    }
-@endphp
-
-@section('title', isset($blog) ? 'Edit Blog' : 'Create New Blog')
-@section('header', isset($blog) ? 'Edit Blog' : 'Create New Blog')
+@section('title', isset($blog) ? 'Edit Blog' : 'Create Blog')
 
 @section('content')
-<div class="container mx-auto px-6 py-8">
-    <!-- Page Header -->
-    <div class="mb-8">
-        <div class="flex items-center">
-            <a href="/admin/blogs" class="mr-4 text-gray-500 hover:text-gray-700 transition-colors duration-200">
-                <i class="fas fa-arrow-left text-xl"></i>
-            </a>
-            <div>
-                <h1 class="text-3xl font-bold text-gray-900">{{ isset($blog) ? 'Edit Blog' : 'Create New Blog' }}</h1>
-                <p class="mt-2 text-sm text-gray-600">{{ isset($blog) ? 'Update blog information and content' : 'Fill in the information to create a new blog post' }}</p>
-            </div>
-        </div>
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0">{{ isset($blog) ? 'Edit Blog' : 'Create Blog' }}</h1>
+        <a href="{{ route('admin.blogs') }}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i> Back to Blogs
+        </a>
     </div>
 
-    <!-- Form Container -->
-    <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
-        <!-- Progress Bar -->
-        <div class="bg-gray-200 h-1">
-            <div class="bg-orange h-1 w-3/5"></div>
-        </div>
+    <div class="card">
+        <div class="card-body">
+            <form method="POST" action="{{ isset($blog) ? route('admin.blogs.update', $blog) : route('admin.blogs.store') }}" enctype="multipart/form-data">
+                @csrf
+                @method(isset($blog) ? 'PUT' : 'POST')
 
-        <!-- Tab Navigation -->
-        <div class="border-b border-gray-200">
-            <nav class="flex -mb-px">
-                <button class="py-4 px-6 text-center border-b-2 border-orange font-medium text-sm text-orange">
-                    Basic Information
-                </button>
-                <button class="py-4 px-6 text-center border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
-                    Content & SEO
-                </button>
-                <button class="py-4 px-6 text-center border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
-                    Media & Images
-                </button>
-                <button class="py-4 px-6 text-center border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
-                    Publishing
-                </button>
-            </nav>
-        </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <!-- Title -->
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title', isset($blog) ? $blog->title : '') }}" required>
+                            @error('title')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-        <form class="p-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Main Content -->
-                <div class="lg:col-span-2 space-y-8">
-                    <!-- Basic Information -->
-                    <div>
-                        <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-orange text-white rounded-full mr-3 text-sm">1</span>
-                            Basic Information
-                        </h2>
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Blog Title</label>
-                                <input type="text"
-                                       name="title"
-                                       value="{{ $currentBlog['title'] ?? '' }}"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                                       placeholder="Enter an engaging title for your blog">
-                            </div>
+                        <!-- Excerpt -->
+                        <div class="mb-3">
+                            <label for="excerpt" class="form-label">Excerpt <span class="text-danger">*</span></label>
+                            <textarea class="form-control @error('excerpt') is-invalid @enderror" id="excerpt" name="excerpt" rows="3" required>{{ old('excerpt', isset($blog) ? $blog->excerpt : '') }}</textarea>
+                            @error('excerpt')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Excerpt</label>
-                                <textarea rows="3"
-                                          name="excerpt"
-                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                                          placeholder="Write a brief summary of your blog post">{{ $currentBlog['excerpt'] ?? '' }}</textarea>
-                                <p class="text-xs text-gray-500 mt-2">This will be displayed in blog listings and search results</p>
-                            </div>
+                        <!-- Content -->
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Content <span class="text-danger">*</span></label>
+                            <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="10" required>{{ old('content', isset($blog) ? $blog->content : '') }}</textarea>
+                            @error('content')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                                    <select name="category" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
-                                        <option value="">Select Category</option>
-                                        <option value="Web Development" {{ ($currentBlog['category'] ?? '') === 'Web Development' ? 'selected' : '' }}>Web Development</option>
-                                        <option value="Data Science" {{ ($currentBlog['category'] ?? '') === 'Data Science' ? 'selected' : '' }}>Data Science</option>
-                                        <option value="Marketing" {{ ($currentBlog['category'] ?? '') === 'Marketing' ? 'selected' : '' }}>Marketing</option>
-                                        <option value="Design" {{ ($currentBlog['category'] ?? '') === 'Design' ? 'selected' : '' }}>Design</option>
-                                        <option value="Mobile Development" {{ ($currentBlog['category'] ?? '') === 'Mobile Development' ? 'selected' : '' }}>Mobile Development</option>
-                                        <option value="Security" {{ ($currentBlog['category'] ?? '') === 'Security' ? 'selected' : '' }}>Security</option>
-                                    </select>
-                                </div>
+                        <!-- Meta Title -->
+                        <div class="mb-3">
+                            <label for="meta_title" class="form-label">Meta Title</label>
+                            <input type="text" class="form-control @error('meta_title') is-invalid @enderror" id="meta_title" name="meta_title" value="{{ old('meta_title', isset($blog) ? $blog->meta_title : '') }}" placeholder="SEO title (optional)">
+                            @error('meta_title')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Author</label>
-                                    <input type="text"
-                                           name="author"
-                                           value="{{ $currentBlog['author'] ?? '' }}"
-                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                                           placeholder="Author name">
-                                </div>
-                            </div>
+                        <!-- Meta Description -->
+                        <div class="mb-3">
+                            <label for="meta_description" class="form-label">Meta Description</label>
+                            <textarea class="form-control @error('meta_description') is-invalid @enderror" id="meta_description" name="meta_description" rows="2" placeholder="SEO description (optional)">{{ old('meta_description', isset($blog) ? $blog->meta_description : '') }}</textarea>
+                            @error('meta_description')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
-                    <!-- Content Editor -->
-                    <div>
-                        <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-gray-400 text-white rounded-full mr-3 text-sm">2</span>
-                            Content Editor
-                        </h2>
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Blog Content</label>
-                                <div class="border border-gray-300 rounded-lg overflow-hidden">
-                                    <!-- Editor Toolbar -->
-                                    <div class="bg-gray-50 border-b border-gray-300 px-4 py-2 flex items-center space-x-2">
-                                        <button type="button" class="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-200 rounded">
-                                            <i class="fas fa-bold"></i>
-                                        </button>
-                                        <button type="button" class="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-200 rounded">
-                                            <i class="fas fa-italic"></i>
-                                        </button>
-                                        <button type="button" class="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-200 rounded">
-                                            <i class="fas fa-underline"></i>
-                                        </button>
-                                        <div class="w-px h-6 bg-gray-300"></div>
-                                        <button type="button" class="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-200 rounded">
-                                            <i class="fas fa-list-ul"></i>
-                                        </button>
-                                        <button type="button" class="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-200 rounded">
-                                            <i class="fas fa-list-ol"></i>
-                                        </button>
-                                        <div class="w-px h-6 bg-gray-300"></div>
-                                        <button type="button" class="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-200 rounded">
-                                            <i class="fas fa-link"></i>
-                                        </button>
-                                        <button type="button" class="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-200 rounded">
-                                            <i class="fas fa-image"></i>
-                                        </button>
-                                        <button type="button" class="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-200 rounded">
-                                            <i class="fas fa-code"></i>
-                                        </button>
+                    <div class="col-md-4">
+                        <!-- Featured Image -->
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Featured Image</label>
+                            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
+                            @error('image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                            @if(isset($blog) && $blog->image)
+                                <div class="mt-2">
+                                    <small class="text-muted">Current image:</small>
+                                    <div class="mt-1">
+                                        <img src="{{ $blog->image_url }}" alt="{{ $blog->title }}" class="img-thumbnail" style="max-width: 100%; max-height: 200px; object-fit: cover;">
                                     </div>
-                                    <!-- Editor Content Area -->
-                                    <textarea rows="12"
-                                              name="content"
-                                              class="w-full px-4 py-3 border-0 focus:outline-none focus:ring-0 resize-none"
-                                              placeholder="Start writing your blog content here...">{{ $currentBlog['content'] ?? '' }}</textarea>
                                 </div>
-                                <p class="text-xs text-gray-500 mt-2">Use the toolbar to format your content or write in Markdown</p>
+                            @endif
+                        </div>
+
+                        <!-- Author -->
+                        <div class="mb-3">
+                            <label for="author" class="form-label">Author <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control @error('author') is-invalid @enderror" id="author" name="author" value="{{ old('author', isset($blog) ? $blog->author : '') }}" required>
+                            @error('author')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Published Date -->
+                        <div class="mb-3">
+                            <label for="published_at" class="form-label">Published Date <span class="text-danger">*</span></label>
+                            <input type="datetime-local" class="form-control @error('published_at') is-invalid @enderror" id="published_at" name="published_at" value="{{ old('published_at', isset($blog) ? $blog->published_at->format('Y-m-d\TH:i') : now()->format('Y-m-d\TH:i')) }}" required>
+                            @error('published_at')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Read Time -->
+                        <div class="mb-3">
+                            <label for="read_time" class="form-label">Read Time <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control @error('read_time') is-invalid @enderror" id="read_time" name="read_time" value="{{ old('read_time', isset($blog) ? $blog->read_time : '') }}" placeholder="e.g., 5 min read" required>
+                            @error('read_time')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+
+                        <!-- Tags -->
+                        <div class="mb-3">
+                            <label for="tags" class="form-label">Tags</label>
+                            <select class="form-select @error('tags') is-invalid @enderror" id="tags" name="tags[]" multiple>
+                                @foreach($tags as $tag)
+                                    <option value="{{ $tag->id }}" {{ in_array($tag->id, old('tags', isset($blogTags) ? $blogTags : [])) ? 'selected' : '' }}>
+                                        {{ $tag->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <small class="form-text text-muted">Hold Ctrl/Cmd to select multiple tags</small>
+                            @error('tags')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Status -->
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input @error('is_active') is-invalid @enderror" type="checkbox" id="is_active" name="is_active" value="1" {{ old('is_active', isset($blog) ? $blog->is_active : true) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="is_active">
+                                    Active
+                                </label>
+                                @error('is_active')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
-                    </div>
 
-                    <!-- SEO Settings -->
-                    <div>
-                        <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                            <span class="flex items-center justify-center w-8 h-8 bg-gray-400 text-white rounded-full mr-3 text-sm">3</span>
-                            SEO Settings
-                        </h2>
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">SEO Title</label>
-                                <input type="text"
-                                       name="seo_title"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                                       placeholder="Enter SEO title (max 60 characters)"
-                                       maxlength="60">
-                                <p class="text-xs text-gray-500 mt-2">Optimal length: 50-60 characters</p>
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Meta Description</label>
-                                <textarea rows="3"
-                                          name="meta_description"
-                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                                          placeholder="Enter meta description (max 160 characters)"
-                                          maxlength="160"></textarea>
-                                <p class="text-xs text-gray-500 mt-2">Optimal length: 150-160 characters</p>
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Tags</label>
-                                <input type="text"
-                                       name="tags"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                                       placeholder="Enter tags separated by commas">
-                                <p class="text-xs text-gray-500 mt-2">Example: web development, tutorial, javascript</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sidebar -->
-                <div class="space-y-8">
-                    <!-- Featured Image -->
-                    <div class="bg-gray-50 rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Featured Image</h3>
-                        <div class="space-y-4">
-                            <div class="relative group">
-                                <img class="w-full h-48 object-cover rounded-lg"
-                                     src="{{ $currentBlog['image'] ?? 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80' }}"
-                                     alt="Featured image">
-                                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg">
-                                    <button type="button" class="bg-white text-gray-800 py-2 px-4 rounded-lg text-sm font-medium">
-                                        <i class="fas fa-camera mr-2"></i>
-                                        Change Image
-                                    </button>
-                                </div>
-                            </div>
-                            <button type="button" class="w-full bg-white border border-gray-300 rounded-lg py-3 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
-                                <i class="fas fa-upload mr-2"></i>
-                                Upload New Image
+                        <!-- Submit Buttons -->
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i> {{ isset($blog) ? 'Update Blog' : 'Create Blog' }}
                             </button>
-                        </div>
-                    </div>
-
-                    <!-- Publishing Options -->
-                    <div class="bg-gray-50 rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Publishing Options</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                                <select name="status" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
-                                    <option value="draft" {{ ($currentBlog['status'] ?? '') === 'draft' ? 'selected' : '' }}>Draft</option>
-                                    <option value="published" {{ ($currentBlog['status'] ?? '') === 'published' ? 'selected' : '' }}>Published</option>
-                                    <option value="scheduled">Scheduled</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Publish Date</label>
-                                <input type="datetime-local"
-                                       name="publish_date"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200"
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Visibility</label>
-                                <select name="visibility" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-colors duration-200">
-                                    <option value="public">Public</option>
-                                    <option value="private">Private</option>
-                                    <option value="password">Password Protected</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Categories -->
-                    <div class="bg-gray-50 rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Categories</h3>
-                        <div class="space-y-2">
-                            <label class="flex items-center">
-                                <input type="checkbox" class="rounded border-gray-300 text-orange focus:ring-orange" name="categories[]" value="web-development">
-                                <span class="ml-2 text-sm text-gray-700">Web Development</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" class="rounded border-gray-300 text-orange focus:ring-orange" name="categories[]" value="data-science">
-                                <span class="ml-2 text-sm text-gray-700">Data Science</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" class="rounded border-gray-300 text-orange focus:ring-orange" name="categories[]" value="marketing">
-                                <span class="ml-2 text-sm text-gray-700">Marketing</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" class="rounded border-gray-300 text-orange focus:ring-orange" name="categories[]" value="design">
-                                <span class="ml-2 text-sm text-gray-700">Design</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="bg-gray-50 rounded-xl p-6">
-                        <div class="flex flex-col space-y-3">
-                            <button type="submit" class="w-full bg-orange hover:bg-orange-dark text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 shadow-lg">
-                                {{ isset($blog) ? 'Update Blog' : 'Publish Blog' }}
-                            </button>
-                            <button type="button" class="w-full bg-white hover:bg-gray-50 text-gray-700 font-medium py-3 px-4 rounded-lg border border-gray-300 transition-colors duration-200">
-                                Save as Draft
-                            </button>
-                            <a href="/admin/blogs" class="w-full bg-white hover:bg-gray-50 text-gray-700 font-medium py-3 px-4 rounded-lg border border-gray-300 text-center transition-colors duration-200">
+                            <a href="{{ route('admin.blogs') }}" class="btn btn-outline-secondary">
                                 Cancel
                             </a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 @endsection
+
+@push('styles')
+<style>
+    .select2-container--bootstrap-5 .select2-selection {
+        min-height: 38px;
+    }
+    .select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+        line-height: 38px;
+        padding-left: 12px;
+    }
+    .select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered {
+        padding: 6px 12px;
+    }
+</style>
+@endpush
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+$(document).ready(function() {
+    $('#tags').select2({
+        theme: 'bootstrap-5',
+        placeholder: 'Select tags',
+        allowClear: true
+    });
+});
+</script>
+@endpush

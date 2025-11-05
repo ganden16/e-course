@@ -41,6 +41,22 @@ class Category extends Model
     }
 
     /**
+     * Get the blogs for the category.
+     */
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
+
+    /**
+     * Get the active blogs for the category.
+     */
+    public function activeBlogs()
+    {
+        return $this->hasMany(Blog::class)->where('is_active', true);
+    }
+
+    /**
      * Boot the model.
      */
     protected static function boot()

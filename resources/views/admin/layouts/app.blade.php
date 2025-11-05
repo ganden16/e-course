@@ -13,6 +13,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         tailwind.config = {
@@ -75,7 +77,7 @@
              x-transition:leave="transition ease-in-out duration-300 transform"
              x-transition:leave-start="translate-x-0"
              x-transition:leave-end="-translate-x-full"
-             class="fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-primary to-primary-dark text-white lg:static lg:inset-0 transform lg:transform-none shadow-2xl">
+             class="fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-primary to-primary-dark text-white lg:static lg:inset-0 transform lg:transform-none shadow-2xl flex flex-col">
 
             <!-- Sidebar Header -->
             <div class="flex items-center justify-between h-16 px-6 bg-gradient-to-r from-primary to-primary-dark border-b border-gray-700">
@@ -107,8 +109,8 @@
             </div>
 
             <!-- Navigation -->
-            <nav class="mt-6 px-3">
-                <div class="space-y-1">
+            <nav class="mt-6 px-3 overflow-y-auto flex-1">
+                <div class="space-y-1 whitespace-nowrap">
                     <a href="/admin/dashboard" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/dashboard') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-tachometer-alt mr-3 {{ request()->is('admin/dashboard') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Dashboard</span>
@@ -121,6 +123,22 @@
                     <div class="pt-4 pb-2">
                         <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Content Management</p>
                     </div>
+
+                    <a href="/admin/bootcamps" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/bootcamps*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
+                        <i class="fas fa-campground mr-3 {{ request()->is('admin/bootcamps*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
+                        <span>Bootcamps</span>
+                        @if(request()->is('admin/bootcamps*'))
+                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
+                        @endif
+                    </a>
+
+                    <a href="/admin/categories" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/categories*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
+                        <i class="fas fa-folder mr-3 {{ request()->is('admin/categories*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
+                        <span>Bootcamp Categories</span>
+                        @if(request()->is('admin/categories*'))
+                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
+                        @endif
+                    </a>
 
                     <a href="/admin/products" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/products*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-book mr-3 {{ request()->is('admin/products*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
@@ -138,14 +156,6 @@
                         @endif
                     </a>
 
-                    <a href="/admin/bootcamps" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/bootcamps*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
-                        <i class="fas fa-campground mr-3 {{ request()->is('admin/bootcamps*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
-                        <span>Bootcamps</span>
-                        @if(request()->is('admin/bootcamps*'))
-                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
-                        @endif
-                    </a>
-
                     <a href="/admin/blogs" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/blogs*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-blog mr-3 {{ request()->is('admin/blogs*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Blogs</span>
@@ -154,13 +164,14 @@
                         @endif
                     </a>
 
-                    <a href="/admin/categories" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/categories*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
-                        <i class="fas fa-folder mr-3 {{ request()->is('admin/categories*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
-                        <span>Categories</span>
-                        @if(request()->is('admin/categories*'))
+                    <a href="/admin/blog-tags" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/blog-tags*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
+                        <i class="fas fa-tags mr-3 {{ request()->is('admin/blog-tags*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
+                        <span>Blog Tags</span>
+                        @if(request()->is('admin/blog-tags*'))
                             <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
                         @endif
                     </a>
+
 
                     <!-- People Management Section -->
                     <div class="pt-4 pb-2">
@@ -197,7 +208,7 @@
                     </a>
                 </div>
 
-                <div class="mt-8 pt-6 border-t border-gray-700">
+                <div class="mt-auto pt-6 border-t border-gray-700">
                     <a href="/logout" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg text-gray-300 hover:bg-orange hover:text-white transition-all duration-200 group">
                         <i class="fas fa-sign-out-alt mr-3 text-gray-400 group-hover:text-white transition-colors duration-200"></i>
                         <span>Logout</span>
@@ -206,10 +217,10 @@
             </nav>
 
             <!-- Sidebar Footer -->
-            <div class="absolute bottom-0 left-0 right-0 p-4">
-                <div class="flex items-center justify-between text-xs text-gray-400">
-                    <span>Version 1.0.0</span>
-                    <span>© 2024 Healthcare Remote Circle</span>
+            <div class="absolute bottom-0 left-32 right-0 p-4">
+                <div class="flex items-center justify-center text-xs text-gray-400">
+                    <span class="mr-2">Version 1.0.0</span>
+                    <span>© 2025 Healthcare Remote Circle</span>
                 </div>
             </div>
         </div>

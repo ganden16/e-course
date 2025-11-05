@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             BootcampSeeder::class,
             ProductCategorySeeder::class,
             ProductSeeder::class,
+            BlogTagSeeder::class,
+            BlogSeeder::class,
         ]);
     }
 }
