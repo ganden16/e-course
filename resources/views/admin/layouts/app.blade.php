@@ -81,7 +81,7 @@
 
             <!-- Sidebar Header -->
             <div class="flex items-center justify-between h-16 px-6 bg-gradient-to-r from-primary to-primary-dark border-b border-gray-700">
-                <div class="flex items-center">
+                <a href="{{ route('home', app()->getLocale()) }}" class="flex items-center">
                     <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center mr-3">
                         <i class="fas fa-graduation-cap text-2xl text-primary"></i>
                     </div>
@@ -89,7 +89,7 @@
                         <span class="text-xl font-bold">HRC</span>
                         <p class="text-xs text-gray-300">Admin Panel</p>
                     </div>
-                </div>
+                </a>
                 <button @click="sidebarOpen = false" class="lg:hidden">
                     <i class="fas fa-times text-xl"></i>
                 </button>
@@ -99,11 +99,11 @@
             <div class="px-6 py-4 border-b border-gray-700">
                 <div class="flex items-center">
                     <img class="h-10 w-10 rounded-full border-2 border-gray-600"
-                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                         alt="Admin">
+                         src="{{ auth()->user()->image ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) . '&color=7F9CF5&background=EBF4FF' }}"
+                         alt="{{ auth()->user()->name }}">
                     <div class="ml-3">
-                        <p class="text-sm font-medium">Admin User</p>
-                        <p class="text-xs text-gray-400">admin@healthcare.com</p>
+                        <p class="text-sm font-medium">{{ auth()->user()->name }}</p>
+                        <p class="text-xs text-gray-400">{{ auth()->user()->email }}</p>
                     </div>
                 </div>
             </div>
@@ -114,9 +114,6 @@
                     <a href="/admin/dashboard" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/dashboard') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-tachometer-alt mr-3 {{ request()->is('admin/dashboard') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Dashboard</span>
-                        @if(request()->is('admin/dashboard'))
-                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
-                        @endif
                     </a>
 
                     <!-- Content Management Section -->
@@ -127,49 +124,31 @@
                     <a href="/admin/bootcamps" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/bootcamps*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-campground mr-3 {{ request()->is('admin/bootcamps*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Bootcamps</span>
-                        @if(request()->is('admin/bootcamps*'))
-                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
-                        @endif
                     </a>
 
                     <a href="/admin/categories" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/categories*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-folder mr-3 {{ request()->is('admin/categories*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Bootcamp Categories</span>
-                        @if(request()->is('admin/categories*'))
-                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
-                        @endif
                     </a>
 
                     <a href="/admin/products" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/products*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-book mr-3 {{ request()->is('admin/products*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Products</span>
-                        @if(request()->is('admin/products*'))
-                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
-                        @endif
                     </a>
 
                     <a href="/admin/product-categories" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/product-categories*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-tags mr-3 {{ request()->is('admin/product-categories*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Product Categories</span>
-                        @if(request()->is('admin/product-categories*'))
-                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
-                        @endif
                     </a>
 
                     <a href="/admin/blogs" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/blogs*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-blog mr-3 {{ request()->is('admin/blogs*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Blogs</span>
-                        @if(request()->is('admin/blogs*'))
-                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
-                        @endif
                     </a>
 
                     <a href="/admin/blog-tags" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/blog-tags*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-tags mr-3 {{ request()->is('admin/blog-tags*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Blog Tags</span>
-                        @if(request()->is('admin/blog-tags*'))
-                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
-                        @endif
                     </a>
 
 
@@ -178,34 +157,16 @@
                         <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">People Management</p>
                     </div>
 
-                    <a href="/admin/users" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/users*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
-                        <i class="fas fa-users mr-3 {{ request()->is('admin/users*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
-                        <span>Users</span>
-                        @if(request()->is('admin/users*'))
-                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
-                        @endif
+                    <a href="/admin/admins" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/admins*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
+                        <i class="fas fa-users mr-3 {{ request()->is('admin/admins*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
+                        <span>Admins</span>
                     </a>
 
                     <a href="/admin/mentors" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/mentors*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
                         <i class="fas fa-chalkboard-teacher mr-3 {{ request()->is('admin/mentors*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
                         <span>Mentors</span>
-                        @if(request()->is('admin/mentors*'))
-                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
-                        @endif
                     </a>
 
-                    <!-- System Section -->
-                    <div class="pt-4 pb-2">
-                        <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">System</p>
-                    </div>
-
-                    <a href="/admin/settings" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->is('admin/settings*') ? 'bg-orange text-white shadow-lg' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} transition-all duration-200 group">
-                        <i class="fas fa-cog mr-3 {{ request()->is('admin/settings*') ? 'text-white' : 'text-gray-400 group-hover:text-white' }} transition-colors duration-200"></i>
-                        <span>Settings</span>
-                        @if(request()->is('admin/settings*'))
-                            <span class="ml-auto bg-white text-primary text-xs px-2 py-1 rounded-full">Active</span>
-                        @endif
-                    </a>
                 </div>
 
                 <div class="mt-auto pt-6 border-t border-gray-700">
@@ -250,47 +211,14 @@
                             </div>
                         </div>
 
-                        <!-- Notifications -->
-                        <div class="relative" x-data="{ notificationOpen: false }">
-                            <button @click="notificationOpen = !notificationOpen"
-                                    class="relative p-2 text-gray-400 hover:text-gray-600 focus:outline-none">
-                                <i class="fas fa-bell text-xl"></i>
-                                <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-400"></span>
-                            </button>
-
-                            <div x-show="notificationOpen"
-                                 x-transition:enter="transition ease-out duration-100"
-                                 x-transition:enter-start="transform opacity-0 scale-95"
-                                 x-transition:enter-end="transform opacity-100 scale-100"
-                                 x-transition:leave="transition ease-in duration-75"
-                                 x-transition:leave-start="transform opacity-100 scale-100"
-                                 x-transition:leave-end="transform opacity-0 scale-95"
-                                 @click.away="notificationOpen = false"
-                                 class="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg py-2 z-50">
-                                <div class="px-4 py-2 border-b border-gray-200">
-                                    <h3 class="text-sm font-semibold text-gray-800">Notifikasi</h3>
-                                </div>
-                                <div class="max-h-64 overflow-y-auto">
-                                    <a href="#" class="block px-4 py-3 hover:bg-gray-50 transition-colors duration-200">
-                                        <p class="text-sm text-gray-800">User baru mendaftar: John Doe</p>
-                                        <p class="text-xs text-gray-500 mt-1">2 menit yang lalu</p>
-                                    </a>
-                                    <a href="#" class="block px-4 py-3 hover:bg-gray-50 transition-colors duration-200">
-                                        <p class="text-sm text-gray-800">Pesanan baru: #12345</p>
-                                        <p class="text-xs text-gray-500 mt-1">15 menit yang lalu</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- User Profile -->
                         <div class="relative" x-data="{ profileOpen: false }">
                             <button @click="profileOpen = !profileOpen"
                                     class="flex items-center space-x-3 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange">
                                 <img class="h-8 w-8 rounded-full"
-                                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                                     alt="Admin">
-                                <span class="hidden md:block font-medium text-gray-700">Admin User</span>
+                                     src="{{ auth()->user()->image ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) . '&color=7F9CF5&background=EBF4FF' }}"
+                                     alt="{{ auth()->user()->name }}">
+                                <span class="hidden md:block font-medium text-gray-700">{{ auth()->user()->name }}</span>
                                 <i class="fas fa-chevron-down text-gray-400"></i>
                             </button>
 
@@ -303,11 +231,8 @@
                                  x-transition:leave-end="transform opacity-0 scale-95"
                                  @click.away="profileOpen = false"
                                  class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
-                                <a href="/admin/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200">
+                                <a href="{{ route('admin.profile') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200">
                                     <i class="fas fa-user mr-2"></i> Profile
-                                </a>
-                                <a href="/admin/settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200">
-                                    <i class="fas fa-cog mr-2"></i> Settings
                                 </a>
                                 <div class="border-t border-gray-200 mt-2 pt-2">
                                     <button onclick="showLogoutModal()" class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200">
@@ -344,6 +269,19 @@
                             </div>
                             <div class="ml-3">
                                 <p class="text-sm">{{ session('success') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                @if(session('info'))
+                    <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm">{{ session('info') }}</p>
                             </div>
                         </div>
                     </div>

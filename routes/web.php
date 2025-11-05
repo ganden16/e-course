@@ -14,7 +14,7 @@ Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('langu
 Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'id|en']], function () {
     Route::get('/', function () {
         return view('welcome');
-    })->name('welcome');
+    })->name('home');
 
     Route::get('/about-us', function () {
         return view('about-us');
@@ -64,13 +64,18 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         return redirect()->route('admin.dashboard');
     });
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
 
-    Route::get('/users', function () {
-        return view('admin.users');
-    })->name('admin.users');
+    // Admin Management Routes
+    Route::get('/admins', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.admins');
+    Route::get('/admins/create', [App\Http\Controllers\Admin\AdminController::class, 'create'])->name('admin.admins.create');
+    Route::post('/admins', [App\Http\Controllers\Admin\AdminController::class, 'store'])->name('admin.admins.store');
+    Route::get('/admins/{admin}/edit', [App\Http\Controllers\Admin\AdminController::class, 'edit'])->name('admin.admins.edit');
+    Route::delete('/admins/{admin}', [App\Http\Controllers\Admin\AdminController::class, 'destroy'])->name('admin.admins.destroy');
+
+    // Profile Routes
+    Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('admin.profile');
+    Route::put('/profile', [App\Http\Controllers\AuthController::class, 'updateProfile'])->name('admin.profile.update');
 
     // Product Routes
     Route::get('/products', [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('admin.products');
@@ -142,10 +147,10 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         return view('admin.settings');
     })->name('admin.settings');
 
-    // Profile
-    Route::get('/profile', function () {
-        return view('admin.profile');
-    })->name('admin.profile');
+    // // Profile
+    // Route::get('/profile', function () {
+    //     return view('admin.profile');
+    // })->name('admin.profile');
 });
 
 // Mentor Routes

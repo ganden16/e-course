@@ -17,7 +17,7 @@
                     <p class="text-sm font-medium">{{ $blog->author }}</p>
                     <p class="text-xs text-gray-500">{{ $blog->formatted_date }}</p>
                 </div>
-                <a href="{{ route('blog.detail', [app()->getLocale(), $blog->slug]) }}" class="text-secondary hover:text-secondary-dark font-medium">
+                <a href="/{{ route('blog.detail', [app()->getLocale(), $blog->slug]) }}" class="text-secondary hover:text-secondary-dark font-medium">
                     {{ $blog_details['read_more'] }} <i class="fas fa-arrow-right ml-1"></i>
                 </a>
             </div>

@@ -60,7 +60,7 @@
                         <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($bootcamp->original_price, 0, ',', '.') }}</span>
                     @endif
                 </div>
-                <a href="{{ app()->getLocale() }}/bootcamp/{{ $bootcamp->id }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                <a href="/{{ app()->getLocale() }}/bootcamp/{{ $bootcamp->id }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
                     {{ $bootcamp_details['learn_more'] }}
                 </a>
             </div>
