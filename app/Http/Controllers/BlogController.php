@@ -34,10 +34,28 @@ class BlogController extends Controller
             }
         }
 
-        $blogs = $query->paginate(9);
-        $tags = BlogTag::active()->get();
+        // Get total count before applying pagination/limit
+        $totalBlogs = $query->count();
 
-        return view('blog', compact('blogs', 'tags', 'translations'));
+        // Handle AJAX request for load more functionality
+        if ($request->ajax()) {
+            $page = $request->get('page', 1);
+            $offset = ($page - 1) * 6; // Load 6 items per click
+            $blogs = $query->skip($offset)->take(6)->get();
+            $blog_details = $translations['blog_details'];
+
+            return response()->json([
+                'html' => view('partials.blog-items', compact('blogs', 'blog_details'))->render(),
+                'hasMore' => $totalBlogs > ($offset + 6)
+            ]);
+        }
+
+        // Initial load - show first 6 items
+        $blogs = $query->take(6)->get();
+        $tags = BlogTag::active()->get();
+        $blog_details = $translations['blog_details'];
+
+        return view('blog', compact('blogs', 'tags', 'translations', 'totalBlogs', 'blog_details'));
     }
 
     /**

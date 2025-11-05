@@ -90,7 +90,7 @@
         <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
                 <h2 class="text-2xl font-semibold text-gray-800">{{ $filter['all_bootcamps'] }}</h2>
-                <p class="text-gray-600">{{ count($bootcamps) }} {{ $filter['bootcamps_available'] }}</p>
+                <p class="text-gray-600">{{ $totalBootcamps ?? count($bootcamps) }} {{ $filter['bootcamps_available'] }}</p>
             </div>
             <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
                 <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="categoryFilter">
@@ -115,83 +115,17 @@
 <section class="py-16 bg-light">
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="bootcampsGrid">
-            @foreach($bootcamps as $bootcamp)
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover bootcamp-item" data-category="{{ $bootcamp->category_id }}" data-price="{{ $bootcamp->price }}" data-rating="{{ $bootcamp->rating }}" data-duration="{{ $bootcamp->duration }}">
-                    <div class="relative">
-                        <img src="{{ $bootcamp->image ? Storage::url('bootcamps/' . $bootcamp->image) : 'https://images.unsplash.com/photo-1523240795611-d4d5ec7a66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' }}" alt="{{ $bootcamp->title }}" class="w-full h-64 object-cover">
-                        @if($bootcamp->price < $bootcamp->original_price)
-                            <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                                {{ round((1 - $bootcamp->price / $bootcamp->original_price) * 100) }}% {{ $bootcamp_details['off'] }}
-                            </div>
-                        @endif
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm font-medium text-white bg-secondary/80 px-3 py-1 rounded-full">{{ $bootcamp->category->name ?? 'Uncategorized' }}</span>
-                                <div class="flex items-center">
-                                    <i class="fas fa-star text-secondary"></i>
-                                    <span class="ml-1 text-sm font-medium text-white">{{ $bootcamp->rating ?? 0 }}</span>
-                                    <span class="ml-1 text-sm text-white">({{ $bootcamp->students ?? 0 }})</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">{{ $bootcamp->title }}</h3>
-                        <p class="text-gray-600 mb-4">{{ $bootcamp->description }}</p>
-
-                        <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div class="flex items-center text-sm text-gray-500">
-                                <i class="fas fa-clock mr-2 text-secondary"></i>
-                                <span>{{ $bootcamp->duration }}</span>
-                            </div>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <i class="fas fa-signal mr-2 text-secondary"></i>
-                                <span>{{ $bootcamp->level }}</span>
-                            </div>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <i class="fas fa-calendar mr-2 text-secondary"></i>
-                                <span>{{ $bootcamp->start_date ? $bootcamp->start_date->format('M d, Y') : '-' }}</span>
-                            </div>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <i class="fas fa-user-tie mr-2 text-secondary"></i>
-                                <span>{{ $bootcamp->mentors->pluck('name')->take(2)->join(', ') ?? 'No mentors' }}</span>
-                            </div>
-                        </div>
-
-                        <div class="border-t pt-4 mb-4">
-                            <h4 class="font-semibold mb-2">{{ $bootcamp_details['what_youll_learn'] }}:</h4>
-                            <div class="flex flex-wrap gap-2">
-                                @foreach(array_slice($bootcamp->curriculum ?? [], 0, 3) as $item)
-                                    <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">{{ $item }}</span>
-                                @endforeach
-                                @if(count($bootcamp->curriculum ?? []) > 3)
-                                    <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">+{{ count($bootcamp->curriculum) - 3 }} {{ $bootcamp_details['more'] }}</span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <span class="text-2xl font-bold text-secondary">Rp {{ number_format($bootcamp->price, 0, ',', '.') }}</span>
-                                @if($bootcamp->price < $bootcamp->original_price)
-                                    <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($bootcamp->original_price, 0, ',', '.') }}</span>
-                                @endif
-                            </div>
-                            <a href="{{ $baseUrl }}/bootcamp/{{ $bootcamp->id }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
-                                {{ $bootcamp_details['learn_more'] }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+            @include('partials.bootcamp-items', ['bootcamps' => $bootcamps])
         </div>
 
         <!-- Load More Button -->
-        <div class="text-center mt-12">
-            <button class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
-                {{ $load_more['bootcamps'] }}
-            </button>
-        </div>
+        @if(($totalBootcamps ?? count($bootcamps)) > 6)
+            <div class="text-center mt-12">
+                <button id="loadMoreBtn" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                    {{ $load_more['bootcamps'] }}
+                </button>
+            </div>
+        @endif
     </div>
 </section>
 
@@ -323,10 +257,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryFilter = document.getElementById('categoryFilter');
     const sortFilter = document.getElementById('sortFilter');
     const bootcampsGrid = document.getElementById('bootcampsGrid');
-    const bootcampItems = Array.from(bootcampsGrid.querySelectorAll('.bootcamp-item'));
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    let currentPage = 2; // Start from page 2 since page 1 is already loaded
+    let currentSort = 'default';
+    let currentCategory = '';
 
+    // Filter functionality
     function filterBootcamps() {
         const selectedCategory = categoryFilter.value;
+        currentCategory = selectedCategory;
+        const bootcampItems = Array.from(bootcampsGrid.querySelectorAll('.bootcamp-item'));
 
         bootcampItems.forEach(item => {
             const itemCategory = item.getAttribute('data-category');
@@ -339,8 +279,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Sort functionality
     function sortBootcamps() {
         const sortValue = sortFilter.value;
+        currentSort = sortValue;
+        const bootcampItems = Array.from(bootcampsGrid.querySelectorAll('.bootcamp-item'));
         let sortedItems = [...bootcampItems];
 
         switch(sortValue) {
@@ -377,6 +320,66 @@ document.addEventListener('DOMContentLoaded', function() {
             if (item.style.display !== 'none') {
                 bootcampsGrid.appendChild(item);
             }
+        });
+    }
+
+    // Load more functionality
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+            loadMoreBtn.disabled = true;
+            loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Loading...';
+
+            const url = new URL(window.location.href);
+            const params = new URLSearchParams(url.search);
+
+            // Add AJAX parameters
+            params.set('page', currentPage);
+            params.set('sort', currentSort);
+            if (currentCategory) {
+                params.set('category', currentCategory);
+            }
+
+            fetch(`${window.location.pathname}?${params.toString()}`, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.html) {
+                    // Create a temporary div to parse the HTML
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = data.html;
+
+                    // Get all bootcamp items from the response
+                    const newBootcampItems = tempDiv.querySelectorAll('.bootcamp-item');
+
+                    // Append each new bootcamp item to the grid
+                    newBootcampItems.forEach(item => {
+                        bootcampsGrid.appendChild(item);
+                    });
+
+                    // Reapply sorting if needed
+                    if (currentSort !== 'default') {
+                        sortBootcamps();
+                    }
+
+                    currentPage++;
+
+                    // Hide button if no more items
+                    if (!data.hasMore) {
+                        loadMoreBtn.style.display = 'none';
+                    }
+                }
+
+                loadMoreBtn.disabled = false;
+                loadMoreBtn.innerHTML = '{{ $load_more["bootcamps"] }}';
+            })
+            .catch(error => {
+                console.error('Error loading more bootcamps:', error);
+                loadMoreBtn.disabled = false;
+                loadMoreBtn.innerHTML = '{{ $load_more["bootcamps"] }}';
+            });
         });
     }
 

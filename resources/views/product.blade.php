@@ -75,55 +75,17 @@
 <section class="py-16 bg-light">
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="coursesGrid">
-            @foreach($products as $product)
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover course-item" data-category="{{ $product->productCategory->slug }}" data-price="{{ $product->price }}" data-rating="{{ $product->rating }}" data-students="{{ $product->students }}">
-                    <div class="relative">
-                        <img src="{{ Storage::url($product->image) }}" alt="{{ $product->title }}" class="w-full h-48 object-cover">
-                        @if($product->price < $product->original_price)
-                            <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                                {{ $product->discount_percentage }}% {{ $course_details['off'] }}
-                            </div>
-                        @endif
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $product->productCategory->name }}</span>
-                            <div class="flex items-center">
-                                <i class="fas fa-star text-secondary"></i>
-                                <span class="ml-1 text-sm font-medium">{{ $product->rating }}</span>
-                                <span class="ml-1 text-sm text-gray-500">({{ $product->students }})</span>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">{{ $product->title }}</h3>
-                        <p class="text-gray-600 mb-4">{{ $product->description }}</p>
-                        <div class="flex items-center text-sm text-gray-500 mb-4">
-                            <i class="fas fa-user-tie mr-2"></i>
-                            <span class="mr-4">{{ $course_details['instructor'] }}: {{ $product->instructor }}</span>
-                            <i class="fas fa-clock mr-2"></i>
-                            <span>{{ $course_details['duration'] }}: {{ $product->duration }}</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <span class="text-2xl font-bold text-secondary">{{ $product->formatted_price }}</span>
-                                @if($product->price < $product->original_price)
-                                    <span class="text-sm text-gray-500 line-through ml-2">{{ $product->formatted_original_price }}</span>
-                                @endif
-                            </div>
-                            <a href="{{ $baseUrl }}/product/{{ $product->id }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
-                                {{ $course_details['view_details'] }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+            @include('partials.product-items', ['products' => $products, 'course_details' => $course_details])
         </div>
 
         <!-- Load More Button -->
-        <div class="text-center mt-12">
-            <button class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
-                {{ $load_more['courses'] }}
-            </button>
-        </div>
+        @if(($totalProducts ?? count($products)) > 6)
+            <div class="text-center mt-12">
+                <button id="loadMoreBtn" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                    {{ $load_more['courses'] }}
+                </button>
+            </div>
+        @endif
     </div>
 </section>
 
@@ -217,10 +179,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryFilter = document.getElementById('categoryFilter');
     const sortFilter = document.getElementById('sortFilter');
     const coursesGrid = document.getElementById('coursesGrid');
-    const courseItems = Array.from(coursesGrid.querySelectorAll('.course-item'));
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    let currentPage = 2; // Start from page 2 since page 1 is already loaded
+    let currentSort = 'default';
+    let currentCategory = '';
 
+    // Filter functionality
     function filterCourses() {
         const selectedCategory = categoryFilter.value;
+        currentCategory = selectedCategory;
+        const courseItems = Array.from(coursesGrid.querySelectorAll('.course-item'));
 
         courseItems.forEach(item => {
             const itemCategory = item.getAttribute('data-category');
@@ -233,8 +201,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Sort functionality
     function sortCourses() {
         const sortValue = sortFilter.value;
+        currentSort = sortValue;
+        const courseItems = Array.from(coursesGrid.querySelectorAll('.course-item'));
         let sortedItems = [...courseItems];
 
         switch(sortValue) {
@@ -269,6 +240,66 @@ document.addEventListener('DOMContentLoaded', function() {
             if (item.style.display !== 'none') {
                 coursesGrid.appendChild(item);
             }
+        });
+    }
+
+    // Load more functionality
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+            loadMoreBtn.disabled = true;
+            loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Loading...';
+
+            const url = new URL(window.location.href);
+            const params = new URLSearchParams(url.search);
+
+            // Add AJAX parameters
+            params.set('page', currentPage);
+            params.set('sort', currentSort);
+            if (currentCategory) {
+                params.set('category', currentCategory);
+            }
+
+            fetch(`${window.location.pathname}?${params.toString()}`, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.html) {
+                    // Create a temporary div to parse the HTML
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = data.html;
+
+                    // Get all course items from the response
+                    const newCourseItems = tempDiv.querySelectorAll('.course-item');
+
+                    // Append each new course item to the grid
+                    newCourseItems.forEach(item => {
+                        coursesGrid.appendChild(item);
+                    });
+
+                    // Reapply sorting if needed
+                    if (currentSort !== 'default') {
+                        sortCourses();
+                    }
+
+                    currentPage++;
+
+                    // Hide button if no more items
+                    if (!data.hasMore) {
+                        loadMoreBtn.style.display = 'none';
+                    }
+                }
+
+                loadMoreBtn.disabled = false;
+                loadMoreBtn.innerHTML = '{{ $load_more["courses"] }}';
+            })
+            .catch(error => {
+                console.error('Error loading more courses:', error);
+                loadMoreBtn.disabled = false;
+                loadMoreBtn.innerHTML = '{{ $load_more["courses"] }}';
+            });
         });
     }
 

@@ -11,15 +11,63 @@ class BootcampController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
-        $bootcamps = Bootcamp::with(['category', 'mentors'])
-            ->where('is_active', true)
-            ->orderBy('created_at', 'desc')
-            ->get();
+        $locale = app()->getLocale();
+        $translations = include lang_path("{$locale}/bootcamp.php");
 
-        return view('bootcamp-new', compact('categories', 'bootcamps'));
+        $query = Bootcamp::with(['category', 'mentors'])
+            ->where('is_active', true);
+
+        // Filter by category
+        if ($request->has('category') && $request->category !== '') {
+            $query->where('category_id', $request->category);
+        }
+
+        // Sort
+        if ($request->has('sort')) {
+            switch($request->sort) {
+                case 'price-low':
+                    $query->orderBy('price', 'asc');
+                    break;
+                case 'price-high':
+                    $query->orderBy('price', 'desc');
+                    break;
+                case 'rating':
+                    $query->orderBy('rating', 'desc');
+                    break;
+                case 'duration':
+                    $query->orderByRaw('CAST(duration AS UNSIGNED)');
+                    break;
+                default:
+                    $query->orderBy('created_at', 'desc');
+            }
+        } else {
+            $query->orderBy('created_at', 'desc');
+        }
+
+        // Get total count before applying pagination/limit
+        $totalBootcamps = $query->count();
+
+        // Handle AJAX request for load more functionality
+        if ($request->ajax()) {
+            $page = $request->get('page', 1);
+            $offset = ($page - 1) * 6; // Load 6 items per click
+            $bootcamps = $query->skip($offset)->take(6)->get();
+            $bootcamp_details = $translations['bootcamp_details'];
+
+            return response()->json([
+                'html' => view('partials.bootcamp-items', compact('bootcamps', 'bootcamp_details'))->render(),
+                'hasMore' => $totalBootcamps > ($offset + 6)
+            ]);
+        }
+
+        // Initial load - show first 6 items
+        $bootcamps = $query->take(6)->get();
+        $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
+        $bootcamp_details = $translations['bootcamp_details'];
+
+        return view('bootcamp-new', compact('categories', 'bootcamps', 'totalBootcamps', 'bootcamp_details'));
     }
 
     /**

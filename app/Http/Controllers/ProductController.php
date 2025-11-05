@@ -15,6 +15,11 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $locale = app()->getLocale();
+        $translations = include lang_path("{$locale}/product.php");
+        $course_details = $translations['course_details'];
+        $load_more = $translations['load_more'];
+
         $query = Product::with('productCategory')->where('is_active', true);
 
         // Filter by category
@@ -43,10 +48,26 @@ class ProductController extends Controller
                 $query->orderBy('created_at', 'desc');
         }
 
-        $products = $query->get();
+        // Get total count before applying pagination/limit
+        $totalProducts = $query->count();
+
+        // Handle AJAX request for load more functionality
+        if ($request->ajax()) {
+            $page = $request->get('page', 1);
+            $offset = ($page - 1) * 6; // Load 6 items per click
+            $products = $query->skip($offset)->take(6)->get();
+
+            return response()->json([
+                'html' => view('partials.product-items', compact('products', 'course_details'))->render(),
+                'hasMore' => $totalProducts > ($offset + 6)
+            ]);
+        }
+
+        // Initial load - show first 6 items
+        $products = $query->take(6)->get();
         $categories = ProductCategory::where('is_active', true)->orderBy('sort_order')->get();
 
-        return view('product', compact('products', 'categories'));
+        return view('product', compact('products', 'categories', 'totalProducts', 'course_details', 'load_more'));
     }
 
     /**
