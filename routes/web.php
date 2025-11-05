@@ -5,6 +5,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\BootcampController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\AuthController;
 
 // Language switch route
 Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('language.switch');
@@ -53,12 +54,16 @@ Route::get('/', function () {
 });
 
 // Authentication Routes
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin Routes
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('admin')->group(function () {
+    Route::get('/', function () {
+        return redirect()->route('admin.dashboard');
+    });
+
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
@@ -106,17 +111,13 @@ Route::prefix('admin')->group(function () {
     Route::post('/categories/update-sort', [App\Http\Controllers\Admin\CategoryController::class, 'updateSort'])->name('admin.categories.update-sort');
 
     // Mentor Routes
-    Route::get('/mentors', function () {
-        return view('admin.mentors.index');
-    })->name('admin.mentors');
-
-    Route::get('/mentors/create', function () {
-        return view('admin.mentors.form');
-    })->name('admin.mentors.create');
-
-    Route::get('/mentors/{id}/edit', function ($id) {
-        return view('admin.mentors.form', ['mentor' => $id]);
-    })->name('admin.mentors.edit');
+    Route::get('/mentors', [App\Http\Controllers\Admin\MentorController::class, 'index'])->name('admin.mentors');
+    Route::get('/mentors/create', [App\Http\Controllers\Admin\MentorController::class, 'create'])->name('admin.mentors.create');
+    Route::post('/mentors', [App\Http\Controllers\Admin\MentorController::class, 'store'])->name('admin.mentors.store');
+    Route::get('/mentors/{mentor}/edit', [App\Http\Controllers\Admin\MentorController::class, 'edit'])->name('admin.mentors.edit');
+    Route::put('/mentors/{mentor}', [App\Http\Controllers\Admin\MentorController::class, 'update'])->name('admin.mentors.update');
+    Route::delete('/mentors/{mentor}', [App\Http\Controllers\Admin\MentorController::class, 'destroy'])->name('admin.mentors.destroy');
+    Route::patch('/mentors/{mentor}/toggle-active', [App\Http\Controllers\Admin\MentorController::class, 'toggleActive'])->name('admin.mentors.toggle-active');
 
     // Blog Routes
     Route::get('/blogs', [App\Http\Controllers\Admin\BlogController::class, 'index'])->name('admin.blogs');

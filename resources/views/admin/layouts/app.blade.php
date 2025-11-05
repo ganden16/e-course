@@ -209,10 +209,10 @@
                 </div>
 
                 <div class="mt-auto pt-6 border-t border-gray-700">
-                    <a href="/logout" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg text-gray-300 hover:bg-orange hover:text-white transition-all duration-200 group">
+                    <button onclick="showLogoutModal()" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-lg text-gray-300 hover:bg-orange hover:text-white transition-all duration-200 group">
                         <i class="fas fa-sign-out-alt mr-3 text-gray-400 group-hover:text-white transition-colors duration-200"></i>
                         <span>Logout</span>
-                    </a>
+                    </button>
                 </div>
             </nav>
 
@@ -310,9 +310,9 @@
                                     <i class="fas fa-cog mr-2"></i> Settings
                                 </a>
                                 <div class="border-t border-gray-200 mt-2 pt-2">
-                                    <a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200">
+                                    <button onclick="showLogoutModal()" class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200">
                                         <i class="fas fa-sign-out-alt mr-2"></i> Logout
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -322,10 +322,93 @@
 
             <!-- Main Content Area -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-beige">
+                <!-- Flash Messages -->
+                @if(session('error'))
+                    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm">{{ session('error') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                @if(session('success'))
+                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm">{{ session('success') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
                 @yield('content')
             </main>
         </div>
     </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" class="fixed inset-0 z-[9999] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Background overlay -->
+        <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity" onclick="hideLogoutModal()"></div>
+
+        <!-- Modal container - centered -->
+        <div class="fixed inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-xl max-w-md w-full transform transition-all">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                            <i class="fas fa-exclamation-triangle text-red-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900" id="modal-title">
+                                Konfirmasi Logout
+                            </h3>
+                            <div class="mt-2">
+                                <p class="text-sm text-gray-500">
+                                    Apakah Anda yakin ingin keluar dari sistem?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-6 py-3 flex flex-row-reverse gap-3">
+                    <form action="{{ route('logout') }}" method="POST" class="inline-flex">
+                        @csrf
+                        <button type="submit" class="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            Ya, Logout
+                        </button>
+                    </form>
+                    <button type="button" onclick="hideLogoutModal()" class="inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange">
+                        Batal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLogoutModal() {
+            const modal = document.getElementById('logoutModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideLogoutModal() {
+            const modal = document.getElementById('logoutModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
 
     @stack('scripts')
 </body>

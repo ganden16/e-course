@@ -55,48 +55,55 @@
                         </div>
                         <h2 class="text-2xl font-bold text-gray-800">Healthcare Remote Circle</h2>
                         <p class="text-gray-600 mt-2">Selamat datang kembali!</p>
-                    </div>
 
-                    <!-- Role Selection -->
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Login Sebagai</label>
-                        <div class="grid grid-cols-3 gap-2">
-                            <button @click="selectedRole = 'admin'"
-                                    :class="selectedRole === 'admin' ? 'bg-secondary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
-                                    class="py-2 px-4 rounded-lg text-sm font-medium transition-colors duration-200">
-                                <i class="fas fa-user-shield mr-1"></i> Admin
-                            </button>
-                            <button @click="selectedRole = 'mentor'"
-                                    :class="selectedRole === 'mentor' ? 'bg-secondary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
-                                    class="py-2 px-4 rounded-lg text-sm font-medium transition-colors duration-200">
-                                <i class="fas fa-chalkboard-teacher mr-1"></i> Mentor
-                            </button>
-                            <button @click="selectedRole = 'user'"
-                                    :class="selectedRole === 'user' ? 'bg-secondary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
-                                    class="py-2 px-4 rounded-lg text-sm font-medium transition-colors duration-200">
-                                <i class="fas fa-user mr-1"></i> User
-                            </button>
-                        </div>
+                        <!-- Flash Messages -->
+                        @if(session('error'))
+                            <div class="mt-4 bg-red-50 border border-red-200 rounded-lg p-3">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-exclamation-circle text-red-400"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm text-red-800">{{ session('error') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
+                        @if(session('success'))
+                            <div class="mt-4 bg-green-50 border border-green-200 rounded-lg p-3">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-check-circle text-green-400"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm text-green-800">{{ session('success') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
 
                     <!-- Login Form -->
-                    <form class="space-y-6">
-                        <!-- Email Field -->
+                    <form action="{{ route('login.post') }}" method="POST" class="space-y-6">
+                        @csrf
+                        <!-- Username Field -->
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
-                                Email Address
+                            <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
+                                Username
                             </label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fas fa-envelope text-gray-400"></i>
+                                    <i class="fas fa-user text-gray-400"></i>
                                 </div>
-                                <input id="email"
-                                       name="email"
-                                       type="email"
-                                       autocomplete="email"
+                                <input id="username"
+                                       name="username"
+                                       type="text"
+                                       autocomplete="username"
+                                       value="{{ old('username') }}"
                                        required
-                                       class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-secondary focus:border-secondary transition-colors duration-200"
-                                       placeholder="email@example.com">
+                                       class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-secondary focus:border-secondary transition-colors duration-200 @error('username') border-red-500 @enderror"
+                                       placeholder="Masukkan username">
                             </div>
                         </div>
 
@@ -114,7 +121,7 @@
                                        :type="showPassword ? 'text' : 'password'"
                                        autocomplete="current-password"
                                        required
-                                       class="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-secondary focus:border-secondary transition-colors duration-200"
+                                       class="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-secondary focus:border-secondary transition-colors duration-200 @error('password') border-red-500 @enderror"
                                        placeholder="••••••••">
                                 <button type="button"
                                         @click="showPassword = !showPassword"
@@ -130,17 +137,29 @@
                                 <input id="remember-me"
                                        name="remember-me"
                                        type="checkbox"
+                                       {{ old('remember-me') ? 'checked' : '' }}
                                        class="h-4 w-4 text-secondary focus:ring-secondary border-gray-300 rounded">
                                 <label for="remember-me" class="ml-2 block text-sm text-gray-700">
                                     Ingat saya
                                 </label>
                             </div>
-                            <div class="text-sm">
-                                <a href="#" class="font-medium text-secondary hover:text-secondary-dark transition-colors duration-200">
-                                    Lupa password?
-                                </a>
-                            </div>
                         </div>
+
+                        <!-- Error Message -->
+                        @error('username')
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-3">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-exclamation-circle text-red-400"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h3 class="text-sm font-medium text-red-800">
+                                            {{ $message }}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        @enderror
 
                         <!-- Submit Button -->
                         <div>
@@ -155,35 +174,10 @@
                         <div class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
                             <p class="text-xs text-blue-800">
                                 <i class="fas fa-info-circle mr-1"></i>
-                                <span x-show="selectedRole === 'admin'">Demo Admin: admin@healthcare.com / admin123</span>
-                                <span x-show="selectedRole === 'mentor'">Demo Mentor: mentor@healthcare.com / mentor123</span>
-                                <span x-show="selectedRole === 'user'">Demo User: user@healthcare.com / user123</span>
+                                Demo Admin: admin / admin123
                             </p>
                         </div>
                     </form>
-
-                    <!-- Social Login -->
-                    <div class="mt-6">
-                        <div class="relative">
-                            <div class="absolute inset-0 flex items-center">
-                                <div class="w-full border-t border-gray-300"></div>
-                            </div>
-                            <div class="relative flex justify-center text-sm">
-                                <span class="px-2 bg-white text-gray-500">Atau login dengan</span>
-                            </div>
-                        </div>
-
-                        <div class="mt-6 grid grid-cols-2 gap-3">
-                            <button class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-colors duration-200">
-                                <i class="fab fa-google text-red-500"></i>
-                                <span class="ml-2">Google</span>
-                            </button>
-                            <button class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-colors duration-200">
-                                <i class="fab fa-linkedin text-blue-600"></i>
-                                <span class="ml-2">LinkedIn</span>
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Right Side - Hero Section -->
@@ -271,12 +265,7 @@
 
             <!-- Footer Links -->
             <div class="text-center mt-8 text-sm text-gray-600">
-                <p>&copy; 2024 Healthcare Remote Circle. All rights reserved.</p>
-                <div class="mt-2 space-x-4">
-                    <a href="#" class="hover:text-secondary transition-colors duration-200">Privacy Policy</a>
-                    <a href="#" class="hover:text-secondary transition-colors duration-200">Terms of Service</a>
-                    <a href="#" class="hover:text-secondary transition-colors duration-200">Contact Support</a>
-                </div>
+                <p>&copy; 2025 Healthcare Remote Circle. All rights reserved.</p>
             </div>
         </div>
     </div>
