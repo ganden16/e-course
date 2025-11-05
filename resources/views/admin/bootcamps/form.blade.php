@@ -294,18 +294,29 @@
                     <div>
                         <h3 class="text-md font-medium text-gray-900 mb-4">Fitur Bootcamp</h3>
                         <div class="space-y-4">
-                            <div>
-                                <label for="features" class="block text-sm font-medium text-gray-700 mb-2">Fitur (satu per baris)</label>
-                                <textarea id="features"
-                                          name="features"
-                                          rows="6"
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                          placeholder="Masukkan fitur bootcamp, satu per baris">{{ old('features', isset($bootcamp) && $bootcamp->features ? implode("\n", $bootcamp->features) : '') }}</textarea>
-                                <p class="text-xs text-gray-500 mt-1">Masukkan setiap fitur pada baris baru</p>
-                                @error('features')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
+                            <div id="features-container" class="space-y-2">
+                                @php
+                                    $features = isset($bootcamp) ? $bootcamp->features : [];
+                                    if (empty($features)) $features = [''];
+                                @endphp
+                                @foreach($features as $index => $feature)
+                                    <div class="flex items-center space-x-2 feature-item">
+                                        <input type="text" name="features[]" value="{{ $feature }}"
+                                               class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                               placeholder="Masukkan fitur">
+                                        <button type="button" class="text-red-600 hover:text-red-800 remove-feature">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                @endforeach
                             </div>
+
+                            <button type="button" id="add-feature" class="text-orange-600 hover:text-orange-800 font-medium">
+                                <i class="fas fa-plus mr-1"></i> Tambah Fitur
+                            </button>
+                            @error('features')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -313,18 +324,29 @@
                     <div>
                         <h3 class="text-md font-medium text-gray-900 mb-4">Kurikulum</h3>
                         <div class="space-y-4">
-                            <div>
-                                <label for="curriculum" class="block text-sm font-medium text-gray-700 mb-2">Kurikulum (satu per baris)</label>
-                                <textarea id="curriculum"
-                                          name="curriculum"
-                                          rows="6"
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                          placeholder="Masukkan kurikulum, satu per baris">{{ old('curriculum', isset($bootcamp) && $bootcamp->curriculum ? implode("\n", $bootcamp->curriculum) : '') }}</textarea>
-                                <p class="text-xs text-gray-500 mt-1">Masukkan setiap topik kurikulum pada baris baru</p>
-                                @error('curriculum')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
+                            <div id="curriculum-container" class="space-y-2">
+                                @php
+                                    $curriculum = isset($bootcamp) ? $bootcamp->curriculum : [];
+                                    if (empty($curriculum)) $curriculum = [''];
+                                @endphp
+                                @foreach($curriculum as $index => $item)
+                                    <div class="flex items-center space-x-2 curriculum-item">
+                                        <input type="text" name="curriculum[]" value="{{ $item }}"
+                                               class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                               placeholder="Masukkan topik kurikulum">
+                                        <button type="button" class="text-red-600 hover:text-red-800 remove-curriculum">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                @endforeach
                             </div>
+
+                            <button type="button" id="add-curriculum" class="text-orange-600 hover:text-orange-800 font-medium">
+                                <i class="fas fa-plus mr-1"></i> Tambah Kurikulum
+                            </button>
+                            @error('curriculum')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -332,18 +354,29 @@
                     <div>
                         <h3 class="text-md font-medium text-gray-900 mb-4">Hasil Pembelajaran</h3>
                         <div class="space-y-4">
-                            <div>
-                                <label for="learning_outcomes" class="block text-sm font-medium text-gray-700 mb-2">Hasil pembelajaran (satu per baris)</label>
-                                <textarea id="learning_outcomes"
-                                          name="learning_outcomes"
-                                          rows="6"
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                          placeholder="Masukkan hasil pembelajaran, satu per baris">{{ old('learning_outcomes', isset($bootcamp) && $bootcamp->learning_outcomes ? implode("\n", $bootcamp->learning_outcomes) : '') }}</textarea>
-                                <p class="text-xs text-gray-500 mt-1">Masukkan setiap hasil pembelajaran pada baris baru</p>
-                                @error('learning_outcomes')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
+                            <div id="learning-outcomes-container" class="space-y-2">
+                                @php
+                                    $learningOutcomes = isset($bootcamp) ? $bootcamp->learning_outcomes : [];
+                                    if (empty($learningOutcomes)) $learningOutcomes = [''];
+                                @endphp
+                                @foreach($learningOutcomes as $index => $item)
+                                    <div class="flex items-center space-x-2 learning-outcome-item">
+                                        <input type="text" name="learning_outcomes[]" value="{{ $item }}"
+                                               class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                               placeholder="Masukkan hasil pembelajaran">
+                                        <button type="button" class="text-red-600 hover:text-red-800 remove-learning-outcome">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                @endforeach
                             </div>
+
+                            <button type="button" id="add-learning-outcome" class="text-orange-600 hover:text-orange-800 font-medium">
+                                <i class="fas fa-plus mr-1"></i> Tambah Hasil Pembelajaran
+                            </button>
+                            @error('learning_outcomes')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -351,18 +384,29 @@
                     <div>
                         <h3 class="text-md font-medium text-gray-900 mb-4">Dukungan Karir</h3>
                         <div class="space-y-4">
-                            <div>
-                                <label for="career_support" class="block text-sm font-medium text-gray-700 mb-2">Dukungan karir (satu per baris)</label>
-                                <textarea id="career_support"
-                                          name="career_support"
-                                          rows="6"
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                          placeholder="Masukkan dukungan karir, satu per baris">{{ old('career_support', isset($bootcamp) && $bootcamp->career_support ? implode("\n", $bootcamp->career_support) : '') }}</textarea>
-                                <p class="text-xs text-gray-500 mt-1">Masukkan setiap dukungan karir pada baris baru</p>
-                                @error('career_support')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
+                            <div id="career-support-container" class="space-y-2">
+                                @php
+                                    $careerSupport = isset($bootcamp) ? $bootcamp->career_support : [];
+                                    if (empty($careerSupport)) $careerSupport = [''];
+                                @endphp
+                                @foreach($careerSupport as $index => $item)
+                                    <div class="flex items-center space-x-2 career-support-item">
+                                        <input type="text" name="career_support[]" value="{{ $item }}"
+                                               class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                               placeholder="Masukkan dukungan karir">
+                                        <button type="button" class="text-red-600 hover:text-red-800 remove-career-support">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                @endforeach
                             </div>
+
+                            <button type="button" id="add-career-support" class="text-orange-600 hover:text-orange-800 font-medium">
+                                <i class="fas fa-plus mr-1"></i> Tambah Dukungan Karir
+                            </button>
+                            @error('career_support')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -370,18 +414,103 @@
                     <div>
                         <h3 class="text-md font-medium text-gray-900 mb-4">Persyaratan</h3>
                         <div class="space-y-4">
-                            <div>
-                                <label for="requirements" class="block text-sm font-medium text-gray-700 mb-2">Persyaratan (satu per baris)</label>
-                                <textarea id="requirements"
-                                          name="requirements"
-                                          rows="6"
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                          placeholder="Masukkan persyaratan, satu per baris">{{ old('requirements', isset($bootcamp) && $bootcamp->requirements ? implode("\n", $bootcamp->requirements) : '') }}</textarea>
-                                <p class="text-xs text-gray-500 mt-1">Masukkan setiap persyaratan pada baris baru</p>
-                                @error('requirements')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
+                            <div id="requirements-container" class="space-y-2">
+                                @php
+                                    $requirements = isset($bootcamp) ? $bootcamp->requirements : [];
+                                    if (empty($requirements)) $requirements = [''];
+                                @endphp
+                                @foreach($requirements as $index => $requirement)
+                                    <div class="flex items-center space-x-2 requirement-item">
+                                        <input type="text" name="requirements[]" value="{{ $requirement }}"
+                                               class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                               placeholder="Masukkan persyaratan">
+                                        <button type="button" class="text-red-600 hover:text-red-800 remove-requirement">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                @endforeach
                             </div>
+
+                            <button type="button" id="add-requirement" class="text-orange-600 hover:text-orange-800 font-medium">
+                                <i class="fas fa-plus mr-1"></i> Tambah Persyaratan
+                            </button>
+                            @error('requirements')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- Training Modules -->
+                    <div>
+                        <h3 class="text-md font-medium text-gray-900 mb-4">Modul Pelatihan</h3>
+                        <div class="space-y-4">
+                            <div id="modules-container" class="space-y-4">
+                                @php
+                                    $modules = isset($bootcamp) ? $bootcamp->modules : [];
+                                    if (empty($modules)) $modules = [new \App\Models\ModuleBootcamp(['week_number' => 1])];
+                                @endphp
+                                @foreach($modules as $index => $module)
+                                    <div class="border border-gray-200 rounded-lg p-4 module-item">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <h4 class="font-medium text-gray-900">Minggu {{ $module->week_number ?? ($index + 1) }}</h4>
+                                            <button type="button" class="text-red-600 hover:text-red-800 remove-module" @if($loop->first) style="display: none;" @endif>
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Nomor Minggu</label>
+                                                <input type="number" name="modules[{{ $index }}][week_number]" value="{{ $module->week_number ?? ($index + 1) }}"
+                                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                                       min="1" placeholder="1">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Durasi (jam)</label>
+                                                <input type="number" name="modules[{{ $index }}][duration_hours]" value="{{ $module->duration_hours ?? '' }}"
+                                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                                       min="1" placeholder="40">
+                                            </div>
+                                        </div>
+                                        <div class="mt-4">
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Nama Modul</label>
+                                            <input type="text" name="modules[{{ $index }}][module]" value="{{ $module->module ?? '' }}"
+                                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                                   placeholder="Contoh: Introduction to Web Development">
+                                        </div>
+                                        <div class="mt-4">
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Tujuan Pembelajaran</label>
+                                            <textarea name="modules[{{ $index }}][objective]" rows="3"
+                                                      class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                                      placeholder="Contoh: Students will understand the basics of HTML, CSS, and JavaScript">{{ $module->objective ?? '' }}</textarea>
+                                        </div>
+                                        <div class="mt-4">
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
+                                            <textarea name="modules[{{ $index }}][description]" rows="3"
+                                                      class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                                      placeholder="Deskripsi detail dari modul ini">{{ $module->description ?? '' }}</textarea>
+                                        </div>
+                                        <div class="mt-4">
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Topik (satu per baris)</label>
+                                            <textarea name="modules[{{ $index }}][topics]" rows="4"
+                                                      class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                                      placeholder="HTML Basics&#10;CSS Fundamentals&#10;JavaScript Introduction">{{ old('modules.'.$index.'.topics', isset($module->topics) ? implode("\n", $module->topics) : '') }}</textarea>
+                                            <p class="text-xs text-gray-500 mt-1">Masukkan setiap topik pada baris baru</p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <label class="flex items-center">
+                                                <input type="checkbox" name="modules[{{ $index }}][is_active]" value="1"
+                                                       {{ old('modules.'.$index.'.is_active', isset($module->is_active) ? $module->is_active : true) ? 'checked' : '' }}
+                                                       class="rounded border-gray-300 text-orange focus:ring-orange">
+                                                <span class="ml-2 text-sm text-gray-700">Aktif</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <button type="button" id="add-module" class="text-orange-600 hover:text-orange-800 font-medium">
+                                <i class="fas fa-plus mr-1"></i> Tambah Modul
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -405,7 +534,7 @@
                             </div>
                             <div>
                                 <label for="image" class="block text-sm font-medium text-gray-700 mb-2">
-                                    Upload Image {{ !isset($bootcamp) ? '<span class="text-red-500">*</span>' : '' }}
+                                    Upload Image
                                 </label>
                                 <input type="file"
                                        id="image"
@@ -570,6 +699,233 @@ $(document).ready(function() {
             return markup;
         }
     });
+
+    // Features management
+    const featuresContainer = document.getElementById('features-container');
+    const addFeatureBtn = document.getElementById('add-feature');
+
+    addFeatureBtn.addEventListener('click', function() {
+        const newFeature = document.createElement('div');
+        newFeature.className = 'flex items-center space-x-2 feature-item';
+        newFeature.innerHTML = `
+            <input type="text" name="features[]" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent" placeholder="Masukkan fitur">
+            <button type="button" class="text-red-600 hover:text-red-800 remove-feature">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+        featuresContainer.appendChild(newFeature);
+    });
+
+    // Remove feature
+    featuresContainer.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-feature')) {
+            const featureItem = e.target.closest('.feature-item');
+            if (featuresContainer.children.length > 1) {
+                featureItem.remove();
+            }
+        }
+    });
+
+    // Curriculum management
+    const curriculumContainer = document.getElementById('curriculum-container');
+    const addCurriculumBtn = document.getElementById('add-curriculum');
+
+    addCurriculumBtn.addEventListener('click', function() {
+        const newCurriculum = document.createElement('div');
+        newCurriculum.className = 'flex items-center space-x-2 curriculum-item';
+        newCurriculum.innerHTML = `
+            <input type="text" name="curriculum[]" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent" placeholder="Masukkan topik kurikulum">
+            <button type="button" class="text-red-600 hover:text-red-800 remove-curriculum">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+        curriculumContainer.appendChild(newCurriculum);
+    });
+
+    // Remove curriculum
+    curriculumContainer.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-curriculum')) {
+            const curriculumItem = e.target.closest('.curriculum-item');
+            if (curriculumContainer.children.length > 1) {
+                curriculumItem.remove();
+            }
+        }
+    });
+
+    // Learning Outcomes management
+    const learningOutcomesContainer = document.getElementById('learning-outcomes-container');
+    const addLearningOutcomeBtn = document.getElementById('add-learning-outcome');
+
+    addLearningOutcomeBtn.addEventListener('click', function() {
+        const newLearningOutcome = document.createElement('div');
+        newLearningOutcome.className = 'flex items-center space-x-2 learning-outcome-item';
+        newLearningOutcome.innerHTML = `
+            <input type="text" name="learning_outcomes[]" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent" placeholder="Masukkan hasil pembelajaran">
+            <button type="button" class="text-red-600 hover:text-red-800 remove-learning-outcome">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+        learningOutcomesContainer.appendChild(newLearningOutcome);
+    });
+
+    // Remove learning outcome
+    learningOutcomesContainer.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-learning-outcome')) {
+            const learningOutcomeItem = e.target.closest('.learning-outcome-item');
+            if (learningOutcomesContainer.children.length > 1) {
+                learningOutcomeItem.remove();
+            }
+        }
+    });
+
+    // Career Support management
+    const careerSupportContainer = document.getElementById('career-support-container');
+    const addCareerSupportBtn = document.getElementById('add-career-support');
+
+    addCareerSupportBtn.addEventListener('click', function() {
+        const newCareerSupport = document.createElement('div');
+        newCareerSupport.className = 'flex items-center space-x-2 career-support-item';
+        newCareerSupport.innerHTML = `
+            <input type="text" name="career_support[]" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent" placeholder="Masukkan dukungan karir">
+            <button type="button" class="text-red-600 hover:text-red-800 remove-career-support">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+        careerSupportContainer.appendChild(newCareerSupport);
+    });
+
+    // Remove career support
+    careerSupportContainer.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-career-support')) {
+            const careerSupportItem = e.target.closest('.career-support-item');
+            if (careerSupportContainer.children.length > 1) {
+                careerSupportItem.remove();
+            }
+        }
+    });
+
+    // Requirements management
+    const requirementsContainer = document.getElementById('requirements-container');
+    const addRequirementBtn = document.getElementById('add-requirement');
+
+    addRequirementBtn.addEventListener('click', function() {
+        const newRequirement = document.createElement('div');
+        newRequirement.className = 'flex items-center space-x-2 requirement-item';
+        newRequirement.innerHTML = `
+            <input type="text" name="requirements[]" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent" placeholder="Masukkan persyaratan">
+            <button type="button" class="text-red-600 hover:text-red-800 remove-requirement">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+        requirementsContainer.appendChild(newRequirement);
+    });
+
+    // Remove requirement
+    requirementsContainer.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-requirement')) {
+            const requirementItem = e.target.closest('.requirement-item');
+            if (requirementsContainer.children.length > 1) {
+                requirementItem.remove();
+            }
+        }
+    });
+
+    // Modules management
+    const modulesContainer = document.getElementById('modules-container');
+    const addModuleBtn = document.getElementById('add-module');
+    let moduleCount = {{ isset($bootcamp) ? $bootcamp->modules->count() : 1 }};
+
+    addModuleBtn.addEventListener('click', function() {
+        moduleCount++;
+        const newModule = document.createElement('div');
+        newModule.className = 'border border-gray-200 rounded-lg p-4 module-item';
+        newModule.innerHTML = `
+            <div class="flex items-center justify-between mb-3">
+                <h4 class="font-medium text-gray-900">Minggu ${moduleCount}</h4>
+                <button type="button" class="text-red-600 hover:text-red-800 remove-module">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Nomor Minggu</label>
+                    <input type="number" name="modules[${moduleCount}][week_number]" value="${moduleCount}"
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                           min="1" placeholder="1">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Durasi (jam)</label>
+                    <input type="number" name="modules[${moduleCount}][duration_hours]" value=""
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                           min="1" placeholder="40">
+                </div>
+            </div>
+            <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Nama Modul</label>
+                <input type="text" name="modules[${moduleCount}][module]" value=""
+                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                       placeholder="Contoh: Introduction to Web Development">
+            </div>
+            <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Tujuan Pembelajaran</label>
+                <textarea name="modules[${moduleCount}][objective]" rows="3"
+                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                          placeholder="Contoh: Students will understand the basics of HTML, CSS, and JavaScript"></textarea>
+            </div>
+            <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
+                <textarea name="modules[${moduleCount}][description]" rows="3"
+                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                          placeholder="Deskripsi detail dari modul ini"></textarea>
+            </div>
+            <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Topik (satu per baris)</label>
+                <textarea name="modules[${moduleCount}][topics]" rows="4"
+                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                          placeholder="HTML Basics&#10;CSS Fundamentals&#10;JavaScript Introduction"></textarea>
+                <p class="text-xs text-gray-500 mt-1">Masukkan setiap topik pada baris baru</p>
+            </div>
+            <div class="mt-4">
+                <label class="flex items-center">
+                    <input type="checkbox" name="modules[${moduleCount}][is_active]" value="1" checked
+                           class="rounded border-gray-300 text-orange focus:ring-orange">
+                    <span class="ml-2 text-sm text-gray-700">Aktif</span>
+                </label>
+            </div>
+        `;
+        modulesContainer.appendChild(newModule);
+    });
+
+    // Remove module
+    modulesContainer.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-module')) {
+            const moduleItem = e.target.closest('.module-item');
+            if (modulesContainer.children.length > 1) {
+                moduleItem.remove();
+                updateWeekNumbers();
+            }
+        }
+    });
+
+    function updateWeekNumbers() {
+        const moduleItems = modulesContainer.querySelectorAll('.module-item');
+        moduleItems.forEach((item, index) => {
+            const weekHeader = item.querySelector('h4');
+            const weekInput = item.querySelector('input[name*="[week_number]"]');
+            if (weekHeader) {
+                weekHeader.textContent = `Minggu ${index + 1}`;
+            }
+            if (weekInput && !weekInput.value) {
+                weekInput.value = index + 1;
+            }
+
+            // Update remove button visibility
+            const removeBtn = item.querySelector('.remove-module');
+            if (removeBtn) {
+                removeBtn.style.display = index === 0 ? 'none' : 'block';
+            }
+        });
+    }
 });
 </script>
 @endpush

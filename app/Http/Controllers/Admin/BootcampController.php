@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Bootcamp;
 use App\Models\Mentor;
 use App\Models\Category;
+use App\Models\ModuleBootcamp;
 use App\Http\Requests\Admin\BootcampRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -47,14 +48,25 @@ class BootcampController extends Controller
         // Handle array fields
         $arrayFields = ['features', 'curriculum', 'learning_outcomes', 'career_support', 'requirements'];
         foreach ($arrayFields as $field) {
-            if (isset($data[$field]) && is_string($data[$field])) {
-                // Convert textarea input to array
-                $data[$field] = array_filter(explode("\n", $data[$field]));
-                // Trim each element and remove empty values
-                $data[$field] = array_map('trim', $data[$field]);
-                $data[$field] = array_filter($data[$field]);
-                // Re-index array
-                $data[$field] = array_values($data[$field]);
+            if (isset($data[$field])) {
+                if (is_array($data[$field])) {
+                    // Filter out empty values and trim each element
+                    $data[$field] = array_filter($data[$field], function($value) {
+                        return !is_null($value) && $value !== '';
+                    });
+                    // Trim each element
+                    $data[$field] = array_map('trim', $data[$field]);
+                    // Re-index array
+                    $data[$field] = array_values($data[$field]);
+                } elseif (is_string($data[$field])) {
+                    // Fallback for textarea input (backward compatibility)
+                    $data[$field] = array_filter(explode("\n", $data[$field]));
+                    // Trim each element and remove empty values
+                    $data[$field] = array_map('trim', $data[$field]);
+                    $data[$field] = array_filter($data[$field]);
+                    // Re-index array
+                    $data[$field] = array_values($data[$field]);
+                }
             }
         }
 
@@ -84,6 +96,29 @@ class BootcampController extends Controller
             $bootcamp->mentors()->sync($data['mentors']);
         }
 
+        // Handle modules
+        if (isset($data['modules'])) {
+            // Delete existing modules
+            $bootcamp->modules()->delete();
+
+            // Create new modules
+            foreach ($data['modules'] as $moduleData) {
+                if (!empty($moduleData['module'])) { // Only save if module name is not empty
+                    $moduleData['bootcamp_id'] = $bootcamp->id;
+
+                    // Handle topics field
+                    if (isset($moduleData['topics']) && is_string($moduleData['topics'])) {
+                        $moduleData['topics'] = array_filter(explode("\n", $moduleData['topics']));
+                        $moduleData['topics'] = array_map('trim', $moduleData['topics']);
+                        $moduleData['topics'] = array_filter($moduleData['topics']);
+                        $moduleData['topics'] = array_values($moduleData['topics']);
+                    }
+
+                    ModuleBootcamp::create($moduleData);
+                }
+            }
+        }
+
         return redirect()
             ->route('admin.bootcamps')
             ->with('success', 'Bootcamp berhasil dibuat!');
@@ -111,14 +146,25 @@ class BootcampController extends Controller
         // Handle array fields
         $arrayFields = ['features', 'curriculum', 'learning_outcomes', 'career_support', 'requirements'];
         foreach ($arrayFields as $field) {
-            if (isset($data[$field]) && is_string($data[$field])) {
-                // Convert textarea input to array
-                $data[$field] = array_filter(explode("\n", $data[$field]));
-                // Trim each element and remove empty values
-                $data[$field] = array_map('trim', $data[$field]);
-                $data[$field] = array_filter($data[$field]);
-                // Re-index array
-                $data[$field] = array_values($data[$field]);
+            if (isset($data[$field])) {
+                if (is_array($data[$field])) {
+                    // Filter out empty values and trim each element
+                    $data[$field] = array_filter($data[$field], function($value) {
+                        return !is_null($value) && $value !== '';
+                    });
+                    // Trim each element
+                    $data[$field] = array_map('trim', $data[$field]);
+                    // Re-index array
+                    $data[$field] = array_values($data[$field]);
+                } elseif (is_string($data[$field])) {
+                    // Fallback for textarea input (backward compatibility)
+                    $data[$field] = array_filter(explode("\n", $data[$field]));
+                    // Trim each element and remove empty values
+                    $data[$field] = array_map('trim', $data[$field]);
+                    $data[$field] = array_filter($data[$field]);
+                    // Re-index array
+                    $data[$field] = array_values($data[$field]);
+                }
             }
         }
 
@@ -155,6 +201,29 @@ class BootcampController extends Controller
             $bootcamp->mentors()->sync($data['mentors']);
         } else {
             $bootcamp->mentors()->detach();
+        }
+
+        // Handle modules
+        if (isset($data['modules'])) {
+            // Delete existing modules
+            $bootcamp->modules()->delete();
+
+            // Create new modules
+            foreach ($data['modules'] as $moduleData) {
+                if (!empty($moduleData['module'])) { // Only save if module name is not empty
+                    $moduleData['bootcamp_id'] = $bootcamp->id;
+
+                    // Handle topics field
+                    if (isset($moduleData['topics']) && is_string($moduleData['topics'])) {
+                        $moduleData['topics'] = array_filter(explode("\n", $moduleData['topics']));
+                        $moduleData['topics'] = array_map('trim', $moduleData['topics']);
+                        $moduleData['topics'] = array_filter($moduleData['topics']);
+                        $moduleData['topics'] = array_values($moduleData['topics']);
+                    }
+
+                    ModuleBootcamp::create($moduleData);
+                }
+            }
         }
 
         return redirect()

@@ -1,4 +1,6 @@
 @php
+    use Illuminate\Support\Facades\Storage;
+
     // Get current locale from middleware
     $locale = app()->getLocale();
 
@@ -76,7 +78,7 @@
             @foreach($products as $product)
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover course-item" data-category="{{ $product->productCategory->slug }}" data-price="{{ $product->price }}" data-rating="{{ $product->rating }}" data-students="{{ $product->students }}">
                     <div class="relative">
-                        <img src="{{ $product->image }}" alt="{{ $product->title }}" class="w-full h-48 object-cover">
+                        <img src="{{ Storage::url($product->image) }}" alt="{{ $product->title }}" class="w-full h-48 object-cover">
                         @if($product->price < $product->original_price)
                             <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                                 {{ $product->discount_percentage }}% {{ $course_details['off'] }}

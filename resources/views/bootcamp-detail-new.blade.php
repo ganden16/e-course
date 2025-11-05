@@ -1,4 +1,6 @@
 @php
+    use Illuminate\Support\Facades\Storage;
+
     // Get current locale from middleware
     $locale = app()->getLocale();
 
@@ -29,7 +31,7 @@
             <div class="flex flex-col lg:flex-row gap-12">
                 <!-- Bootcamp Image -->
                 <div class="lg:w-2/5">
-                    <img src="{{ $bootcamp->image }}" alt="{{ $bootcamp->title }}" class="w-full rounded-lg shadow-lg">
+                    <img src="{{ Storage::url('bootcamps/' . $bootcamp->image) }}" alt="{{ $bootcamp->title }}" class="w-full rounded-lg shadow-lg">
                     <div class="mt-6 bg-gray-100 rounded-lg p-6">
                         <h3 class="font-semibold text-lg mb-4">{{ $detail['key_information'] }}</h3>
                         <div class="space-y-3">
@@ -116,7 +118,6 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $training_modules['title'] }}</h2>
                 <p class="text-lg text-gray-600 max-w-4xl mx-auto">{{ $training_modules['subtitle'] }}</p>
             </div>
-
             <!-- Weeks Training Modules -->
             <div class="mb-16">
                 <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 shadow-lg">
@@ -369,7 +370,7 @@
             @foreach($bootcamp->mentors as $index => $instructor)
                 <div class="bg-white rounded-lg p-8 mb-8 {{ $index > 0 ? 'border-t-4 border-secondary' : '' }}">
                     <div class="flex flex-col md:flex-row items-center gap-8">
-                        <img src="{{ $instructor->image }}" alt="{{ $instructor->name }}" class="w-32 h-32 rounded-full object-cover">
+                        <img src="{{ Storage::url('mentors/' . $instructor->image) }}" alt="{{ $instructor->name }}" class="w-32 h-32 rounded-full object-cover">
                         <div class="flex-1">
                             <div class="flex items-center mb-2">
                                 <h3 class="text-2xl font-semibold mr-3">{{ $instructor->name }}</h3>
@@ -626,7 +627,7 @@
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
                         <div class="md:flex">
                             <div class="md:w-2/5">
-                                <img src="{{ $relatedBootcamp->image }}" alt="{{ $relatedBootcamp->title }}" class="w-full h-48 md:h-full object-cover">
+                                <img src="{{ Storage::url('bootcamps/' . $relatedBootcamp->image) }}" alt="{{ $relatedBootcamp->title }}" class="w-full h-48 md:h-full object-cover">
                             </div>
                             <div class="md:w-3/5 p-6">
                                 <div class="flex items-center justify-between mb-2">
@@ -673,7 +674,7 @@
                     <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover">
                         <div class="md:flex">
                             <div class="md:w-2/5">
-                                <img src="{{ $otherBootcamp->image }}" alt="{{ $otherBootcamp->title }}" class="w-full h-48 md:h-full object-cover">
+                                <img src="{{ Storage::url('bootcamps/' . $otherBootcamp->image) }}" alt="{{ $otherBootcamp->title }}" class="w-full h-48 md:h-full object-cover">
                             </div>
                             <div class="md:w-3/5 p-6">
                                 <div class="flex items-center justify-between mb-2">

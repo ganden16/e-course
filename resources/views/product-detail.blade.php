@@ -1,4 +1,6 @@
 @php
+    use Illuminate\Support\Facades\Storage;
+
     // Get current locale from middleware
     $locale = app()->getLocale();
 
@@ -35,7 +37,7 @@
             <div class="flex flex-col lg:flex-row gap-12">
                 <!-- Course Image -->
                 <div class="lg:w-2/5">
-                    <img src="{{ $product->image }}" alt="{{ $product->title }}" class="w-full rounded-lg shadow-lg">
+                    <img src="{{ Storage::url($product->image) }}" alt="{{ $product->title }}" class="w-full rounded-lg shadow-lg">
                     <div class="mt-6 bg-gray-100 rounded-lg p-6">
                         <h3 class="font-semibold text-lg mb-4">{{ $product_details['course_includes'] }}:</h3>
                         <ul class="space-y-2">
@@ -210,7 +212,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach($relatedProducts as $relatedProduct)
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                        <img src="{{ $relatedProduct->image }}" alt="{{ $relatedProduct->title }}" class="w-full h-48 object-cover">
+                        <img src="{{ Storage::url($relatedProduct->image) }}" alt="{{ $relatedProduct->title }}" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $relatedProduct->productCategory->name }}</span>
@@ -248,7 +250,7 @@
                 @foreach($otherProducts as $otherProduct)
                     <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover">
                         <div class="relative">
-                            <img src="{{ $otherProduct->image }}" alt="{{ $otherProduct->title }}" class="w-full h-48 object-cover">
+                            <img src="{{ Storage::url($otherProduct->image) }}" alt="{{ $otherProduct->title }}" class="w-full h-48 object-cover">
                             @if($otherProduct->price < $otherProduct->original_price)
                                 <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                                     {{ $otherProduct->discount_percentage }}% {{ $course_details['off'] }}

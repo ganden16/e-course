@@ -115,7 +115,7 @@ use Illuminate\Support\Str;
                     <div class="border-2 border-dashed border-gray-300 rounded-lg p-4">
                         <div class="flex items-center">
                             <div id="icon-preview" class="flex-shrink-0 h-12 w-12 flex items-center justify-center rounded-lg mr-3" style="background-color: {{ $productCategory->color ?? '#6B46C1' }}20; color: {{ $productCategory->color ?? '#6B46C1' }}">
-                                @if($productCategory->icon)
+                                @if(isset($productCategory) && $productCategory->icon)
                                     <i class="{{ $productCategory->icon }}"></i>
                                 @else
                                     <i class="fas fa-tag"></i>
