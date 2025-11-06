@@ -1,6 +1,6 @@
 @foreach($blogs as $blog)
     <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover blog-item" data-date="{{ $blog->published_at->format('Y-m-d') }}">
-        <img src="{{ $blog->image_url }}" alt="{{ $blog->title }}" class="w-full h-48 object-cover">
+        <img src="{{ $blog->image }}" alt="{{ $blog->title }}" class="w-full h-48 object-cover">
         <div class="p-6">
             <div class="flex items-center justify-between mb-2">
                 <span class="text-sm text-gray-500">{{ $blog->read_time }}</span>

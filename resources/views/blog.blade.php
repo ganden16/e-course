@@ -52,7 +52,7 @@
             <div class="bg-white rounded-xl shadow-lg overflow-hidden">
                 <div class="md:flex">
                     <div class="md:w-2/5">
-                        <img src="{{ $blogs->first()->image_url }}" alt="{{ $blogs->first()->title }}" class="w-full h-64 md:h-full object-cover">
+                        <img src="{{ $blogs->first()->image }}" alt="{{ $blogs->first()->title }}" class="w-full h-64 md:h-full object-cover">
                     </div>
                     <div class="md:w-3/5 p-8">
                         <div class="flex items-center justify-between mb-4">

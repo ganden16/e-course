@@ -1,7 +1,7 @@
 @foreach($bootcamps as $bootcamp)
     <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover bootcamp-item" data-category="{{ $bootcamp->category_id }}" data-price="{{ $bootcamp->price }}" data-rating="{{ $bootcamp->rating }}" data-duration="{{ $bootcamp->duration }}">
         <div class="relative">
-            <img src="{{ $bootcamp->image ? Storage::url('bootcamps/' . $bootcamp->image) : 'https://images.unsplash.com/photo-1523240795611-d4d5ec7a66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' }}" alt="{{ $bootcamp->title }}" class="w-full h-64 object-cover">
+            <img src="{{ $bootcamp->image ? $bootcamp->image : 'https://images.unsplash.com/photo-1523240795611-d4d5ec7a66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' }}" alt="{{ $bootcamp->title }}" class="w-full h-64 object-cover">
             @if($bootcamp->price < $bootcamp->original_price)
                 <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                     {{ round((1 - $bootcamp->price / $bootcamp->original_price) * 100) }}% {{ $bootcamp_details['off'] }}

@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <img src="{{ $blog->image_url }}" alt="{{ $blog->title }}" class="w-full h-64 md:h-96 object-cover rounded-lg mb-8">
+            <img src="{{ $blog->image }}" alt="{{ $blog->title }}" class="w-full h-64 md:h-96 object-cover rounded-lg mb-8">
 
             <div class="prose prose-lg max-w-none">
                 <p class="text-lg text-gray-600 mb-6 leading-relaxed">{{ $blog->content }}</p>
@@ -41,40 +41,6 @@
     </div>
 </section>
 
-<!-- Related Articles Section -->
-@if($relatedBlogs->count() > 0)
-<section class="py-16 bg-light">
-    <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">Related Articles</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                @foreach($relatedBlogs as $article)
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                        <img src="{{ $article->image_url }}" alt="{{ $article->title }}" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-sm text-gray-500">{{ $article->read_time }}</span>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2">{{ $article->title }}</h3>
-                            <p class="text-gray-600 mb-4">{{ $article->excerpt }}</p>
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm font-medium">{{ $article->author }}</p>
-                                    <p class="text-xs text-gray-500">{{ $article->formatted_date }}</p>
-                                </div>
-                                <a href="{{ route('blog.detail', [$locale, $article->slug]) }}" class="text-secondary hover:text-secondary-dark font-medium">
-                                    Read More <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
-@endif
-
 <!-- Other Blogs Section -->
 <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
@@ -83,7 +49,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @foreach($otherBlogs as $otherBlog)
                     <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover">
-                        <img src="{{ $otherBlog->image_url }}" alt="{{ $otherBlog->title }}" class="w-full h-48 object-cover">
+                        <img src="{{ $otherBlog->image }}" alt="{{ $otherBlog->title }}" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-sm text-gray-500">{{ $otherBlog->read_time }}</span>

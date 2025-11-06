@@ -855,7 +855,7 @@ class BootcampSeeder extends Seeder
                 'category_id' => 2, // Using existing category - Data Science
                 'price' => 8999000,
                 'original_price' => 11999000,
-                'image' => 'https://images.unsplash.com/photo-1677442136019-21780ecad9956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/bootcamps/40.jpg',
                 'rating' => 4.9,
                 'students' => 190,
                 'duration' => '16 weeks',
