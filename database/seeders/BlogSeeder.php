@@ -25,7 +25,7 @@ class BlogSeeder extends Seeder
                 'author' => 'David Anderson',
                 'published_at' => '2024-01-15 10:00:00',
                 'read_time' => '8 min read',
-                'image' => 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80',
+                'image' => env('APP_URL').'/storage/blogs/1.jpg',
                 'tags' => ['Web Development', 'Trends', '2024', 'Technology']
             ],
             [
@@ -35,7 +35,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Dr. Sarah Mitchell',
                 'published_at' => '2024-01-12 14:30:00',
                 'read_time' => '12 min read',
-                'image' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/2.jpg',
                 'tags' => ['Machine Learning', 'Data Science', 'Beginner', 'AI']
             ],
             [
@@ -45,7 +45,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Emma Thompson',
                 'published_at' => '2024-01-10 09:15:00',
                 'read_time' => '10 min read',
-                'image' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80',
+                'image' => env('APP_URL').'/storage/blogs/3.jpg',
                 'tags' => ['Digital Marketing', 'Small Business', 'Strategy', 'SEO']
             ],
             [
@@ -55,7 +55,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Alex Rodriguez',
                 'published_at' => '2024-01-08 16:45:00',
                 'read_time' => '7 min read',
-                'image' => 'https://images.unsplash.com/photo-1559028006-44a26f024d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/4.jpg',
                 'tags' => ['UX Design', 'Psychology', 'User Experience', 'Design Principles']
             ],
             [
@@ -65,7 +65,7 @@ class BlogSeeder extends Seeder
                 'author' => 'James Wilson',
                 'published_at' => '2024-01-05 11:20:00',
                 'read_time' => '9 min read',
-                'image' => 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/5.jpg',
                 'tags' => ['Mobile Development', 'Responsive Design', 'Best Practices', 'Web Development']
             ],
             [
@@ -75,7 +75,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Robert Chang',
                 'published_at' => '2024-01-03 13:00:00',
                 'read_time' => '11 min read',
-                'image' => 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/6.jpg',
                 'tags' => ['Cybersecurity', 'Remote Work', 'Data Protection', 'Security Best Practices']
             ],
             [
@@ -85,7 +85,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Michael Chen',
                 'published_at' => '2024-01-20 09:30:00',
                 'read_time' => '10 min read',
-                'image' => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80',
+                'image' => env('APP_URL').'/storage/blogs/7.jpg',
                 'tags' => ['Cloud Computing', 'Infrastructure', 'Technology', 'Business']
             ],
             [
@@ -95,7 +95,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Lisa Park',
                 'published_at' => '2024-01-18 14:00:00',
                 'read_time' => '12 min read',
-                'image' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/8.jpg',
                 'tags' => ['API Development', 'REST', 'GraphQL', 'Scalability']
             ],
             [
@@ -105,7 +105,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Tom Richardson',
                 'published_at' => '2024-01-22 11:15:00',
                 'read_time' => '9 min read',
-                'image' => 'https://images.unsplash.com/photo-1667372393119-3d8c61d819a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/9.jpg',
                 'tags' => ['DevOps', 'CI/CD', 'Automation', 'Infrastructure']
             ],
             [
@@ -115,7 +115,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Nina Patel',
                 'published_at' => '2024-01-25 16:30:00',
                 'read_time' => '13 min read',
-                'image' => 'https://images.unsplash.com/photo-1639762681485-074b5f938840?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/10.jpg',
                 'tags' => ['Blockchain', 'Cryptocurrency', 'Smart Contracts', 'Technology']
             ],
             [
@@ -125,7 +125,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Dr. James Liu',
                 'published_at' => '2024-01-28 10:45:00',
                 'read_time' => '11 min read',
-                'image' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/11.jpg',
                 'tags' => ['Data Science', 'Business Intelligence', 'Analytics', 'Decision Making']
             ],
             [
@@ -135,7 +135,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Sophia Martinez',
                 'published_at' => '2024-02-01 13:20:00',
                 'read_time' => '10 min read',
-                'image' => 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/1.jpg',
                 'tags' => ['PWA', 'Web Development', 'Mobile', 'User Experience']
             ],
             [
@@ -145,7 +145,7 @@ class BlogSeeder extends Seeder
                 'author' => 'David Kim',
                 'published_at' => '2024-02-05 09:00:00',
                 'read_time' => '12 min read',
-                'image' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/12.jpg',
                 'tags' => ['Microservices', 'Architecture', 'Scalability', 'Distributed Systems']
             ],
             [
@@ -155,7 +155,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Dr. Rachel Green',
                 'published_at' => '2024-02-08 14:15:00',
                 'read_time' => '14 min read',
-                'image' => 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/13.jpg',
                 'tags' => ['AI Ethics', 'Artificial Intelligence', 'Morality', 'Technology']
             ],
             [
@@ -165,7 +165,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Dr. Alan Zhang',
                 'published_at' => '2024-02-12 11:30:00',
                 'read_time' => '15 min read',
-                'image' => 'https://images.unsplash.com/photo-1635070041078-3e6ca0f47111?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/14.jpg',
                 'tags' => ['Quantum Computing', 'Physics', 'Future Technology', 'Research']
             ],
             [
@@ -175,7 +175,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Emma Wilson',
                 'published_at' => '2024-02-15 10:00:00',
                 'read_time' => '9 min read',
-                'image' => 'https://images.unsplash.com/photo-1542601906-a0185c06b3ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/4.jpg',
                 'tags' => ['Sustainability', 'Green Computing', 'Environment', 'Best Practices']
             ],
             [
@@ -185,7 +185,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Carlos Rodriguez',
                 'published_at' => '2024-02-20 14:45:00',
                 'read_time' => '11 min read',
-                'image' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/1.jpg',
                 'tags' => ['Edge Computing', 'IoT', 'Distributed Systems', 'Performance']
             ],
             [
@@ -195,7 +195,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Jennifer Adams',
                 'published_at' => '2024-02-25 09:30:00',
                 'read_time' => '13 min read',
-                'image' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/3.jpg',
                 'tags' => ['Accessibility', 'WCAG', 'Inclusive Design', 'Frontend']
             ],
             [
@@ -205,7 +205,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Michael Brown',
                 'published_at' => '2024-03-01 11:00:00',
                 'read_time' => '12 min read',
-                'image' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/9.jpg',
                 'tags' => ['Serverless', 'Cloud Computing', 'FaaS', 'Architecture']
             ],
             [
@@ -215,7 +215,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Dr. Lisa Wang',
                 'published_at' => '2024-03-05 14:20:00',
                 'read_time' => '14 min read',
-                'image' => 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/2.jpg',
                 'tags' => ['NLP', 'Artificial Intelligence', 'Language Models', 'Text Processing']
             ],
             [
@@ -225,7 +225,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Sarah Johnson',
                 'published_at' => '2024-03-10 10:15:00',
                 'read_time' => '8 min read',
-                'image' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/6.jpg',
                 'tags' => ['Low-Code', 'No-Code', 'Citizen Developers', 'Democratization']
             ],
             [
@@ -235,7 +235,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Dr. Kevin Lee',
                 'published_at' => '2024-03-15 13:45:00',
                 'read_time' => '10 min read',
-                'image' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/16.jpg',
                 'tags' => ['5G', 'Networking', 'IoT', 'Telecommunications']
             ],
             [
@@ -245,7 +245,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Dr. Maria Garcia',
                 'published_at' => '2024-03-20 09:00:00',
                 'read_time' => '12 min read',
-                'image' => 'https://images.unsplash.com/photo-1635070041078-3e6ca0f47111?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/5.jpg',
                 'tags' => ['Digital Twins', 'IoT', 'Simulation', 'Industry 4.0']
             ],
             [
@@ -255,7 +255,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Robert Taylor',
                 'published_at' => '2024-03-25 11:30:00',
                 'read_time' => '11 min read',
-                'image' => 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'image' => env('APP_URL').'/storage/blogs/8.jpg',
                 'tags' => ['Biometrics', 'Security', 'Authentication', 'Privacy']
             ]
         ];

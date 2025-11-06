@@ -18,8 +18,8 @@ class AdminSeeder extends Seeder
             $username = 'admin' . $i;
             $email = 'admin' . $i . '@healthcare.com';
 
-            // Generate unique image for each admin
-            $imageUrl = 'https://ui-avatars.com/api/?name=' . urlencode($name) . '&color=' . $this->getRandomColor($i) . '&background=EBF4FF&size=200';
+            // Use local image for each admin
+            $imageUrl = env('APP_URL').'/users/' . (($i % 13) + 1) . '.jpg';
 
             \App\Models\User::create([
                 'name' => $name,

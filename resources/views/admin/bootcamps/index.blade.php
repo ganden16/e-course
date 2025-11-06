@@ -209,7 +209,7 @@
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 h-10 w-10">
                                     @if($bootcamp->image)
-                                        <img class="h-10 w-10 rounded-lg object-cover" src="{{ Storage::url('bootcamps/' . $bootcamp->image) }}" alt="{{ $bootcamp->title }}">
+                                        <img class="h-10 w-10 rounded-lg object-cover" src="{{ $bootcamp->image}}" alt="{{ $bootcamp->title }}">
                                     @else
                                         <div class="h-10 w-10 rounded-lg bg-gray-200 flex items-center justify-center">
                                             <i class="fas fa-image text-gray-400"></i>

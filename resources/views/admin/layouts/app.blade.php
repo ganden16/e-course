@@ -178,12 +178,12 @@
             </nav>
 
             <!-- Sidebar Footer -->
-            <div class="absolute bottom-0 left-32 right-0 p-4">
+            {{-- <div class="absolute bottom-0 left-32 right-0 p-4">
                 <div class="flex items-center justify-center text-xs text-gray-400">
                     <span class="mr-2">Version 1.0.0</span>
                     <span>© 2025 Healthcare Remote Circle</span>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Main Content -->

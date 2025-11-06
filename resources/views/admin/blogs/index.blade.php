@@ -73,7 +73,7 @@
                                 <tr>
                                     <td>
                                         @if($blog->image)
-                                            <img src="{{ $blog->image_url }}" alt="{{ $blog->title }}" class="img-thumbnail" style="max-width: 80px; max-height: 60px; object-fit: cover;">
+                                            <img src="{{ $blog->image }}" alt="{{ $blog->title }}" class="img-thumbnail" style="max-width: 80px; max-height: 60px; object-fit: cover;">
                                         @else
                                             <div class="bg-light d-flex align-items-center justify-content-center" style="width: 80px; height: 60px;">
                                                 <i class="fas fa-image text-muted"></i>

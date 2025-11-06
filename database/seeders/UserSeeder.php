@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'username' => 'admin',
             'email' => 'admin@healthcare.com',
             'password' => Hash::make('admin123'),
-            'image' => 'https://ui-avatars.com/api/?name=Admin+User&color=7F9CF5&background=EBF4FF&size=200',
+            'image' => env('APP_URL').'/users/' . rand(1, 13) . '.jpg',
         ]);
 
         User::create([
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             'username' => 'user',
             'email' => 'user@healthcare.com',
             'password' => Hash::make('user123'),
-            'image' => 'https://ui-avatars.com/api/?name=Test+User&color=7F9CF5&background=EBF4FF&size=200',
+            'image' => env('APP_URL').'/users/' . rand(1, 13) . '.jpg',
         ]);
     }
 }

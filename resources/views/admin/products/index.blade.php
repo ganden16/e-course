@@ -121,7 +121,7 @@ use Illuminate\Support\Facades\Storage;
                     <tr class="hover:bg-gray-50 transition">
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
-                                <img class="h-10 w-10 rounded-lg object-cover" src="{{ $product->image ? Storage::url($product->image) : asset('assets/images/placeholder.jpg') }}" alt="{{ $product->title }}">
+                                <img class="h-10 w-10 rounded-lg object-cover" src="{{ $product->image ? $product->image : asset('assets/images/placeholder.jpg') }}" alt="{{ $product->title }}">
                                 <div class="ml-4">
                                     <div class="text-sm font-medium text-gray-900">{{ $product->title }}</div>
                                     <div class="text-sm text-gray-500">{{ $product->instructor }}</div>

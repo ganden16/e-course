@@ -141,7 +141,7 @@
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 h-10 w-10">
                                     @if($mentor->image)
-                                        <img class="h-10 w-10 rounded-lg object-cover" src="{{ Storage::url('mentors/' . $mentor->image) }}" alt="{{ $mentor->name }}">
+                                        <img class="h-10 w-10 rounded-lg object-cover" src="{{ $mentor->image }}" alt="{{ $mentor->name }}">
                                     @else
                                         <div class="h-10 w-10 rounded-lg bg-gray-200 flex items-center justify-center">
                                             <i class="fas fa-user text-gray-400"></i>
