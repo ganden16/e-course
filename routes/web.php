@@ -12,6 +12,9 @@ Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('langu
 
 // Group routes with language prefix
 Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'id|en']], function () {
+    Route::get('/admin', function () {
+        return redirect()->route('admin.dashboard');
+    });
     Route::get('/', function () {
         return view('welcome');
     })->name('home');
