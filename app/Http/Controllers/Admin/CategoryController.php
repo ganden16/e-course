@@ -15,8 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('sort_order', 'asc')
-            ->orderBy('name', 'asc')
+        $categories = Category::orderBy('name', 'asc')
             ->withCount('bootcamps')
             ->paginate(10);
 
@@ -123,22 +122,4 @@ class CategoryController extends Controller
             ->with('success', 'Status kategori berhasil diperbarui!');
     }
 
-    /**
-     * Update sort order
-     */
-    public function updateSort(Request $request)
-    {
-        $data = $request->validate([
-            'categories' => 'required|array',
-            'categories.*.id' => 'required|exists:categories,id',
-            'categories.*.sort_order' => 'required|integer|min:0'
-        ]);
-
-        foreach ($data['categories'] as $categoryData) {
-            Category::where('id', $categoryData['id'])
-                ->update(['sort_order' => $categoryData['sort_order']]);
-        }
-
-        return response()->json(['success' => true]);
-    }
 }

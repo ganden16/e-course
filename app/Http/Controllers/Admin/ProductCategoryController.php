@@ -29,8 +29,7 @@ class ProductCategoryController extends Controller
             });
         }
 
-        $categories = $query->orderBy('sort_order', 'asc')
-            ->orderBy('name', 'asc')
+        $categories = $query->orderBy('name', 'asc')
             ->paginate(10);
 
         return view('admin.product-categories.index', compact('categories'));
@@ -52,10 +51,7 @@ class ProductCategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'icon' => 'nullable|string|max:255',
-            'color' => 'nullable|string|max:7',
-            'is_active' => 'boolean',
-            'sort_order' => 'nullable|integer|min:0'
+            'is_active' => 'boolean'
         ]);
 
         $data = $request->all();
@@ -73,7 +69,6 @@ class ProductCategoryController extends Controller
 
         // Set default values
         $data['is_active'] = $request->has('is_active') ? true : false;
-        $data['sort_order'] = $data['sort_order'] ?? 0;
 
         ProductCategory::create($data);
 
@@ -98,10 +93,7 @@ class ProductCategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'icon' => 'nullable|string|max:255',
-            'color' => 'nullable|string|max:7',
-            'is_active' => 'boolean',
-            'sort_order' => 'nullable|integer|min:0'
+            'is_active' => 'boolean'
         ]);
 
         $data = $request->all();
@@ -121,7 +113,6 @@ class ProductCategoryController extends Controller
 
         // Set default values
         $data['is_active'] = $request->has('is_active') ? true : false;
-        $data['sort_order'] = $data['sort_order'] ?? 0;
 
         $productCategory->update($data);
 
@@ -163,22 +154,4 @@ class ProductCategoryController extends Controller
         ]);
     }
 
-    /**
-     * Update sort order
-     */
-    public function updateSort(Request $request)
-    {
-        $data = $request->validate([
-            'categories' => 'required|array',
-            'categories.*.id' => 'required|exists:product_categories,id',
-            'categories.*.sort_order' => 'required|integer|min:0'
-        ]);
-
-        foreach ($data['categories'] as $categoryData) {
-            ProductCategory::where('id', $categoryData['id'])
-                ->update(['sort_order' => $categoryData['sort_order']]);
-        }
-
-        return response()->json(['success' => true]);
-    }
 }

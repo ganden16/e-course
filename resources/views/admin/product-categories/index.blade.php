@@ -102,7 +102,6 @@ use Illuminate\Support\Str;
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Slug</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Products</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sort Order</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                 </tr>
@@ -112,15 +111,9 @@ use Illuminate\Support\Str;
                     <tr class="hover:bg-gray-50 transition" data-id="{{ $category->id }}">
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
-                                @if($category->icon)
-                                    <div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-lg bg-purple-100 text-purple-600 mr-3">
-                                        <i class="{{ $category->icon }}"></i>
-                                    </div>
-                                @else
-                                    <div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-lg bg-gray-200 text-gray-500 mr-3">
-                                        <i class="fas fa-tag"></i>
-                                    </div>
-                                @endif
+                                <div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-lg bg-purple-100 text-purple-600 mr-3">
+                                    <i class="fas fa-tag"></i>
+                                </div>
                                 <div>
                                     <div class="text-sm font-medium text-gray-900">{{ $category->name }}</div>
                                     @if($category->description)
@@ -136,11 +129,6 @@ use Illuminate\Support\Str;
                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
                                 {{ $category->products_count }} products
                             </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <input type="number" value="{{ $category->sort_order }}"
-                                   class="w-20 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent sort-order"
-                                   data-id="{{ $category->id }}">
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <form action="{{ route('admin.product-categories.toggle-active', $category) }}" method="POST" class="inline">
@@ -168,7 +156,7 @@ use Illuminate\Support\Str;
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+                        <td colspan="5" class="px-6 py-4 text-center text-gray-500">
                             No categories found.
                         </td>
                     </tr>
@@ -193,62 +181,4 @@ use Illuminate\Support\Str;
     </div>
 </div>
 
-<!-- Update Sort Order Button -->
-<div class="mt-4 flex justify-end">
-    <button id="update-sort-order" class="gradient-bg text-white px-6 py-3 rounded-lg hover:opacity-90 transition flex items-center">
-        <i class="fas fa-sort mr-2"></i>
-        Update Sort Order
-    </button>
-</div>
 @endsection
-
-@push('scripts')
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Update sort order
-    const updateSortBtn = document.getElementById('update-sort-order');
-
-    updateSortBtn.addEventListener('click', function() {
-        const sortOrders = [];
-        document.querySelectorAll('.sort-order').forEach(input => {
-            sortOrders.push({
-                id: input.dataset.id,
-                sort_order: input.value
-            });
-        });
-
-        fetch('{{ route("admin.product-categories.update-sort") }}', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            },
-            body: JSON.stringify({
-                categories: sortOrders
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Show success message
-                const successDiv = document.createElement('div');
-                successDiv.className = 'mb-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative';
-                successDiv.innerHTML = `
-                    <span class="block sm:inline">Sort order updated successfully!</span>
-                    <button class="absolute top-0 bottom-0 right-0 px-4 py-3" onclick="this.parentElement.remove()">
-                        <i class="fas fa-times"></i>
-                    </button>
-                `;
-                document.querySelector('main').insertBefore(successDiv, document.querySelector('main').firstChild);
-
-                // Remove after 3 seconds
-                setTimeout(() => successDiv.remove(), 3000);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    });
-});
-</script>
-@endpush

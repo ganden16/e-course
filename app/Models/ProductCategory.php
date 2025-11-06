@@ -13,15 +13,11 @@ class ProductCategory extends Model
         'name',
         'slug',
         'description',
-        'icon',
-        'color',
-        'is_active',
-        'sort_order'
+        'is_active'
     ];
 
     protected $casts = [
-        'is_active' => 'boolean',
-        'sort_order' => 'integer'
+        'is_active' => 'boolean'
     ];
 
     /**

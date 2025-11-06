@@ -83,9 +83,6 @@
                 <thead class="bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            <i class="fas fa-grip-vertical mr-1"></i> Order
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Kategori
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -104,20 +101,12 @@
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     @forelse($categories as $category)
-                    <tr class="hover:bg-gray-50 transition-colors duration-150 cursor-move" data-id="{{ $category->id }}" draggable="true">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            <div class="flex items-center">
-                                <i class="fas fa-grip-vertical text-gray-400 mr-2"></i>
-                                <span>{{ $category->sort_order }}</span>
-                            </div>
-                        </td>
+                    <tr class="hover:bg-gray-50 transition-colors duration-150">
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
-                                @if($category->icon)
-                                    <div class="flex-shrink-0 h-8 w-8 rounded-lg flex items-center justify-center" style="background-color: {{ $category->color ?? '#f3f4f6' }}">
-                                        <i class="{{ $category->icon }} text-white text-sm"></i>
-                                    </div>
-                                @endif
+                                <div class="flex-shrink-0 h-8 w-8 rounded-lg flex items-center justify-center bg-gray-100">
+                                    <i class="fas fa-folder text-gray-600 text-sm"></i>
+                                </div>
                                 <div class="ml-3">
                                     <div class="text-sm font-medium text-gray-900">{{ $category->name }}</div>
                                     <div class="text-sm text-gray-500">{{ $category->slug }}</div>
@@ -164,7 +153,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+                        <td colspan="5" class="px-6 py-4 text-center text-gray-500">
                             Tidak ada kategori ditemukan.
                         </td>
                     </tr>
@@ -237,85 +226,6 @@ document.addEventListener('DOMContentLoaded', function() {
         statusFilter.value = '';
         filterTable();
     });
-
-    // Simple drag and drop for reordering
-    const table = document.querySelector('tbody');
-    let draggedRow = null;
-
-    table.addEventListener('dragstart', function(e) {
-        const row = e.target.closest('tr');
-        if (row && row.style.display !== 'none') {
-            draggedRow = row;
-            draggedRow.classList.add('opacity-50');
-        }
-    });
-
-    table.addEventListener('dragend', function(e) {
-        if (draggedRow) {
-            draggedRow.classList.remove('opacity-50');
-            draggedRow = null;
-        }
-    });
-
-    table.addEventListener('dragover', function(e) {
-        e.preventDefault();
-        const afterElement = getDragAfterElement(table, e.clientY);
-        if (afterElement == null) {
-            table.appendChild(draggedRow);
-        } else {
-            table.insertBefore(draggedRow, afterElement);
-        }
-    });
-
-    table.addEventListener('drop', function(e) {
-        e.preventDefault();
-        updateSortOrder();
-    });
-
-    function getDragAfterElement(container, y) {
-        const draggableElements = [...container.querySelectorAll('tr:not(.dragging)')].filter(row => row.style.display !== 'none');
-
-        return draggableElements.reduce((closest, child) => {
-            const box = child.getBoundingClientRect();
-            const offset = y - box.top - box.height / 2;
-
-            if (offset < 0 && offset > closest.offset) {
-                return { offset: offset, element: child };
-            } else {
-                return closest;
-            }
-        }, { offset: Number.NEGATIVE_INFINITY }).element;
-    }
-
-    function updateSortOrder() {
-        const rows = Array.from(table.querySelectorAll('tr[data-id]')).filter(row => row.style.display !== 'none');
-        const categories = [];
-
-        rows.forEach((row, index) => {
-            categories.push({
-                id: row.dataset.id,
-                sort_order: index
-            });
-        });
-
-        fetch('{{ route("admin.categories.update-sort") }}', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            },
-            body: JSON.stringify({ categories: categories })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                console.log('Sort order updated successfully');
-            }
-        })
-        .catch(error => {
-            console.error('Error updating sort order:', error);
-        });
-    }
 });
 </script>
 @endsection

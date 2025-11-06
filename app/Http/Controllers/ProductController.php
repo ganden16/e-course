@@ -65,7 +65,7 @@ class ProductController extends Controller
 
         // Initial load - show first 6 items
         $products = $query->take(6)->get();
-        $categories = ProductCategory::where('is_active', true)->orderBy('sort_order')->get();
+        $categories = ProductCategory::where('is_active', true)->orderBy('updated_at', 'desc')->get();
 
         return view('product', compact('products', 'categories', 'totalProducts', 'course_details', 'load_more'));
     }
@@ -113,7 +113,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = ProductCategory::where('is_active', true)->orderBy('sort_order')->get();
+        $categories = ProductCategory::where('is_active', true)->orderBy('updated_at', 'desc')->get();
         return view('admin.products.form', compact('categories'));
     }
 
@@ -176,7 +176,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = ProductCategory::where('is_active', true)->orderBy('sort_order')->get();
+        $categories = ProductCategory::where('is_active', true)->orderBy('updated_at', 'desc')->get();
         return view('admin.products.form', compact('product', 'categories'));
     }
 

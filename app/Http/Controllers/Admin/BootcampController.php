@@ -33,7 +33,7 @@ class BootcampController extends Controller
     public function create()
     {
         $mentors = Mentor::where('is_active', true)->get();
-        $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
+        $categories = Category::where('is_active', true)->orderBy('updated_at', 'desc')->get();
 
         return view('admin.bootcamps.form', compact('mentors', 'categories'));
     }
@@ -131,7 +131,7 @@ class BootcampController extends Controller
     {
         $bootcamp->load(['mentors', 'category']);
         $mentors = Mentor::where('is_active', true)->get();
-        $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
+        $categories = Category::where('is_active', true)->orderBy('updated_at', 'desc')->get();
 
         return view('admin.bootcamps.form', compact('bootcamp', 'mentors', 'categories'));
     }

@@ -21,35 +21,30 @@ class ProductSeeder extends Seeder
                 'name' => 'Web Development',
                 'slug' => 'web-development',
                 'description' => 'Courses covering web development technologies and frameworks',
-                'sort_order' => 1,
                 'is_active' => true
             ],
             [
                 'name' => 'Data Science',
                 'slug' => 'data-science',
                 'description' => 'Courses covering data analysis, machine learning, and AI',
-                'sort_order' => 2,
                 'is_active' => true
             ],
             [
                 'name' => 'Design',
                 'slug' => 'design',
                 'description' => 'Courses covering UI/UX design, graphic design, and visual arts',
-                'sort_order' => 3,
                 'is_active' => true
             ],
             [
                 'name' => 'Marketing',
                 'slug' => 'marketing',
                 'description' => 'Courses covering digital marketing, social media, and content strategy',
-                'sort_order' => 4,
                 'is_active' => true
             ],
             [
                 'name' => 'Mobile Development',
                 'slug' => 'mobile-development',
                 'description' => 'Courses covering iOS, Android, and cross-platform mobile development',
-                'sort_order' => 5,
                 'is_active' => true
             ]
         ];

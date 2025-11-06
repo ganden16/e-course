@@ -235,7 +235,7 @@ class BlogSeeder extends Seeder
                 'author' => 'Dr. Kevin Lee',
                 'published_at' => '2024-03-15 13:45:00',
                 'read_time' => '10 min read',
-                'image' => env('APP_URL').'/storage/blogs/16.jpg',
+                'image' => env('APP_URL').'/storage/blogs/9.jpg',
                 'tags' => ['5G', 'Networking', 'IoT', 'Telecommunications']
             ],
             [

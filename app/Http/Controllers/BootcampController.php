@@ -64,7 +64,7 @@ class BootcampController extends Controller
 
         // Initial load - show first 6 items
         $bootcamps = $query->take(6)->get();
-        $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
+        $categories = Category::where('is_active', true)->orderBy('updated_at', 'desc')->get();
         $bootcamp_details = $translations['bootcamp_details'];
 
         return view('bootcamp-new', compact('categories', 'bootcamps', 'totalBootcamps', 'bootcamp_details'));

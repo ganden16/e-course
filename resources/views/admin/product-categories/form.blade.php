@@ -64,46 +64,6 @@ use Illuminate\Support\Str;
                     </div>
                 </div>
 
-                <!-- Display Settings -->
-                <div class="bg-gray-50 rounded-lg p-6">
-                    <h3 class="text-lg font-medium text-gray-900 mb-4">Display Settings</h3>
-
-                    <div class="space-y-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label for="icon" class="block text-sm font-medium text-gray-700 mb-1">Icon Class</label>
-                                <input type="text" id="icon" name="icon" value="{{ old('icon', $productCategory->icon ?? '') }}"
-                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                                       placeholder="fas fa-code">
-                                @error('icon')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
-                                <p class="text-sm text-gray-500 mt-1">Font Awesome icon class (e.g., fas fa-code)</p>
-                            </div>
-
-                            <div>
-                                <label for="color" class="block text-sm font-medium text-gray-700 mb-1">Color</label>
-                                <input type="color" id="color" name="color" value="{{ old('color', $productCategory->color ?? '#6B46C1') }}"
-                                       class="w-full h-10 px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                                @error('color')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
-                                <p class="text-sm text-gray-500 mt-1">Category display color</p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="sort_order" class="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
-                            <input type="number" id="sort_order" name="sort_order" value="{{ old('sort_order', $productCategory->sort_order ?? 0) }}"
-                                   min="0"
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                            @error('sort_order')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                            <p class="text-sm text-gray-500 mt-1">Lower numbers appear first</p>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Sidebar -->
@@ -114,12 +74,8 @@ use Illuminate\Support\Str;
 
                     <div class="border-2 border-dashed border-gray-300 rounded-lg p-4">
                         <div class="flex items-center">
-                            <div id="icon-preview" class="flex-shrink-0 h-12 w-12 flex items-center justify-center rounded-lg mr-3" style="background-color: {{ $productCategory->color ?? '#6B46C1' }}20; color: {{ $productCategory->color ?? '#6B46C1' }}">
-                                @if(isset($productCategory) && $productCategory->icon)
-                                    <i class="{{ $productCategory->icon }}"></i>
-                                @else
-                                    <i class="fas fa-tag"></i>
-                                @endif
+                            <div id="icon-preview" class="flex-shrink-0 h-12 w-12 flex items-center justify-center rounded-lg mr-3 bg-purple-100 text-purple-600">
+                                <i class="fas fa-tag"></i>
                             </div>
                             <div>
                                 <div id="name-preview" class="text-sm font-medium text-gray-900">{{ $productCategory->name ?? 'Category Name' }}</div>
@@ -166,9 +122,6 @@ use Illuminate\Support\Str;
 document.addEventListener('DOMContentLoaded', function() {
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
-    const iconInput = document.getElementById('icon');
-    const colorInput = document.getElementById('color');
-    const iconPreview = document.getElementById('icon-preview');
     const namePreview = document.getElementById('name-preview');
 
     // Auto-generate slug from name
@@ -182,25 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         slugInput.value = slug;
         namePreview.textContent = name || 'Category Name';
-    });
-
-    // Update icon preview
-    iconInput.addEventListener('input', function() {
-        const iconClass = this.value;
-        const iconElement = iconPreview.querySelector('i');
-
-        if (iconClass) {
-            iconElement.className = iconClass;
-        } else {
-            iconElement.className = 'fas fa-tag';
-        }
-    });
-
-    // Update color preview
-    colorInput.addEventListener('input', function() {
-        const color = this.value;
-        iconPreview.style.backgroundColor = color + '20';
-        iconPreview.style.color = color;
     });
 });
 </script>

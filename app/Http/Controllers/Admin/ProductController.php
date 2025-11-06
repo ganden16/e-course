@@ -37,7 +37,7 @@ class ProductController extends Controller
         }
 
         $products = $query->orderBy('created_at', 'desc')->paginate(10);
-        $categories = ProductCategory::where('is_active', true)->orderBy('sort_order')->get();
+        $categories = ProductCategory::where('is_active', true)->orderBy('updated_at', 'desc')->get();
 
         return view('admin.products.index', compact('products', 'categories'));
     }
@@ -47,7 +47,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = ProductCategory::where('is_active', true)->orderBy('sort_order')->get();
+        $categories = ProductCategory::where('is_active', true)->orderBy('updated_at', 'desc')->get();
         return view('admin.products.form', compact('categories'));
     }
 
@@ -111,7 +111,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = ProductCategory::where('is_active', true)->orderBy('sort_order')->get();
+        $categories = ProductCategory::where('is_active', true)->orderBy('updated_at', 'desc')->get();
         return view('admin.products.form', compact('product', 'categories'));
     }
 

@@ -24,10 +24,7 @@ class CategoryRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'icon' => 'nullable|string|max:255',
-            'color' => 'nullable|string|max:7|regex:/^#[0-9A-Fa-f]{6}$/',
-            'is_active' => 'boolean',
-            'sort_order' => 'nullable|integer|min:0'
+            'is_active' => 'boolean'
         ];
     }
 
@@ -41,8 +38,6 @@ class CategoryRequest extends FormRequest
         return [
             'name.required' => 'Nama kategori wajib diisi',
             'name.max' => 'Nama kategori maksimal 255 karakter',
-            'color.regex' => 'Format warna tidak valid. Gunakan format hex (#FF0000)',
-            'sort_order.min' => 'Urutan tidak boleh kurang dari 0',
         ];
     }
 
@@ -56,10 +51,7 @@ class CategoryRequest extends FormRequest
         return [
             'name' => 'Nama',
             'description' => 'Deskripsi',
-            'icon' => 'Icon',
-            'color' => 'Warna',
             'is_active' => 'Status Aktif',
-            'sort_order' => 'Urutan',
         ];
     }
 }
