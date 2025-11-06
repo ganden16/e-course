@@ -93,7 +93,7 @@ class ProductController extends Controller
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->storeAs('public/products', $imageName);
-            $data['image'] = 'products/' . $imageName;
+            $data['image'] = url('storage/products/' . $imageName);
         }
 
         // Set default values
@@ -158,13 +158,18 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             // Delete old image
             if ($product->image) {
-                Storage::delete('public/' . $product->image);
+                // Extract filename from full URL if it's a full URL
+                $imagePath = $product->image;
+                if (filter_var($imagePath, FILTER_VALIDATE_URL)) {
+                    $imagePath = basename(parse_url($imagePath, PHP_URL_PATH));
+                }
+                Storage::delete('public/products/' . $imagePath);
             }
 
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->storeAs('public/products', $imageName);
-            $data['image'] = 'products/' . $imageName;
+            $data['image'] = url('storage/products/' . $imageName);
         }
 
         // Set default values
@@ -184,7 +189,12 @@ class ProductController extends Controller
     {
         // Delete image
         if ($product->image) {
-            Storage::delete('public/' . $product->image);
+            // Extract filename from full URL if it's a full URL
+            $imagePath = $product->image;
+            if (filter_var($imagePath, FILTER_VALIDATE_URL)) {
+                $imagePath = basename(parse_url($imagePath, PHP_URL_PATH));
+            }
+            Storage::delete('public/products/' . $imagePath);
         }
 
         $product->delete();

@@ -75,7 +75,7 @@ class BootcampController extends Controller
             $image = $request->file('image');
             $imageName = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
             $image->storeAs('bootcamps', $imageName, 'public');
-            $data['image'] = $imageName;
+            $data['image'] = url('storage/bootcamps/' . $imageName);
         }
 
         // Create slug from title
@@ -172,13 +172,18 @@ class BootcampController extends Controller
         if ($request->hasFile('image')) {
             // Delete old image
             if ($bootcamp->image) {
-                Storage::disk('public')->delete('bootcamps/' . $bootcamp->image);
+                // Extract filename from full URL if it's a full URL
+                $imagePath = $bootcamp->image;
+                if (filter_var($imagePath, FILTER_VALIDATE_URL)) {
+                    $imagePath = basename(parse_url($imagePath, PHP_URL_PATH));
+                }
+                Storage::disk('public')->delete('bootcamps/' . $imagePath);
             }
 
             $image = $request->file('image');
             $imageName = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
             $image->storeAs('bootcamps', $imageName, 'public');
-            $data['image'] = $imageName;
+            $data['image'] = url('storage/bootcamps/' . $imageName);
         }
 
         // Update slug if title changed
@@ -238,7 +243,12 @@ class BootcampController extends Controller
     {
         // Delete image
         if ($bootcamp->image) {
-            Storage::disk('public')->delete('bootcamps/' . $bootcamp->image);
+            // Extract filename from full URL if it's a full URL
+            $imagePath = $bootcamp->image;
+            if (filter_var($imagePath, FILTER_VALIDATE_URL)) {
+                $imagePath = basename(parse_url($imagePath, PHP_URL_PATH));
+            }
+            Storage::disk('public')->delete('bootcamps/' . $imagePath);
         }
 
         // Detach mentors

@@ -72,6 +72,45 @@ class AdminController extends Controller
         return view('admin.admins.form', compact('admin'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(AdminRequest $request, User $admin)
+    {
+        $data = $request->validated();
+
+        // Handle password
+        if (!empty($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        } else {
+            unset($data['password']);
+        }
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($admin->image) {
+                $imagePath = public_path('storage/admins/' . basename($admin->image));
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+
+            $image = $request->file('image');
+            $imageName = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+
+            // Store image in public/storage/admins directory
+            $image->move(public_path('storage/admins'), $imageName);
+
+            // Save full URL to database
+            $data['image'] = url('storage/admins/' . $imageName);
+        }
+
+        $admin->update($data);
+
+        return redirect()->route('admin.admins')
+            ->with('success', 'Admin berhasil diperbarui!');
+    }
 
     /**
      * Remove the specified resource from storage.

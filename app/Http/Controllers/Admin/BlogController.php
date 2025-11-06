@@ -85,7 +85,7 @@ class BlogController extends Controller
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->storeAs('blogs', $imageName, 'public');
-            $data['image'] = 'blogs/' . $imageName;
+            $data['image'] = url('storage/blogs/' . $imageName);
         }
 
         $blog = Blog::create($data);
@@ -150,13 +150,18 @@ class BlogController extends Controller
         if ($request->hasFile('image')) {
             // Delete old image
             if ($blog->image) {
-                Storage::disk('public')->delete($blog->image);
+                // Extract filename from full URL if it's a full URL
+                $imagePath = $blog->image;
+                if (filter_var($imagePath, FILTER_VALIDATE_URL)) {
+                    $imagePath = basename(parse_url($imagePath, PHP_URL_PATH));
+                }
+                Storage::disk('public')->delete('blogs/' . $imagePath);
             }
 
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->storeAs('blogs', $imageName, 'public');
-            $data['image'] = 'blogs/' . $imageName;
+            $data['image'] = url('storage/blogs/' . $imageName);
         }
 
         $blog->update($data);
@@ -180,7 +185,12 @@ class BlogController extends Controller
     {
         // Delete image
         if ($blog->image) {
-            Storage::disk('public')->delete($blog->image);
+            // Extract filename from full URL if it's a full URL
+            $imagePath = $blog->image;
+            if (filter_var($imagePath, FILTER_VALIDATE_URL)) {
+                $imagePath = basename(parse_url($imagePath, PHP_URL_PATH));
+            }
+            Storage::disk('public')->delete('blogs/' . $imagePath);
         }
 
         $blog->tags()->detach();
