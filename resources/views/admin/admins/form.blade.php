@@ -86,6 +86,12 @@
                                         @endif
                                     </p>
                                 </div>
+
+                                <!-- Preview for new image -->
+                                <div id="image-preview" class="mt-3" style="display: none;">
+                                    <p class="text-sm text-gray-600 mb-2">New image preview:</p>
+                                    <img id="preview-img" src="#" alt="Image preview" class="h-20 w-20 rounded-full object-cover border-2 border-gray-200">
+                                </div>
                             </div>
                         </div>
 

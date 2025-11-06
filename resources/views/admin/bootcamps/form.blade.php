@@ -524,7 +524,7 @@
                             <div>
                                 @if(isset($bootcamp) && $bootcamp->image)
                                     <img class="w-full h-48 object-cover rounded-lg"
-                                         src="{{ Storage::url('bootcamps/' . $bootcamp->image) }}"
+                                         src="{{ $bootcamp->image }}"
                                          alt="Bootcamp image">
                                 @else
                                     <div class="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
@@ -546,6 +546,12 @@
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                                 <p class="text-xs text-gray-500 mt-1">Allowed formats: JPEG, PNG, JPG, GIF. Max size: 2MB</p>
+
+                                <!-- Preview for new image -->
+                                <div id="image-preview" class="mt-3" style="display: none;">
+                                    <p class="text-sm text-gray-600 mb-2">New image preview:</p>
+                                    <img id="preview-img" src="#" alt="Image preview" class="w-full h-48 object-cover rounded-lg">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -926,6 +932,21 @@ $(document).ready(function() {
             }
         });
     }
+
+    // Image preview functionality
+    $('#image').change(function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                $('#image-preview').show();
+                $('#preview-img').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(file);
+        } else {
+            $('#image-preview').hide();
+        }
+    });
 });
 </script>
 @endpush

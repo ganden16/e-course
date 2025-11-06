@@ -1,9 +1,5 @@
 @extends('admin.layouts.app')
 
-@php
-use Illuminate\Support\Facades\Storage;
-@endphp
-
 @section('title', isset($product) ? 'Edit Product' : 'Create Product')
 
 @section('page-title', isset($product) ? 'Edit Product' : 'Create Product')
@@ -269,9 +265,15 @@ use Illuminate\Support\Facades\Storage;
                     <div class="space-y-4">
                         @if(isset($product) && $product->image)
                             <div class="mb-4">
-                                <img src="{{ Storage::url($product->image) }}" alt="{{ $product->title }}"
+                                <img src="{{ $product->image }}" alt="{{ $product->title }}"
                                      class="w-full h-48 object-cover rounded-lg">
                                 <p class="text-sm text-gray-500 mt-2">Current image</p>
+                            </div>
+
+                            <!-- Preview for new image -->
+                            <div id="image-preview" class="mt-3" style="display: none;">
+                                <p class="text-sm text-gray-600 mb-2">New image preview:</p>
+                                <img id="preview-img" src="#" alt="Image preview" class="w-full h-48 object-cover rounded-lg">
                             </div>
                         @endif
 
@@ -286,6 +288,12 @@ use Illuminate\Support\Facades\Storage;
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                             <p class="text-sm text-gray-500 mt-1">Allowed formats: JPEG, PNG, JPG, GIF (Max: 2MB)</p>
+
+                            <!-- Preview for new image -->
+                            <div id="image-preview" class="mt-3" style="display: none;">
+                                <p class="text-sm text-gray-600 mb-2">New image preview:</p>
+                                <img id="preview-img" src="#" alt="Image preview" class="w-full h-48 object-cover rounded-lg">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -425,6 +433,21 @@ document.addEventListener('DOMContentLoaded', function() {
             if (whatYouWillBuildContainer.children.length > 1) {
                 whatYouWillBuildItem.remove();
             }
+        }
+    });
+
+    // Image preview functionality
+    $('#image').change(function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                $('#image-preview').show();
+                $('#preview-img').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(file);
+        } else {
+            $('#image-preview').hide();
         }
     });
 });

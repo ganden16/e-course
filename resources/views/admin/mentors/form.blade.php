@@ -151,7 +151,7 @@
                             <div>
                                 @if(isset($mentor) && $mentor->image)
                                     <img class="w-full h-48 object-cover rounded-lg"
-                                         src="{{ Storage::url('mentors/' . $mentor->image) }}"
+                                         src="{{ $mentor->image }}"
                                          alt="Mentor image">
                                 @else
                                     <div class="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
@@ -172,6 +172,12 @@
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                                 <p class="text-xs text-gray-500 mt-1">Allowed formats: JPEG, PNG, JPG, GIF. Max size: 2MB</p>
+
+                                <!-- Preview for new image -->
+                                <div id="image-preview" class="mt-3" style="display: none;">
+                                    <p class="text-sm text-gray-600 mb-2">New image preview:</p>
+                                    <img id="preview-img" src="#" alt="Image preview" class="w-full h-48 object-cover rounded-lg">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -245,4 +251,29 @@
         </form>
     </div>
 </div>
+
+<script>
+// Image preview functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const imageInput = document.getElementById('image');
+    const imagePreview = document.getElementById('image-preview');
+    const previewImg = document.getElementById('preview-img');
+
+    if (imageInput && imagePreview && previewImg) {
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.style.display = 'block';
+                    previewImg.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.style.display = 'none';
+            }
+        });
+    }
+});
+</script>
 @endsection

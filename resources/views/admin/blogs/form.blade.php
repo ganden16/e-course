@@ -78,10 +78,18 @@
                                 <div class="mt-2">
                                     <small class="text-muted">Current image:</small>
                                     <div class="mt-1">
-                                        <img src="{{ $blog->image_url }}" alt="{{ $blog->title }}" class="img-thumbnail" style="max-width: 100%; max-height: 200px; object-fit: cover;">
+                                        <img src="{{ $blog->image }}" alt="{{ $blog->title }}" class="img-thumbnail" style="max-width: 100%; max-height: 200px; object-fit: cover;">
                                     </div>
                                 </div>
                             @endif
+
+                            <!-- Preview for new image -->
+                            <div id="image-preview" class="mt-2" style="display: none;">
+                                <small class="text-muted">New image preview:</small>
+                                <div class="mt-1">
+                                    <img id="preview-img" src="#" alt="Image preview" class="img-thumbnail" style="max-width: 100%; max-height: 200px; object-fit: cover;">
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Author -->
@@ -184,6 +192,21 @@ $(document).ready(function() {
         theme: 'bootstrap-5',
         placeholder: 'Select tags',
         allowClear: true
+    });
+
+    // Image preview functionality
+    $('#image').change(function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                $('#image-preview').show();
+                $('#preview-img').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(file);
+        } else {
+            $('#image-preview').hide();
+        }
     });
 });
 </script>

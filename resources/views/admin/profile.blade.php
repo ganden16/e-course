@@ -149,6 +149,12 @@
                                     Pilih Foto
                                 </label>
                                 <p class="text-xs text-gray-500 mt-1">Format: JPEG, PNG, JPG, GIF (Max: 2MB)</p>
+
+                                <!-- Preview for new image -->
+                                <div id="image-preview" class="mt-3" style="display: none;">
+                                    <p class="text-sm text-gray-600 mb-2">New image preview:</p>
+                                    <img id="preview-img" src="#" alt="Image preview" class="h-20 w-20 rounded-full object-cover border-2 border-gray-200">
+                                </div>
                             </div>
                         </div>
                         @error('image')
@@ -159,24 +165,20 @@
             </div>
 
             <!-- Form Actions -->
-            <a>
-                <div class="mt-8 pt-6 border-t border-gray-200">
-                    <div class="flex items-center justify-end space-x-3">
-                        <a href="{{ route('admin.admins') }}"
-                            class="inline-block bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors duration-200">
-                            <i class="fas fa-arrow-left mr-2"></i>
-                            Batal
-                        </a>
-                        <a>
-                            <button type="submit"
-                                class="inline-block bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-colors duration-200">
-                                <i class="fas fa-save mr-2"></i>
-                                Simpan Perubahan
-                            </button>
-                        </a>
-                    </div>
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <div class="flex items-center justify-end space-x-3">
+                    <a href="{{ route('admin.admins') }}"
+                        class="inline-block bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Batal
+                    </a>
+                    <button type="submit"
+                        class="inline-block bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-save mr-2"></i>
+                        Simpan Perubahan
+                    </button>
                 </div>
-            </a>
+            </div>
         </form>
     </div>
 </div>
