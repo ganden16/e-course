@@ -260,18 +260,9 @@
 
     <!-- Pagination -->
     @if($mentors->hasPages())
-    <div class="px-6 py-4 border-t bg-white">
-        <div class="flex items-center justify-between">
-            <div class="text-sm text-gray-700">
-                Showing <span class="font-medium">{{ $mentors->firstItem() }}</span> to
-                <span class="font-medium">{{ $mentors->lastItem() }}</span> of
-                <span class="font-medium">{{ $mentors->total() }}</span> results
-            </div>
-            <div>
-                {{ $mentors->links() }}
-            </div>
+        <div class="px-6 py-4 border-t border-gray-200">
+            {{ $mentors->links() }}
         </div>
-    </div>
     @endif
 </div>
 @endsection

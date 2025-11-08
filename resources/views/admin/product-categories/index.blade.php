@@ -165,20 +165,11 @@ use Illuminate\Support\Str;
         </table>
     </div>
 
-    <div class="px-6 py-4 border-t">
-        <div class="flex items-center justify-between">
-            <div class="text-sm text-gray-700">
-                Showing <span class="font-medium">{{ $categories->firstItem() }}</span> to
-                <span class="font-medium">{{ $categories->lastItem() }}</span> of
-                <span class="font-medium">{{ $categories->total() }}</span> results
-            </div>
-            <div class="flex space-x-2">
-                @if($categories->hasPages())
-                    {{ $categories->links() }}
-                @endif
-            </div>
+    @if($categories->hasPages())
+        <div class="px-6 py-4 border-t border-gray-200">
+            {{ $categories->links() }}
         </div>
-    </div>
+    @endif
 </div>
 
 @endsection

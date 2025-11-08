@@ -299,20 +299,8 @@
 
     <!-- Pagination -->
     @if($bootcamps->hasPages())
-    <div class="mt-6 bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6 rounded-lg shadow-lg">
-        <div class="flex-1 flex justify-between sm:hidden">
+        <div class="px-6 py-4 border-t border-gray-200">
             {{ $bootcamps->links() }}
         </div>
-        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-            <div>
-                <p class="text-sm text-gray-700">
-                    Showing <span class="font-medium">{{ $bootcamps->firstItem() }}</span> to <span class="font-medium">{{ $bootcamps->lastItem() }}</span> of <span class="font-medium">{{ $bootcamps->total() }}</span> results
-                </p>
-            </div>
-            <div>
-                {{ $bootcamps->links() }}
-            </div>
-        </div>
-    </div>
     @endif
 @endsection

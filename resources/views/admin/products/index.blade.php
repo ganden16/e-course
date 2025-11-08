@@ -214,19 +214,10 @@ use Illuminate\Support\Facades\Storage;
         </table>
     </div>
 
-    <div class="px-6 py-4 border-t">
-        <div class="flex items-center justify-between">
-            <div class="text-sm text-gray-700">
-                Showing <span class="font-medium">{{ $products->firstItem() }}</span> to
-                <span class="font-medium">{{ $products->lastItem() }}</span> of
-                <span class="font-medium">{{ $products->total() }}</span> results
-            </div>
-            <div class="flex space-x-2">
-                @if($products->hasPages())
-                    {{ $products->links() }}
-                @endif
-            </div>
+    @if($products->hasPages())
+        <div class="px-6 py-4 border-t border-gray-200">
+            {{ $products->links() }}
         </div>
-    </div>
+    @endif
 </div>
 @endsection
