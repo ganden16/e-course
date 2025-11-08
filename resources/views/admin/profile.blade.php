@@ -5,9 +5,7 @@
 @section('header', 'Edit Profile')
 
 @section('content')
-
-<div class="container-fluid px-6 py-4">
-    <!-- Page Header -->
+<!-- Page Header -->
     <div class="flex items-center justify-between mb-6">
         <div>
             <h1 class="text-2xl font-bold text-gray-800">Edit Profile</h1>
@@ -181,7 +179,6 @@
             </div>
         </form>
     </div>
-</div>
 
 <script>
 function previewImage(event) {

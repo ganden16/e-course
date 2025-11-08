@@ -4,9 +4,8 @@
 @section('header', 'Bootcamps Management')
 
 @section('content')
-<div class="container mx-auto px-6 py-8">
-    <!-- Page Header -->
-    <div class="mb-8">
+<!-- Page Header -->
+<div class="mb-8">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
                 <h1 class="text-3xl font-bold text-gray-900">Bootcamps Management</h1>
@@ -316,5 +315,4 @@
         </div>
     </div>
     @endif
-</div>
 @endsection

@@ -4,8 +4,7 @@
 @section('header', isset($mentor) ? 'Edit Mentor' : 'Create New Mentor')
 
 @section('content')
-<div class="container mx-auto px-6 py-8">
-    <!-- Success Message -->
+<!-- Success Message -->
     @if(session('success'))
     <div class="mb-6 bg-green-50 border-l-4 border-green-400 p-4 rounded-lg shadow-md">
         <div class="flex">
@@ -250,7 +249,6 @@
             </div>
         </form>
     </div>
-</div>
 
 <script>
 // Image preview functionality

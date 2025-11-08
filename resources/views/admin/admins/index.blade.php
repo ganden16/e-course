@@ -5,9 +5,8 @@
 @section('header', 'Manajemen Admin')
 
 @section('content')
-<div class="container-fluid px-6 py-4">
-    <!-- Page Header -->
-    <div class="flex items-center justify-between mb-6">
+<!-- Page Header -->
+<div class="flex items-center justify-between mb-6">
         <div>
             <h1 class="text-2xl font-bold text-gray-800">Manajemen Admin</h1>
             <p class="text-gray-600 mt-1">Kelola data administrator sistem</p>

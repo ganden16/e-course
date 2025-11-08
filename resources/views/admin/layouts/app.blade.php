@@ -24,14 +24,17 @@
                     colors: {
                         'primary': '#009b77',
                         'primary-dark': '#174e47',
+                        'primary-light': '#d1fae5',
                         'secondary': '#ffb433',
+                        'secondary-dark': '#ff9500',
                         'accent': '#ffb433',
-                        'dark': '#1f2937',
-                        'sidebar': '#1e293b',
-                        'sidebar-hover': '#334155',
+                        'dark': '#064e3b',
+                        'light': '#fcf8ef',
                         'orange': '#ffb433',
                         'orange-dark': '#ff9500',
                         'beige': '#fcf8ef',
+                        'sidebar': '#1e293b',
+                        'sidebar-hover': '#334155',
                     }
                 }
             }
@@ -248,47 +251,49 @@
 
             <!-- Main Content Area -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-beige">
-                <!-- Flash Messages -->
-                @if(session('error'))
-                    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4">
-                        <div class="flex">
-                            <div class="flex-shrink-0">
-                                <i class="fas fa-exclamation-circle"></i>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-sm">{{ session('error') }}</p>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-
-                @if(session('success'))
-                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4">
-                        <div class="flex">
-                            <div class="flex-shrink-0">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-sm">{{ session('success') }}</p>
+                <div class="container mx-auto px-6 py-8">
+                    <!-- Flash Messages -->
+                    @if(session('error'))
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6 rounded-lg shadow-md">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-exclamation-circle text-red-400"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-red-700">{{ session('error') }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endif
+                    @endif
 
-                @if(session('info'))
-                    <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-4">
-                        <div class="flex">
-                            <div class="flex-shrink-0">
-                                <i class="fas fa-info-circle"></i>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-sm">{{ session('info') }}</p>
+                    @if(session('success'))
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6 rounded-lg shadow-md">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-green-700">{{ session('success') }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endif
+                    @endif
 
-                @yield('content')
+                    @if(session('info'))
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6 rounded-lg shadow-md">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-info-circle text-blue-400"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-blue-700">{{ session('info') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    @yield('content')
+                </div>
             </main>
         </div>
     </div>

@@ -5,8 +5,7 @@
 @section('header', isset($admin) ? 'Detail Admin' : 'Tambah Admin')
 
 @section('content')
-<div class="container-fluid px-6 py-4">
-    <!-- Form -->
+<!-- Form -->
     <div class="bg-white rounded-lg shadow-sm">
         <div class="px-6 py-4 border-b border-gray-200">
             <h2 class="text-lg font-semibold text-gray-800">Informasi Admin</h2>
@@ -280,7 +279,6 @@
             </form>
         @endif
     </div>
-</div>
 
 <script>
 function previewImage(event) {
