@@ -35,7 +35,7 @@ class MentorController extends Controller
             });
         }
 
-        $mentors = $query->orderBy('created_at', 'desc')->paginate(10);
+        $mentors = $query->orderBy('created_at', 'desc')->paginate(5);
 
         return view('admin.mentors.index', compact('mentors'));
     }
