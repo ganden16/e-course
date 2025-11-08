@@ -26,17 +26,23 @@
                     </div>
                     <p class="text-sm text-gray-300 mb-4">{{ $site['description'] }}</p>
                     <div class="flex space-x-3">
-                        <a href="https://facebook.com/{{ str_replace(' ', '', $site['name']) }}" class="text-gray-300 hover:text-white transition-colors">
+                        <a href="https://www.facebook.com/share/1FgpWiY3hC/" class="text-gray-300 hover:text-white transition-colors" target="_blank">
                             <i class="fab fa-facebook text-lg"></i>
                         </a>
-                        <a href="https://twitter.com/{{ str_replace(' ', '', $site['name']) }}" class="text-gray-300 hover:text-white transition-colors">
+                        <a href="https://dub.sh/k8eqlEQ" class="text-gray-300 hover:text-white transition-colors" target="_blank">
                             <i class="fab fa-twitter text-lg"></i>
                         </a>
-                        <a href="https://instagram.com/{{ str_replace(' ', '', $site['name']) }}" class="text-gray-300 hover:text-white transition-colors">
+                        <a href="https://bit.ly/InstagramHRC" class="text-gray-300 hover:text-white transition-colors" target="_blank">
                             <i class="fab fa-instagram text-lg"></i>
                         </a>
-                        <a href="https://linkedin.com/company/{{ str_replace(' ', '', $site['name']) }}" class="text-gray-300 hover:text-white transition-colors">
+                        <a href="https://bit.ly/3IHNbcK" class="text-gray-300 hover:text-white transition-colors" target="_blank">
                             <i class="fab fa-linkedin text-lg"></i>
+                        </a>
+                        <a href="https://dub.sh/k8eqlEQ" class="text-gray-300 hover:text-white transition-colors" target="_blank">
+                            <i class="fab fa-tiktok text-lg"></i>
+                        </a>
+                        <a href="https://dub.sh/Bnfb8p0" class="text-gray-300 hover:text-white transition-colors" target="_blank">
+                            <i class="fab fa-youtube text-lg"></i>
                         </a>
                     </div>
                 </div>

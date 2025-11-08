@@ -6,7 +6,7 @@ return [
         'tagline' => 'Unlock Your Potential with Digital Learning',
         'description' => 'Leading e-learning platform providing quality digital courses and bootcamps to advance your career.',
         'logo' => 'assets/images/logo1.png',
-        'email' => 'info@HealthCarea.com',
+        'email' => 'info@HealthCare.com',
         'phone' => '+62 812-3456-7890',
         'address' => 'Surabaya, Indonesia'
     ],

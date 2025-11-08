@@ -12,17 +12,17 @@ return [
         'contact_info' => [
             [
                 'type' => 'Email',
-                'value' => 'info@HealthCarea.com',
+                'value' => 'info@HealthCare.com',
                 'icon' => 'fas fa-envelope'
             ],
             [
                 'type' => 'Phone',
-                'value' => '+1 (555) 123-4567',
+                'value' => '+62 812-3456-7890',
                 'icon' => 'fas fa-phone'
             ],
             [
                 'type' => 'Address',
-                'value' => 'New York, USA',
+                'value' => 'Surabaya, Indonesia',
                 'icon' => 'fas fa-map-marker-alt'
             ]
         ],
@@ -43,23 +43,33 @@ return [
         'social_links' => [
             [
                 'name' => 'Facebook',
-                'url' => 'https://facebook.com/HealthCare',
+                'url' => 'https://www.facebook.com/share/1FgpWiY3hC/',
                 'icon' => 'fab fa-facebook'
             ],
             [
                 'name' => 'Twitter',
-                'url' => 'https://twitter.com/HealthCare',
+                'url' => 'https://dub.sh/k8eqlEQ',
                 'icon' => 'fab fa-twitter'
             ],
             [
                 'name' => 'LinkedIn',
-                'url' => 'https://linkedin.com/company/HealthCare',
+                'url' => 'https://bit.ly/3IHNbcK',
                 'icon' => 'fab fa-linkedin'
             ],
             [
                 'name' => 'Instagram',
-                'url' => 'https://instagram.com/HealthCare',
+                'url' => 'https://bit.ly/InstagramHRC',
                 'icon' => 'fab fa-instagram'
+            ],
+            [
+                'name' => 'TikTok',
+                'url' => 'https://dub.sh/k8eqlEQ',
+                'icon' => 'fab fa-tiktok'
+            ],
+            [
+                'name' => 'YouTube',
+                'url' => 'https://dub.sh/Bnfb8p0',
+                'icon' => 'fab fa-youtube'
             ]
         ]
     ],

@@ -145,14 +145,23 @@
                     <p class="text-gray-500 mb-3">{{ $member['role'] }}</p>
                     <p class="text-gray-600 text-sm">{{ $member['bio'] }}</p>
                     <div class="flex justify-center space-x-3 mt-4">
-                        <a href="#" class="text-gray-400 hover:text-secondary transition-colors">
+                        <a href="https://bit.ly/3IHNbcK" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
                             <i class="fab fa-linkedin text-xl"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-secondary transition-colors">
+                        <a href="https://dub.sh/k8eqlEQ" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
                             <i class="fab fa-twitter text-xl"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-secondary transition-colors">
-                            <i class="fas fa-envelope text-xl"></i>
+                        <a href="https://bit.ly/InstagramHRC" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1FgpWiY3hC/" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="https://dub.sh/k8eqlEQ" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
+                            <i class="fab fa-tiktok text-xl"></i>
+                        </a>
+                        <a href="https://dub.sh/Bnfb8p0" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
                         </a>
                     </div>
                 </div>

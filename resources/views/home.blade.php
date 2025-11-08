@@ -285,17 +285,19 @@
                 <div>
                     <h4 class="font-semibold mb-4">Kontak</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><i class="fas fa-envelope mr-2"></i>info@healthcarerc.com</li>
+                        <li><i class="fas fa-envelope mr-2"></i>info@HealthCare.com</li>
                         <li><i class="fas fa-phone mr-2"></i>+62 812-3456-7890</li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-semibold mb-4">Ikuti Kami</h4>
                     <div class="flex space-x-4">
-                        <a href="#" class="hover:text-hc-orange transition"><i class="fab fa-facebook text-xl"></i></a>
-                        <a href="#" class="hover:text-hc-orange transition"><i class="fab fa-twitter text-xl"></i></a>
-                        <a href="#" class="hover:text-hc-orange transition"><i class="fab fa-instagram text-xl"></i></a>
-                        <a href="#" class="hover:text-hc-orange transition"><i class="fab fa-linkedin text-xl"></i></a>
+                        <a href="https://www.facebook.com/share/1FgpWiY3hC/" target="_blank" class="hover:text-hc-orange transition"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="https://dub.sh/k8eqlEQ" target="_blank" class="hover:text-hc-orange transition"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="https://bit.ly/InstagramHRC" target="_blank" class="hover:text-hc-orange transition"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="https://bit.ly/3IHNbcK" target="_blank" class="hover:text-hc-orange transition"><i class="fab fa-linkedin text-xl"></i></a>
+                        <a href="https://dub.sh/k8eqlEQ" target="_blank" class="hover:text-hc-orange transition"><i class="fab fa-tiktok text-xl"></i></a>
+                        <a href="https://dub.sh/Bnfb8p0" target="_blank" class="hover:text-hc-orange transition"><i class="fab fa-youtube text-xl"></i></a>
                     </div>
                 </div>
             </div>
