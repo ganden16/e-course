@@ -92,7 +92,7 @@ return [
 
     // Featured Courses Section
     'featured_courses' => [
-        'title' => 'Kursus Unggulan',
+        'title' => 'Produk Unggulan',
         'subtitle' => 'Jelajahi kursus paling populer kami dan mulai belajar hari ini.',
         'view_details' => 'Lihat Detail',
         'view_all_courses' => 'Lihat Semua Kursus',

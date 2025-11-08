@@ -92,7 +92,7 @@ return [
 
     // Featured Courses Section
     'featured_courses' => [
-        'title' => 'Featured Courses',
+        'title' => 'Featured Products',
         'subtitle' => 'Explore our most popular courses and start learning today.',
         'view_details' => 'View Details',
         'view_all_courses' => 'View All Courses',
