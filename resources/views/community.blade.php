@@ -349,7 +349,7 @@
 </section>
 
 <!-- Testimonials Section -->
-<section class="py-16 bg-light">
+{{-- <section class="py-16 bg-light">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $testimonials['title'] }}</h2>
@@ -389,7 +389,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <!-- CTA Section -->
 <section class="py-16 bg-primary text-white relative overflow-hidden">

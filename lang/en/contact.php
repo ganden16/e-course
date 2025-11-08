@@ -47,11 +47,6 @@ return [
                 'icon' => 'fab fa-facebook'
             ],
             [
-                'name' => 'Twitter',
-                'url' => 'https://dub.sh/k8eqlEQ',
-                'icon' => 'fab fa-twitter'
-            ],
-            [
                 'name' => 'LinkedIn',
                 'url' => 'https://bit.ly/3IHNbcK',
                 'icon' => 'fab fa-linkedin'

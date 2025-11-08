@@ -130,7 +130,7 @@
 </section>
 
 <!-- Success Stories Section -->
-<section class="py-16 bg-white">
+{{-- <section class="py-16 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $success_stories['title'] }}</h2>
@@ -160,7 +160,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <!-- FAQ Section -->
 <section class="py-16 bg-light" x-data="{ open: 0 }">

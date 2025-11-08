@@ -69,7 +69,7 @@
                     @endforeach
                 </div>
 
-                <div class="mt-8">
+                {{-- <div class="mt-8">
                     <h3 class="text-xl font-semibold mb-4">{{ $contact_info['office_hours'] }}</h3>
                     <div class="space-y-2">
                         @foreach($contact['office_hours'] as $hours)
@@ -79,7 +79,7 @@
                             </div>
                         @endforeach
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="mt-8">
                     <h3 class="text-xl font-semibold mb-4">{{ $contact_info['follow_us'] }}</h3>

@@ -29,9 +29,6 @@
                         <a href="https://www.facebook.com/share/1FgpWiY3hC/" class="text-gray-300 hover:text-white transition-colors" target="_blank">
                             <i class="fab fa-facebook text-lg"></i>
                         </a>
-                        <a href="https://dub.sh/k8eqlEQ" class="text-gray-300 hover:text-white transition-colors" target="_blank">
-                            <i class="fab fa-twitter text-lg"></i>
-                        </a>
                         <a href="https://bit.ly/InstagramHRC" class="text-gray-300 hover:text-white transition-colors" target="_blank">
                             <i class="fab fa-instagram text-lg"></i>
                         </a>

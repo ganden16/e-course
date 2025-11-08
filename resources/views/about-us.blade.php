@@ -140,11 +140,11 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             @foreach($about['team'] as $member)
                 <div class="text-center">
-                    <img src="{{ $member['avatar'] }}" alt="{{ $member['name'] }}" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg">
+                    <img src="{{ asset($member['avatar']) }}" alt="{{ $member['name'] }}" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg">
                     <h3 class="text-xl font-semibold mb-1">{{ $member['name'] }}</h3>
                     <p class="text-gray-500 mb-3">{{ $member['role'] }}</p>
                     <p class="text-gray-600 text-sm">{{ $member['bio'] }}</p>
-                    <div class="flex justify-center space-x-3 mt-4">
+                    {{-- <div class="flex justify-center space-x-3 mt-4">
                         <a href="https://bit.ly/3IHNbcK" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
                             <i class="fab fa-linkedin text-xl"></i>
                         </a>
@@ -163,7 +163,7 @@
                         <a href="https://dub.sh/Bnfb8p0" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
                             <i class="fab fa-youtube text-xl"></i>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
             @endforeach
         </div>

@@ -40,25 +40,25 @@ return [
             [
                 'name' => 'Sarah Johnson',
                 'role' => 'CEO & Founder',
-                'avatar' => 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+                'avatar' => 'assets/images/users/9.jpg',
                 'bio' => 'Sarah is a passionate educator with over 15 years of experience in educational technology and online learning.'
             ],
             [
                 'name' => 'Michael Chen',
                 'role' => 'CTO & Co-Founder',
-                'avatar' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+                'avatar' => 'assets/images/users/12.jpg',
                 'bio' => 'Michael is a technology visionary with extensive experience in building scalable educational platforms.'
             ],
             [
                 'name' => 'Amanda Rodriguez',
                 'role' => 'Head of Curriculum',
-                'avatar' => 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                'avatar' => 'assets/images/users/10.jpg',
                 'bio' => 'Amanda ensures our curriculum remains relevant, comprehensive, and aligned with industry needs.'
             ],
             [
                 'name' => 'David Wilson',
                 'role' => 'Head of Student Success',
-                'avatar' => 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                'avatar' => 'assets/images/users/4.jpg',
                 'bio' => 'David is dedicated to ensuring our students have the support they need to succeed in their learning journey.'
             ]
         ]
