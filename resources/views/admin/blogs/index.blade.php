@@ -10,7 +10,7 @@
             <p class="mt-2 text-sm text-gray-600">Manage and monitor all blog posts</p>
         </div>
         <div class="mt-4 md:mt-0">
-            <a href="{{ route('admin.blogs.create') }}" class="inline-flex items-center px-4 py-2 bg-orange border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-orange-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
+            <a href="{{ route('admin.blogs.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue transition-colors duration-200">
                 <i class="fas fa-plus mr-2 -ml-1"></i>
                 Create New Blog
             </a>
@@ -108,10 +108,10 @@
                         <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
                         <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
                     </select>
-                    <button type="submit" class="px-4 py-2 bg-orange text-white rounded-lg hover:bg-orange-dark transition-colors duration-200">
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
                         <i class="fas fa-filter mr-2"></i>Filter
                     </button>
-                    <a href="{{ route('admin.blogs') }}" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors duration-200">
+                    <a href="{{ route('admin.blogs') }}" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors duration-200">
                         <i class="fas fa-redo mr-2"></i>Reset
                     </a>
                 </form>

@@ -15,10 +15,27 @@ class MentorController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $mentors = Mentor::orderBy('created_at', 'desc')
-            ->paginate(10);
+        $query = Mentor::query();
+
+        // Filter by status
+        if ($request->has('status') && $request->status != '') {
+            $query->where('is_active', $request->status === 'active');
+        }
+
+        // Search
+        if ($request->has('search') && $request->search != '') {
+            $query->where(function($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->search . '%')
+                  ->orWhere('email', 'like', '%' . $request->search . '%')
+                  ->orWhere('specialization', 'like', '%' . $request->search . '%')
+                  ->orWhere('experience', 'like', '%' . $request->search . '%')
+                  ->orWhere('phone', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        $mentors = $query->orderBy('created_at', 'desc')->paginate(10);
 
         return view('admin.mentors.index', compact('mentors'));
     }

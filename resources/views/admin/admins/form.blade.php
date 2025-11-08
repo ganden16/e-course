@@ -122,7 +122,7 @@
                 <div class="mt-8 pt-6 border-t border-gray-200">
                     <div class="flex items-center justify-end space-x-3">
                         <a href="{{ route('admin.admins') }}"
-                           class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors duration-200">
+                           class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray transition-colors duration-200">
                             <i class="fas fa-arrow-left mr-2"></i>
                             Kembali
                         </a>
@@ -247,10 +247,10 @@
                                            class="hidden"
                                            onchange="previewImage(event)">
                                     <label for="image"
-                                           class="cursor-pointer bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg inline-block transition-colors duration-200">
-                                        <i class="fas fa-upload mr-2"></i>
-                                        Pilih Foto
-                                    </label>
+                                           class="cursor-pointer bg-blue-100 hover:bg-blue-200 text-blue-700 px-4 py-2 rounded-lg inline-block transition-colors duration-200">
+                                                <i class="fas fa-upload mr-2"></i>
+                                                Pilih Foto
+                                            </label>
                                     <p class="text-xs text-gray-500 mt-1">Format: JPEG, PNG, JPG, GIF (Max: 2MB)</p>
                                 </div>
                             </div>
@@ -270,7 +270,7 @@
                             Batal
                         </a>
                         <button type="submit"
-                                class="bg-green hover:bg-green-dark text-white px-6 py-2 rounded-lg transition-colors duration-200">
+                                class="inline-flex items-center px-6 py-2 bg-blue-600 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue transition-colors duration-200">
                             <i class="fas fa-save mr-2"></i>
                             Simpan
                         </button>

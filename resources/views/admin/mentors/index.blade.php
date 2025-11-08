@@ -12,7 +12,7 @@
             <p class="mt-2 text-sm text-gray-600">Manage and monitor all expert mentors and instructors</p>
         </div>
         <div class="mt-4 md:mt-0">
-            <a href="{{ route('admin.mentors.create') }}" class="inline-flex items-center px-4 py-2 bg-orange border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-orange-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
+            <a href="{{ route('admin.mentors.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue transition-colors duration-200">
                 <i class="fas fa-plus mr-2 -ml-1"></i>
                 Add New Mentor
             </a>
@@ -85,6 +85,37 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Search and Filter -->
+    <div class="mb-6 bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+        <form action="{{ route('admin.mentors') }}" method="GET" class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="flex-1 max-w-md">
+                <div class="relative">
+                    <input type="text"
+                           name="search"
+                           value="{{ request('search') }}"
+                           placeholder="Search mentors..."
+                           class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <select name="status" class="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent">
+                    <option value="">All Status</option>
+                    <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
+                    <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                </select>
+                <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200">
+                    <i class="fas fa-filter mr-2"></i> Filter
+                </button>
+                <a href="{{ route('admin.mentors') }}" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200">
+                    <i class="fas fa-redo mr-2"></i> Reset
+                </a>
+            </div>
+        </form>
     </div>
 
     <!-- Success Message -->

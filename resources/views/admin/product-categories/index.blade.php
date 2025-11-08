@@ -14,8 +14,8 @@ use Illuminate\Support\Str;
         <h1 class="text-2xl font-bold text-gray-800">Product Categories</h1>
         <p class="text-gray-600">Manage your course categories</p>
     </div>
-    <a href="{{ route('admin.product-categories.create') }}" class="gradient-bg text-white px-6 py-3 rounded-lg hover:opacity-90 transition flex items-center">
-        <i class="fas fa-plus mr-2"></i>
+    <a href="{{ route('admin.product-categories.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue transition-colors duration-200">
+        <i class="fas fa-plus mr-2 -ml-1"></i>
         Add New Category
     </a>
 </div>
@@ -84,10 +84,10 @@ use Illuminate\Support\Str;
                         <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
                         <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
                     </select>
-                    <button type="submit" class="px-4 py-2 bg-green text-white rounded-lg hover:bg-green-dark transition">
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
                         <i class="fas fa-filter mr-2"></i>Filter
                     </button>
-                    <a href="{{ route('admin.product-categories') }}" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition">
+                    <a href="{{ route('admin.product-categories') }}" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">
                         <i class="fas fa-times mr-2"></i>Clear
                     </a>
                 </form>

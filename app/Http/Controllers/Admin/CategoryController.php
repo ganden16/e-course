@@ -13,11 +13,25 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::orderBy('name', 'asc')
-            ->withCount('bootcamps')
-            ->paginate(10);
+        $query = Category::withCount('bootcamps');
+
+        // Filter by status
+        if ($request->has('status') && $request->status != '') {
+            $query->where('is_active', $request->status === 'active');
+        }
+
+        // Search
+        if ($request->has('search') && $request->search != '') {
+            $query->where(function($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->search . '%')
+                  ->orWhere('description', 'like', '%' . $request->search . '%')
+                  ->orWhere('slug', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        $categories = $query->orderBy('name', 'asc')->paginate(10);
 
         return view('admin.categories.index', compact('categories'));
     }

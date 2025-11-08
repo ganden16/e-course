@@ -12,21 +12,22 @@
             <p class="mt-2 text-sm text-gray-600">Manage and organize bootcamp categories</p>
         </div>
         <div class="mt-4 md:mt-0">
-            <a href="{{ route('admin.categories.create') }}" class="inline-flex items-center px-4 py-2 bg-orange border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-orange-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
-                <i class="fas fa-plus mr-2 -ml-1"></i>
-                Add New Category
-            </a>
+            <a href="{{ route('admin.categories.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue transition-colors duration-200">
+                    <i class="fas fa-plus mr-2 -ml-1"></i>
+                    Add New Category
+                </a>
         </div>
     </div>
 </div>
 
     <!-- Search and Filters -->
     <div class="mb-6 bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <form action="{{ route('admin.categories') }}" method="GET" class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div class="flex-1 max-w-md">
                 <div class="relative">
                     <input type="text"
-                           id="search"
+                           name="search"
+                           value="{{ request('search') }}"
                            placeholder="Search categories..."
                            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green focus:border-transparent">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -35,16 +36,19 @@
                 </div>
             </div>
             <div class="flex items-center space-x-3">
-                <select id="status-filter" class="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green focus:border-transparent">
+                <select name="status" class="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green focus:border-transparent">
                     <option value="">All Status</option>
-                    <option value="1">Active</option>
-                    <option value="0">Inactive</option>
+                    <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
+                    <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
                 </select>
-                <button id="reset-filters" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors duration-200">
-                    <i class="fas fa-redo mr-2"></i> Reset
+                <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200">
+                    <i class="fas fa-filter mr-2"></i> Filter
                 </button>
+                <a href="{{ route('admin.categories') }}" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200">
+                    <i class="fas fa-redo mr-2"></i> Reset
+                </a>
             </div>
-        </div>
+        </form>
     </div>
 
     <!-- Success Message -->

@@ -11,9 +11,9 @@
             <h1 class="text-2xl font-bold text-gray-800">Manajemen Admin</h1>
             <p class="text-gray-600 mt-1">Kelola data administrator sistem</p>
         </div>
-        <a href="{{ route('admin.admins.create') }}" class="bg-green hover:bg-green-dark text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors duration-200">
-            <i class="fas fa-plus"></i>
-            <span>Tambah Admin</span>
+        <a href="{{ route('admin.admins.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue transition-colors duration-200">
+            <i class="fas fa-plus mr-2 -ml-1"></i>
+            Tambah Admin
         </a>
     </div>
 
@@ -65,20 +65,28 @@
     <!-- Table -->
     <div class="bg-white rounded-lg shadow-sm">
         <div class="px-6 py-4 border-b border-gray-200">
-            <div class="flex items-center justify-between">
+            <form action="{{ route('admin.admins') }}" method="GET" class="flex items-center justify-between">
                 <h2 class="text-lg font-semibold text-gray-800">Daftar Admin</h2>
                 <div class="flex items-center space-x-3">
                     <!-- Search -->
                     <div class="relative">
                         <input type="text"
+                               name="search"
+                               value="{{ request('search') }}"
                                placeholder="Cari admin..."
                                class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <i class="fas fa-search text-gray-400"></i>
                         </div>
                     </div>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200">
+                        <i class="fas fa-filter mr-2"></i> Filter
+                    </button>
+                    <a href="{{ route('admin.admins') }}" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200">
+                        <i class="fas fa-redo mr-2"></i> Reset
+                    </a>
                 </div>
-            </div>
+            </form>
         </div>
 
         <div class="overflow-x-auto">
@@ -138,7 +146,7 @@
                                 @else
                                 <div class="flex items-center justify-end space-x-2">
                                     <a href="{{ route('admin.admins.edit', $admin) }}"
-                                       class="text-primary hover:text-primary-dark transition-colors duration-200"
+                                       class="text-blue-600 hover:text-blue-900 transition-colors duration-200"
                                        title="View Details">
                                         <i class="fas fa-eye"></i>
                                     </a>
@@ -152,7 +160,7 @@
                                 <div class="flex flex-col items-center">
                                     <i class="fas fa-users text-gray-400 text-4xl mb-3"></i>
                                     <p class="text-gray-500 text-lg">Belum ada data admin</p>
-                                    <a href="{{ route('admin.admins.create') }}" class="mt-3 text-primary hover:text-primary-dark">
+                                    <a href="{{ route('admin.admins.create') }}" class="mt-3 text-blue-600 hover:text-blue-900">
                                         Tambah admin pertama
                                     </a>
                                 </div>

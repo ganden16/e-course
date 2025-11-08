@@ -15,9 +15,20 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $admins = User::latest()->paginate(10);
+        $query = User::query();
+
+        // Search
+        if ($request->has('search') && $request->search != '') {
+            $query->where(function($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->search . '%')
+                  ->orWhere('username', 'like', '%' . $request->search . '%')
+                  ->orWhere('email', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        $admins = $query->orderBy('created_at', 'desc')->paginate(10);
         return view('admin.admins.index', compact('admins'));
     }
 

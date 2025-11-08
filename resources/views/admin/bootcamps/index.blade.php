@@ -12,7 +12,7 @@
             <p class="mt-2 text-sm text-gray-600">Manage and monitor all intensive bootcamp programs</p>
         </div>
         <div class="mt-4 md:mt-0">
-            <a href="{{ route('admin.bootcamps.create') }}" class="inline-flex items-center px-4 py-2 bg-orange border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-orange-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
+            <a href="{{ route('admin.bootcamps.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue transition-colors duration-200">
                 <i class="fas fa-plus mr-2 -ml-1"></i>
                 Add New Bootcamp
             </a>
@@ -112,7 +112,7 @@
     </div>
 
     <!-- Search and Filter -->
-    {{-- <div class="bg-white shadow-lg rounded-xl p-6 mb-8 border-0">
+    <div class="bg-white shadow-lg rounded-xl p-6 mb-8 border-0">
         <form action="{{ route('admin.bootcamps') }}" method="GET" class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 w-full lg:w-auto">
                 <div class="relative">
@@ -127,30 +127,30 @@
                 </div>
                 <select name="status" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-gray-50">
                     <option value="">All Status</option>
-                    <option value="1" {{ request('status') == '1' ? 'selected' : '' }}>Active</option>
-                    <option value="0" {{ request('status') == '0' ? 'selected' : '' }}>Inactive</option>
+                    <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
+                    <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
                 </select>
                 <select name="category" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-gray-50">
                     <option value="">All Categories</option>
-                    <option value="web-development" {{ request('category') == 'web-development' ? 'selected' : '' }}>Web Development</option>
-                    <option value="data-science" {{ request('category') == 'data-science' ? 'selected' : '' }}>Data Science</option>
-                    <option value="design" {{ request('category') == 'design' ? 'selected' : '' }}>Design</option>
-                    <option value="marketing" {{ request('category') == 'marketing' ? 'selected' : '' }}>Marketing</option>
-                    <option value="mobile-development" {{ request('category') == 'mobile-development' ? 'selected' : '' }}>Mobile Development</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
             <div class="flex space-x-3">
-                <button type="submit" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange">
+                <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue">
                     <i class="fas fa-filter mr-2"></i>
                     Filter
                 </button>
-                <a href="{{ route('admin.bootcamps') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange">
+                <a href="{{ route('admin.bootcamps') }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray">
                     <i class="fas fa-times mr-2"></i>
                     Clear
                 </a>
             </div>
         </form>
-    </div> --}}
+    </div>
 
     <!-- Success Message -->
     @if(session('success'))

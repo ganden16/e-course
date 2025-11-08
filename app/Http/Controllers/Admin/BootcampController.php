@@ -18,13 +18,34 @@ class BootcampController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $bootcamps = Bootcamp::with(['mentors', 'category'])
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
+        $query = Bootcamp::with(['mentors', 'category']);
 
-        return view('admin.bootcamps.index', compact('bootcamps'));
+        // Filter by category
+        if ($request->has('category') && $request->category != '') {
+            $query->where('category_id', $request->category);
+        }
+
+        // Filter by status
+        if ($request->has('status') && $request->status != '') {
+            $query->where('is_active', $request->status === 'active');
+        }
+
+        // Search
+        if ($request->has('search') && $request->search != '') {
+            $query->where(function($q) use ($request) {
+                $q->where('title', 'like', '%' . $request->search . '%')
+                  ->orWhere('description', 'like', '%' . $request->search . '%')
+                  ->orWhere('level', 'like', '%' . $request->search . '%')
+                  ->orWhere('schedule', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        $bootcamps = $query->orderBy('created_at', 'desc')->paginate(10);
+        $categories = Category::where('is_active', true)->orderBy('updated_at', 'desc')->get();
+
+        return view('admin.bootcamps.index', compact('bootcamps', 'categories'));
     }
 
     /**
