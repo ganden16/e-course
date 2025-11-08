@@ -18,7 +18,74 @@
     </div>
 </div>
 
-    <!-- Search and Filters -->
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div class="bg-white overflow-hidden shadow-lg rounded-xl border-0 border-gray-200">
+        <div class="p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 bg-gradient-to-br from-orange to-orange-dark rounded-xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-blog text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-500">Total Blogs</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $blogs->total() }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white overflow-hidden shadow-lg rounded-xl border-0 border-gray-200">
+        <div class="p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-check-circle text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-500">Active</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $blogs->where('is_active', true)->count() }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white overflow-hidden shadow-lg rounded-xl border-0 border-gray-200">
+        <div class="p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 bg-gradient-to-br from-orange to-orange-dark rounded-xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-user-edit text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-500">Total Authors</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $blogs->pluck('author')->unique()->count() }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white overflow-hidden shadow-lg rounded-xl border-0 border-gray-200">
+        <div class="p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-tags text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-500">Total Tags</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ \App\Models\BlogTag::count() }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Search and Filters -->
     <div class="mb-6 bg-white rounded-lg shadow-sm border border-gray-200 p-4">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div class="flex-1 max-w-md">

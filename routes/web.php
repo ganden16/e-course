@@ -143,7 +143,6 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/blog-tags/{blogTag}/edit', [App\Http\Controllers\Admin\BlogTagController::class, 'edit'])->name('admin.blog-tags.edit');
     Route::put('/blog-tags/{blogTag}', [App\Http\Controllers\Admin\BlogTagController::class, 'update'])->name('admin.blog-tags.update');
     Route::delete('/blog-tags/{blogTag}', [App\Http\Controllers\Admin\BlogTagController::class, 'destroy'])->name('admin.blog-tags.destroy');
-    Route::patch('/blog-tags/{blogTag}/toggle-active', [App\Http\Controllers\Admin\BlogTagController::class, 'toggleActive'])->name('admin.blog-tags.toggle-active');
 
     // Settings
     Route::get('/settings', function () {

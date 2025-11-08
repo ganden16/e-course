@@ -39,7 +39,7 @@ use Illuminate\Support\Str;
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Category Name *</label>
                             <input type="text" id="name" name="name" value="{{ old('name', $productCategory->name ?? '') }}"
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green focus:border-transparent" required>
                             @error('name')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -48,7 +48,7 @@ use Illuminate\Support\Str;
                         <div>
                             <label for="slug" class="block text-sm font-medium text-gray-700 mb-1">Slug</label>
                             <input type="text" id="slug" name="slug" value="{{ old('slug', $productCategory->slug ?? '') }}"
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green focus:border-transparent"
                                    readonly>
                             <p class="text-sm text-gray-500 mt-1">Auto-generated from category name</p>
                         </div>
@@ -74,7 +74,7 @@ use Illuminate\Support\Str;
 
                     <div class="border-2 border-dashed border-gray-300 rounded-lg p-4">
                         <div class="flex items-center">
-                            <div id="icon-preview" class="flex-shrink-0 h-12 w-12 flex items-center justify-center rounded-lg mr-3 bg-purple-100 text-purple-600">
+                            <div id="icon-preview" class="flex-shrink-0 h-12 w-12 flex items-center justify-center rounded-lg mr-3 bg-green-100 text-green-600">
                                 <i class="fas fa-tag"></i>
                             </div>
                             <div>
@@ -92,7 +92,7 @@ use Illuminate\Support\Str;
                     <div class="space-y-4">
                         <div class="flex items-center">
                             <input type="checkbox" id="is_active" name="is_active" value="1"
-                                   class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
+                                   class="h-4 w-4 text-green-600 focus:ring-green border-gray-300 rounded"
                                    {{ old('is_active', $productCategory->is_active ?? true) ? 'checked' : '' }}>
                             <label for="is_active" class="ml-2 block text-sm text-gray-700">
                                 Active

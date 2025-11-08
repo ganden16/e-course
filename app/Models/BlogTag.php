@@ -13,7 +13,6 @@ class BlogTag extends Model
     protected $fillable = [
         'name',
         'slug',
-        'color',
         'is_active'
     ];
 

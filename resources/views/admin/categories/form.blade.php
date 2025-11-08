@@ -65,7 +65,7 @@
                                        id="name"
                                        name="name"
                                        value="{{ old('name', $category->name ?? '') }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green focus:border-transparent"
                                        placeholder="Masukkan nama kategori"
                                        required>
                                 @error('name')
@@ -79,7 +79,7 @@
                                        id="slug"
                                        name="slug"
                                        value="{{ old('slug', $category->slug ?? '') }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green focus:border-transparent"
                                        placeholder="nama-kategori"
                                        readonly>
                                 <p class="text-xs text-gray-500 mt-1">Slug akan di-generate otomatis dari nama kategori</p>
@@ -90,7 +90,7 @@
                                 <textarea id="description"
                                           name="description"
                                           rows="4"
-                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green focus:border-transparent"
                                           placeholder="Masukkan deskripsi kategori">{{ old('description', $category->description ?? '') }}</textarea>
                                 @error('description')
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -116,7 +116,7 @@
                                            name="is_active"
                                            value="1"
                                            {{ old('is_active', isset($category) && $category->is_active ? 'checked' : '') }}
-                                           class="rounded border-gray-300 text-orange focus:ring-orange">
+                                           class="rounded border-gray-300 text-green focus:ring-green">
                                     <span class="ml-2 text-sm text-gray-700">Aktif</span>
                                 </label>
                             </div>

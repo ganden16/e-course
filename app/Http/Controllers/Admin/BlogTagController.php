@@ -48,7 +48,6 @@ class BlogTagController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255|unique:blog_tags,name',
-            'color' => 'nullable|string|max:7',
             'is_active' => 'boolean'
         ]);
 
@@ -87,7 +86,6 @@ class BlogTagController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255|unique:blog_tags,name,' . $blogTag->id,
-            'color' => 'nullable|string|max:7',
             'is_active' => 'boolean'
         ]);
 
@@ -130,18 +128,5 @@ class BlogTagController extends Controller
         return redirect()
             ->route('admin.blog-tags')
             ->with('success', 'Tag blog berhasil dihapus!');
-    }
-
-    /**
-     * Toggle active status
-     */
-    public function toggleActive(BlogTag $blogTag)
-    {
-        $blogTag->is_active = !$blogTag->is_active;
-        $blogTag->save();
-
-        return redirect()
-            ->route('admin.blog-tags')
-            ->with('success', 'Status tag blog berhasil diperbarui!');
     }
 }

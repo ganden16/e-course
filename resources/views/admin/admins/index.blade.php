@@ -11,7 +11,7 @@
             <h1 class="text-2xl font-bold text-gray-800">Manajemen Admin</h1>
             <p class="text-gray-600 mt-1">Kelola data administrator sistem</p>
         </div>
-        <a href="{{ route('admin.admins.create') }}" class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors duration-200">
+        <a href="{{ route('admin.admins.create') }}" class="bg-green hover:bg-green-dark text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors duration-200">
             <i class="fas fa-plus"></i>
             <span>Tambah Admin</span>
         </a>

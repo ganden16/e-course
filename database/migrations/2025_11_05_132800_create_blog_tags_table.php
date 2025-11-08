@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('color')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
 

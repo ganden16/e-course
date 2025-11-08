@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3 mb-0">Blog Tags</h1>
-        <a href="{{ route('admin.blog-tags.create') }}" class="btn btn-primary">
+        <a href="{{ route('admin.blog-tags.create') }}" class="btn btn-success">
             <i class="fas fa-plus me-2"></i> Create Tag
         </a>
     </div>
@@ -62,7 +62,6 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Slug</th>
-                                <th>Color</th>
                                 <th>Blogs Count</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -72,25 +71,10 @@
                             @foreach($tags as $tag)
                                 <tr>
                                     <td>
-                                        <div class="d-flex align-items-center">
-                                            @if($tag->color)
-                                                <div class="rounded-circle me-2" style="width: 20px; height: 20px; background-color: {{ $tag->color }};"></div>
-                                            @endif
-                                            <span class="fw-bold">{{ $tag->name }}</span>
-                                        </div>
+                                        <span class="fw-bold">{{ $tag->name }}</span>
                                     </td>
                                     <td>
                                         <code class="text-muted">{{ $tag->slug }}</code>
-                                    </td>
-                                    <td>
-                                        @if($tag->color)
-                                            <div class="d-flex align-items-center">
-                                                <div class="rounded me-2" style="width: 16px; height: 16px; background-color: {{ $tag->color }};"></div>
-                                                <span>{{ $tag->color }}</span>
-                                            </div>
-                                        @else
-                                            <span class="text-muted">-</span>
-                                        @endif
                                     </td>
                                     <td>
                                         <span class="badge bg-info text-white">{{ $tag->blogs_count }}</span>
@@ -107,13 +91,6 @@
                                             <a href="{{ route('admin.blog-tags.edit', $tag) }}" class="btn btn-sm btn-outline-primary">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <form method="POST" action="{{ route('admin.blog-tags.toggle-active', $tag) }}" class="d-inline">
-                                                @csrf
-                                                @method('PATCH')
-                                                <button type="submit" class="btn btn-sm {{ $tag->is_active ? 'btn-outline-warning' : 'btn-outline-success' }}" title="{{ $tag->is_active ? 'Deactivate' : 'Activate' }}">
-                                                    <i class="fas {{ $tag->is_active ? 'fa-eye-slash' : 'fa-eye' }}"></i>
-                                                </button>
-                                            </form>
                                             <form method="POST" action="{{ route('admin.blog-tags.destroy', $tag) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this tag?')">
                                                 @csrf
                                                 @method('DELETE')
@@ -138,7 +115,7 @@
                     <i class="fas fa-tags fa-3x text-muted mb-3"></i>
                     <h5 class="text-muted">No tags found</h5>
                     <p class="text-muted">Get started by creating your first tag.</p>
-                    <a href="{{ route('admin.blog-tags.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.blog-tags.create') }}" class="btn btn-success">
                         <i class="fas fa-plus me-2"></i> Create Tag
                     </a>
                 </div>

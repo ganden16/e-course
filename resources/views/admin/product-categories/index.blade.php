@@ -76,15 +76,15 @@ use Illuminate\Support\Str;
             <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
                 <form method="GET" action="{{ route('admin.product-categories') }}" class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
                     <div class="relative">
-                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Search categories..." class="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Search categories..." class="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green">
                         <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
                     </div>
-                    <select name="status" class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <select name="status" class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green">
                         <option value="">All Status</option>
                         <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
                         <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
                     </select>
-                    <button type="submit" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                    <button type="submit" class="px-4 py-2 bg-green text-white rounded-lg hover:bg-green-dark transition">
                         <i class="fas fa-filter mr-2"></i>Filter
                     </button>
                     <a href="{{ route('admin.product-categories') }}" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition">
@@ -111,7 +111,7 @@ use Illuminate\Support\Str;
                     <tr class="hover:bg-gray-50 transition" data-id="{{ $category->id }}">
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
-                                <div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-lg bg-purple-100 text-purple-600 mr-3">
+                                <div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-lg bg-green-100 text-green-600 mr-3">
                                     <i class="fas fa-tag"></i>
                                 </div>
                                 <div>
@@ -134,7 +134,7 @@ use Illuminate\Support\Str;
                             <form action="{{ route('admin.product-categories.toggle-active', $category) }}" method="POST" class="inline">
                                 @csrf
                                 @method('PATCH')
-                                <button type="submit" class="relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 {{ $category->is_active ? 'bg-green-500' : 'bg-gray-200' }}">
+                                <button type="submit" class="relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green {{ $category->is_active ? 'bg-green-500' : 'bg-gray-200' }}">
                                     <span class="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200 {{ $category->is_active ? 'translate-x-5' : 'translate-x-0' }}"></span>
                                 </button>
                             </form>

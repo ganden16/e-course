@@ -171,6 +171,22 @@
     background-color: #ff9500;
 }
 
+.bg-green {
+    background-color: #10b981;
+}
+
+.bg-green-dark {
+    background-color: #059669;
+}
+
+.border-green {
+    border-color: #10b981;
+}
+
+.focus-ring-green {
+    @apply focus:ring-2 focus:ring-offset-2 focus:ring-green;
+}
+
 .border-primary {
     border-color: #009b77;
 }

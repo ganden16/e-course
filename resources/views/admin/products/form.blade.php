@@ -317,7 +317,7 @@
                 <!-- Actions -->
                 <div class="bg-gray-50 rounded-lg p-6">
                     <div class="space-y-3">
-                        <button type="submit" class="w-full gradient-bg text-white py-3 rounded-lg hover:opacity-90 transition font-medium">
+                        <button type="submit" class="w-full bg-orange text-white py-3 rounded-lg hover:bg-orange-dark transition font-medium">
                             {{ isset($product) ? 'Update Product' : 'Create Product' }}
                         </button>
                         <a href="{{ route('admin.products') }}" class="w-full block text-center bg-gray-200 text-gray-800 py-3 rounded-lg hover:bg-gray-300 transition font-medium">
