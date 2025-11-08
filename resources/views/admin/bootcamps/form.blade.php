@@ -154,7 +154,7 @@
 
     <div class="bg-white rounded-lg shadow-sm border border-gray-200">
         <div class="px-6 py-4 border-b border-gray-200">
-            <h2 class="text-lg font-medium text-gray-900">{{ isset($bootcamp) ? 'Edit Bootcamp' : 'Tambah Bootcamp Baru' }}</h2>
+            <h2 class="text-lg font-medium text-gray-900">{{ isset($bootcamp) ? 'Edit Bootcamp' : 'Create New Bootcamp' }}</h2>
         </div>
 
         <form action="{{ isset($bootcamp) ? route('admin.bootcamps.update', $bootcamp) : route('admin.bootcamps.store') }}"
@@ -171,16 +171,16 @@
                 <div class="lg:col-span-2 space-y-6">
                     <!-- Basic Information -->
                     <div>
-                        <h3 class="text-md font-medium text-gray-900 mb-4">Informasi Dasar</h3>
+                        <h3 class="text-md font-medium text-gray-900 mb-4">Basic Information</h3>
                         <div class="space-y-4">
                             <div>
-                                <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Judul Bootcamp <span class="text-red-500">*</span></label>
+                                <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Bootcamp Title <span class="text-red-500">*</span></label>
                                 <input type="text"
                                        id="title"
                                        name="title"
                                        value="{{ old('title', $bootcamp->title ?? '') }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                       placeholder="Masukkan judul bootcamp"
+                                       placeholder="Enter bootcamp title"
                                        required>
                                 @error('title')
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -188,12 +188,12 @@
                             </div>
 
                             <div>
-                                <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Deskripsi <span class="text-red-500">*</span></label>
+                                <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Description <span class="text-red-500">*</span></label>
                                 <textarea id="description"
                                           name="description"
                                           rows="4"
                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                          placeholder="Masukkan deskripsi bootcamp"
+                                          placeholder="Enter bootcamp description"
                                           required>{{ old('description', $bootcamp->description ?? '') }}</textarea>
                                 @error('description')
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -202,9 +202,9 @@
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label for="category_id" class="block text-sm font-medium text-gray-700 mb-2">Kategori <span class="text-red-500">*</span></label>
+                                    <label for="category_id" class="block text-sm font-medium text-gray-700 mb-2">Category <span class="text-red-500">*</span></label>
                                     <select id="category_id" name="category_id" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent" required>
-                                        <option value="">Pilih Kategori</option>
+                                        <option value="">Select Category</option>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}" {{ old('category_id', isset($bootcamp) && $bootcamp->category_id ? $bootcamp->category_id : '') == $category->id ? 'selected' : '' }}>
                                                 {{ $category->name }}
@@ -219,10 +219,10 @@
                                 <div>
                                     <label for="level" class="block text-sm font-medium text-gray-700 mb-2">Level <span class="text-red-500">*</span></label>
                                     <select id="level" name="level" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent" required>
-                                        <option value="">Pilih Level</option>
-                                        <option value="beginner" {{ old('level', $bootcamp->level ?? '') === 'beginner' ? 'selected' : '' }}>Pemula</option>
-                                        <option value="intermediate" {{ old('level', $bootcamp->level ?? '') === 'intermediate' ? 'selected' : '' }}>Menengah</option>
-                                        <option value="advanced" {{ old('level', $bootcamp->level ?? '') === 'advanced' ? 'selected' : '' }}>Lanjutan</option>
+                                        <option value="">Select Level</option>
+                                        <option value="beginner" {{ old('level', $bootcamp->level ?? '') === 'beginner' ? 'selected' : '' }}>Beginner</option>
+                                        <option value="intermediate" {{ old('level', $bootcamp->level ?? '') === 'intermediate' ? 'selected' : '' }}>Intermediate</option>
+                                        <option value="advanced" {{ old('level', $bootcamp->level ?? '') === 'advanced' ? 'selected' : '' }}>Advanced</option>
                                     </select>
                                     @error('level')
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -232,13 +232,13 @@
 
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div>
-                                    <label for="duration" class="block text-sm font-medium text-gray-700 mb-2">Durasi <span class="text-red-500">*</span></label>
+                                    <label for="duration" class="block text-sm font-medium text-gray-700 mb-2">Duration <span class="text-red-500">*</span></label>
                                     <input type="text"
                                            id="duration"
                                            name="duration"
                                            value="{{ old('duration', $bootcamp->duration ?? '') }}"
                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                           placeholder="Contoh: 12 weeks"
+                                           placeholder="Example: 12 weeks"
                                            required>
                                     @error('duration')
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -246,7 +246,7 @@
                                 </div>
 
                                 <div>
-                                    <label for="start_date" class="block text-sm font-medium text-gray-700 mb-2">Tanggal Mulai</label>
+                                    <label for="start_date" class="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
                                     <input type="date"
                                            id="start_date"
                                            name="start_date"
@@ -258,13 +258,13 @@
                                 </div>
 
                                 <div>
-                                    <label for="schedule" class="block text-sm font-medium text-gray-700 mb-2">Jadwal <span class="text-red-500">*</span></label>
+                                    <label for="schedule" class="block text-sm font-medium text-gray-700 mb-2">Schedule <span class="text-red-500">*</span></label>
                                     <input type="text"
                                            id="schedule"
                                            name="schedule"
                                            value="{{ old('schedule', $bootcamp->schedule ?? '') }}"
                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                           placeholder="Contoh: Senin - Jumat, 09:00 - 17:00"
+                                           placeholder="Example: Monday - Friday, 09:00 - 17:00"
                                            required>
                                     @error('schedule')
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -281,7 +281,7 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                <p class="text-xs text-gray-500 mt-1">Pilih satu atau lebih mentor</p>
+                                <p class="text-xs text-gray-500 mt-1">Select one or more mentors</p>
                                 @error('mentors')
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
@@ -291,7 +291,7 @@
 
                     <!-- Bootcamp Features -->
                     <div>
-                        <h3 class="text-md font-medium text-gray-900 mb-4">Fitur Bootcamp</h3>
+                        <h3 class="text-md font-medium text-gray-900 mb-4">Bootcamp Features</h3>
                         <div class="space-y-4">
                             <div id="features-container" class="space-y-2">
                                 @php
@@ -302,7 +302,7 @@
                                     <div class="flex items-center space-x-2 feature-item">
                                         <input type="text" name="features[]" value="{{ $feature }}"
                                                class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                               placeholder="Masukkan fitur">
+                                               placeholder="Enter feature">
                                         <button type="button" class="text-red-600 hover:text-red-800 remove-feature">
                                             <i class="fas fa-trash"></i>
                                         </button>
@@ -311,7 +311,7 @@
                             </div>
 
                             <button type="button" id="add-feature" class="text-orange-600 hover:text-orange-800 font-medium">
-                                <i class="fas fa-plus mr-1"></i> Tambah Fitur
+                                <i class="fas fa-plus mr-1"></i> Add Feature
                             </button>
                             @error('features')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -321,7 +321,7 @@
 
                     <!-- Curriculum -->
                     <div>
-                        <h3 class="text-md font-medium text-gray-900 mb-4">Kurikulum</h3>
+                        <h3 class="text-md font-medium text-gray-900 mb-4">Curriculum</h3>
                         <div class="space-y-4">
                             <div id="curriculum-container" class="space-y-2">
                                 @php
@@ -332,7 +332,7 @@
                                     <div class="flex items-center space-x-2 curriculum-item">
                                         <input type="text" name="curriculum[]" value="{{ $item }}"
                                                class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                               placeholder="Masukkan topik kurikulum">
+                                               placeholder="Enter curriculum topic">
                                         <button type="button" class="text-red-600 hover:text-red-800 remove-curriculum">
                                             <i class="fas fa-trash"></i>
                                         </button>
@@ -341,7 +341,7 @@
                             </div>
 
                             <button type="button" id="add-curriculum" class="text-orange-600 hover:text-orange-800 font-medium">
-                                <i class="fas fa-plus mr-1"></i> Tambah Kurikulum
+                                <i class="fas fa-plus mr-1"></i> Add Curriculum
                             </button>
                             @error('curriculum')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -351,7 +351,7 @@
 
                     <!-- Learning Outcomes -->
                     <div>
-                        <h3 class="text-md font-medium text-gray-900 mb-4">Hasil Pembelajaran</h3>
+                        <h3 class="text-md font-medium text-gray-900 mb-4">Learning Outcomes</h3>
                         <div class="space-y-4">
                             <div id="learning-outcomes-container" class="space-y-2">
                                 @php
@@ -362,7 +362,7 @@
                                     <div class="flex items-center space-x-2 learning-outcome-item">
                                         <input type="text" name="learning_outcomes[]" value="{{ $item }}"
                                                class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                               placeholder="Masukkan hasil pembelajaran">
+                                               placeholder="Enter learning outcome">
                                         <button type="button" class="text-red-600 hover:text-red-800 remove-learning-outcome">
                                             <i class="fas fa-trash"></i>
                                         </button>
@@ -371,7 +371,7 @@
                             </div>
 
                             <button type="button" id="add-learning-outcome" class="text-orange-600 hover:text-orange-800 font-medium">
-                                <i class="fas fa-plus mr-1"></i> Tambah Hasil Pembelajaran
+                                <i class="fas fa-plus mr-1"></i> Add Learning Outcome
                             </button>
                             @error('learning_outcomes')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -381,7 +381,7 @@
 
                     <!-- Career Support -->
                     <div>
-                        <h3 class="text-md font-medium text-gray-900 mb-4">Dukungan Karir</h3>
+                        <h3 class="text-md font-medium text-gray-900 mb-4">Career Support</h3>
                         <div class="space-y-4">
                             <div id="career-support-container" class="space-y-2">
                                 @php
@@ -392,7 +392,7 @@
                                     <div class="flex items-center space-x-2 career-support-item">
                                         <input type="text" name="career_support[]" value="{{ $item }}"
                                                class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                               placeholder="Masukkan dukungan karir">
+                                               placeholder="Enter career support">
                                         <button type="button" class="text-red-600 hover:text-red-800 remove-career-support">
                                             <i class="fas fa-trash"></i>
                                         </button>
@@ -401,7 +401,7 @@
                             </div>
 
                             <button type="button" id="add-career-support" class="text-orange-600 hover:text-orange-800 font-medium">
-                                <i class="fas fa-plus mr-1"></i> Tambah Dukungan Karir
+                                <i class="fas fa-plus mr-1"></i> Add Career Support
                             </button>
                             @error('career_support')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -411,7 +411,7 @@
 
                     <!-- Requirements -->
                     <div>
-                        <h3 class="text-md font-medium text-gray-900 mb-4">Persyaratan</h3>
+                        <h3 class="text-md font-medium text-gray-900 mb-4">Requirements</h3>
                         <div class="space-y-4">
                             <div id="requirements-container" class="space-y-2">
                                 @php
@@ -422,7 +422,7 @@
                                     <div class="flex items-center space-x-2 requirement-item">
                                         <input type="text" name="requirements[]" value="{{ $requirement }}"
                                                class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                                               placeholder="Masukkan persyaratan">
+                                               placeholder="Enter requirement">
                                         <button type="button" class="text-red-600 hover:text-red-800 remove-requirement">
                                             <i class="fas fa-trash"></i>
                                         </button>
@@ -431,7 +431,7 @@
                             </div>
 
                             <button type="button" id="add-requirement" class="text-orange-600 hover:text-orange-800 font-medium">
-                                <i class="fas fa-plus mr-1"></i> Tambah Persyaratan
+                                <i class="fas fa-plus mr-1"></i> Add Requirement
                             </button>
                             @error('requirements')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -441,7 +441,7 @@
 
                     <!-- Training Modules -->
                     <div>
-                        <h3 class="text-md font-medium text-gray-900 mb-4">Modul Pelatihan</h3>
+                        <h3 class="text-md font-medium text-gray-900 mb-4">Training Modules</h3>
                         <div class="space-y-4">
                             <div id="modules-container" class="space-y-4">
                                 @php
@@ -451,56 +451,56 @@
                                 @foreach($modules as $index => $module)
                                     <div class="border border-gray-200 rounded-lg p-4 module-item">
                                         <div class="flex items-center justify-between mb-3">
-                                            <h4 class="font-medium text-gray-900">Minggu {{ $module->week_number ?? ($index + 1) }}</h4>
+                                            <h4 class="font-medium text-gray-900">Week {{ $module->week_number ?? ($index + 1) }}</h4>
                                             <button type="button" class="text-red-600 hover:text-red-800 remove-module" @if($loop->first) style="display: none;" @endif>
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                             <div>
-                                                <label class="block text-sm font-medium text-gray-700 mb-2">Nomor Minggu</label>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Week Number</label>
                                                 <input type="number" name="modules[{{ $index }}][week_number]" value="{{ $module->week_number ?? ($index + 1) }}"
                                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                                        min="1" placeholder="1">
                                             </div>
                                             <div>
-                                                <label class="block text-sm font-medium text-gray-700 mb-2">Durasi (jam)</label>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Duration (hours)</label>
                                                 <input type="number" name="modules[{{ $index }}][duration_hours]" value="{{ $module->duration_hours ?? '' }}"
                                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                                        min="1" placeholder="40">
                                             </div>
                                         </div>
                                         <div class="mt-4">
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Nama Modul</label>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Module Name</label>
                                             <input type="text" name="modules[{{ $index }}][module]" value="{{ $module->module ?? '' }}"
                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                                    placeholder="Contoh: Introduction to Web Development">
                                         </div>
                                         <div class="mt-4">
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Tujuan Pembelajaran</label>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Learning Objective</label>
                                             <textarea name="modules[{{ $index }}][objective]" rows="3"
                                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                                       placeholder="Contoh: Students will understand the basics of HTML, CSS, and JavaScript">{{ $module->objective ?? '' }}</textarea>
                                         </div>
                                         <div class="mt-4">
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
                                             <textarea name="modules[{{ $index }}][description]" rows="3"
                                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                                       placeholder="Deskripsi detail dari modul ini">{{ $module->description ?? '' }}</textarea>
                                         </div>
                                         <div class="mt-4">
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Topik (satu per baris)</label>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Topics (one per line)</label>
                                             <textarea name="modules[{{ $index }}][topics]" rows="4"
                                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                                       placeholder="HTML Basics&#10;CSS Fundamentals&#10;JavaScript Introduction">{{ old('modules.'.$index.'.topics', isset($module->topics) ? implode("\n", $module->topics) : '') }}</textarea>
-                                            <p class="text-xs text-gray-500 mt-1">Masukkan setiap topik pada baris baru</p>
+                                           <p class="text-xs text-gray-500 mt-1">Enter each topic on a new line</p>
                                         </div>
                                         <div class="mt-4">
                                             <label class="flex items-center">
                                                 <input type="checkbox" name="modules[{{ $index }}][is_active]" value="1"
                                                        {{ old('modules.'.$index.'.is_active', isset($module->is_active) ? $module->is_active : true) ? 'checked' : '' }}
                                                        class="rounded border-gray-300 text-orange focus:ring-orange">
-                                                <span class="ml-2 text-sm text-gray-700">Aktif</span>
+                                                <span class="ml-2 text-sm text-gray-700">Active</span>
                                             </label>
                                         </div>
                                     </div>
@@ -508,7 +508,7 @@
                             </div>
 
                             <button type="button" id="add-module" class="text-orange-600 hover:text-orange-800 font-medium">
-                                <i class="fas fa-plus mr-1"></i> Tambah Modul
+                                <i class="fas fa-plus mr-1"></i> Add Module
                             </button>
                         </div>
                     </div>
@@ -518,7 +518,7 @@
                 <div class="space-y-6">
                     <!-- Bootcamp Image -->
                     <div>
-                        <h3 class="text-md font-medium text-gray-900 mb-4">Gambar Bootcamp</h3>
+                        <h3 class="text-md font-medium text-gray-900 mb-4">Bootcamp Image</h3>
                         <div class="space-y-4">
                             <div>
                                 @if(isset($bootcamp) && $bootcamp->image)
@@ -557,10 +557,10 @@
 
                     <!-- Pricing -->
                     <div>
-                        <h3 class="text-md font-medium text-gray-900 mb-4">Harga</h3>
+                        <h3 class="text-md font-medium text-gray-900 mb-4">Pricing</h3>
                         <div class="space-y-4">
                             <div>
-                                <label for="price" class="block text-sm font-medium text-gray-700 mb-2">Harga (Rp) <span class="text-red-500">*</span></label>
+                                <label for="price" class="block text-sm font-medium text-gray-700 mb-2">Price (Rp) <span class="text-red-500">*</span></label>
                                 <input type="number"
                                        id="price"
                                        name="price"
@@ -576,7 +576,7 @@
                             </div>
 
                             <div>
-                                <label for="original_price" class="block text-sm font-medium text-gray-700 mb-2">Harga Asli (Rp)</label>
+                                <label for="original_price" class="block text-sm font-medium text-gray-700 mb-2">Original Price (Rp)</label>
                                 <input type="number"
                                        id="original_price"
                                        name="original_price"
@@ -607,7 +607,7 @@
                             </div>
 
                             <div>
-                                <label for="students" class="block text-sm font-medium text-gray-700 mb-2">Jumlah Siswa</label>
+                                <label for="students" class="block text-sm font-medium text-gray-700 mb-2">Number of Students</label>
                                 <input type="number"
                                        id="students"
                                        name="students"
@@ -643,10 +643,10 @@
                     <div class="pt-4">
                         <div class="flex flex-col space-y-3">
                             <button type="submit" class="w-full bg-orange hover:bg-orange-dark text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200">
-                                {{ isset($bootcamp) ? 'Update Bootcamp' : 'Simpan Bootcamp' }}
+                                {{ isset($bootcamp) ? 'Update Bootcamp' : 'Save Bootcamp' }}
                             </button>
                             <a href="{{ route('admin.bootcamps') }}" class="w-full bg-white hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-lg border border-gray-300 text-center transition-colors duration-200">
-                                Batal
+                                Cancel
                             </a>
                         </div>
                     </div>

@@ -4,7 +4,7 @@
 @section('header', 'Dashboard')
 
 @section('content')
-<div class="space-y-6">
+<div class="space-y-8">
     <!-- Welcome Section with Gradient -->
     <div class="bg-gradient-to-r from-primary to-primary-dark rounded-2xl p-8 text-white shadow-xl">
         <div class="flex items-center justify-between">
@@ -70,7 +70,7 @@
         </div>
 
         <!-- Quick Actions -->
-        <div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl shadow-lg p-6 text-white border-2 border-blue-300/30">
+        <div class="bg-gradient-to-br from-orange to-orange-dark rounded-xl shadow-lg p-6 text-white border-2 border-orange/30">
             <div class="flex items-center justify-between mb-6">
                 <h3 class="text-xl font-bold">Quick Actions</h3>
                 <div class="bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">

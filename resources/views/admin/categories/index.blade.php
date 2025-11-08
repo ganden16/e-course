@@ -6,19 +6,19 @@
 @section('content')
 <!-- Page Header -->
 <div class="mb-8">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div>
-                <h1 class="text-3xl font-bold text-gray-900">Manajemen Kategori</h1>
-                <p class="mt-2 text-sm text-gray-600">Kelola dan organisasi kategori bootcamp</p>
-            </div>
-            <div class="mt-4 md:mt-0">
-                <a href="{{ route('admin.categories.create') }}" class="inline-flex items-center px-4 py-2 bg-orange border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-orange-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
-                    <i class="fas fa-plus mr-2 -ml-1"></i>
-                    Tambah Kategori Baru
-                </a>
-            </div>
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+        <div>
+            <h1 class="text-3xl font-bold text-gray-900">Categories Management</h1>
+            <p class="mt-2 text-sm text-gray-600">Manage and organize bootcamp categories</p>
+        </div>
+        <div class="mt-4 md:mt-0">
+            <a href="{{ route('admin.categories.create') }}" class="inline-flex items-center px-4 py-2 bg-orange border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-orange-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200">
+                <i class="fas fa-plus mr-2 -ml-1"></i>
+                Add New Category
+            </a>
         </div>
     </div>
+</div>
 
     <!-- Search and Filters -->
     <div class="mb-6 bg-white rounded-lg shadow-sm border border-gray-200 p-4">
@@ -27,7 +27,7 @@
                 <div class="relative">
                     <input type="text"
                            id="search"
-                           placeholder="Cari kategori..."
+                           placeholder="Search categories..."
                            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <i class="fas fa-search text-gray-400"></i>
@@ -36,9 +36,9 @@
             </div>
             <div class="flex items-center space-x-3">
                 <select id="status-filter" class="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent">
-                    <option value="">Semua Status</option>
-                    <option value="1">Aktif</option>
-                    <option value="0">Tidak Aktif</option>
+                    <option value="">All Status</option>
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
                 </select>
                 <button id="reset-filters" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors duration-200">
                     <i class="fas fa-redo mr-2"></i> Reset
@@ -82,19 +82,19 @@
                 <thead class="bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Kategori
+                            Category
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Deskripsi
+                            Description
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Bootcamp
+                            Bootcamps
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Status
                         </th>
                         <th scope="col" class="relative px-6 py-3">
-                            <span class="sr-only">Aksi</span>
+                            <span class="sr-only">Actions</span>
                         </th>
                     </tr>
                 </thead>
@@ -125,11 +125,11 @@
                                 <button type="submit" class="inline-flex items-center">
                                     @if($category->is_active)
                                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 hover:bg-green-200 cursor-pointer">
-                                            Aktif
+                                            Active
                                         </span>
                                     @else
                                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800 hover:bg-red-200 cursor-pointer">
-                                            Tidak Aktif
+                                            Inactive
                                         </span>
                                     @endif
                                 </button>
@@ -140,7 +140,7 @@
                                 <a href="{{ route('admin.categories.edit', $category) }}" class="text-indigo-600 hover:text-indigo-900">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form action="{{ route('admin.categories.destroy', $category) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">
+                                <form action="{{ route('admin.categories.destroy', $category) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this category?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:text-red-900">
@@ -153,7 +153,7 @@
                     @empty
                     <tr>
                         <td colspan="5" class="px-6 py-4 text-center text-gray-500">
-                            Tidak ada kategori ditemukan.
+                            No categories found.
                         </td>
                     </tr>
                     @endforelse
@@ -171,7 +171,7 @@
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
                 <p class="text-sm text-gray-700">
-                    Menampilkan <span class="font-medium">{{ $categories->firstItem() }}</span> hingga <span class="font-medium">{{ $categories->lastItem() }}</span> dari <span class="font-medium">{{ $categories->total() }}</span> hasil
+                    Showing <span class="font-medium">{{ $categories->firstItem() }}</span> to <span class="font-medium">{{ $categories->lastItem() }}</span> of <span class="font-medium">{{ $categories->total() }}</span> results
                 </p>
             </div>
             <div>

@@ -1,0 +1,239 @@
+/* Admin Panel Custom Styles */
+/* This file ensures consistency across all admin pages */
+
+/* Consistent spacing for page headers */
+.page-header {
+    @apply mb-8;
+}
+
+.page-title {
+    @apply text-3xl font-bold text-gray-900;
+}
+
+.page-subtitle {
+    @apply mt-2 text-sm text-gray-600;
+}
+
+/* Consistent button styling */
+.btn-primary {
+    @apply inline-flex items-center px-4 py-2 bg-orange border border-transparent rounded-lg shadow-sm text-sm font-medium text-white hover:bg-orange-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange transition-colors duration-200;
+}
+
+.btn-secondary {
+    @apply inline-flex items-center px-4 py-2 bg-white hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-lg border border-gray-300 text-center transition-colors duration-200;
+}
+
+/* Consistent card styling */
+.stats-card {
+    @apply bg-white overflow-hidden shadow-lg rounded-xl border-0 border-gray-200;
+}
+
+.stats-card-content {
+    @apply p-6;
+}
+
+.stats-card-icon {
+    @apply flex-shrink-0 w-12 h-12 bg-gradient-to-br from-orange to-orange-dark rounded-xl flex items-center justify-center shadow-lg;
+}
+
+.stats-card-icon-primary {
+    @apply bg-gradient-to-br from-primary to-primary-dark;
+}
+
+.stats-card-info {
+    @apply ml-4;
+}
+
+.stats-card-label {
+    @apply text-sm font-medium text-gray-500;
+}
+
+.stats-card-value {
+    @apply text-2xl font-bold text-gray-900;
+}
+
+/* Consistent table styling */
+.admin-table {
+    @apply bg-white shadow-lg rounded-xl overflow-hidden border-0;
+}
+
+.admin-table-header {
+    @apply bg-gray-50;
+}
+
+.admin-table-header-cell {
+    @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+}
+
+.admin-table-body {
+    @apply bg-white divide-y divide-gray-200;
+}
+
+.admin-table-row {
+    @apply hover:bg-gray-50 transition-colors duration-150;
+}
+
+.admin-table-cell {
+    @apply px-6 py-4 whitespace-nowrap;
+}
+
+/* Consistent status badges */
+.status-active {
+    @apply px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 hover:bg-green-200 cursor-pointer;
+}
+
+.status-inactive {
+    @apply px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800 hover:bg-red-200 cursor-pointer;
+}
+
+/* Consistent form styling */
+.form-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent;
+}
+
+.form-select {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent;
+}
+
+.form-label {
+    @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+.form-label-required {
+    @apply text-red-500;
+}
+
+/* Consistent search and filter styling */
+.search-container {
+    @apply mb-6 bg-white rounded-lg shadow-sm border border-gray-200 p-4;
+}
+
+.search-input {
+    @apply w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent;
+}
+
+.search-icon {
+    @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400;
+}
+
+/* Consistent pagination styling */
+.pagination-container {
+    @apply mt-6 bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6 rounded-lg shadow-lg;
+}
+
+/* Consistent sidebar styling */
+.sidebar-link {
+    @apply flex items-center px-4 py-3 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-200 group;
+}
+
+.sidebar-link-active {
+    @apply bg-orange text-white shadow-lg;
+}
+
+.sidebar-icon {
+    @apply mr-3 text-gray-400 group-hover:text-white transition-colors duration-200;
+}
+
+.sidebar-icon-active {
+    @apply text-white;
+}
+
+/* Consistent color usage */
+.text-primary {
+    color: #009b77;
+}
+
+.text-primary-dark {
+    color: #174e47;
+}
+
+.text-orange {
+    color: #ffb433;
+}
+
+.text-orange-dark {
+    color: #ff9500;
+}
+
+.bg-primary {
+    background-color: #009b77;
+}
+
+.bg-primary-dark {
+    background-color: #174e47;
+}
+
+.bg-orange {
+    background-color: #ffb433;
+}
+
+.bg-orange-dark {
+    background-color: #ff9500;
+}
+
+.border-primary {
+    border-color: #009b77;
+}
+
+.border-orange {
+    border-color: #ffb433;
+}
+
+.focus-ring-primary {
+    @apply focus:ring-2 focus:ring-offset-2 focus:ring-primary;
+}
+
+.focus-ring-orange {
+    @apply focus:ring-2 focus:ring-offset-2 focus:ring-orange;
+}
+
+/* Consistent spacing */
+.section-spacing {
+    @apply space-y-8;
+}
+
+.card-spacing {
+    @apply space-y-6;
+}
+
+.form-spacing {
+    @apply space-y-4;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .page-header {
+        @apply mb-6;
+    }
+
+    .page-title {
+        @apply text-2xl;
+    }
+
+    .stats-card {
+        @apply mb-4;
+    }
+}
+
+/* Animation improvements */
+.card-hover {
+    @apply transition-all duration-300 transform hover:-translate-y-1;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Consistent shadow effects */
+.shadow-admin {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-admin-lg {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}

@@ -16,6 +16,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
     <script>
         tailwind.config = {
@@ -251,7 +252,7 @@
 
             <!-- Main Content Area -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-beige">
-                <div class="container mx-auto px-6 py-8">
+                <div class="container mx-auto px-6 py-6">
                     <!-- Flash Messages -->
                     @if(session('error'))
                         <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6 rounded-lg shadow-md">
