@@ -144,7 +144,7 @@ return [
 
     // Upcoming Bootcamps Section
     'upcoming_bootcamps' => [
-        'title' => 'Bootcamp Mendatang',
+        'title' => 'Bootcamp',
         'subtitle' => 'Bergabunglah dengan bootcamp intensif kami dan percepat karir Anda.',
         'learn_more' => 'Pelajari Lebih Lanjut',
         'view_all_bootcamps' => 'Lihat Semua Bootcamp',

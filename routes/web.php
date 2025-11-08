@@ -6,6 +6,7 @@ use App\Http\Controllers\BootcampController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 
 // Language switch route
 Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('language.switch');
@@ -15,9 +16,7 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'id|en']], functio
     Route::get('/admin', function () {
         return redirect()->route('admin.dashboard');
     });
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
     Route::get('/about-us', function () {
         return view('about-us');

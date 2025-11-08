@@ -1,4 +1,6 @@
 @php
+    use Illuminate\Support\Str;
+
     // Get current locale from middleware
     $locale = app()->getLocale();
 
@@ -18,12 +20,6 @@
     $statsData = $stats['data'];
     $featuresData = $features['data'];
     $testimonialsData = $testimonials['data'];
-    $products = array_slice($featured_courses['data'], 0, 3); // Get first 3 products
-    $blogs = array_slice($latest_blog['data'], 0, 3); // Get first 3 blogs
-    $bootcamps = array_slice($upcoming_bootcamps['data'], 0, 2); // Get first 2 bootcamps
-
-    // Build URLs with current locale
-    $baseUrl = '/' . $locale;
 @endphp
 
 @include('components.header', ['title' => 'Home'])
@@ -119,23 +115,23 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($products as $product)
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <img src="{{ $product['image'] }}" alt="{{ $product['title'] }}" class="w-full h-48 object-cover">
+                    <img src="{{ $product->image }}" alt="{{ $product->title }}" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $product['category'] }}</span>
+                            <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $product->productCategory->name ?? 'Uncategorized' }}</span>
                             <div class="flex items-center">
                                 <i class="fas fa-star text-secondary"></i>
-                                <span class="ml-1 text-sm font-medium">{{ $product['rating'] }}</span>
+                                <span class="ml-1 text-sm font-medium">{{ $product->rating }}</span>
                             </div>
                         </div>
-                        <h3 class="text-xl font-semibold mb-2">{{ $product['title'] }}</h3>
-                        <p class="text-gray-600 mb-4">{{ $product['description'] }}</p>
+                        <h3 class="text-xl font-semibold mb-2">{{ $product->title }}</h3>
+                        <p class="text-gray-600 mb-4">{{ Str::limit($product->description, 100) }}</p>
                         <div class="flex items-center justify-between">
                             <div>
-                                <span class="text-2xl font-bold text-secondary">Rp {{ number_format($product['price'], 0, ',', '.') }}</span>
-                                <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($product['original_price'], 0, ',', '.') }}</span>
+                                <span class="text-2xl font-bold text-secondary">{{ $product->formatted_price }}</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">{{ $product->formatted_original_price }}</span>
                             </div>
-                            <a href="{{ $baseUrl }}/product/{{ $product['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                            <a href="{{ $baseUrl }}/product/{{ $product->id }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
                                 {{ $featured_courses['view_details'] }}
                             </a>
                         </div>
@@ -163,30 +159,30 @@
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
                     <div class="md:flex">
                         <div class="md:w-1/3">
-                            <img src="{{ $bootcamp['image'] }}" alt="{{ $bootcamp['title'] }}" class="w-full h-48 md:h-full object-cover">
+                            <img src="{{ $bootcamp->image }}" alt="{{ $bootcamp->title }}" class="w-full h-48 md:h-full object-cover">
                         </div>
                         <div class="md:w-2/3 p-6">
                             <div class="flex items-center justify-between mb-2">
-                                <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $bootcamp['category'] }}</span>
+                                <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $bootcamp->category->name ?? 'Uncategorized' }}</span>
                                 <div class="flex items-center">
                                     <i class="fas fa-star text-secondary"></i>
-                                    <span class="ml-1 text-sm font-medium">{{ $bootcamp['rating'] }}</span>
+                                    <span class="ml-1 text-sm font-medium">{{ $bootcamp->rating }}</span>
                                 </div>
                             </div>
-                            <h3 class="text-xl font-semibold mb-2">{{ $bootcamp['title'] }}</h3>
-                            <p class="text-gray-600 mb-4">{{ $bootcamp['description'] }}</p>
+                            <h3 class="text-xl font-semibold mb-2">{{ $bootcamp->title }}</h3>
+                            <p class="text-gray-600 mb-4">{{ Str::limit($bootcamp->description, 100) }}</p>
                             <div class="flex items-center text-sm text-gray-500 mb-4">
                                 <i class="fas fa-clock mr-2"></i>
-                                <span class="mr-4">{{ $bootcamp['duration'] }}</span>
+                                <span class="mr-4">{{ $bootcamp->duration }}</span>
                                 <i class="fas fa-calendar mr-2"></i>
-                                <span>{{ $bootcamp['start_date'] }}</span>
+                                <span>{{ $bootcamp->start_date ? $bootcamp->start_date->format('M d, Y') : 'Coming Soon' }}</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <span class="text-2xl font-bold text-secondary">Rp {{ number_format($bootcamp['price'], 0, ',', '.') }}</span>
-                                    <span class="text-sm text-gray-500 line-through ml-2">Rp {{ number_format($bootcamp['original_price'], 0, ',', '.') }}</span>
+                                    <span class="text-2xl font-bold text-secondary">{{ $bootcamp->formatted_price }}</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">{{ $bootcamp->formatted_original_price }}</span>
                                 </div>
-                                <a href="{{ $baseUrl }}/bootcamp/{{ $bootcamp['id'] }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                                <a href="{{ $baseUrl }}/bootcamp/{{ $bootcamp->id }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
                                     {{ $upcoming_bootcamps['learn_more'] }}
                                 </a>
                             </div>
@@ -213,23 +209,20 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($blogs as $blog)
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <img src="{{ $blog['image'] }}" alt="{{ $blog['title'] }}" class="w-full h-48 object-cover">
+                    <img src="{{ $blog->image }}" alt="{{ $blog->title }}" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $blog['category'] }}</span>
-                            <span class="text-sm text-gray-500">{{ $blog['read_time'] }}</span>
+                            @if($blog->tags->count() > 0)
+                                <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">{{ $blog->tags->first()->name }}</span>
+                            @else
+                                <span class="text-sm font-medium text-secondary bg-secondary/10 px-3 py-1 rounded-full">Blog</span>
+                            @endif
+                            <span class="text-sm text-gray-500">{{ $blog->read_time ?? '5 min read' }}</span>
                         </div>
-                        <h3 class="text-xl font-semibold mb-2">{{ $blog['title'] }}</h3>
-                        <p class="text-gray-600 mb-4">{{ $blog['excerpt'] }}</p>
+                        <h3 class="text-xl font-semibold mb-2">{{ $blog->title }}</h3>
+                        <p class="text-gray-600 mb-4">{{ $blog->excerpt }}</p>
                         <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <img src="{{ $blog['avatar'] }}" alt="{{ $blog['author'] }}" class="w-8 h-8 rounded-full mr-2">
-                                <div>
-                                    <p class="text-sm font-medium">{{ $blog['author'] }}</p>
-                                    <p class="text-xs text-gray-500">{{ $blog['date'] }}</p>
-                                </div>
-                            </div>
-                            <a href="{{ $baseUrl }}/blog/{{ $blog['id'] }}" class="text-secondary hover:text-secondary-dark font-medium">
+                            <a href="{{ $baseUrl }}/blog/{{ $blog->slug }}" class="text-secondary hover:text-secondary-dark font-medium">
                                 {{ $latest_blog['read_more'] }} <i class="fas fa-arrow-right ml-1"></i>
                             </a>
                         </div>

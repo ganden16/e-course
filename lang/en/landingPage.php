@@ -144,7 +144,7 @@ return [
 
     // Upcoming Bootcamps Section
     'upcoming_bootcamps' => [
-        'title' => 'Upcoming Bootcamps',
+        'title' => 'Bootcamps',
         'subtitle' => 'Join our intensive bootcamps and accelerate your career.',
         'learn_more' => 'Learn More',
         'view_all_bootcamps' => 'View All Bootcamps',
