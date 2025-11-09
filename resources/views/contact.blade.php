@@ -106,26 +106,52 @@
             </div>
 
             <div class="bg-white rounded-xl shadow-lg p-8">
-                <form>
+                <!-- Success Message -->
+                @if(session('success'))
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                <!-- Error Message -->
+                @if(session('error'))
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                <!-- Validation Errors -->
+                @if($errors->any())
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+                        <ul class="list-disc list-inside">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ route('contact.send', app()->getLocale()) }}" method="POST">
+                    @csrf
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label for="firstName" class="block text-gray-700 font-medium mb-2">{{ $contact_form['first_name'] }}</label>
-                            <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                            <input type="text" id="firstName" name="firstName" value="{{ old('firstName') }}" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
                         </div>
                         <div>
                             <label for="lastName" class="block text-gray-700 font-medium mb-2">{{ $contact_form['last_name'] }}</label>
-                            <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                            <input type="text" id="lastName" name="lastName" value="{{ old('lastName') }}" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label for="email" class="block text-gray-700 font-medium mb-2">{{ $contact_form['email_address'] }}</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                            <input type="email" id="email" name="email" value="{{ old('email') }}" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
                         </div>
                         <div>
                             <label for="phone" class="block text-gray-700 font-medium mb-2">{{ $contact_form['phone_number'] }}</label>
-                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                            <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
                         </div>
                     </div>
 
@@ -144,7 +170,7 @@
 
                     <div class="mb-6">
                         <label for="message" class="block text-gray-700 font-medium mb-2">{{ $contact_form['message'] }}</label>
-                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">{{ old('message') }}</textarea>
                     </div>
 
                     {{-- <div class="mb-6">

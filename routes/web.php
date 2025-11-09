@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactController;
 
 // Language switch route
 Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('language.switch');
@@ -33,6 +34,8 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'id|en']], functio
     Route::get('/contact', function () {
         return view('contact');
     })->name('contact');
+
+    Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
     Route::get('/product', [ProductController::class, 'index'])->name('product');
 
