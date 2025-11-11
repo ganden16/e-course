@@ -19,7 +19,7 @@ class AdminSeeder extends Seeder
             $email = 'admin' . $i . '@healthcare.com';
 
             // Use local image for each admin
-            $imageUrl = env('APP_URL').'/users/' . (($i % 13) + 1) . '.jpg';
+            $imageUrl = env('APP_URL').'/storage/users/' . (($i % 13) + 1) . '.jpg';
 
             \App\Models\User::create([
                 'name' => $name,
