@@ -40,8 +40,11 @@
                         'primary': '#009b77',
                         'primary-dark': '#174e47',
                         'primary-light': '#d1fae5',
-                        'secondary': '#ffb433',
-                        'secondary-dark': '#ff9500',
+                        // 'secondary': '#ffb433',
+                        'secondary-two': '#ffb433',
+                        'secondary': '#009b77',
+                        // 'secondary-dark': '#ff9500',
+                        'secondary-dark': '#174e47',
                         'accent': '#ffb433',
                         'dark': '#064e3b',
                         'light': '#fcf8ef',
@@ -54,7 +57,7 @@
     </script>
 
     <style>
-        @keyframes float {
+        /* @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
@@ -69,7 +72,7 @@
         }
         .pulse-animation {
             animation: pulse 2s ease-in-out infinite;
-        }
+        } */
         .gradient-bg {
             background: linear-gradient(135deg, #ffb433 0%, #ff9500 100%);
         }
@@ -97,7 +100,7 @@
                 <div class="hidden md:flex items-center space-x-6">
                     @foreach($navItems as $item)
                         <a href="{{ $item['url'] }}"
-                           class="text-gray-100 hover:text-orange transition-colors duration-200 font-medium {{ $item['active'] ? 'text-white' : '' }}">
+                           class="text-gray-200 hover:text-white transition-colors duration-200 font-medium {{ $item['active'] ? 'text-white' : '' }}">
                             {{ $item['name'] }}
                         </a>
                     @endforeach
@@ -147,7 +150,7 @@
             <div x-show="mobileMenu" x-transition class="md:hidden mt-4 pb-4">
                 @foreach($navItems as $item)
                     <a href="{{ $item['url'] }}"
-                       class="block py-2 text-gray-100 hover:text-orange transition-colors duration-200 font-medium {{ $item['active'] ? 'text-white' : '' }}">
+                       class="block py-2 text-gray-200 hover:text-white transition-colors duration-200 font-medium {{ $item['active'] ? 'text-white' : '' }}">
                         {{ $item['name'] }}
                     </a>
                 @endforeach
@@ -166,7 +169,7 @@
                 </div>
 
                 <div class="mt-4">
-                    <a href="{{ $baseUrl }}/product" class="block w-full bg-secondary hover:bg-secondary-dark text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-center">
+                    <a href="{{ $baseUrl }}/product" class="mx-auto  block w-1/2 bg-secondary-dark hover:bg-secondary text-white font-semibold py-2 px-6 rounded-full transition duration-300 text-center">
                         {{ $navigation['browse_courses'] }}
                     </a>
                 </div>

@@ -53,7 +53,7 @@
             <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ $hero['stats_title'] }}</h2>
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $hero['stats_subtitle'] }}</p>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="flex justify-around">
             @foreach($community['stats'] as $stat)
                 <div class="text-center">
                     <div class="text-3xl md:text-4xl font-bold text-secondary mb-2 pulse-animation">{{ $stat['number'] }}</div>
@@ -76,30 +76,30 @@
 {{-- Main content join our community --}}
 <section class="py-16 md:py-24 relative overflow-hidden">
     <!-- Animated Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800">
+    <div class="absolute inset-0 bg-gradient-to-br from-emerald-900 via-teal-800 to-green-800">
         <div class="absolute inset-0 bg-black opacity-40"></div>
-        <!-- Animated Elements -->
-        <div class="absolute top-20 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div class="absolute top-40 right-10 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-        <div class="absolute bottom-20 left-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+        <!-- Animated Elements (Green Tones) -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-teal-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div class="absolute top-40 right-10 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+        <div class="absolute bottom-20 left-1/2 w-80 h-80 bg-green-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
     </div>
 
     <div class="container mx-auto px-6 relative z-10">
         <div class="max-w-6xl mx-auto">
             <!-- Section Header -->
             <div class="text-center mb-16">
-                <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mb-6 mx-auto shadow-2xl transform rotate-12 hover:rotate-0 transition-transform duration-300">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full mb-6 mx-auto shadow-2xl transform rotate-12 hover:rotate-0 transition-transform duration-300">
                     <i class="fas fa-rocket text-3xl text-white"></i>
                 </div>
                 <h2 class="text-4xl md:text-6xl font-bold mb-6 text-white">
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-pink-500">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-green-500">
                         {{ $main_join['title'] }}
                     </span>
                 </h2>
                 <p class="text-xl md:text-2xl mb-6 max-w-4xl mx-auto text-gray-200 font-light">
                     {{ $main_join['subtitle'] }}
                 </p>
-                <div class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-pink-500 mx-auto rounded-full"></div>
+                <div class="w-24 h-1 bg-gradient-to-r from-emerald-400 to-green-500 mx-auto rounded-full"></div>
             </div>
 
             <!-- Main Content Card -->
@@ -118,7 +118,7 @@
                         <div class="space-y-4 mb-8">
                             @foreach($main_join['benefits'] as $benefit)
                                 <div class="flex items-start space-x-3">
-                                    <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-secondary to-secondary-dark rounded-full flex items-center justify-center mt-1">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center mt-1">
                                         <i class="fas fa-check text-white text-sm"></i>
                                     </div>
                                     <p class="text-gray-200">{{ $benefit }}</p>
@@ -129,13 +129,13 @@
                         <!-- Stats -->
                         <div class="grid grid-cols-3 gap-4 mb-8">
                             <div class="text-center">
-                                <div class="text-2xl font-bold text-yellow-400">15K+</div>
+                                <div class="text-2xl font-bold text-emerald-400">99+</div>
                                 <div class="text-sm text-gray-300">{{ $locale === 'id' ? 'Anggota' : 'Members' }}</div>
                             </div>
-                            <div class="text-center">
-                                <div class="text-2xl font-bold text-pink-400">50+</div>
+                            {{-- <div class="text-center">
+                                <div class="text-2xl font-bold text-teal-400">50+</div>
                                 <div class="text-sm text-gray-300">{{ $locale === 'id' ? 'Negara' : 'Countries' }}</div>
-                            </div>
+                            </div> --}}
                             <div class="text-center">
                                 <div class="text-2xl font-bold text-green-400">24/7</div>
                                 <div class="text-sm text-gray-300">{{ $locale === 'id' ? 'Dukungan' : 'Support' }}</div>
@@ -145,18 +145,18 @@
 
                     <!-- Right Column - CTA -->
                     <div class="text-center">
-                        <div class="bg-gradient-to-br from-secondary to-secondary-dark rounded-2xl p-8 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                        <div class="bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl p-8 shadow-2xl transform hover:scale-105 transition-transform duration-300">
                             <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-                                <i class="fab fa-whatsapp text-5xl text-secondary"></i>
+                                <i class="fab fa-telegram text-5xl text-emerald-600"></i>
                             </div>
                             <h4 class="text-2xl font-bold text-white mb-4">
                                 {{ $locale === 'id' ? 'Bergabung Sekarang!' : 'Join Now!' }}
                             </h4>
                             <p class="text-white mb-6 opacity-90">
-                                {{ $locale === 'id' ? 'Klik tombol di bawah untuk bergabung melalui WhatsApp' : 'Click the button below to join via WhatsApp' }}
+                                {{ $locale === 'id' ? 'Klik tombol di bawah untuk bergabung melalui Telegram' : 'Click the button below to join via Telegram' }}
                             </p>
-                            <a href="https://wa.link/wi8d3y" target="_blank" class="bg-white text-green-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg inline-flex items-center justify-center w-full">
-                                <i class="fab fa-whatsapp text-2xl mr-3"></i>
+                            <a href="https://t.me/+Pr90XWqdSBsyMTg9" target="_blank" class="bg-white text-emerald-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg inline-flex items-center justify-center w-full">
+                                <i class="fab fa-telegram text-2xl mr-3"></i>
                                 {{ $main_join['button_text'] }}
                             </a>
                             <div class="mt-4 text-white text-sm opacity-75">
@@ -172,10 +172,10 @@
             <div class="text-center mt-12">
                 <div class="inline-flex items-center space-x-4 bg-white bg-opacity-10 backdrop-blur-lg rounded-full px-6 py-3">
                     <div class="flex -space-x-2">
-                        <div class="w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full border-2 border-white"></div>
-                        <div class="w-8 h-8 bg-gradient-to-br from-pink-400 to-red-500 rounded-full border-2 border-white"></div>
-                        <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full border-2 border-white"></div>
-                        <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-teal-500 rounded-full border-2 border-white"></div>
+                        <div class="w-8 h-8 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full border-2 border-white"></div>
+                        <div class="w-8 h-8 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full border-2 border-white"></div>
+                        <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full border-2 border-white"></div>
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-teal-500 rounded-full border-2 border-white"></div>
                     </div>
                     <p class="text-white font-medium">
                         <span class="font-bold">99+</span>
@@ -197,9 +197,9 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($community['social_links'] as $social)
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <div class="bg-white rounded-xl shadow-lime-700 shadow-lg overflow-hidden card-hover">
                     <div class="p-8 text-center">
-                        <div class="bg-gradient-to-br from-{{ $social['name'] == 'Facebook' ? 'blue-500 to-blue-600' : ($social['name'] == 'Twitter' ? 'blue-400 to-blue-500' : ($social['name'] == 'LinkedIn' ? 'blue-600 to-blue-700' : ($social['name'] == 'Instagram' ? 'purple-500 to-pink-500' : ($social['name'] == 'YouTube' ? 'red-500 to-red-600' : 'indigo-500 to-indigo-600')))) }} text-orange rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                        <div class="bg-secondary text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                             <i class="{{ $social['icon'] }} text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-semibold mb-3">{{ $social['name'] }}</h3>
@@ -224,42 +224,42 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="fas fa-users text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $membership['network_peers']['title'] }}</h3>
                 <p class="text-gray-600">{{ $membership['network_peers']['description'] }}</p>
             </div>
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="fas fa-chalkboard-teacher text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $membership['learn_experts']['title'] }}</h3>
                 <p class="text-gray-600">{{ $membership['learn_experts']['description'] }}</p>
             </div>
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="fas fa-briefcase text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $membership['career_opportunities']['title'] }}</h3>
                 <p class="text-gray-600">{{ $membership['career_opportunities']['description'] }}</p>
             </div>
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="fas fa-lightbulb text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $membership['share_knowledge']['title'] }}</h3>
                 <p class="text-gray-600">{{ $membership['share_knowledge']['description'] }}</p>
             </div>
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="fas fa-calendar-alt text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $membership['events_workshops']['title'] }}</h3>
                 <p class="text-gray-600">{{ $membership['events_workshops']['description'] }}</p>
             </div>
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="fas fa-trophy text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $membership['achievements']['title'] }}</h3>
@@ -317,28 +317,28 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="{{ $our_community_program['remote_care_talk']['icon'] }} text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $our_community_program['remote_care_talk']['title'] }}</h3>
                 <p class="text-gray-600">{{ $our_community_program['remote_care_talk']['description'] }}</p>
             </div>
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="{{ $our_community_program['remote_care_qa_live']['icon'] }} text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $our_community_program['remote_care_qa_live']['title'] }}</h3>
                 <p class="text-gray-600">{{ $our_community_program['remote_care_qa_live']['description'] }}</p>
             </div>
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="{{ $our_community_program['mva_discussion_room']['icon'] }} text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $our_community_program['mva_discussion_room']['title'] }}</h3>
                 <p class="text-gray-600">{{ $our_community_program['mva_discussion_room']['description'] }}</p>
             </div>
             <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                     <i class="{{ $our_community_program['networking_job_opportunities']['icon'] }} text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $our_community_program['networking_job_opportunities']['title'] }}</h3>
@@ -394,7 +394,7 @@
 <!-- CTA Section -->
 <section class="py-16 bg-primary text-white relative overflow-hidden">
     <!-- Animated Background with Secondary-Dark Curved Ribbon Pattern -->
-    <div class="absolute inset-0 z-10">
+    {{-- <div class="absolute inset-0 z-10">
         <!-- Curved Ribbon 1 - Top Left -->
         <svg class="absolute top-0 left-0 w-96 h-96" viewBox="0 0 400 400">
             <path d="M0,100 Q100,0 200,100 T400,100 L400,150 Q300,250 200,150 T0,150 Z"
@@ -434,18 +434,18 @@
                   fill="currentColor"
                   class="text-secondary-dark"/>
         </svg>
-    </div>
+    </div> --}}
 
     <div class="container mx-auto px-6 text-center relative z-10">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
         <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ $baseUrl }}/product" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+            <a href="{{ $baseUrl }}/bootcamp" class="bg-secondary border-2 border-white hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                 {{ $cta['start_learning'] }}
             </a>
-            <a href="https://discord.gg/HealthCare" target="_blank" class="bg-transparent border-2 border-white hover:bg-white hover:text-secondary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+            {{-- <a href="https://discord.gg/HealthCare" target="_blank" class="bg-transparent border-2 border-white hover:bg-white hover:text-secondary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
                 {{ $cta['join_discord'] }}
-            </a>
+            </a> --}}
         </div>
     </div>
 </section>

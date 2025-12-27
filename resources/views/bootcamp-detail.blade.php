@@ -481,7 +481,7 @@
 
                 <!-- Benefits for Students -->
                 <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 shadow-lg">
-                    <h3 class="text-2xl font-bold text-green-800 mb-6 text-center">{{ $locale === 'id' ? 'Manfaat bagi Siswa' : 'Benefits for Students' }}</h3>
+                    <h3 class="text-2xl font-bold text-green-800 mb-6 text-center">{{ $locale === 'id' ? 'Manfaat bagi Orang' : 'Benefits for Students' }}</h3>
                     <div class="grid md:grid-cols-2 gap-6">
                         @foreach($translations['partner_clinics']['for_students'] as $key => $benefit)
                             <div class="text-center">

@@ -285,8 +285,8 @@
                 <div>
                     <h4 class="font-semibold mb-4">Kontak</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><i class="fas fa-envelope mr-2"></i>info@HealthCare.com</li>
-                        <li><i class="fas fa-phone mr-2"></i>+62 812-3456-7890</li>
+                        <li><i class="fas fa-envelope mr-2"></i>healthcareremotecircle@gmail.com</li>
+                        <li><i class="fas fa-phone mr-2"></i>+6285704677707</li>
                     </ul>
                 </div>
                 <div>

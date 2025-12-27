@@ -12,12 +12,12 @@ return [
         'contact_info' => [
             [
                 'type' => 'Email',
-                'value' => 'info@HealthCare.com',
+                'value' => 'healthcareremotecircle@gmail.com',
                 'icon' => 'fas fa-envelope'
             ],
             [
                 'type' => 'Phone',
-                'value' => '+62 812-3456-7890',
+                'value' => '+6285704677707',
                 'icon' => 'fas fa-phone'
             ],
             [

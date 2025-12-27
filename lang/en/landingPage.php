@@ -6,8 +6,8 @@ return [
         'tagline' => 'Unlock Your Potential with Digital Learning',
         'description' => 'Leading e-learning platform providing quality digital courses and bootcamps to advance your career.',
         'logo' => 'assets/images/logo1.png',
-        'email' => 'info@HealthCare.com',
-        'phone' => '+62 812-3456-7890',
+        'email' => 'healthcareremotecircle@gmail.com',
+        'phone' => '+6285704677707',
         'address' => 'Surabaya, Indonesia'
     ],
 
@@ -40,9 +40,9 @@ return [
         'courses_available' => 'Courses Available',
         'satisfaction_rate' => 'Satisfaction Rate',
         'data' => [
-            ['number' => '15,000+', 'label' => 'Active Students'],
-            ['number' => '50+', 'label' => 'Expert Instructors'],
-            ['number' => '100+', 'label' => 'Courses Available'],
+            ['number' => '99+', 'label' => 'Active Students'],
+            ['number' => '5+', 'label' => 'Expert Instructors'],
+            ['number' => '10+', 'label' => 'Courses Available'],
             ['number' => '95%', 'label' => 'Satisfaction Rate']
         ]
     ],
@@ -82,11 +82,11 @@ return [
                 'title' => 'Practice-Based & Internship Programs',
                 'description' => 'Gain real-world experience through internships with partner clinics, hands-on projects, and guided mentorship.'
             ],
-            [
-                'emoji' => '💡',
-                'title' => 'Affordable Investment, Maximum Value',
-                'description' => 'Enjoy high-quality training, mentorship, and career development — all at an accessible price for healthcare professionals worldwide.'
-            ]
+            // [
+            //     'emoji' => '💡',
+            //     'title' => 'Affordable Investment, Maximum Value',
+            //     'description' => 'Enjoy high-quality training, mentorship, and career development — all at an accessible price for healthcare professionals worldwide.'
+            // ]
         ]
     ],
 

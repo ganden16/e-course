@@ -98,28 +98,28 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div class="text-center">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-certificate text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $features['certificate']['title'] }}</h3>
                 <p class="text-gray-600">{{ $features['certificate']['description'] }}</p>
             </div>
             <div class="text-center">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-infinity text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $features['lifetime_access']['title'] }}</h3>
                 <p class="text-gray-600">{{ $features['lifetime_access']['description'] }}</p>
             </div>
             <div class="text-center">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-mobile-alt text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $features['mobile_access']['title'] }}</h3>
                 <p class="text-gray-600">{{ $features['mobile_access']['description'] }}</p>
             </div>
             <div class="text-center">
-                <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-headset text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-2">{{ $features['support_24_7']['title'] }}</h3>
@@ -132,7 +132,7 @@
 <!-- CTA Section -->
 <section class="py-16 bg-primary text-white relative overflow-hidden">
     <!-- Animated Background with Secondary-Dark Diagonal Ribbon Pattern -->
-    <div class="absolute inset-0 z-10">
+    {{-- <div class="absolute inset-0 z-10">
         <!-- Diagonal Ribbon 1 - Top Left to Bottom Right -->
         <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 1200 400">
             <path d="M0,0 L300,0 L200,400 L0,400 Z"
@@ -161,12 +161,12 @@
                   fill="currentColor"
                   class="text-secondary-dark opacity-80"/>
         </svg>
-    </div>
+    </div> --}}
 
     <div class="container mx-auto px-6 text-center relative z-10">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
         <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
-        <a href="{{ $baseUrl }}/contact" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+        <a href="{{ $baseUrl }}/contact" class="bg-secondary border-2 border-white hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
             {{ $cta['request_course'] }}
         </a>
     </div>
@@ -175,79 +175,28 @@
 @include('components.footer')
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const categoryFilter = document.getElementById('categoryFilter');
-    const sortFilter = document.getElementById('sortFilter');
-    const coursesGrid = document.getElementById('coursesGrid');
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-    let currentPage = 2; // Start from page 2 since page 1 is already loaded
-    let currentSort = 'default';
-    let currentCategory = '';
+    document.addEventListener('DOMContentLoaded', function() {
+        const categoryFilter = document.getElementById('categoryFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        const coursesGrid = document.getElementById('coursesGrid');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        let currentPage = 1; // Start from page 1
+        let currentSort = 'default';
+        let currentCategory = '';
+        let isLoading = false; // Flag to prevent multiple simultaneous requests
 
-    // Filter functionality
-    function filterCourses() {
-        const selectedCategory = categoryFilter.value;
-        currentCategory = selectedCategory;
-        const courseItems = Array.from(coursesGrid.querySelectorAll('.course-item'));
+        // Function to load products with filters and sorting
+        function loadProducts(append = false) {
+            if (isLoading) return;
+            isLoading = true;
 
-        courseItems.forEach(item => {
-            const itemCategory = item.getAttribute('data-category');
-
-            if (selectedCategory === '' || itemCategory === selectedCategory) {
-                item.style.display = 'block';
+            if (!append) {
+                currentPage = 1; // Reset to page 1 for new filters
+                coursesGrid.innerHTML = '<div class="col-span-3 text-center py-8"><i class="fas fa-spinner fa-spin text-4xl text-secondary"></i></div>';
             } else {
-                item.style.display = 'none';
+                loadMoreBtn.disabled = true;
+                loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Loading...';
             }
-        });
-    }
-
-    // Sort functionality
-    function sortCourses() {
-        const sortValue = sortFilter.value;
-        currentSort = sortValue;
-        const courseItems = Array.from(coursesGrid.querySelectorAll('.course-item'));
-        let sortedItems = [...courseItems];
-
-        switch(sortValue) {
-            case 'price-low':
-                sortedItems.sort((a, b) => {
-                    return parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price'));
-                });
-                break;
-            case 'price-high':
-                sortedItems.sort((a, b) => {
-                    return parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price'));
-                });
-                break;
-            case 'rating':
-                sortedItems.sort((a, b) => {
-                    return parseFloat(b.getAttribute('data-rating')) - parseFloat(a.getAttribute('data-rating'));
-                });
-                break;
-            case 'students':
-                sortedItems.sort((a, b) => {
-                    return parseInt(b.getAttribute('data-students')) - parseInt(a.getAttribute('data-students'));
-                });
-                break;
-            default:
-                // Default order
-                sortedItems = courseItems;
-        }
-
-        // Clear and re-append sorted items
-        coursesGrid.innerHTML = '';
-        sortedItems.forEach(item => {
-            if (item.style.display !== 'none') {
-                coursesGrid.appendChild(item);
-            }
-        });
-    }
-
-    // Load more functionality
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', function() {
-            loadMoreBtn.disabled = true;
-            loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Loading...';
 
             const url = new URL(window.location.href);
             const params = new URLSearchParams(url.search);
@@ -274,42 +223,77 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Get all course items from the response
                     const newCourseItems = tempDiv.querySelectorAll('.course-item');
 
+                    if (!append) {
+                        // Clear the grid and add new items
+                        coursesGrid.innerHTML = '';
+                    }
+
                     // Append each new course item to the grid
                     newCourseItems.forEach(item => {
                         coursesGrid.appendChild(item);
                     });
 
-                    // Reapply sorting if needed
-                    if (currentSort !== 'default') {
-                        sortCourses();
+                    // Update or hide the load more button
+                    if (loadMoreBtn) {
+                        if (data.hasMore) {
+                            loadMoreBtn.style.display = 'inline-block';
+                        } else {
+                            loadMoreBtn.style.display = 'none';
+                        }
                     }
 
-                    currentPage++;
-
-                    // Hide button if no more items
-                    if (!data.hasMore) {
+                    if (append) {
+                        currentPage++;
+                    } else {
+                        currentPage = 2; // Next page to load will be 2
+                    }
+                } else if (!append) {
+                    // No products found
+                    coursesGrid.innerHTML = '<div class="col-span-3 text-center py-8 text-gray-600">No courses found matching your criteria.</div>';
+                    if (loadMoreBtn) {
                         loadMoreBtn.style.display = 'none';
                     }
                 }
 
-                loadMoreBtn.disabled = false;
-                loadMoreBtn.innerHTML = '{{ $load_more["courses"] }}';
+                isLoading = false;
+                if (append && loadMoreBtn) {
+                    loadMoreBtn.disabled = false;
+                    loadMoreBtn.innerHTML = '{{ $load_more["courses"] }}';
+                }
             })
             .catch(error => {
-                console.error('Error loading more courses:', error);
-                loadMoreBtn.disabled = false;
-                loadMoreBtn.innerHTML = '{{ $load_more["courses"] }}';
+                console.error('Error loading courses:', error);
+                isLoading = false;
+                if (!append) {
+                    coursesGrid.innerHTML = '<div class="col-span-3 text-center py-8 text-red-600">Error loading courses. Please try again.</div>';
+                }
+                if (append && loadMoreBtn) {
+                    loadMoreBtn.disabled = false;
+                    loadMoreBtn.innerHTML = '{{ $load_more["courses"] }}';
+                }
             });
-        });
-    }
+        }
 
-    categoryFilter.addEventListener('change', function() {
-        filterCourses();
-        sortCourses();
-    });
+        // Filter functionality
+        function filterCourses() {
+            currentCategory = categoryFilter.value;
+            loadProducts(false); // Load new products (don't append)
+        }
 
-    sortFilter.addEventListener('change', function() {
-        sortCourses();
+        // Sort functionality
+        function sortCourses() {
+            currentSort = sortFilter.value;
+            loadProducts(false); // Load new products (don't append)
+        }
+
+        // Load more functionality
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                loadProducts(true); // Append more products
+            });
+        }
+
+        categoryFilter.addEventListener('change', filterCourses);
+        sortFilter.addEventListener('change', sortCourses);
     });
-});
 </script>

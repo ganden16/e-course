@@ -12,12 +12,12 @@ return [
         'contact_info' => [
             [
                 'type' => 'Email',
-                'value' => 'info@HealthCare.com',
+                'value' => 'healthcareremotecircle@gmail.com',
                 'icon' => 'fas fa-envelope'
             ],
             [
                 'type' => 'Telepon',
-                'value' => '+62 812-3456-7890',
+                'value' => '+6285704677707',
                 'icon' => 'fas fa-phone'
             ],
             [
@@ -123,7 +123,7 @@ return [
     // CTA Section
     'cta' => [
         'title' => 'Siap Memulai Perjalanan Pembelajaran Anda?',
-        'subtitle' => 'Bergabunglah dengan ribuan siswa yang sudah memajukan karir mereka dengan kursus kami.',
+        'subtitle' => 'Bergabunglah dengan ribuan orang yang sudah memajukan karir mereka dengan kursus kami.',
         'browse_courses' => 'Jelajahi Kursus',
         'explore_bootcamps' => 'Jelajahi Bootcamp'
     ]

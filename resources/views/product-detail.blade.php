@@ -208,7 +208,7 @@
     @if(count($relatedProducts) > 0)
     <section class="py-16 bg-light">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $related_courses['title'] }}</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $locale == 'en' ? 'Related Products' : 'Produk Terkait' }}</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach($relatedProducts as $relatedProduct)
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
@@ -245,7 +245,7 @@
     <!-- Other Products Section -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">Product Lainnya</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $locale == 'en' ? 'Other Products' : 'Produk Lainnya' }}</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach($otherProducts as $otherProduct)
                     <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden card-hover">
@@ -299,7 +299,7 @@
     <!-- CTA Section -->
     <section class="py-16 bg-primary text-white relative overflow-hidden">
         <!-- Animated Background with Secondary-Dark Diamond Ribbon Pattern -->
-        <div class="absolute inset-0 z-10">
+        {{-- <div class="absolute inset-0 z-10">
             <!-- Diamond Ribbon 1 - Top Left -->
             <svg class="absolute top-0 left-0 w-80 h-80" viewBox="0 0 300 300">
                 <path d="M150,50 L200,100 L150,150 L100,100 Z"
@@ -363,12 +363,12 @@
                       fill="currentColor"
                       class="text-secondary-dark opacity-80"/>
             </svg>
-        </div>
+        </div> --}}
 
         <div class="container mx-auto px-6 text-center relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
             <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
-            <button class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+            <button class="bg-secondary border-2 border-white hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                 <i class="fas fa-shopping-cart mr-2"></i> {{ $cta['enroll_now'] }}
             </button>
         </div>

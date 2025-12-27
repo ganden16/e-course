@@ -3,63 +3,51 @@ return [
     // Hero Section
     'hero' => [
         'title' => 'Tentang Healthcare Remote Circle',
-        'subtitle' => 'Memberdayakan Pelajar di Seluruh Dunia Sejak 2020'
+        'subtitle' => 'Memberdayakan Profesional Kesehatan untuk Bekerja Jarak Jauh di Seluruh Dunia'
     ],
 
     // About Data
     'about' => [
         'title' => 'Tentang Healthcare Remote Circle',
-        'subtitle' => 'Memberdayakan Pelajar di Seluruh Dunia Sejak 2020',
-        'description' => 'Healthcare Remote Circle adalah platform pembelajaran online terkemuka yang didedikasikan untuk menyediakan pendidikan berkualitas tinggi kepada siswa di seluruh dunia. Misi kami adalah membuat pendidikan dapat diakses, terjangkau, dan efektif untuk semua orang.',
-        'image' => 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-        'story' => 'Didirikan pada tahun 2020, Healthcare Remote Circle dimulai dengan visi sederhana: mendemokratisasikan pendidikan dengan memanfaatkan teknologi. Yang dimulai sebagai startup kecil telah berkembang menjadi komunitas pembelajaran global dengan lebih dari 15.000 siswa di lebih dari 50 negara.',
-        'mission' => 'Misi kami adalah mengubah hidup melalui pendidikan dengan menyediakan pengalaman pembelajaran yang dapat diakses dan berkualitas tinggi yang memberdayakan individu untuk mencapai tujuan karir mereka dan memberikan dampak positif di dunia.',
+        'subtitle' => 'Memberdayakan Profesional Kesehatan untuk Bekerja Jarak Jauh di Seluruh Dunia',
+        'description' => 'Healthcare Remote Circle (HRC) adalah komunitas yang mendukung dan pusat pelatihan bagi profesional kesehatan yang beralih ke karir digital dan jarak jauh, terutama sebagai Medical Virtual Assistants (MVAs). Kami adalah bagian dari CV Medivra Global, perusahaan yang berkomitmen untuk membuat pekerjaan kesehatan jarak jauh dapat diakses, kredibel, dan berkelanjutan.',
+        'image' => 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+        'story' => 'Apa yang dimulai sebagai komunitas yang penuh gairah telah berkembang menjadi organisasi terstruktur dengan program pelatihan, mentorship, dan jaringan lulusan yang terus bertambah yang membentuk masa depan dukungan kesehatan jarak jauh. HRC dimulai sebagai gerakan akar rumput dari profesional kesehatan yang berbagi pengalaman dan saling mendukung dalam transformasi karir.',
+        'mission' => 'Untuk memberdayakan, mendidik, dan menghubungkan bakat-bakat kesehatan melalui program terstruktur, peluang global, dan jaringan profesional yang kuat.',
         'values' => [
             [
-                'title' => 'Pendidikan Berkualitas',
-                'description' => 'Kami berkomitmen untuk memberikan konten pendidikan berkualitas tertinggi, diajarkan oleh ahli industri dan dirancang untuk memberikan keterampilan dunia nyata.',
-                'icon' => 'fas fa-graduation-cap'
+                'title' => 'Berbagi',
+                'description' => 'Pertukaran pengetahuan, keterampilan, dan pengalaman melalui pelatihan, mentorship, dan dukungan komunitas.',
+                'icon' => 'fas fa-share-alt'
             ],
             [
-                'title' => 'Aksesibilitas',
-                'description' => 'Kami percaya pendidikan harus dapat diakses oleh semua orang, terlepas dari latar belakang, lokasi, atau situasi keuangan mereka.',
-                'icon' => 'fas fa-universal-access'
+                'title' => 'Belajar',
+                'description' => 'Menerima pembelajaran berkelanjutan, inovasi, dan aplikasi praktis dalam operasional kesehatan.',
+                'icon' => 'fas fa-book-open'
             ],
             [
-                'title' => 'Inovasi',
-                'description' => 'Kami terus-menerus menginovasi metode pengajaran dan teknologi kami untuk memberikan pengalaman pembelajaran yang paling efektif.',
-                'icon' => 'fas fa-lightbulb'
+                'title' => 'Berkembang',
+                'description' => 'Membangun jalur karir yang berkelanjutan dan jaringan global MVAs yang terampil.',
+                'icon' => 'fas fa-chart-line'
             ],
             [
                 'title' => 'Komunitas',
-                'description' => 'Kami memupuk komunitas pembelajaran yang mendukung di mana siswa dapat terhubung, berkolaborasi, dan tumbuh bersama.',
+                'description' => 'Kami menciptakan lingkungan yang aman, inklusif, dan mendukung bagi semua profesional kesehatan yang beralih ke karir jarak jauh.',
                 'icon' => 'fas fa-users'
             ]
         ],
         'team' => [
             [
-                'name' => 'Sarah Johnson',
-                'role' => 'CEO & Pendiri',
+                'name' => 'Amatul Akhlak Firdaus',
+                'role' => 'Co-Founder',
                 'avatar' => 'assets/images/users/9.jpg',
-                'bio' => 'Sarah adalah pendidik yang bersemangat dengan pengalaman lebih dari 15 tahun dalam teknologi pendidikan dan pembelajaran online.'
+                'bio' => 'Berpengalaman dalam memberdayakan profesional kesehatan untuk beralih ke karir digital dan membangun peluang kerja jarak jauh yang berkelanjutan.'
             ],
             [
-                'name' => 'Michael Chen',
-                'role' => 'CTO & Co-Pendiri',
-                'avatar' => 'assets/images/users/10.jpg',
-                'bio' => 'Michael adalah visioner teknologi dengan pengalaman luas dalam membangun platform pendidikan yang skalabel.'
-            ],
-            [
-                'name' => 'Amanda Rodriguez',
-                'role' => 'Kepala Kurikulum',
+                'name' => 'Aisha Maulidya Sari',
+                'role' => 'Co-Founder',
                 'avatar' => 'assets/images/users/12.jpg',
-                'bio' => 'Amanda memastikan kurikulum kami tetap relevan, komprehensif, dan selaras dengan kebutuhan industri.'
-            ],
-            [
-                'name' => 'David Wilson',
-                'role' => 'Kepala Kesuksesan Siswa',
-                'avatar' => 'assets/images/users/4.jpg',
-                'bio' => 'David didedikasikan untuk memastikan siswa kami memiliki dukungan yang mereka butuhkan untuk berhasil dalam perjalanan pembelajaran mereka.'
+                'bio' => 'Didedikasikan untuk menciptakan program pelatihan terstruktur yang mempersiapkan profesional kesehatan untuk sukses di ekosistem kesehatan digital.'
             ]
         ]
     ],
@@ -67,71 +55,71 @@ return [
     // About Story Section
     'story' => [
         'title' => 'Cerita Kami',
-        'description' => 'Kami percaya bahwa pendidikan berkualitas harus dapat diakses oleh semua orang, terlepas dari latar belakang atau lokasi mereka. Itulah mengapa kami telah membangun platform yang menggabungkan teknologi canggih dengan metodologi pengajaran yang terbukti untuk menciptakan pengalaman pembelajaran yang menarik dan efektif.',
-        'explore_courses' => 'Jelajahi Kursus Kami'
+        'description' => 'HRC dimulai sebagai gerakan akar rumput dari profesional kesehatan yang berbagi pengalaman dan saling mendukung dalam transformasi karir. Hari ini, telah berkembang menjadi program dan jaringan terstruktur yang menggabungkan pelatihan, mentorship, dan peluang global.',
+        'explore_courses' => 'Jelajahi Produk'
     ],
 
     // Mission & Vision Section
     'mission_vision' => [
         'mission' => [
             'title' => 'Misi Kami',
-            'description' => 'Misi kami adalah mengubah hidup melalui pendidikan dengan menyediakan pengalaman pembelajaran yang dapat diakses dan berkualitas tinggi yang memberdayakan individu untuk mencapai tujuan karir mereka dan memberikan dampak positif di dunia.'
+            'description' => 'Untuk memberdayakan, mendidik, dan menghubungkan bakat-bakat kesehatan melalui program terstruktur, peluang global, dan jaringan profesional yang kuat.'
         ],
         'vision' => [
             'title' => 'Visi Kami',
-            'description' => 'Untuk menjadi platform pembelajaran online terkemuka di dunia, memberdayakan jutaan pelajar untuk mencapai potensi penuh mereka dan mengubah hidup mereka melalui pendidikan.'
+            'description' => 'Untuk membuat pekerjaan kesehatan jarak jauh dapat diakses, kredibel, dan berkelanjutan bagi profesional di seluruh dunia.'
         ]
     ],
 
     // Stats Section
     'stats' => [
         'title' => 'Dampak Kami',
-        'subtitle' => 'Angka-angka yang berbicara banyak tentang komitmen kami pada pendidikan.',
+        'subtitle' => 'Angka-angka yang berbicara banyak tentang komitmen kami kepada profesional kesehatan.',
         'data' => [
             [
-                'number' => '15,000+',
-                'label' => 'Siswa Aktif'
+                'number' => '1000+',
+                'label' => 'Anggota Komunitas'
             ],
             [
-                'number' => '50+',
-                'label' => 'Instruktur Ahli'
+                'number' => '2025',
+                'label' => 'Tahun Berdiri'
             ],
             [
-                'number' => '100+',
-                'label' => 'Kursus Tersedia'
+                'number' => '3',
+                'label' => 'Program Inti'
             ],
             [
-                'number' => '95%',
-                'label' => 'Tingkat Kepuasan'
+                'number' => '2',
+                'label' => 'Co-Founder Ahli'
             ]
         ]
     ],
 
     // Values Section
     'values' => [
-        'title' => 'Nilai-Nilai Kami',
+        'title' => 'Nilai-Nilai Inti Kami',
         'subtitle' => 'Prinsip-prinsip yang memandu semua yang kami lakukan.',
-        'quality_education' => [
-            'title' => 'Pendidikan Berkualitas',
-            'description' => 'Kami berkomitmen untuk memberikan konten pendidikan berkualitas tertinggi, diajarkan oleh ahli industri dan dirancang untuk memberikan keterampilan dunia nyata.'
+        'share' => [
+            'title' => 'Berbagi',
+            'description' => 'Pertukaran pengetahuan, keterampilan, dan pengalaman melalui pelatihan, mentorship, dan dukungan komunitas.'
         ],
-        'accessibility' => [
-            'title' => 'Aksesibilitas',
-            'description' => 'Kami percaya pendidikan harus dapat diakses oleh semua orang, terlepas dari latar belakang, lokasi, atau situasi keuangan mereka.'
+        'learn' => [
+            'title' => 'Belajar',
+            'description' => 'Menerima pembelajaran berkelanjutan, inovasi, dan aplikasi praktis dalam operasional kesehatan.'
         ],
-        'innovation' => [
-            'title' => 'Inovasi',
-            'description' => 'Kami terus-menerus menginovasi metode pengajaran dan teknologi kami untuk memberikan pengalaman pembelajaran yang paling efektif.'
+        'grow' => [
+            'title' => 'Berkembang',
+            'description' => 'Membangun jalur karir yang berkelanjutan dan jaringan global MVAs yang terampil.'
         ],
         'community' => [
             'title' => 'Komunitas',
-            'description' => 'Kami memupuk komunitas pembelajaran yang mendukung di mana siswa dapat terhubung, berkolaborasi, dan tumbuh bersama.'
+            'description' => 'Kami menciptakan lingkungan yang aman, inklusif, dan mendukung bagi semua profesional kesehatan.'
         ]
     ],
 
     // Team Section
     'team' => [
-        'title' => 'Temui Tim Kami',
+        'title' => 'Tim Kami',
         'subtitle' => 'Individu-individu bersemangat di balik Healthcare Remote Circle.'
     ],
 
@@ -140,30 +128,30 @@ return [
         'title' => 'Pencapaian Kami',
         'subtitle' => 'Pengakuan dan tonggak sejarah yang menandai perjalanan kami.',
         'best_platform' => [
-            'title' => 'Platform E-Learning Terbaik 2023',
-            'description' => 'Penghargaan dari Tech Education Awards untuk keunggulan dalam pembelajaran online'
+            'title' => 'Pelatihan Kesehatan Khusus',
+            'description' => 'Berfokus secara khusus pada keterampilan Medical Virtual Assistant untuk profesional kesehatan'
         ],
         'global_reach' => [
-            'title' => 'Jangkauan Global',
-            'description' => 'Melayani pelajar di lebih dari 50 negara di 6 benua'
+            'title' => 'Komunitas Global yang Berkembang',
+            'description' => 'Membangun jaringan 1000+ profesional kesehatan yang beralih ke kerja jarak jauh'
         ],
         'industry_recognition' => [
-            'title' => 'Pengakuan Industri',
-            'description' => 'Sertifikat yang diakui oleh perusahaan terkemuka di seluruh dunia'
+            'title' => 'Pembelajaran Berorientasi Karir',
+            'description' => 'Menciptakan jalur menuju karir kesehatan jarak jauh yang bermakna di seluruh dunia'
         ]
     ],
 
     // Partners Section
     'partners' => [
         'title' => 'Mitra Kami',
-        'subtitle' => 'Dipercaya oleh perusahaan dan institusi terkemuka di seluruh dunia.'
+        'subtitle' => 'Menghubungkan penyedia layanan kesehatan dengan Medical Virtual Assistants terampil di seluruh dunia.'
     ],
 
     // CTA Section
     'cta' => [
         'title' => 'Bergabunglah dengan Komunitas Kami',
-        'subtitle' => 'Jadilah bagian dari komunitas pembelajaran yang berkembang pesat dan mulai perjalanan Anda menuju kesuksesan hari ini.',
-        'start_learning' => 'Mulai Belajar',
+        'subtitle' => 'Menjadi bagian dari komunitas kesehatan yang berkembang dan mulai perjalanan Anda menuju karir jarak jauh hari ini.',
+        'start_learning' => 'Bergabung Bootcamp',
         'contact_us' => 'Hubungi Kami'
     ]
 ];

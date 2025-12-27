@@ -18,15 +18,15 @@ return [
         'image' => 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
         'stats' => [
             [
-                'number' => '15,000+',
+                'number' => '99+',
                 'label' => 'Anggota Aktif'
             ],
+            // [
+            //     'number' => '50+',
+            //     'label' => 'Negara'
+            // ],
             [
-                'number' => '50+',
-                'label' => 'Negara'
-            ],
-            [
-                'number' => '1000+',
+                'number' => '99+',
                 'label' => 'Interaksi Harian'
             ],
             [
@@ -37,45 +37,51 @@ return [
         'social_links' => [
             [
                 'name' => 'Facebook',
-                'url' => 'https://www.facebook.com/share/1FgpWiY3hC/',
+                'url' => 'https://dub.sh/gRcQl5R',
                 'icon' => 'fab fa-facebook',
-                'description' => 'Bergabunglah dengan komunitas Facebook kami untuk pembaruan dan diskusi harian'
+                'description' => 'Dapatkan insight eksklusif dan diskusi hangat seputar dunia kesehatan.'
             ],
             [
                 'name' => 'Discord',
                 'url' => 'https://discord.gg/HealthCare',
                 'icon' => 'fab fa-discord',
-                'description' => 'Terhubung dengan siswa dan instruktur secara real-time'
+                'description' => 'Ruang kolaborasi langsung—tanya, diskusi, dan belajar bareng komunitas global.'
             ],
             [
                 'name' => 'LinkedIn',
                 'url' => 'https://bit.ly/3IHNbcK',
                 'icon' => 'fab fa-linkedin',
-                'description' => 'Jaringan profesional dan peluang karir'
+                'description' => 'Kembangkan jaringan profesional dan eksplorasi peluang karier di bidang kesehatan.'
             ],
             [
                 'name' => 'Twitter',
                 'url' => 'https://dub.sh/k8eqlEQ',
                 'icon' => 'fab fa-twitter',
-                'description' => 'Ikuti kami untuk berita industri dan pembaruan'
+                'description' => 'Update cepat, fakta menarik, dan isu terkini—langsung dari sumber terpercaya.'
             ],
             [
                 'name' => 'Instagram',
                 'url' => 'https://bit.ly/InstagramHRC',
                 'icon' => 'fab fa-instagram',
-                'description' => 'Konten di balik layar dan sorotan siswa'
+                'description' => 'Kilas balik kehidupan kampus virtual, momen siswa, dan konten visual inspiratif.'
+            ],
+            [
+                'name' => 'Threads',
+                'url' => 'https://www.threads.com/@healthcare.remotecircle',
+                'icon' => 'fab fa-instagram',
+                'description' => 'Percakapan santai, tips praktis, dan pemikiran mendalam dalam format ringkas.'
             ],
             [
                 'name' => 'YouTube',
                 'url' => 'https://dub.sh/Bnfb8p0',
                 'icon' => 'fab fa-youtube',
-                'description' => 'Tutorial gratis dan pratinjau kursus'
+                'description' => 'Pelajari keterampilan baru lewat demo visual, webinar, dan preview kursus gratis.'
             ],
             [
                 'name' => 'TikTok',
                 'url' => 'https://dub.sh/k8eqlEQ',
                 'icon' => 'fab fa-tiktok',
-                'description' => 'Konten singkat dan tren terkini'
+                'description' => 'Belajar jadi seru! Konten edukatif dalam genggaman. Cepat, segar, dan kekinian.'
             ]
         ]
     ],
@@ -177,7 +183,7 @@ return [
         'title' => 'Bergabung dengan Komunitas Utama Kami',
         'subtitle' => 'Dapatkan akses eksklusif ke sumber daya, mentorship, dan jaringan profesional yang akan mempercepat karir Anda di dunia kesehatan digital.',
         'description' => 'Bergabunglah dengan ribuan profesional kesehatan yang telah memulai perjalanan mereka menuju karir digital yang sukses.',
-        'button_text' => 'Bergabung Sekarang via WhatsApp',
+        'button_text' => 'Bergabung Sekarang via Telegram',
         'benefits' => [
             'Mentorship langsung dari ahli industri',
             'Akses ke peluang karir eksklusif',

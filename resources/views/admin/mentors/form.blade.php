@@ -202,7 +202,7 @@
                             </div>
 
                             <div>
-                                <label for="students_taught" class="block text-sm font-medium text-gray-700 mb-2">Jumlah Siswa</label>
+                                <label for="students_taught" class="block text-sm font-medium text-gray-700 mb-2">Jumlah Orang</label>
                                 <input type="number"
                                        id="students_taught"
                                        name="students_taught"

@@ -56,7 +56,7 @@ return [
             'instructor' => 'Instruktur',
             'category' => 'Kategori',
             'price' => 'Harga',
-            'students' => 'Siswa',
+            'students' => 'Orang',
             'rating' => 'Rating',
             'status' => 'Status',
             'actions' => 'Aksi'
@@ -116,7 +116,7 @@ return [
         'add_new' => 'Tambah Mentor Baru',
         'search_placeholder' => 'Cari mentor...',
         'all_specializations' => 'Semua Spesialisasi',
-        'students' => 'Siswa',
+        'students' => 'Orang',
         'courses' => 'Kursus',
         'bootcamps' => 'Bootcamp',
         'joined' => 'Bergabung',

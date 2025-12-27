@@ -93,13 +93,13 @@
                 <p class="text-gray-600">{{ $totalBootcamps ?? count($bootcamps) }} {{ $filter['bootcamps_available'] }}</p>
             </div>
             <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="categoryFilter">
+                <select class="px-4 py-2 text-black bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="categoryFilter">
                     <option value="">{{ $filter['all_categories'] }}</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
-                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="sortFilter">
+                <select class="px-4 py-2 text-black bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="sortFilter">
                     <option value="default">{{ $filter['sort_by'] }}</option>
                     <option value="price-low">{{ $filter['price_low_high'] }}</option>
                     <option value="price-high">{{ $filter['price_high_low'] }}</option>
@@ -213,7 +213,7 @@
 <!-- CTA Section -->
 <section class="py-16 bg-primary text-white relative overflow-hidden">
     <!-- Animated Background with Secondary-Dark Zigzag Ribbon Pattern -->
-    <div class="absolute inset-0 z-10">
+    {{-- <div class="absolute inset-0 z-10">
         <!-- Zigzag Ribbon 1 - Top -->
         <svg class="absolute top-0 left-0 w-full h-32" viewBox="0 0 1200 128">
             <path d="M0,64 L150,0 L300,64 L450,0 L600,64 L750,0 L900,64 L1050,0 L1200,64 L1200,128 L1050,128 L900,64 L750,128 L600,64 L450,128 L300,64 L150,128 L0,64 Z"
@@ -234,15 +234,15 @@
                   fill="currentColor"
                   class="text-secondary-dark"/>
         </svg>
-    </div>
+    </div> --}}
 
     <div class="container mx-auto px-6 text-center relative z-10">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
         <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ $baseUrl }}/contact" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+            {{-- <a href="{{ $baseUrl }}/contact" class="bg-secondary border-2 border-white hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                 {{ $cta['apply_now'] }}
-            </a>
+            </a> --}}
             <a href="{{ $baseUrl }}/contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-secondary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
                 {{ $cta['schedule_consultation'] }}
             </a>
@@ -253,143 +253,70 @@
 @include('components.footer')
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const categoryFilter = document.getElementById('categoryFilter');
-    const sortFilter = document.getElementById('sortFilter');
-    const bootcampsGrid = document.getElementById('bootcampsGrid');
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-    let currentPage = 2; // Start from page 2 since page 1 is already loaded
-    let currentSort = 'default';
-    let currentCategory = '';
+    document.addEventListener('DOMContentLoaded', function() {
+        const categoryFilter = document.getElementById('categoryFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        const bootcampsGrid = document.getElementById('bootcampsGrid');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
 
-    // Filter functionality
-    function filterBootcamps() {
-        const selectedCategory = categoryFilter.value;
-        currentCategory = selectedCategory;
-        const bootcampItems = Array.from(bootcampsGrid.querySelectorAll('.bootcamp-item'));
+        let currentPage = 1;
+        let isLoading = false;
 
-        bootcampItems.forEach(item => {
-            const itemCategory = item.getAttribute('data-category');
+        // Ambil bootcamp dari server berdasarkan filter & sort
+        function fetchBootcamps(reset = true) {
+            if (isLoading) return;
+            isLoading = true;
 
-            if (selectedCategory === '' || itemCategory === selectedCategory) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    }
-
-    // Sort functionality
-    function sortBootcamps() {
-        const sortValue = sortFilter.value;
-        currentSort = sortValue;
-        const bootcampItems = Array.from(bootcampsGrid.querySelectorAll('.bootcamp-item'));
-        let sortedItems = [...bootcampItems];
-
-        switch(sortValue) {
-            case 'price-low':
-                sortedItems.sort((a, b) => {
-                    return parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price'));
-                });
-                break;
-            case 'price-high':
-                sortedItems.sort((a, b) => {
-                    return parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price'));
-                });
-                break;
-            case 'rating':
-                sortedItems.sort((a, b) => {
-                    return parseFloat(b.getAttribute('data-rating')) - parseFloat(a.getAttribute('data-rating'));
-                });
-                break;
-            case 'duration':
-                sortedItems.sort((a, b) => {
-                    const durationA = parseInt(a.getAttribute('data-duration'));
-                    const durationB = parseInt(b.getAttribute('data-duration'));
-                    return durationA - durationB;
-                });
-                break;
-            default:
-                // Default order
-                sortedItems = bootcampItems;
-        }
-
-        // Clear and re-append sorted items
-        bootcampsGrid.innerHTML = '';
-        sortedItems.forEach(item => {
-            if (item.style.display !== 'none') {
-                bootcampsGrid.appendChild(item);
-            }
-        });
-    }
-
-    // Load more functionality
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', function() {
-            loadMoreBtn.disabled = true;
-            loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Loading...';
-
-            const url = new URL(window.location.href);
-            const params = new URLSearchParams(url.search);
-
-            // Add AJAX parameters
-            params.set('page', currentPage);
-            params.set('sort', currentSort);
-            if (currentCategory) {
-                params.set('category', currentCategory);
-            }
-
-            fetch(`${window.location.pathname}?${params.toString()}`, {
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
+            if (reset) {
+                currentPage = 1;
+                if (loadMoreBtn) {
+                    loadMoreBtn.style.display = 'block';
                 }
+            }
+
+            const url = new URL(window.location.pathname, window.location.origin);
+            const params = url.searchParams;
+            params.set('category', categoryFilter.value || '');
+            params.set('sort', sortFilter.value || 'default');
+            params.set('page', currentPage);
+
+            fetch(`${url.pathname}?${params.toString()}`, {
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
             })
             .then(response => response.json())
             .then(data => {
+                if (reset) {
+                    bootcampsGrid.innerHTML = '';
+                }
+
                 if (data.html) {
-                    // Create a temporary div to parse the HTML
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = data.html;
+                    const temp = document.createElement('div');
+                    temp.innerHTML = data.html;
+                    const items = temp.querySelectorAll('.bootcamp-item');
+                    items.forEach(item => bootcampsGrid.appendChild(item));
 
-                    // Get all bootcamp items from the response
-                    const newBootcampItems = tempDiv.querySelectorAll('.bootcamp-item');
-
-                    // Append each new bootcamp item to the grid
-                    newBootcampItems.forEach(item => {
-                        bootcampsGrid.appendChild(item);
-                    });
-
-                    // Reapply sorting if needed
-                    if (currentSort !== 'default') {
-                        sortBootcamps();
-                    }
-
-                    currentPage++;
-
-                    // Hide button if no more items
-                    if (!data.hasMore) {
+                    if (!data.hasMore && loadMoreBtn) {
                         loadMoreBtn.style.display = 'none';
                     }
                 }
 
-                loadMoreBtn.disabled = false;
-                loadMoreBtn.innerHTML = '{{ $load_more["bootcamps"] }}';
+                isLoading = false;
             })
             .catch(error => {
-                console.error('Error loading more bootcamps:', error);
-                loadMoreBtn.disabled = false;
-                loadMoreBtn.innerHTML = '{{ $load_more["bootcamps"] }}';
+                console.error('Error fetching bootcamps:', error);
+                isLoading = false;
             });
-        });
-    }
+        }
 
-    categoryFilter.addEventListener('change', function() {
-        filterBootcamps();
-        sortBootcamps();
-    });
+        // Event listeners
+        categoryFilter.addEventListener('change', () => fetchBootcamps(true));
+        sortFilter.addEventListener('change', () => fetchBootcamps(true));
 
-    sortFilter.addEventListener('change', function() {
-        sortBootcamps();
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', () => {
+                currentPage++;
+                fetchBootcamps(false);
+            });
+        }
     });
-});
 </script>

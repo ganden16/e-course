@@ -119,7 +119,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             @foreach($about['values'] as $value)
                 <div class="text-center bg-white rounded-xl p-6 shadow-lg card-hover">
-                    <div class="gradient-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
+                    <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 float-animation">
                         <i class="{{ $value['icon'] }} text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">{{ $value['title'] }}</h3>
@@ -236,7 +236,7 @@
 <!-- CTA Section -->
 <section class="py-16 bg-primary text-white relative overflow-hidden">
     <!-- Animated Background with Secondary-Dark Wave Ribbon Pattern -->
-    <div class="absolute inset-0 z-10">
+    {{-- <div class="absolute inset-0 z-10">
         <!-- Wave Ribbon 1 - Top Left -->
         <svg class="absolute top-0 left-0 w-80 h-80" viewBox="0 0 300 300">
             <path d="M0,50 Q75,0 150,50 T300,50 L300,100 Q225,150 150,100 T0,100 Z"
@@ -276,13 +276,13 @@
                   fill="currentColor"
                   class="text-secondary-dark"/>
         </svg>
-    </div>
+    </div> --}}
 
     <div class="container mx-auto px-6 text-center relative z-10">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
         <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ $baseUrl }}/product" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+            <a href="{{ $baseUrl }}/bootcamp" class="bg-secondary border-2 border-white hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                 {{ $cta['start_learning'] }}
             </a>
             <a href="{{ $baseUrl }}/contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-secondary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">

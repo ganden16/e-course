@@ -18,15 +18,15 @@ return [
         'image' => 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
         'stats' => [
             [
-                'number' => '15,000+',
+                'number' => '99+',
                 'label' => 'Active Members'
             ],
+            // [
+            //     'number' => '50+',
+            //     'label' => 'Countries'
+            // ],
             [
-                'number' => '50+',
-                'label' => 'Countries'
-            ],
-            [
-                'number' => '1000+',
+                'number' => '99+',
                 'label' => 'Daily Interactions'
             ],
             [
@@ -37,45 +37,51 @@ return [
         'social_links' => [
             [
                 'name' => 'Facebook',
-                'url' => 'https://www.facebook.com/share/1FgpWiY3hC/',
+                'url' => 'https://dub.sh/gRcQl5R',
                 'icon' => 'fab fa-facebook',
-                'description' => 'Join our Facebook community for daily updates and discussions'
+                'description' => 'Get exclusive insights and join lively discussions about global healthcare trends.'
             ],
             [
                 'name' => 'Discord',
                 'url' => 'https://discord.gg/HealthCare',
                 'icon' => 'fab fa-discord',
-                'description' => 'Connect with students and instructors in real-time'
+                'description' => 'Your real-time hub for questions, collaboration, and community learning with peers worldwide.'
             ],
             [
                 'name' => 'LinkedIn',
                 'url' => 'https://bit.ly/3IHNbcK',
                 'icon' => 'fab fa-linkedin',
-                'description' => 'Professional networking and career opportunities'
+                'description' => 'Grow your professional network and discover career opportunities in the healthcare industry.'
             ],
             [
                 'name' => 'Twitter',
                 'url' => 'https://dub.sh/k8eqlEQ',
                 'icon' => 'fab fa-twitter',
-                'description' => 'Follow us for industry news and updates'
+                'description' => 'Fast updates, quick facts, and breaking news—straight from trusted voices in healthcare.'
             ],
             [
                 'name' => 'Instagram',
                 'url' => 'https://bit.ly/InstagramHRC',
                 'icon' => 'fab fa-instagram',
-                'description' => 'Behind-the-scenes content and student highlights'
+                'description' => 'A visual journey through student life, virtual campus moments, and inspiring stories.'
+            ],
+            [
+                'name' => 'Threads',
+                'url' => 'https://www.threads.com/@healthcare.remotecircle',
+                'icon' => 'fab fa-instagram',
+                'description' => 'Thoughtful takes, practical tips, and meaningful conversations—in bite-sized posts.'
             ],
             [
                 'name' => 'YouTube',
                 'url' => 'https://dub.sh/Bnfb8p0',
                 'icon' => 'fab fa-youtube',
-                'description' => 'Free tutorials and course previews'
+                'description' => 'Master new skills with free course previews, live demos, and expert-led webinars.'
             ],
             [
                 'name' => 'TikTok',
                 'url' => 'https://dub.sh/k8eqlEQ',
                 'icon' => 'fab fa-tiktok',
-                'description' => 'Short-form content and current trends'
+                'description' => 'Learning made fun! Snappy, smart, and trend. Savvy healthcare content just for you.'
             ]
         ]
     ],
@@ -177,7 +183,7 @@ return [
         'title' => 'Join Our Main Community',
         'subtitle' => 'Get exclusive access to resources, mentorship, and professional networking that will accelerate your career in digital healthcare.',
         'description' => 'Join thousands of healthcare professionals who have started their journey to successful digital careers.',
-        'button_text' => 'Join Now via WhatsApp',
+        'button_text' => 'Join Now via Telegram',
         'benefits' => [
             'Direct mentorship from industry experts',
             'Access to exclusive career opportunities',

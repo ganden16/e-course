@@ -45,7 +45,7 @@ return [
         'view_details' => 'Lihat Detail',
         'instructor' => 'Instruktur',
         'duration' => 'Durasi',
-        'students' => 'siswa',
+        'students' => 'orang',
         'off' => 'DISKON'
     ],
 
@@ -69,7 +69,7 @@ return [
     'instructor' => [
         'title' => 'Instruktur Anda',
         'rating' => 'Peringkat',
-        'students' => 'Siswa',
+        'students' => 'Orang',
         'content' => 'Konten'
     ],
 
@@ -82,7 +82,7 @@ return [
     // CTA Section
     'cta' => [
         'title' => 'Siap Memulai Pembelajaran?',
-        'subtitle' => 'Bergabunglah dengan ribuan siswa yang sudah memajukan karir mereka dengan kursus kami.',
+        'subtitle' => 'Bergabunglah dengan ribuan orang yang sudah memajukan karir mereka dengan kursus kami.',
         'request_course' => 'Ajukan Kursus',
         'enroll_now' => 'Daftar di Kursus Ini'
     ],
@@ -102,7 +102,7 @@ return [
         'increase_earning' => 'Tingkatkan potensi penghasilan Anda',
         'access_opportunities' => 'Akses peluang kerja baru',
         'join_community' => 'Bergabung dengan komunitas profesional',
-        'instructor_bio' => 'Expert {category} dengan pengalaman industri lebih dari 10 tahun. Bersemangat dalam mengajar dan membantu siswa mencapai tujuan karir mereka.'
+        'instructor_bio' => 'Expert {category} dengan pengalaman industri lebih dari 10 tahun. Bersemangat dalam mengajar dan membantu orang mencapai tujuan karir mereka.'
     ],
 
     // Products Data

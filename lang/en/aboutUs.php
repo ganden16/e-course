@@ -3,63 +3,51 @@ return [
     // Hero Section
     'hero' => [
         'title' => 'About Healthcare Remote Circle',
-        'subtitle' => 'Empowering Learners Worldwide Since 2020'
+        'subtitle' => 'Empowering Healthcare Professionals to Work Remotely Worldwide'
     ],
 
     // About Data
     'about' => [
         'title' => 'About Healthcare Remote Circle',
-        'subtitle' => 'Empowering Learners Worldwide Since 2020',
-        'description' => 'Healthcare Remote Circle is a leading online learning platform dedicated to providing high-quality education to students worldwide. Our mission is to make education accessible, affordable, and effective for everyone.',
-        'image' => 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-        'story' => 'Founded in 2020, Healthcare Remote Circle started with a simple vision: to democratize education by leveraging technology. What started as a small startup has grown into a global learning community with over 15,000 students in more than 50 countries.',
-        'mission' => 'Our mission is to transform lives through education by providing accessible and high-quality learning experiences that empower individuals to achieve their career goals and make a positive impact in the world.',
+        'subtitle' => 'Empowering Healthcare Professionals to Work Remotely Worldwide',
+        'description' => 'Healthcare Remote Circle (HRC) is a supportive community and training hub for healthcare professionals transitioning into digital and remote careers, particularly as Medical Virtual Assistants (MVAs). We are part of CV Medivra Global, a company committed to making remote healthcare work accessible, credible, and sustainable.',
+        'image' => 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+        'story' => 'What started as a passionate community has now evolved into a structured organization with training programs, mentorship, and a growing network of graduates who are shaping the future of remote healthcare support. HRC began as a grassroots movement of healthcare professionals sharing experiences and supporting each other in career transformation.',
+        'mission' => 'To empower, educate, and connect healthcare talents through structured programs, global opportunities, and a strong professional network.',
         'values' => [
             [
-                'title' => 'Quality Education',
-                'description' => 'We are committed to providing the highest quality educational content, taught by industry experts and designed to deliver real-world skills.',
-                'icon' => 'fas fa-graduation-cap'
+                'title' => 'Share',
+                'description' => 'Exchange knowledge, skills, and experiences through training, mentorship, and community support.',
+                'icon' => 'fas fa-share-alt'
             ],
             [
-                'title' => 'Accessibility',
-                'description' => 'We believe education should be accessible to everyone, regardless of their background, location, or financial situation.',
-                'icon' => 'fas fa-universal-access'
+                'title' => 'Learn',
+                'description' => 'Embrace continuous learning, innovation, and practical application in healthcare operations.',
+                'icon' => 'fas fa-book-open'
             ],
             [
-                'title' => 'Innovation',
-                'description' => 'We constantly innovate our teaching methods and technologies to deliver the most effective learning experience.',
-                'icon' => 'fas fa-lightbulb'
+                'title' => 'Grow',
+                'description' => 'Build a sustainable career path and global network of skilled MVAs.',
+                'icon' => 'fas fa-chart-line'
             ],
             [
                 'title' => 'Community',
-                'description' => 'We foster a supportive learning community where students can connect, collaborate, and grow together.',
+                'description' => 'We foster a safe, inclusive, and supportive environment for all healthcare professionals transitioning to remote careers.',
                 'icon' => 'fas fa-users'
             ]
         ],
         'team' => [
             [
-                'name' => 'Sarah Johnson',
-                'role' => 'CEO & Founder',
+                'name' => 'Amatul Akhlak Firdaus',
+                'role' => 'Co-Founder',
                 'avatar' => 'assets/images/users/9.jpg',
-                'bio' => 'Sarah is a passionate educator with over 15 years of experience in educational technology and online learning.'
+                'bio' => 'Passionate about empowering healthcare professionals to transition into digital careers and build sustainable remote work opportunities.'
             ],
             [
-                'name' => 'Michael Chen',
-                'role' => 'CTO & Co-Founder',
+                'name' => 'Aisha Maulidya Sari',
+                'role' => 'Co-Founder',
                 'avatar' => 'assets/images/users/12.jpg',
-                'bio' => 'Michael is a technology visionary with extensive experience in building scalable educational platforms.'
-            ],
-            [
-                'name' => 'Amanda Rodriguez',
-                'role' => 'Head of Curriculum',
-                'avatar' => 'assets/images/users/10.jpg',
-                'bio' => 'Amanda ensures our curriculum remains relevant, comprehensive, and aligned with industry needs.'
-            ],
-            [
-                'name' => 'David Wilson',
-                'role' => 'Head of Student Success',
-                'avatar' => 'assets/images/users/4.jpg',
-                'bio' => 'David is dedicated to ensuring our students have the support they need to succeed in their learning journey.'
+                'bio' => 'Dedicated to creating structured training programs that prepare healthcare professionals for success in the digital healthcare ecosystem.'
             ]
         ]
     ],
@@ -67,65 +55,65 @@ return [
     // About Story Section
     'story' => [
         'title' => 'Our Story',
-        'description' => 'We believe that quality education should be accessible to everyone, regardless of their background or location. That\'s why we\'ve built a platform that combines cutting-edge technology with proven teaching methodologies to create an engaging and effective learning experience.',
-        'explore_courses' => 'Explore Our Courses'
+        'description' => 'HRC started as a grassroots movement of healthcare professionals sharing experiences and supporting each other in career transformation. Today, it has grown into a structured program and network that combines training, mentorship, and global opportunities.',
+        'explore_courses' => 'Explore Our Programs'
     ],
 
     // Mission & Vision Section
     'mission_vision' => [
         'mission' => [
             'title' => 'Our Mission',
-            'description' => 'Our mission is to transform lives through education by providing accessible and high-quality learning experiences that empower individuals to achieve their career goals and make a positive impact in the world.'
+            'description' => 'To empower, educate, and connect healthcare talents through structured programs, global opportunities, and a strong professional network.'
         ],
         'vision' => [
             'title' => 'Our Vision',
-            'description' => 'To become the world\'s leading online learning platform, empowering millions of learners to achieve their full potential and transform their lives through education.'
+            'description' => 'To make remote healthcare work accessible, credible, and sustainable for professionals worldwide.'
         ]
     ],
 
     // Stats Section
     'stats' => [
         'title' => 'Our Impact',
-        'subtitle' => 'Numbers that speak volumes about our commitment to education.',
+        'subtitle' => 'Numbers that speak volumes about our commitment to healthcare professionals.',
         'data' => [
             [
-                'number' => '15,000+',
-                'label' => 'Active Students'
+                'number' => '1000+',
+                'label' => 'Community Members'
             ],
             [
-                'number' => '50+',
-                'label' => 'Expert Instructors'
+                'number' => '2025',
+                'label' => 'Year Established'
             ],
             [
-                'number' => '100+',
-                'label' => 'Courses Available'
+                'number' => '3',
+                'label' => 'Core Programs'
             ],
             [
-                'number' => '95%',
-                'label' => 'Satisfaction Rate'
+                'number' => '2',
+                'label' => 'Expert Co-Founders'
             ]
         ]
     ],
 
     // Values Section
     'values' => [
-        'title' => 'Our Values',
+        'title' => 'Our Core Values',
         'subtitle' => 'The principles that guide everything we do.',
-        'quality_education' => [
-            'title' => 'Quality Education',
-            'description' => 'We are committed to providing the highest quality educational content, taught by industry experts and designed to deliver real-world skills.'
+        'share' => [
+            'title' => 'Share',
+            'description' => 'Exchange knowledge, skills, and experiences through training, mentorship, and community support.'
         ],
-        'accessibility' => [
-            'title' => 'Accessibility',
-            'description' => 'We believe education should be accessible to everyone, regardless of their background, location, or financial situation.'
+        'learn' => [
+            'title' => 'Learn',
+            'description' => 'Embrace continuous learning, innovation, and practical application in healthcare operations.'
         ],
-        'innovation' => [
-            'title' => 'Innovation',
-            'description' => 'We constantly innovate our teaching methods and technologies to deliver the most effective learning experience.'
+        'grow' => [
+            'title' => 'Grow',
+            'description' => 'Build a sustainable career path and global network of skilled MVAs.'
         ],
         'community' => [
             'title' => 'Community',
-            'description' => 'We foster a supportive learning community where students can connect, collaborate, and grow together.'
+            'description' => 'We foster a safe, inclusive, and supportive environment for all healthcare professionals.'
         ]
     ],
 
@@ -140,30 +128,30 @@ return [
         'title' => 'Our Achievements',
         'subtitle' => 'Recognition and milestones that mark our journey.',
         'best_platform' => [
-            'title' => 'Best E-Learning Platform 2023',
-            'description' => 'Awarded by Tech Education Awards for excellence in online learning'
+            'title' => 'Specialized Healthcare Training',
+            'description' => 'Focused specifically on Medical Virtual Assistant skills for healthcare professionals'
         ],
         'global_reach' => [
-            'title' => 'Global Reach',
-            'description' => 'Serving learners in over 50 countries across 6 continents'
+            'title' => 'Growing Global Community',
+            'description' => 'Building a network of 1000+ healthcare professionals transitioning to remote work'
         ],
         'industry_recognition' => [
-            'title' => 'Industry Recognition',
-            'description' => 'Certificates recognized by leading companies worldwide'
+            'title' => 'Career-Oriented Learning',
+            'description' => 'Creating pathways to meaningful remote healthcare careers worldwide'
         ]
     ],
 
     // Partners Section
     'partners' => [
         'title' => 'Our Partners',
-        'subtitle' => 'Trusted by leading companies and institutions worldwide.'
+        'subtitle' => 'Connecting healthcare providers with skilled Medical Virtual Assistants worldwide.'
     ],
 
     // CTA Section
     'cta' => [
         'title' => 'Join Our Community',
-        'subtitle' => 'Be part of a thriving learning community and start your journey towards success today.',
-        'start_learning' => 'Start Learning',
+        'subtitle' => 'Be part of a thriving healthcare community and start your journey towards a remote career today.',
+        'start_learning' => 'Join Bootcamp',
         'contact_us' => 'Contact Us'
     ]
 ];

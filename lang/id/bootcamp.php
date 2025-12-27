@@ -43,14 +43,14 @@ return [
     // Bootcamp Details
     'bootcamp_details' => [
         'back_to_bootcamps' => 'Kembali ke Bootcamp',
-        'learn_more' => 'Pelajari Lebih Lanjut',
+        'learn_more' => 'Lebih Lanjut',
         'what_youll_learn' => 'Apa yang Akan Anda Pelajari:',
         'more' => 'lebih',
         'instructor' => 'Instruktur',
         'duration' => 'Durasi',
         'level' => 'Level',
         'start_date' => 'Tanggal Mulai',
-        'students' => 'siswa',
+        'students' => 'orang',
         'off' => 'DISKON',
         'limited_spots' => 'Slot Terbatas',
         'reserve_spot' => 'Reservasi Slot',
@@ -118,7 +118,7 @@ return [
         'meet_instructor' => 'Temui Instruktur Anda',
         'instructor_bio' => 'Expert {category} dengan pengalaman industri lebih dari 15 tahun. Bersemangat dalam mengajar dan membimbing generasi profesional berikutnya.',
         'rating' => 'Peringkat',
-        'students' => 'Siswa',
+        'students' => 'Orang',
         'experience' => 'Pengalaman',
         'career_support' => 'Dukungan Karir & Hasil',
         'whats_included' => 'Apa yang Termasuk',
@@ -133,7 +133,7 @@ return [
         'salary_increase' => 'Kenaikan Gaji Rata-rata',
         'hiring_partners' => 'Mitra Rekrutmen',
         'related_bootcamps' => 'Bootcamp Terkait',
-        'learn_more' => 'Pelajari Lebih Lanjut',
+        'learn_more' => 'Lebih Lanjut',
         'ready_transform' => 'Siap Mengubah Karir Anda?',
         'transform_subtitle' => 'Ambil langkah pertama menuju karir baru di {category}. Daftar sekarang dan bergabunglah dengan kohort kami berikutnya!',
         'enroll_bootcamp' => 'Daftar di Bootcamp Ini',
@@ -164,7 +164,7 @@ return [
     // Partner Clinics Section
     'partner_clinics' => [
         'title' => 'Klinik Mitra & Kolaborasi Kami',
-        'subtitle' => 'Melalui kemitraan dengan klinik swasta dan penyedia layanan kesehatan, siswa mendapatkan kesempatan magang dan paparan lingkungan digital kesehatan.',
+        'subtitle' => 'Melalui kemitraan dengan klinik swasta dan penyedia layanan kesehatan, orang mendapatkan kesempatan magang dan paparan lingkungan digital kesehatan.',
         'benefits' => [
             [
                 'title' => 'Bantuan Terawasi dari Asisten Medis (Medical VA) yang Terlatih',
@@ -233,7 +233,7 @@ return [
                 'final_test' => [
                     'session' => 'Ujian Akhir',
                     'topic' => 'Tinjauan Akhir & Penilaian',
-                    'objective' => 'Menilai penguasaan siswa terhadap semua materi Bootcamp untuk memastikan kesiapan untuk tugas nyata.'
+                    'objective' => 'Menilai penguasaan orang terhadap semua materi Bootcamp untuk memastikan kesiapan untuk tugas nyata.'
                 ],
                 'internship_onboarding' => [
                     'session' => 'Onboarding Magang',
@@ -244,13 +244,13 @@ return [
             'weeks_8_11' => [
                 'session' => 'Magang',
                 'topic' => 'Praktik Dunia Nyata',
-                'objective' => 'Memberikan siswa pengalaman praktis, hands-on di lingkungan klinis dan kesehatan digital yang nyata.'
+                'objective' => 'Memberikan orang pengalaman praktis, hands-on di lingkungan klinis dan kesehatan digital yang nyata.'
             ],
             'week_12' => [
                 'coaching' => [
                     'session' => 'Bimbingan 1-on-1',
                     'topic' => 'Mentorship Personalized',
-                    'objective' => 'Mendukung setiap siswa dengan bimbingan individu untuk memperkuat keterampilan dan kepercayaan diri mereka.'
+                    'objective' => 'Mendukung setiap orang dengan bimbingan individu untuk memperkuat keterampilan dan kepercayaan diri mereka.'
                 ],
                 'farewell' => [
                     'session' => 'Sesi Perpisahan',

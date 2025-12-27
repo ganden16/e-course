@@ -16,7 +16,9 @@
                     colors: {
                         'primary': '#ffb433',
                         'primary-dark': '#ff9500',
-                        'secondary': '#ff9500',
+                        // 'secondary': '#ff9500',
+                        'secondary': '#009b77',
+                        'secondary-dark': '#174e47',
                         'accent': '#ffb433',
                         'dark': '#1f2937',
                     }
@@ -51,11 +53,13 @@
                 <div class="w-full lg:w-1/2 p-8 lg:p-12">
                     <!-- Logo -->
                     <div class="text-center mb-8">
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-4 float-animation">
-                            <i class="fas fa-graduation-cap text-white text-2xl"></i>
-                        </div>
+                        <a href="/">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-4 float-animation">
+                                <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                            </div>
+                        </a>
                         <h2 class="text-2xl font-bold text-gray-800">Healthcare Remote Circle</h2>
-                        <p class="text-gray-600 mt-2">Selamat datang kembali!</p>
+                        <p class="text-gray-600 mt-2">Selamat datang kembali admin!</p>
 
                         <!-- Flash Messages -->
                         @if(session('error'))
@@ -165,7 +169,7 @@
                         <!-- Submit Button -->
                         <div>
                             <button type="submit"
-                                    class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200 transform hover:scale-[1.02]">
+                                    class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-secondary hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition-all duration-200 transform hover:scale-[1.02]">
                                 <i class="fas fa-sign-in-alt mr-2"></i>
                                 Login
                             </button>
@@ -182,7 +186,7 @@
                 </div>
 
                 <!-- Right Side - Hero Section -->
-                <div class="w-full lg:w-1/2 bg-primary-dark text-white relative overflow-hidden p-8 lg:p-12 flex flex-col justify-center">
+                {{-- <div class="w-full lg:w-1/2 bg-primary-dark text-white relative overflow-hidden p-8 lg:p-12 flex flex-col justify-center">
                     <!-- Animated Background with Orange Spiral Pattern -->
                     <div class="absolute inset-0 opacity-40 z-10">
                         <div class="absolute top-0 left-0 w-96 h-96 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
@@ -203,7 +207,7 @@
                             Platform E-Learning Terbaik untuk Karir Anda
                         </h1>
                         <p class="text-lg mb-8 opacity-90">
-                            Bergabunglah dengan ribuan siswa yang telah mengubah karir mereka melalui kursus dan bootcamp berkualitas tinggi kami.
+                            Bergabunglah dengan ribuan orang yang telah mengubah karir mereka melalui kursus dan bootcamp berkualitas tinggi kami.
                         </p>
 
                         <!-- Features -->
@@ -249,7 +253,7 @@
                         <div class="grid grid-cols-3 gap-4">
                             <div class="text-center">
                                 <div class="text-2xl font-bold">15K+</div>
-                                <div class="text-sm opacity-80">Siswa Aktif</div>
+                                <div class="text-sm opacity-80">Orang Aktif</div>
                             </div>
                             <div class="text-center">
                                 <div class="text-2xl font-bold">100+</div>
@@ -261,11 +265,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Footer Links -->
-            <div class="text-center mt-8 text-sm text-gray-600">
+            <div class="text-center mt-5 text-sm text-gray-600">
                 <p>&copy; 2025 Healthcare Remote Circle. All rights reserved.</p>
             </div>
         </div>

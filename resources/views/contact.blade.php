@@ -272,7 +272,7 @@
 <!-- CTA Section -->
 <section class="py-16 bg-primary text-white relative overflow-hidden">
     <!-- Animated Background with Secondary-Dark Circular Ribbon Pattern -->
-    <div class="absolute inset-0 z-10">
+    {{-- <div class="absolute inset-0 z-10">
         <!-- Circular Ribbon 1 - Top Left -->
         <svg class="absolute top-0 left-0 w-96 h-96" viewBox="0 0 400 400">
             <path d="M200,50 A150,150 0 0,1 350,200 L300,200 A100,100 0 0,0 200,100 Z"
@@ -312,13 +312,13 @@
                   fill="currentColor"
                   class="text-secondary-dark"/>
         </svg>
-    </div>
+    </div> --}}
 
     <div class="container mx-auto px-6 text-center relative z-10">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
         <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ $baseUrl }}/product" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+            <a href="{{ $baseUrl }}/product" class="bg-secondary border-2 border-white hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                 {{ $cta['browse_courses'] }}
             </a>
             <a href="{{ $baseUrl }}/bootcamp" class="bg-transparent border-2 border-white hover:bg-white hover:text-secondary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">

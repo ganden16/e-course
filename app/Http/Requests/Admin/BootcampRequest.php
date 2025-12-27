@@ -111,7 +111,7 @@ class BootcampRequest extends FormRequest
             'original_price' => 'Harga Asli',
             'image' => 'Gambar',
             'rating' => 'Rating',
-            'students' => 'Jumlah Siswa',
+            'students' => 'Jumlah Orang',
             'duration' => 'Durasi',
             'level' => 'Level',
             'schedule' => 'Jadwal',

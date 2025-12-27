@@ -51,14 +51,14 @@ return [
 
     // Bootcamp Details
     'bootcamp_details' => [
-        'learn_more' => 'Pelajari Lebih Lanjut',
+        'learn_more' => 'Lebih Lanjut',
         'what_youll_learn' => 'Apa yang Akan Anda Pelajari:',
         'more' => 'lebih',
         'instructor' => 'Instruktur',
         'duration' => 'Durasi',
         'level' => 'Level',
         'start_date' => 'Tanggal Mulai',
-        'students' => 'siswa',
+        'students' => 'orang',
         'off' => 'DISKON',
         'schedule' => 'Jadwal'
     ],
@@ -144,7 +144,7 @@ return [
         'meet_instructor' => 'Temui Instruktur Anda',
         'instructor_bio' => 'Expert {category} dengan pengalaman industri lebih dari 15 tahun. Bersemangat dalam mengajar dan membimbing generasi profesional berikutnya.',
         'rating' => 'Peringkat',
-        'students' => 'Siswa',
+        'students' => 'Orang',
         'experience' => 'Pengalaman',
         'career_support' => 'Dukungan Karir & Hasil',
         'whats_included' => 'Apa yang Termasuk',
@@ -159,7 +159,7 @@ return [
         'salary_increase' => 'Kenaikan Gaji Rata-rata',
         'hiring_partners' => 'Mitra Rekrutmen',
         'related_bootcamps' => 'Bootcamp Terkait',
-        'learn_more' => 'Pelajari Lebih Lanjut',
+        'learn_more' => 'Lebih Lanjut',
         'ready_transform' => 'Siap Mengubah Karir Anda?',
         'transform_subtitle' => 'Ambil langkah pertama menuju karir baru di {category}. Daftar sekarang dan bergabunglah dengan kohort kami berikutnya!',
         'enroll_bootcamp' => 'Daftar di Bootcamp Ini',
@@ -196,7 +196,7 @@ return [
     // Partner Clinics Section
     'partner_clinics' => [
         'title' => 'Klinik Mitra & Kolaborasi Kami',
-        'subtitle' => 'Melalui kemitraan dengan klinik swasta dan penyedia layanan kesehatan, siswa mendapatkan kesempatan magang dan paparan lingkungan digital kesehatan.',
+        'subtitle' => 'Melalui kemitraan dengan klinik swasta dan penyedia layanan kesehatan, orang mendapatkan kesempatan magang dan paparan lingkungan digital kesehatan.',
         'benefits' => [
             [
                 'title' => 'Bantuan Terawasi dari Asisten Medis (Medical VA) yang Terlatih',
@@ -224,8 +224,8 @@ return [
 
     // Training Modules Section
     'training_modules' => [
-        'title' => 'Apa yang Akan Anda Pelajari – Modul Pelatihan Kami',
-        'subtitle' => 'Program terstruktur 6 minggu kami menggabungkan sesi langsung, latihan praktis, proyek portofolio, dan mentorship nyata — mempersiapkan Anda untuk menjadi Medical Virtual Assistant siap kerja.',
+        'title' => 'Modul Pelatihan Kami',
+        'subtitle' => 'Program terstruktur kami menggabungkan sesi langsung, latihan praktis, proyek portofolio, dan mentorship hingga mempersiapkan Anda untuk masuk kerja.',
         'week' => 'Minggu',
         'module' => 'Modul',
         'objective' => 'Tujuan',
@@ -297,7 +297,7 @@ return [
                 ],
                 [
                     "name" => "Sarah Johnson",
-                    "bio" => "Senior Frontend Developer dengan keahlian dalam framework JavaScript modern dan desain responsif. Senang membantu siswa menguasai seni membuat antarmuka yang indah dan fungsional.",
+                    "bio" => "Senior Frontend Developer dengan keahlian dalam framework JavaScript modern dan desain responsif. Senang membantu orang menguasai seni membuat antarmuka yang indah dan fungsional.",
                     "image" => "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
                     "specialization" => "Frontend Development",
                     "experience" => "10+ tahun",

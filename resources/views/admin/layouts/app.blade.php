@@ -26,6 +26,7 @@
                         'primary': '#009b77',
                         'primary-dark': '#174e47',
                         'primary-light': '#d1fae5',
+                        // 'secondary': '#ffb433',
                         'secondary': '#ffb433',
                         'secondary-dark': '#ff9500',
                         'accent': '#ffb433',

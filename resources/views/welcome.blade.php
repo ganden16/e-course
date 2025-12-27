@@ -55,7 +55,7 @@
                     {{ $hero['description'] }}
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="{{ $baseUrl }}/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg text-center">
+                    <a href="{{ $baseUrl }}/bootcamp" class="bg-secondary hover:text-primary hover:bg-white text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg text-center">
                         {{ $hero['cta_text'] }}
                     </a>
                     <a href="{{ $baseUrl }}/community" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 text-center">
@@ -270,7 +270,7 @@
 <!-- CTA Section -->
 <section class="py-16 bg-primary text-white relative overflow-hidden">
     <!-- Animated Background with Secondary-Dark Corner Ribbon Spiral Pattern -->
-    <div class="absolute inset-0 z-10">
+    {{-- <div class="absolute inset-0 z-10">
         <!-- Top Left Corner Ribbon Spiral -->
         <svg class="absolute top-0 left-0 w-80 h-80" viewBox="0 0 300 300">
             <path d="M0,0 Q150,0 150,150 T0,300 Q75,300 75,225 T0,150 Q75,150 75,75 T0,0"
@@ -334,13 +334,13 @@
                   stroke-linecap="round"
                   class="text-secondary-dark"/>
         </svg>
-    </div>
+    </div> --}}
 
     <div class="container mx-auto px-6 text-center relative z-10">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
         <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ $baseUrl }}/product" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+            <a href="{{ $baseUrl }}/bootcamp" class="bg-secondary border-2 border-white hover:text-white hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
                 {{ $cta['browse_courses'] }}
             </a>
             <a href="{{ $baseUrl }}/contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-secondary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">

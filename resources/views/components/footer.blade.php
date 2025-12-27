@@ -26,7 +26,7 @@
                     </div>
                     <p class="text-sm text-gray-300 mb-4">{{ $site['description'] }}</p>
                     <div class="flex space-x-3">
-                        <a href="https://www.facebook.com/share/1FgpWiY3hC/" class="text-gray-300 hover:text-white transition-colors" target="_blank">
+                        <a href="https://dub.sh/gRcQl5R" class="text-gray-300 hover:text-white transition-colors" target="_blank">
                             <i class="fab fa-facebook text-lg"></i>
                         </a>
                         <a href="https://bit.ly/InstagramHRC" class="text-gray-300 hover:text-white transition-colors" target="_blank">
@@ -75,15 +75,15 @@
                     <h4 class="font-semibold mb-4 text-lg">{{ $footer['contact_info'] }}</h4>
                     <ul class="space-y-3 text-sm">
                         <li class="flex items-start">
-                            <i class="fas fa-envelope mt-1 mr-3 text-orange"></i>
+                            <i class="fas fa-envelope mt-1 mr-3 text-white"></i>
                             <span class="text-gray-300">{{ $site['email'] }}</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-phone mt-1 mr-3 text-orange"></i>
+                            <i class="fas fa-phone mt-1 mr-3 text-white"></i>
                             <span class="text-gray-300">{{ $site['phone'] }}</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-orange"></i>
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-white"></i>
                             <span class="text-gray-300">{{ $site['address'] }}</span>
                         </li>
                     </ul>

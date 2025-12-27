@@ -6,8 +6,8 @@ return [
         'tagline' => 'Buka Potensi Anda dengan Pembelajaran Digital',
         'description' => 'Platform e-learning terdepan yang menyediakan kursus digital dan bootcamp berkualitas untuk meningkatkan karir Anda.',
         'logo' => 'assets/images/logo1.png',
-        'email' => 'info@HealthCare.com',
-        'phone' => '+62 812-3456-7890',
+        'email' => 'healthcareremotecircle@gmail.com',
+        'phone' => '+6285704677707',
         'address' => 'Surabaya, Indonesia'
     ],
 
@@ -20,36 +20,36 @@ return [
         'contact' => 'Kontak',
         'bootcamp' => 'Bootcamp',
         'community' => 'Komunitas Kami',
-        'browse_courses' => 'Jelajahi Kursus'
+        'browse_courses' => 'Jelajahi Bootcamp'
     ],
 
     // Hero Section
     'hero' => [
         'title' => 'Ubah Karir Anda dengan Pembelajaran Digital',
-        'subtitle' => 'Bergabunglah dengan ribuan siswa yang telah mengembangkan karir mereka melalui kursus dan bootcamp komprehensif kami',
-        'description' => 'Akses kursus digital berkualitas tinggi dan bootcamp intensif yang diajarkan oleh ahli industri. Belajar dengan kecepatan Anda sendiri, kapan saja, di mana saja.',
-        'cta_text' => 'Jelajahi Kursus',
+        'subtitle' => 'Bergabunglah dengan ribuan orang yang telah mengembangkan karir mereka melalui bootcamp',
+        'description' => 'Akses bootcamp intensif yang diajarkan oleh ahli industri. Belajar dengan kecepatan Anda sendiri, kapan saja, di mana saja.',
+        'cta_text' => 'Jelajahi Bootcamp',
         'cta_secondary' => 'Bergabung dengan Komunitas',
         'image' => 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80'
     ],
 
     // Stats Section
     'stats' => [
-        'active_students' => 'Siswa Aktif',
+        'active_students' => 'Orang Aktif',
         'expert_instructors' => 'Instruktur Ahli',
         'courses_available' => 'Kursus Tersedia',
         'satisfaction_rate' => 'Tingkat Kepuasan',
         'data' => [
-            ['number' => '15,000+', 'label' => 'Siswa Aktif'],
-            ['number' => '50+', 'label' => 'Instruktur Ahli'],
-            ['number' => '100+', 'label' => 'Kursus Tersedia'],
+            ['number' => '99+', 'label' => 'Orang Aktif'],
+            ['number' => '5+', 'label' => 'Instruktur Ahli'],
+            ['number' => '10+', 'label' => 'Kursus Tersedia'],
             ['number' => '95%', 'label' => 'Tingkat Kepuasan']
         ]
     ],
 
     // Features Section
     'features' => [
-        'title' => 'Mengapa Memilih HRC Academy Bootcamp?',
+        'title' => 'Mengapa Memilih HRC Academy?',
         'subtitle' => 'Kami menyediakan pengalaman belajar terbaik dengan fitur-fitur komprehensif yang dirancang untuk membantu Anda berhasil.',
         'data' => [
             [
@@ -82,20 +82,20 @@ return [
                 'title' => 'Program Berbasis Praktik & Magang',
                 'description' => 'Bangun portofolio profesional melalui magang dengan klinik mitra, proyek nyata, dan pembimbingan langsung dari mentor berpengalaman.'
             ],
-            [
-                'emoji' => '💡',
-                'title' => 'Investasi Terjangkau, Nilai Maksimal',
-                'description' => 'Nikmati pelatihan berkualitas tinggi dengan harga terjangkau, karena kami percaya setiap tenaga kesehatan berhak sukses di dunia digital.'
-            ]
+            // [
+            //     'emoji' => '💡',
+            //     'title' => 'Investasi Terjangkau, Nilai Maksimal',
+            //     'description' => 'Nikmati pelatihan berkualitas tinggi dengan harga terjangkau, karena kami percaya setiap tenaga kesehatan berhak sukses di dunia digital.'
+            // ]
         ]
     ],
 
     // Featured Courses Section
     'featured_courses' => [
         'title' => 'Produk Unggulan',
-        'subtitle' => 'Jelajahi kursus paling populer kami dan mulai belajar hari ini.',
+        'subtitle' => 'Jelajahi produk paling populer kami dan mulai belajar hari ini.',
         'view_details' => 'Lihat Detail',
-        'view_all_courses' => 'Lihat Semua Kursus',
+        'view_all_courses' => 'Lihat Semua Produk',
         'data' => [
             [
                 'id' => 1,
@@ -146,7 +146,7 @@ return [
     'upcoming_bootcamps' => [
         'title' => 'Bootcamp',
         'subtitle' => 'Bergabunglah dengan bootcamp intensif kami dan percepat karir Anda.',
-        'learn_more' => 'Pelajari Lebih Lanjut',
+        'learn_more' => 'Lebih Lanjut',
         'view_all_bootcamps' => 'Lihat Semua Bootcamp',
         'data' => [
             [
@@ -229,8 +229,8 @@ return [
 
     // Testimonials Section
     'testimonials' => [
-        'title' => 'Apa Kata Siswa Kami',
-        'subtitle' => 'Kisah nyata dari siswa nyata yang telah mengubah karir mereka.',
+        'title' => 'Apa Kata Mereka?',
+        'subtitle' => 'Kisah nyata dari orang nyata yang telah mengubah karir mereka.',
         'data' => [
             [
                 'name' => 'Sarah Johnson',
@@ -256,8 +256,8 @@ return [
     // CTA Section
     'cta' => [
         'title' => 'Siap Memulai Perjalanan Pembelajaran Anda?',
-        'subtitle' => 'Bergabunglah dengan ribuan siswa yang sudah mengubah karir mereka dengan kursus kami.',
-        'browse_courses' => 'Jelajahi Kursus',
+        'subtitle' => 'Bergabunglah dengan ribuan orang yang sudah mengubah karir mereka dengan bootcamp kami.',
+        'browse_courses' => 'Jelajahi Bootcamp',
         'contact_us' => 'Hubungi Kami'
     ],
 

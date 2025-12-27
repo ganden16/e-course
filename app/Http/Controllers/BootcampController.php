@@ -15,57 +15,54 @@ class BootcampController extends Controller
     {
         $locale = app()->getLocale();
         $translations = include lang_path("{$locale}/bootcamp.php");
+        $bootcamp_details = $translations['bootcamp_details'];
 
-        $query = Bootcamp::with(['category', 'mentors'])
-            ->where('is_active', true);
+        // Bangun query dasar
+        $baseQuery = Bootcamp::with(['category', 'mentors'])->where('is_active', true);
 
-        // Filter by category
-        if ($request->has('category') && $request->category !== '') {
-            $query->where('category_id', $request->category);
+        // Filter kategori
+        if ($request->filled('category')) {
+            $baseQuery->where('category_id', $request->category);
         }
 
         // Sort
-        if ($request->has('sort')) {
-            switch($request->sort) {
-                case 'price-low':
-                    $query->orderBy('price', 'asc');
-                    break;
-                case 'price-high':
-                    $query->orderBy('price', 'desc');
-                    break;
-                case 'rating':
-                    $query->orderBy('rating', 'desc');
-                    break;
-                case 'duration':
-                    $query->orderByRaw('CAST(duration AS UNSIGNED)');
-                    break;
-                default:
-                    $query->orderBy('created_at', 'desc');
-            }
-        } else {
-            $query->orderBy('created_at', 'desc');
+        switch ($request->get('sort', 'default')) {
+            case 'price-low':
+                $baseQuery->orderBy('price', 'asc');
+                break;
+            case 'price-high':
+                $baseQuery->orderBy('price', 'desc');
+                break;
+            case 'rating':
+                $baseQuery->orderBy('rating', 'desc');
+                break;
+            case 'duration':
+                $baseQuery->orderByRaw('CAST(duration AS UNSIGNED)');
+                break;
+            default:
+                $baseQuery->orderBy('created_at', 'desc');
         }
 
-        // Get total count before applying pagination/limit
-        $totalBootcamps = $query->count();
+        // Hitung total tanpa pagination
+        $totalBootcamps = (clone $baseQuery)->count();
 
-        // Handle AJAX request for load more functionality
+        // AJAX: Load More
         if ($request->ajax()) {
             $page = $request->get('page', 1);
-            $offset = ($page - 1) * 6; // Load 6 items per click
-            $bootcamps = $query->skip($offset)->take(6)->get();
-            $bootcamp_details = $translations['bootcamp_details'];
+            $perPage = 6;
+            $offset = ($page - 1) * $perPage;
+
+            $bootcamps = (clone $baseQuery)->skip($offset)->take($perPage)->get();
 
             return response()->json([
                 'html' => view('partials.bootcamp-items', compact('bootcamps', 'bootcamp_details'))->render(),
-                'hasMore' => $totalBootcamps > ($offset + 6)
+                'hasMore' => $totalBootcamps > $offset + $perPage
             ]);
         }
 
-        // Initial load - show first 6 items
-        $bootcamps = $query->take(6)->get();
+        // Halaman awal
+        $bootcamps = (clone $baseQuery)->take(6)->get();
         $categories = Category::where('is_active', true)->orderBy('updated_at', 'desc')->get();
-        $bootcamp_details = $translations['bootcamp_details'];
 
         return view('bootcamp-new', compact('categories', 'bootcamps', 'totalBootcamps', 'bootcamp_details'));
     }
