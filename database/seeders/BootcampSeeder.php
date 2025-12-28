@@ -156,6 +156,37 @@ class BootcampSeeder extends Seeder
             $createdMentors[$mentor['slug']] = Mentor::create($mentor);
         }
 
+        // Map category IDs to appropriate mentors based on specialization
+        $categoryMentorMapping = [
+            1 => ['david-anderson', 'sarah-johnson'], // Web Development
+            2 => ['sarah-mitchell', 'michael-chen'], // Data Science
+            3 => ['alex-rodriguez', 'emily-watson'], // Design
+            4 => ['emma-thompson', 'james-rodriguez'], // Marketing
+            5 => ['james-wilson', 'lisa-chang'], // Mobile Development
+        ];
+
+        // Function to get mentors for a category
+        $getMentorsForCategory = function($categoryId) use ($categoryMentorMapping, $createdMentors) {
+            $mentorSlugs = $categoryMentorMapping[$categoryId] ?? [];
+            $mentors = [];
+
+            foreach ($mentorSlugs as $slug) {
+                if (isset($createdMentors[$slug])) {
+                    $mentors[] = $createdMentors[$slug]->id;
+                }
+            }
+
+            // If no mentors found for category, use first 2 mentors
+            if (empty($mentors)) {
+                $mentors = [
+                    $createdMentors['david-anderson']->id,
+                    $createdMentors['sarah-johnson']->id
+                ];
+            }
+
+            return $mentors;
+        };
+
         // Create bootcamps
         $bootcamps = [
             [
@@ -1418,446 +1449,31 @@ class BootcampSeeder extends Seeder
 
         $createdBootcamps = [];
         foreach ($allBootcamps as $bootcamp) {
-            $createdBootcamps[$bootcamp['slug']] = Bootcamp::create($bootcamp);
-        }
+            // Create bootcamp
+            $createdBootcamp = Bootcamp::create($bootcamp);
+            $createdBootcamps[$bootcamp['slug']] = $createdBootcamp;
 
-        // Assign mentors to bootcamps
-        $createdBootcamps['full-stack-web-development-bootcamp']->mentors()->attach([
-            $createdMentors['david-anderson']->id,
-            $createdMentors['sarah-johnson']->id
-        ]);
+            // Assign mentors to ALL bootcamps based on their category
+            $mentorIds = $getMentorsForCategory($bootcamp['category_id']);
+            $createdBootcamp->mentors()->attach($mentorIds);
 
-        $createdBootcamps['data-science-machine-learning-bootcamp']->mentors()->attach([
-            $createdMentors['sarah-mitchell']->id,
-            $createdMentors['michael-chen']->id
-        ]);
-
-        $createdBootcamps['ux-ui-design-bootcamp']->mentors()->attach([
-            $createdMentors['alex-rodriguez']->id,
-            $createdMentors['emily-watson']->id
-        ]);
-
-        $createdBootcamps['digital-marketing-mastery-bootcamp']->mentors()->attach([
-            $createdMentors['emma-thompson']->id,
-            $createdMentors['james-rodriguez']->id
-        ]);
-
-        $createdBootcamps['mobile-app-development-bootcamp']->mentors()->attach([
-            $createdMentors['james-wilson']->id,
-            $createdMentors['lisa-chang']->id
-        ]);
-
-        // Create modules for each bootcamp
-        $modules = [
-            // Full Stack Web Development Modules
-            [
-                'bootcamp_id' => $createdBootcamps['full-stack-web-development-bootcamp']->id,
-                'week_number' => 1,
-                'module' => 'Web Fundamentals (HTML5, CSS3, JavaScript ES6+)',
-                'objective' => 'Master the fundamentals of web development including HTML5, CSS3, and modern JavaScript.',
-                'description' => 'Learn the building blocks of modern web development.',
-                'topics' => ['HTML5 Semantic Elements', 'CSS3 Flexbox & Grid', 'JavaScript ES6+ Features', 'DOM Manipulation', 'Event Handling'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['full-stack-web-development-bootcamp']->id,
-                'week_number' => 2,
-                'module' => 'Frontend Development with React.js',
-                'objective' => 'Build dynamic user interfaces with React.js and understand component-based architecture.',
-                'description' => 'Master the most popular frontend framework for building interactive UIs.',
-                'topics' => ['React Components', 'State & Props', 'Hooks', 'React Router', 'Context API'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['full-stack-web-development-bootcamp']->id,
-                'week_number' => 3,
-                'module' => 'State Management (Redux, Context API)',
-                'objective' => 'Implement advanced state management patterns for complex applications.',
-                'description' => 'Learn to manage application state effectively in large-scale applications.',
-                'topics' => ['Redux Fundamentals', 'Actions & Reducers', 'Middleware', 'React Redux', 'Context API vs Redux'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['full-stack-web-development-bootcamp']->id,
-                'week_number' => 4,
-                'module' => 'Backend with Node.js and Express.js',
-                'objective' => 'Build RESTful APIs and server-side applications with Node.js.',
-                'description' => 'Learn server-side JavaScript development with Express.js framework.',
-                'topics' => ['Node.js Fundamentals', 'Express.js Setup', 'RESTful API Design', 'Middleware', 'Authentication'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['full-stack-web-development-bootcamp']->id,
-                'week_number' => 5,
-                'module' => 'Databases (SQL, NoSQL with MongoDB)',
-                'objective' => 'Design and implement efficient database solutions.',
-                'description' => 'Master both relational and non-relational database systems.',
-                'topics' => ['SQL Fundamentals', 'MySQL', 'MongoDB', 'Database Design', 'ORM with Mongoose'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['full-stack-web-development-bootcamp']->id,
-                'week_number' => 6,
-                'module' => 'RESTful APIs and GraphQL',
-                'objective' => 'Build and consume modern APIs for data communication.',
-                'description' => 'Learn to create robust APIs for frontend-backend communication.',
-                'topics' => ['REST Principles', 'API Testing', 'GraphQL Basics', 'Apollo Server', 'API Documentation'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['full-stack-web-development-bootcamp']->id,
-                'week_number' => 7,
-                'module' => 'DevOps and Deployment (Docker, CI/CD)',
-                'objective' => 'Deploy applications to production using modern DevOps practices.',
-                'description' => 'Learn containerization and continuous integration/deployment.',
-                'topics' => ['Docker Containers', 'CI/CD Pipelines', 'Cloud Deployment', 'Environment Management', 'Monitoring'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['full-stack-web-development-bootcamp']->id,
-                'week_number' => 8,
-                'module' => 'Final Project and Portfolio',
-                'objective' => 'Build a complete full-stack application for your portfolio.',
-                'description' => 'Apply all learned skills in a comprehensive final project.',
-                'topics' => ['Project Planning', 'Development Sprints', 'Code Review', 'Testing', 'Deployment'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            // Data Science Modules
-            [
-                'bootcamp_id' => $createdBootcamps['data-science-machine-learning-bootcamp']->id,
-                'week_number' => 1,
-                'module' => 'Python for Data Science (NumPy, Pandas, Matplotlib)',
-                'objective' => 'Master Python libraries essential for data analysis and visualization.',
-                'description' => 'Learn fundamental tools for data manipulation and visualization.',
-                'topics' => ['NumPy Arrays', 'Pandas DataFrames', 'Data Cleaning', 'Matplotlib Visualization', 'Jupyter Notebooks'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['data-science-machine-learning-bootcamp']->id,
-                'week_number' => 2,
-                'module' => 'Statistics and Probability for Data Analysis',
-                'objective' => 'Apply statistical concepts to real-world data problems.',
-                'description' => 'Understand the mathematical foundations of data science.',
-                'topics' => ['Descriptive Statistics', 'Probability Theory', 'Hypothesis Testing', 'Correlation', 'Regression Analysis'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['data-science-machine-learning-bootcamp']->id,
-                'week_number' => 3,
-                'module' => 'Machine Learning Fundamentals (Scikit-learn)',
-                'objective' => 'Understand core concepts and algorithms in machine learning.',
-                'description' => 'Learn the fundamentals of ML and implement basic algorithms.',
-                'topics' => ['ML Types', 'Feature Engineering', 'Model Evaluation', 'Cross-Validation', 'Scikit-learn Basics'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['data-science-machine-learning-bootcamp']->id,
-                'week_number' => 4,
-                'module' => 'Supervised Learning (Regression, Classification)',
-                'objective' => 'Build predictive models using supervised learning techniques.',
-                'description' => 'Master regression and classification algorithms.',
-                'topics' => ['Linear Regression', 'Logistic Regression', 'Decision Trees', 'Random Forest', 'SVM'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['data-science-machine-learning-bootcamp']->id,
-                'week_number' => 5,
-                'module' => 'Unsupervised Learning (Clustering, Dimensionality Reduction)',
-                'objective' => 'Discover patterns in data using unsupervised learning.',
-                'description' => 'Learn clustering and dimensionality reduction techniques.',
-                'topics' => ['K-Means Clustering', 'Hierarchical Clustering', 'PCA', 't-SNE', 'Anomaly Detection'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['data-science-machine-learning-bootcamp']->id,
-                'week_number' => 6,
-                'module' => 'Deep Learning with TensorFlow and Keras',
-                'objective' => 'Build neural networks for complex pattern recognition.',
-                'description' => 'Introduction to deep learning and neural networks.',
-                'topics' => ['Neural Networks', 'TensorFlow Basics', 'Keras API', 'CNNs', 'RNNs'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['data-science-machine-learning-bootcamp']->id,
-                'week_number' => 7,
-                'module' => 'Natural Language Processing (NLP)',
-                'objective' => 'Process and analyze text data using NLP techniques.',
-                'description' => 'Learn to work with unstructured text data.',
-                'topics' => ['Text Preprocessing', 'Sentiment Analysis', 'Text Classification', 'Word Embeddings', 'Transformers'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['data-science-machine-learning-bootcamp']->id,
-                'week_number' => 8,
-                'module' => 'Final Project and Business Presentation',
-                'objective' => 'Complete an end-to-end data science project.',
-                'description' => 'Apply all techniques to solve a real business problem.',
-                'topics' => ['Problem Definition', 'Data Collection', 'Model Building', 'Results Interpretation', 'Business Impact'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            // UX/UI Design Modules
-            [
-                'bootcamp_id' => $createdBootcamps['ux-ui-design-bootcamp']->id,
-                'week_number' => 1,
-                'module' => 'UX/UI Design Fundamentals',
-                'objective' => 'Understand the principles of user experience and interface design.',
-                'description' => 'Learn the foundational concepts of design thinking.',
-                'topics' => ['Design Principles', 'User Psychology', 'Visual Hierarchy', 'Color Theory', 'Typography'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['ux-ui-design-bootcamp']->id,
-                'week_number' => 2,
-                'module' => 'Design Thinking and User Research',
-                'objective' => 'Conduct effective user research and apply design thinking.',
-                'description' => 'Learn to understand user needs through research.',
-                'topics' => ['Design Thinking Process', 'User Interviews', 'Surveys', 'Personas', 'User Journey Mapping'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['ux-ui-design-bootcamp']->id,
-                'week_number' => 3,
-                'module' => 'Information Architecture and Wireframing',
-                'objective' => 'Structure information and create wireframes.',
-                'description' => 'Learn to organize content and create basic layouts.',
-                'topics' => ['Information Architecture', 'Sitemaps', 'User Flows', 'Wireframing Tools', 'Low-Fidelity Prototypes'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['ux-ui-design-bootcamp']->id,
-                'week_number' => 4,
-                'module' => 'Visual Design (Color, Typography, Layout)',
-                'objective' => 'Create visually appealing interfaces.',
-                'description' => 'Master visual design principles and tools.',
-                'topics' => ['Color Systems', 'Typography', 'Layout Grids', 'Visual Consistency', 'Design Systems'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['ux-ui-design-bootcamp']->id,
-                'week_number' => 5,
-                'module' => 'Prototyping with Figma and Adobe XD',
-                'objective' => 'Build interactive prototypes for testing.',
-                'description' => 'Learn industry-standard prototyping tools.',
-                'topics' => ['Figma Fundamentals', 'Components', 'Prototyping', 'Adobe XD', 'Handoff to Developers'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['ux-ui-design-bootcamp']->id,
-                'week_number' => 6,
-                'module' => 'Usability Testing and Iteration',
-                'objective' => 'Test designs with real users and iterate.',
-                'description' => 'Learn to validate design decisions through testing.',
-                'topics' => ['Usability Testing', 'A/B Testing', 'User Feedback', 'Design Iteration', 'Metrics'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['ux-ui-design-bootcamp']->id,
-                'week_number' => 7,
-                'module' => 'Design Systems and Component Libraries',
-                'objective' => 'Create scalable design systems.',
-                'description' => 'Learn to build consistent design systems.',
-                'topics' => ['Design Systems', 'Component Libraries', 'Style Guides', 'Documentation', 'Version Control'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['ux-ui-design-bootcamp']->id,
-                'week_number' => 8,
-                'module' => 'Portfolio Development and Presentation',
-                'objective' => 'Build a professional design portfolio.',
-                'description' => 'Showcase your best work effectively.',
-                'topics' => ['Portfolio Curation', 'Case Studies', 'Presentation Skills', 'Personal Branding', 'Networking'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            // Digital Marketing Modules
-            [
-                'bootcamp_id' => $createdBootcamps['digital-marketing-mastery-bootcamp']->id,
-                'week_number' => 1,
-                'module' => 'Digital Marketing Fundamentals',
-                'objective' => 'Understand the digital marketing landscape and core concepts.',
-                'description' => 'Learn the foundations of digital marketing.',
-                'topics' => ['Marketing Funnel', 'Customer Journey', 'Digital Channels', 'Marketing Metrics', 'Strategy Planning'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['digital-marketing-mastery-bootcamp']->id,
-                'week_number' => 2,
-                'module' => 'Search Engine Optimization (SEO)',
-                'objective' => 'Improve website visibility in search engines.',
-                'description' => 'Master on-page and off-page SEO techniques.',
-                'topics' => ['Keyword Research', 'On-Page SEO', 'Technical SEO', 'Link Building', 'SEO Tools'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['digital-marketing-mastery-bootcamp']->id,
-                'week_number' => 3,
-                'module' => 'Search Engine Marketing (SEM) & Google Ads',
-                'objective' => 'Create and manage paid search campaigns.',
-                'description' => 'Learn to run effective Google Ads campaigns.',
-                'topics' => ['Google Ads Interface', 'Campaign Setup', 'Bid Management', 'Quality Score', 'Conversion Tracking'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['digital-marketing-mastery-bootcamp']->id,
-                'week_number' => 4,
-                'module' => 'Social Media Marketing (Instagram, Facebook, TikTok)',
-                'objective' => 'Build brand presence on social media platforms.',
-                'description' => 'Create engaging social media marketing campaigns.',
-                'topics' => ['Platform Strategy', 'Content Creation', 'Community Management', 'Social Ads', 'Influencer Marketing'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['digital-marketing-mastery-bootcamp']->id,
-                'week_number' => 5,
-                'module' => 'Content Marketing & Copywriting',
-                'objective' => 'Create compelling content that converts.',
-                'description' => 'Learn content strategy and persuasive writing.',
-                'topics' => ['Content Strategy', 'Blog Writing', 'Copywriting', 'Storytelling', 'Content Distribution'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['digital-marketing-mastery-bootcamp']->id,
-                'week_number' => 6,
-                'module' => 'Email Marketing & Marketing Automation',
-                'objective' => 'Build automated email marketing funnels.',
-                'description' => 'Learn to nurture leads through email campaigns.',
-                'topics' => ['Email Design', 'List Building', 'Automation Workflows', 'A/B Testing', 'Analytics'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['digital-marketing-mastery-bootcamp']->id,
-                'week_number' => 7,
-                'module' => 'Web Analytics & Data-Driven Marketing',
-                'objective' => 'Measure and optimize marketing performance.',
-                'description' => 'Use data to make informed marketing decisions.',
-                'topics' => ['Google Analytics', 'Conversion Tracking', 'Attribution', 'ROI Analysis', 'Reporting'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['digital-marketing-mastery-bootcamp']->id,
-                'week_number' => 8,
-                'module' => 'Digital Marketing Strategy & ROI Measurement',
-                'objective' => 'Develop comprehensive digital marketing strategies.',
-                'description' => 'Create integrated marketing plans and measure success.',
-                'topics' => ['Strategy Development', 'Budget Allocation', 'Channel Integration', 'ROI Calculation', 'Campaign Optimization'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            // Mobile App Development Modules
-            [
-                'bootcamp_id' => $createdBootcamps['mobile-app-development-bootcamp']->id,
-                'week_number' => 1,
-                'module' => 'Mobile Development Fundamentals',
-                'objective' => 'Understand mobile app development concepts and platforms.',
-                'description' => 'Learn the fundamentals of mobile development.',
-                'topics' => ['Mobile Platforms', 'App Lifecycle', 'UI Guidelines', 'Development Tools', 'App Store Processes'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['mobile-app-development-bootcamp']->id,
-                'week_number' => 2,
-                'module' => 'Swift and iOS Development (UIKit, SwiftUI)',
-                'objective' => 'Build native iOS applications using Swift.',
-                'description' => 'Master iOS development with modern frameworks.',
-                'topics' => ['Swift Language', 'UIKit', 'SwiftUI', 'iOS APIs', 'App Architecture'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['mobile-app-development-bootcamp']->id,
-                'week_number' => 3,
-                'module' => 'Kotlin and Android Development',
-                'objective' => 'Build native Android applications using Kotlin.',
-                'description' => 'Learn Android development with modern tools.',
-                'topics' => ['Kotlin Language', 'Android Studio', 'Android SDK', 'Material Design', 'App Components'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['mobile-app-development-bootcamp']->id,
-                'week_number' => 4,
-                'module' => 'Cross-Platform Development with Flutter',
-                'objective' => 'Build apps for both iOS and Android with Flutter.',
-                'description' => 'Learn cross-platform development with Flutter.',
-                'topics' => ['Flutter Setup', 'Dart Language', 'Widgets', 'Navigation', 'Platform Integration'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['mobile-app-development-bootcamp']->id,
-                'week_number' => 5,
-                'module' => 'State Management (Provider, BLoC, Riverpod)',
-                'objective' => 'Implement effective state management in Flutter apps.',
-                'description' => 'Learn to manage application state effectively.',
-                'topics' => ['State Management Concepts', 'Provider Pattern', 'BLoC Pattern', 'Riverpod', 'Best Practices'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['mobile-app-development-bootcamp']->id,
-                'week_number' => 6,
-                'module' => 'Networking & API Integration',
-                'objective' => 'Connect apps to backend services and APIs.',
-                'description' => 'Learn to implement networking in mobile apps.',
-                'topics' => ['HTTP Requests', 'REST APIs', 'GraphQL', 'Authentication', 'Offline Support'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['mobile-app-development-bootcamp']->id,
-                'week_number' => 7,
-                'module' => 'Local Data Persistence (SQLite, Hive)',
-                'objective' => 'Store and manage data locally on devices.',
-                'description' => 'Learn local storage solutions for mobile apps.',
-                'topics' => ['SQLite Database', 'Hive Storage', 'Data Models', 'Caching', 'Data Synchronization'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ],
-            [
-                'bootcamp_id' => $createdBootcamps['mobile-app-development-bootcamp']->id,
-                'week_number' => 8,
-                'module' => 'App Deployment & Maintenance',
-                'objective' => 'Deploy apps to app stores and maintain them.',
-                'description' => 'Learn the complete deployment process.',
-                'topics' => ['App Store Submission', 'Google Play Console', 'Version Management', 'Updates', 'Analytics'],
-                'duration_hours' => 40,
-                'is_active' => true
-            ]
-        ];
-
-        foreach ($modules as $module) {
-            ModuleBootcamp::create($module);
+            // Create modules for ALL bootcamps based on their curriculum
+            if (isset($bootcamp['curriculum']) && is_array($bootcamp['curriculum'])) {
+                $weekNumber = 1;
+                foreach ($bootcamp['curriculum'] as $moduleTitle) {
+                    ModuleBootcamp::create([
+                        'bootcamp_id' => $createdBootcamp->id,
+                        'week_number' => $weekNumber,
+                        'module' => $moduleTitle,
+                        'objective' => 'Master the concepts and skills covered in ' . $moduleTitle,
+                        'description' => 'Comprehensive learning module covering ' . $moduleTitle . ' as part of the ' . $bootcamp['title'],
+                        'topics' => ['Topic 1', 'Topic 2', 'Topic 3', 'Topic 4', 'Topic 5'], // Default topics
+                        'duration_hours' => 40,
+                        'is_active' => true
+                    ]);
+                    $weekNumber++;
+                }
+            }
         }
     }
 }

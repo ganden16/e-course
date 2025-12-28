@@ -24,7 +24,12 @@
             <img src="{{ $blog->image }}" alt="{{ $blog->title }}" class="w-full h-64 md:h-96 object-cover rounded-lg mb-8">
 
             <div class="prose prose-lg max-w-none">
-                <p class="text-lg text-gray-600 mb-6 leading-relaxed">{{ $blog->content }}</p>
+                <div class="text-lg text-gray-600 mb-6 leading-relaxed">
+                    @php
+                        $content = str_replace('\n', "\n", $blog->content);
+                    @endphp
+                    {!! nl2br(e($content)) !!}
+                </div>
             </div>
 
             <!-- Tags -->
@@ -62,7 +67,7 @@
                                     <p class="text-xs text-gray-500">{{ $otherBlog->formatted_date }}</p>
                                 </div>
                                 <a href="{{ route('blog.detail', [$locale, $otherBlog->slug]) }}" class="text-secondary hover:text-secondary-dark font-medium">
-                                    Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
+                                    {{ __('blog.blog_details.read_more') }} <i class="fas fa-arrow-right ml-1"></i>
                                 </a>
                             </div>
                         </div>

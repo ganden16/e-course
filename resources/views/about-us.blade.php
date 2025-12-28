@@ -131,41 +131,97 @@
 </section>
 
 <!-- Team Section -->
-<section class="py-16 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $team['title'] }}</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $team['subtitle'] }}</p>
+<!-- Team Section -->
+<section class="py-20 bg-gradient-to-b from-white to-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center justify-center mb-4">
+                <div class="w-16 h-1 bg-secondary rounded-full"></div>
+                <span class="mx-4 text-secondary font-semibold uppercase tracking-wider">Our Team</span>
+                <div class="w-16 h-1 bg-secondary rounded-full"></div>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{{ $team['title'] }}</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{{ $team['subtitle'] }}</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            @foreach($about['team'] as $member)
-                <div class="text-center">
-                    <img src="{{ asset($member['avatar']) }}" alt="{{ $member['name'] }}" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg">
-                    <h3 class="text-xl font-semibold mb-1">{{ $member['name'] }}</h3>
-                    <p class="text-gray-500 mb-3">{{ $member['role'] }}</p>
-                    <p class="text-gray-600 text-sm">{{ $member['bio'] }}</p>
-                    {{-- <div class="flex justify-center space-x-3 mt-4">
-                        <a href="https://bit.ly/3IHNbcK" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
-                            <i class="fab fa-linkedin text-xl"></i>
-                        </a>
-                        <a href="https://dub.sh/k8eqlEQ" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
-                            <i class="fab fa-twitter text-xl"></i>
-                        </a>
-                        <a href="https://bit.ly/InstagramHRC" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="https://www.facebook.com/share/1FgpWiY3hC/" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
-                            <i class="fab fa-facebook text-xl"></i>
-                        </a>
-                        <a href="https://dub.sh/k8eqlEQ" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
-                            <i class="fab fa-tiktok text-xl"></i>
-                        </a>
-                        <a href="https://dub.sh/Bnfb8p0" target="_blank" class="text-gray-400 hover:text-secondary transition-colors">
-                            <i class="fab fa-youtube text-xl"></i>
-                        </a>
-                    </div> --}}
-                </div>
-            @endforeach
+
+        <!-- Dynamic Grid Container -->
+        <div class="flex justify-center">
+            <div class="
+                @if(count($about['team']) == 1)
+                    grid grid-cols-1 max-w-md mx-auto
+                @elseif(count($about['team']) == 2)
+                    grid grid-cols-1 sm:grid-cols-2 max-w-3xl gap-8 lg:gap-10
+                @elseif(count($about['team']) == 3)
+                    grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl gap-8 lg:gap-10
+                @else
+                    grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-10 w-full
+                @endif
+            ">
+                @foreach($about['team'] as $member)
+                    <div class="
+                        @if(count($about['team']) == 1)
+                            w-full max-w-md mx-auto
+                        @elseif(count($about['team']) == 2)
+                            flex justify-center
+                        @endif
+                    ">
+                        <div class="
+                            group relative flex flex-col items-center text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 w-full
+                            @if(count($about['team']) == 1) max-w-md
+                            @elseif(count($about['team']) == 2) max-w-sm
+                            @else max-w-xs sm:max-w-sm @endif
+                        ">
+                            <!-- Avatar Container with Gradient Border -->
+                            <div class="relative mb-6">
+                                <div class="absolute -inset-3 bg-gradient-to-r from-secondary to-accent rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
+                                <div class="relative w-40 h-40 mx-auto">
+                                    <img
+                                        src="{{ asset($member['avatar']) }}"
+                                        alt="{{ $member['name'] }}"
+                                        class="w-full h-full rounded-full object-cover border-4 border-white shadow-xl"
+                                    >
+                                    <!-- Hover Overlay -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </div>
+                            </div>
+
+                            <!-- Team Member Info -->
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2 group-hover:text-secondary transition-colors duration-300">
+                                    {{ $member['name'] }}
+                                </h3>
+                                <div class="inline-flex items-center gap-2 mb-4">
+                                    <span class="px-4 py-1 bg-secondary/10 text-secondary text-sm font-medium rounded-full">
+                                        {{ $member['role'] }}
+                                    </span>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">
+                                    {{ $member['bio'] }}
+                                </p>
+                            </div>
+
+                            <!-- Social Links (Uncomment if needed) -->
+                            {{-- <div class="flex justify-center space-x-4 pt-4 border-t border-gray-100">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-50 text-gray-500 hover:bg-secondary hover:text-white transition-all duration-300 transform hover:scale-110">
+                                    <i class="fab fa-linkedin text-lg"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-50 text-gray-500 hover:bg-blue-400 hover:text-white transition-all duration-300 transform hover:scale-110">
+                                    <i class="fab fa-twitter text-lg"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-50 text-gray-500 hover:bg-pink-500 hover:text-white transition-all duration-300 transform hover:scale-110">
+                                    <i class="fab fa-instagram text-lg"></i>
+                                </a>
+                            </div> --}}
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="relative mt-12">
+            <div class="absolute top-0 left-1/4 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
+            <div class="absolute bottom-0 right-1/4 w-72 h-72 bg-accent/5 rounded-full blur-3xl -z-10"></div>
         </div>
     </div>
 </section>

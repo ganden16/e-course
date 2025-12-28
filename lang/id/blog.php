@@ -28,7 +28,7 @@ return [
 
     // Blog Details
     'blog_details' => [
-        'read_more' => 'Baca Selengkapnya',
+        'read_more' => 'Selengkapnya',
         'read_time' => 'baca',
         'author' => 'Penulis',
         'date' => 'Tanggal'
