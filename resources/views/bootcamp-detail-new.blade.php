@@ -115,8 +115,8 @@
         <section class="py-20 bg-gradient-to-b from-white to-gray-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full mb-6 shadow-lg">
-                        <i class="fas fa-layer-group text-green-700 text-2xl"></i>
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-6 shadow-lg">
+                        <i class="fas fa-layer-group text-white text-2xl"></i>
                     </div>
                     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{{ $training_modules['title'] }}</h2>
                     <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">{{ $training_modules['subtitle'] }}</p>
@@ -124,48 +124,50 @@
 
                 <div class="relative max-w-6xl mx-auto">
                     <!-- Vertical Timeline Line -->
-                    <div class="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-200 via-purple-200 to-transparent hidden md:block"></div>
+                    <div class="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-1 bg-secondary rounded-full to-transparent hidden md:block"></div>
 
-                    @foreach($bootcamp->modules as $index => $week)
-                        @if(isset($week->module))
-                        <div class="relative mb-12 md:flex md:items-center {{ $index % 2 == 0 ? 'md:flex-row' : 'md:flex-row-reverse' }}">
-                            <!-- Week Indicator -->
-                            <div class="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-0 z-20">
-                                <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center font-bold text-xl shadow-lg transform hover:scale-110 transition-transform duration-300">
-                                    <span class="text-green-700">{{ $week->week_number }}</span>
-                                </div>
-                            </div>
-
-                            <!-- Card Content -->
-                            <div class="ml-20 md:ml-0 md:w-5/12 {{ $index % 2 == 0 ? 'md:pr-12' : 'md:pl-12' }}">
-                                <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                                    <div class="flex items-center mb-4">
-                                        <span class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-50 to-purple-50 text-indigo-600 font-semibold rounded-full text-sm">
-                                            <i class="fas fa-calendar-week mr-2"></i>
-                                            {{ $training_modules['week'] }} {{ $week->week_number }}
-                                        </span>
+                    <div class="md:flex md:flex-col md:gap-4">
+                        @foreach($bootcamp->modules as $index => $week)
+                            @if(isset($week->module))
+                            <div class="relative mb-8 md:mb-4 {{ $index % 2 == 0 ? 'md:pr-1/2 md:pl-4' : 'md:pl-1/2 md:pr-4' }}">
+                                <!-- Week Indicator -->
+                                <div class="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-6 z-20">
+                                    <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center font-bold text-lg md:text-xl shadow-lg transform hover:scale-110 transition-transform duration-300">
+                                        <span class="text-green-700">{{ $week->week_number }}</span>
                                     </div>
-                                    <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                                        <i class="fas fa-book-open text-indigo-500 mr-3"></i>
-                                        {{ $week->module }}
-                                    </h3>
-                                    <p class="text-gray-600 leading-relaxed text-lg">
-                                        <i class="fas fa-bullseye text-purple-500 mr-2"></i>
-                                        {{ $week->objective }}
-                                    </p>
+                                </div>
 
-                                    <!-- Progress Indicator -->
-                                    <div class="mt-6 pt-6 border-t border-gray-100">
-                                        <div class="flex items-center text-sm text-gray-500">
-                                            <i class="fas fa-clock text-indigo-400 mr-2"></i>
-                                            <span>{{ $training_modules['duration'] ?? '4-6 hours/week' }}</span>
+                                <!-- Card Content -->
+                                <div class="ml-16 md:ml-0 {{ $index % 2 == 0 ? 'md:pr-8' : 'md:pl-8' }}">
+                                    <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                                        <div class="flex items-center mb-4">
+                                            <span class="inline-flex items-center px-4 py-2 text-secondary font-semibold rounded-full text-sm">
+                                                <i class="fas fa-calendar-week mr-2 text-green-700"></i>
+                                                {{ $training_modules['week'] }} {{ $week->week_number }}
+                                            </span>
+                                        </div>
+                                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                                            <i class="fas fa-book-open  mr-3"></i>
+                                            {{ $week->module }}
+                                        </h3>
+                                        <p class="text-gray-600 leading-relaxed text-base md:text-lg">
+                                            <i class="fas fa-bullseye text-secondary mr-2"></i>
+                                            {{ $week->objective }}
+                                        </p>
+
+                                        <!-- Progress Indicator -->
+                                        <div class="mt-6 pt-6 border-t border-gray-100">
+                                            <div class="flex items-center text-sm text-gray-500">
+                                                <i class="fas fa-clock text-secondary mr-2"></i>
+                                                <span>{{ $training_modules['duration'] ?? '4-6 hours/week' }}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        @endif
-                    @endforeach
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </section>
@@ -174,7 +176,7 @@
         <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full mb-6 shadow-lg">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-6 shadow-lg">
                         <i class="fas fa-star text-white text-2xl"></i>
                     </div>
                     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -190,7 +192,7 @@
                         @foreach($bootcamp->learning_outcomes as $index => $outcome)
                         <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
                             <div class="flex flex-col items-center text-center">
-                                <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                                <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center text-secondary mb-6 shadow-lg transform group-hover:scale-110 transition-transform duration-300">
                                     <i class="fas fa-check-circle text-2xl"></i>
                                 </div>
                                 <h4 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-emerald-600 transition-colors duration-300">{{ $outcome }}</h4>
@@ -210,7 +212,7 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full mb-6 shadow-lg">
-                        <i class="fas fa-hands-helping text-white text-2xl"></i>
+                        <i class="fas fa-hands-helping text-secondary text-2xl"></i>
                     </div>
                     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                         {{ $locale === 'id' ? 'Detail Dukungan Karir' : 'Career Support Details' }}
@@ -228,14 +230,14 @@
                                 <div class="flex items-start p-6 rounded-2xl bg-white hover:bg-gradient-to-r hover:from-purple-50 hover:to-white transition-all duration-300 group">
                                     <div class="flex-shrink-0 mr-5">
                                         <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center text-white shadow-lg transform group-hover:rotate-12 transition-transform duration-300">
-                                            <i class="fas fa-briefcase text-lg"></i>
+                                            <i class="fas fa-briefcase text-lg text-secondary"></i>
                                         </div>
                                     </div>
                                     <div>
-                                        <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-300">{{ $support }}</h4>
-                                        <p class="text-gray-600 text-sm">
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-secondary transition-colors duration-300">{{ $support }}</h4>
+                                        {{-- <p class="text-gray-600 text-sm">
                                             {{ $locale === 'id' ? 'Dukungan profesional untuk karir Anda' : 'Professional support for your career' }}
-                                        </p>
+                                        </p> --}}
                                     </div>
                                 </div>
                                 @endforeach
@@ -250,7 +252,7 @@
         <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full mb-6 shadow-lg">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-6 shadow-lg">
                         <i class="fas fa-clipboard-check text-white text-2xl"></i>
                     </div>
                     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -269,14 +271,14 @@
                                 <div class="flex items-start p-6 rounded-2xl bg-white hover:bg-gradient-to-r hover:from-orange-50 hover:to-white transition-all duration-300 group">
                                     <div class="flex-shrink-0 mr-5">
                                         <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
-                                            <i class="fas fa-check-circle text-lg"></i>
+                                            <i class="fas fa-check-circle text-lg text-secondary"></i>
                                         </div>
                                     </div>
                                     <div>
                                         <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors duration-300">{{ $requirement }}</h4>
-                                        <p class="text-gray-600 text-sm">
+                                        {{-- <p class="text-gray-600 text-sm">
                                             {{ $locale === 'id' ? 'Persyaratan penting untuk keberhasilan' : 'Essential requirement for success' }}
-                                        </p>
+                                        </p> --}}
                                     </div>
                                 </div>
                                 @endforeach
@@ -291,7 +293,7 @@
         <section class="py-20 bg-gradient-to-b from-white to-blue-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full mb-6 shadow-lg">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-6 shadow-lg">
                         <i class="fas fa-gift text-white text-2xl"></i>
                     </div>
                     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{{ $what_youll_get['title'] }}</h2>
@@ -305,17 +307,17 @@
                     <div class="bg-white rounded-3xl p-10 shadow-2xl border border-blue-100 transform hover:-translate-y-2 transition-all duration-300 group">
                         <div class="text-center mb-8">
                             <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white mx-auto mb-6 shadow-xl transform group-hover:rotate-12 transition-transform duration-300">
-                                <i class="fas fa-certificate text-3xl"></i>
+                                <i class="fas fa-certificate text-3xl text-secondary"></i>
                             </div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">{{ $what_youll_get['certificates']['title'] }}</h3>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-secondary transition-colors duration-300">{{ $what_youll_get['certificates']['title'] }}</h3>
                         </div>
                         <ul class="space-y-5">
                             @foreach($what_youll_get['certificates']['items'] as $item)
-                                <li class="flex items-start p-3 rounded-xl hover:bg-blue-50 transition-colors duration-200">
-                                    <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                                        <i class="fas fa-award text-blue-600"></i>
+                                <li class="flex items-start p-3 rounded-xl hover:bg-green-50 transition-colors duration-200">
+                                    <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fas fa-award text-secondary"></i>
                                     </div>
-                                    <span class="text-gray-700 font-medium">{{ $item }}</span>
+                                    <span class="font-medium">{{ $item }}</span>
                                 </li>
                             @endforeach
                         </ul>
@@ -325,15 +327,15 @@
                     <div class="bg-white rounded-3xl p-10 shadow-2xl border border-green-100 transform hover:-translate-y-2 transition-all duration-300 group">
                         <div class="text-center mb-8">
                             <div class="w-24 h-24 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white mx-auto mb-6 shadow-xl transform group-hover:rotate-12 transition-transform duration-300">
-                                <i class="fas fa-users text-3xl"></i>
+                                <i class="fas fa-users text-3xl text-secondary"></i>
                             </div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-green-600 transition-colors duration-300">{{ $what_youll_get['career_support']['title'] }}</h3>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-secondary transition-colors duration-300">{{ $what_youll_get['career_support']['title'] }}</h3>
                         </div>
                         <ul class="space-y-5">
                             @foreach($what_youll_get['career_support']['items'] as $item)
                                 <li class="flex items-start p-3 rounded-xl hover:bg-green-50 transition-colors duration-200">
                                     <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                                        <i class="fas fa-network-wired text-green-600"></i>
+                                        <i class="fas fa-network-wired text-secondary"></i>
                                     </div>
                                     <span class="text-gray-700 font-medium">{{ $item }}</span>
                                 </li>
@@ -345,28 +347,28 @@
                     <div class="bg-white rounded-3xl p-10 shadow-2xl border border-purple-100 transform hover:-translate-y-2 transition-all duration-300 group">
                         <div class="text-center mb-8">
                             <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white mx-auto mb-6 shadow-xl transform group-hover:rotate-12 transition-transform duration-300">
-                                <i class="fas fa-comments text-3xl"></i>
+                                <i class="fas fa-comments text-3xl text-secondary"></i>
                             </div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors duration-300">{{ $what_youll_get['unlimited_mentoring']['title'] }}</h3>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-secondary transition-colors duration-300">{{ $what_youll_get['unlimited_mentoring']['title'] }}</h3>
                         </div>
-                        <p class="text-gray-600 leading-relaxed text-lg text-center p-4 bg-purple-50 rounded-xl">
-                            <i class="fas fa-quote-left text-purple-400 mr-2"></i>
+                        <p class="text-gray-600 leading-relaxed text-lg text-center p-4 bg-green-50 rounded-xl">
+                            <i class="fas fa-quote-left text-secondary mr-2"></i>
                             {{ $what_youll_get['unlimited_mentoring']['description'] }}
-                            <i class="fas fa-quote-right text-purple-400 ml-2"></i>
+                            <i class="fas fa-quote-right text-secondary ml-2"></i>
                         </p>
                         <div class="mt-8 pt-6 border-t border-gray-100">
                             <div class="flex items-center justify-center space-x-6">
                                 <div class="text-center">
-                                    <div class="text-2xl font-bold text-purple-600">24/7</div>
-                                    <div class="text-sm text-gray-600">{{ $locale === 'id' ? 'Akses' : 'Access' }}</div>
+                                    <div class="text-2xl font-bold">24/7</div>
+                                    <div class="text-sm">{{ $locale === 'id' ? 'Akses' : 'Access' }}</div>
                                 </div>
                                 <div class="text-center">
-                                    <div class="text-2xl font-bold text-purple-600">1-on-1</div>
-                                    <div class="text-sm text-gray-600">{{ $locale === 'id' ? 'Sesi' : 'Sessions' }}</div>
+                                    <div class="text-2xl font-bold">1-on-1</div>
+                                    <div class="text-sm">{{ $locale === 'id' ? 'Sesi' : 'Sessions' }}</div>
                                 </div>
                                 <div class="text-center">
-                                    <div class="text-2xl font-bold text-purple-600">Unlimited</div>
-                                    <div class="text-sm text-gray-600">{{ $locale === 'id' ? 'Konsultasi' : 'Consultation' }}</div>
+                                    <div class="text-2xl font-bold">Unlimited</div>
+                                    <div class="text-sm">{{ $locale === 'id' ? 'Konsultasi' : 'Consultation' }}</div>
                                 </div>
                             </div>
                         </div>
@@ -379,7 +381,7 @@
         <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full mb-6 shadow-lg">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-6 shadow-lg">
                         <i class="fas fa-chalkboard-teacher text-white text-2xl"></i>
                     </div>
                     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -391,14 +393,14 @@
                 </div>
 
                 @foreach($bootcamp->mentors as $index => $instructor)
-                    <div class="bg-white rounded-3xl p-10 shadow-2xl border border-gray-100 mb-12 transform hover:-translate-y-1 transition-all duration-300 {{ $index > 0 ? 'border-l-4 border-l-amber-500' : '' }}">
+                    <div class="bg-white rounded-3xl p-10 shadow-2xl border border-gray-100 mb-12 transform hover:-translate-y-1 transition-all duration-300 border-l-4 border-l-secondary">
                         <div class="flex flex-col lg:flex-row items-start gap-10">
                             <!-- Profile Image -->
                             <div class="lg:w-1/4 text-center lg:text-left">
                                 <div class="relative inline-block">
                                     <img src="{{ $instructor->image }}" alt="{{ $instructor->name }}"
                                         class="w-48 h-48 rounded-full object-cover border-4 border-white shadow-2xl">
-                                    <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                                    <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-600 text-secondary px-6 py-2 rounded-full text-sm font-bold shadow-lg">
                                         {{ $locale === 'id' ? 'Instruktur' : 'Instructor' }}
                                     </div>
                                 </div>
@@ -410,15 +412,15 @@
                                     <div>
                                         <h3 class="text-3xl font-bold text-gray-900 mb-2">{{ $instructor->name }}</h3>
                                         <div class="flex items-center mb-4">
-                                            <span class="bg-gradient-to-r from-amber-50 to-orange-50 text-amber-600 font-semibold px-4 py-2 rounded-full text-sm">
+                                            <span class="bg-gradient-to-r from-amber-50 to-orange-50 text-secondary font-semibold px-4 py-2 rounded-full text-sm">
                                                 <i class="fas fa-gem mr-2"></i>
                                                 {{ $instructor->specialization }}
                                             </span>
                                         </div>
                                     </div>
                                     <div class="flex items-center space-x-2">
-                                        <div class="flex items-center bg-yellow-50 px-4 py-2 rounded-full">
-                                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                        <div class="flex items-center bg-green-50 px-4 py-2 rounded-full">
+                                            <i class="fas fa-star text-secondary mr-1"></i>
                                             <span class="font-bold">{{ $instructor->rating }}</span>
                                             <span class="text-gray-600 ml-1">{{ $detail['rating'] }}</span>
                                         </div>
@@ -430,15 +432,15 @@
                                 <!-- Stats -->
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     <div class="bg-gradient-to-r from-amber-50 to-white p-6 rounded-2xl text-center">
-                                        <div class="text-3xl font-bold text-amber-600 mb-2">{{ $instructor->experience }}</div>
+                                        <div class="text-3xl font-bold text-secondary mb-2">{{ $instructor->experience }}</div>
                                         <div class="text-gray-600">{{ $detail['experience'] }}</div>
                                     </div>
                                     <div class="bg-gradient-to-r from-orange-50 to-white p-6 rounded-2xl text-center">
-                                        <div class="text-3xl font-bold text-orange-600 mb-2">{{ $instructor->students_taught }}</div>
+                                        <div class="text-3xl font-bold text-secondary mb-2">{{ $instructor->students_taught }}</div>
                                         <div class="text-gray-600">{{ $locale === 'id' ? 'Siswa' : 'Students Taught' }}</div>
                                     </div>
                                     <div class="bg-gradient-to-r from-yellow-50 to-white p-6 rounded-2xl text-center">
-                                        <div class="text-3xl font-bold text-yellow-600 mb-2">{{ $locale === 'id' ? 'Expert' : 'Expert' }}</div>
+                                        <div class="text-3xl font-bold text-secondary mb-2">{{ $locale === 'id' ? 'Expert' : 'Expert' }}</div>
                                         <div class="text-gray-600">{{ $locale === 'id' ? 'Level' : 'Level' }}</div>
                                     </div>
                                 </div>
@@ -460,7 +462,7 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-16">
                     <div class="flex flex-col items-center mb-8">
-                        <div class="w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white mb-6 shadow-2xl transform hover:rotate-12 transition-transform duration-300">
+                        <div class="w-24 h-24 bg-secondary rounded-full flex items-center justify-center text-white mb-6 shadow-2xl transform hover:rotate-12 transition-transform duration-300">
                             <i class="fas fa-user-tie text-3xl"></i>
                         </div>
                         <div class="text-center">
@@ -481,9 +483,9 @@
                         <div>
                             <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 mb-10 border border-indigo-100">
                                 <p class="text-gray-700 text-lg leading-relaxed text-center italic">
-                                    <i class="fas fa-quote-left text-indigo-400 text-2xl mr-2"></i>
+                                    <i class="fas fa-quote-left text-secondary text-2xl mr-2"></i>
                                     {{ $training_modules['hrc_mentors'] }}
-                                    <i class="fas fa-quote-right text-indigo-400 text-2xl ml-2"></i>
+                                    <i class="fas fa-quote-right text-secondary text-2xl ml-2"></i>
                                 </p>
                             </div>
 
@@ -492,12 +494,12 @@
                                 <div class="flex items-start p-6 rounded-2xl bg-white hover:bg-gradient-to-r hover:from-indigo-50 hover:via-purple-50 hover:to-white transition-all duration-300 group border border-gray-100">
                                     <div class="flex-shrink-0 mr-5">
                                         <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
-                                            <i class="fas fa-users text-xl"></i>
+                                            <i class="fas fa-users text-xl text-secondary"></i>
                                         </div>
                                     </div>
                                     <div>
-                                        <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors duration-300">
-                                            {{ $locale === 'id' ? '500+ Mentor Berpengalaman' : '500+ Expert Mentors' }}
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-secondary transition-colors duration-300">
+                                            {{ $locale === 'id' ? '5+ Mentor Berpengalaman' : '5+ Expert Mentors' }}
                                         </h4>
                                         <p class="text-gray-600">
                                             {{ $locale === 'id' ? 'Tim mentor profesional dengan pengalaman industri lebih dari 10 tahun' : 'Professional mentor team with over 10 years of industry experience' }}
@@ -508,15 +510,15 @@
                                 <div class="flex items-start p-6 rounded-2xl bg-white hover:bg-gradient-to-r hover:from-purple-50 hover:via-pink-50 hover:to-white transition-all duration-300 group border border-gray-100">
                                     <div class="flex-shrink-0 mr-5">
                                         <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
-                                            <i class="fas fa-globe-americas text-xl"></i>
+                                            <i class="fas fa-globe-americas text-xl text-secondary"></i>
                                         </div>
                                     </div>
                                     <div>
-                                        <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-300">
-                                            {{ $locale === 'id' ? 'Jaringan Global' : 'Global Network' }}
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-secondary transition-colors duration-300">
+                                            {{ $locale === 'id' ? 'Jaringan Luas' : 'Extensive  Network' }}
                                         </h4>
                                         <p class="text-gray-600">
-                                            {{ $locale === 'id' ? 'Koneksi dengan mentor dan alumni di seluruh dunia' : 'Connections with mentors and alumni worldwide' }}
+                                            {{ $locale === 'id' ? 'Koneksi dengan mentor dan semua alumni' : 'Connections with mentors and all alumni' }}
                                         </p>
                                     </div>
                                 </div>
@@ -529,12 +531,12 @@
                             <div class="relative bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl p-10 text-white shadow-2xl mb-10 transform hover:scale-105 transition-transform duration-300">
                                 <div class="text-center">
                                     <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                                        <i class="fas fa-award text-4xl"></i>
+                                        <i class="fas fa-award text-4xl text-secondary"></i>
                                     </div>
-                                    <h3 class="text-3xl font-bold mb-3">{{ $locale === 'id' ? 'Mentor Terbaik' : 'Top Mentors' }}</h3>
-                                    <p class="text-white/90 text-lg">{{ $locale === 'id' ? 'Dipilih dengan ketat melalui seleksi 5 tahap' : 'Handpicked through 5-stage selection process' }}</p>
+                                    <h3 class="text-3xl font-bold mb-3 text-black">{{ $locale === 'id' ? 'Mentor Terbaik' : 'Top Mentors' }}</h3>
+                                    <p class="text-black text-lg">{{ $locale === 'id' ? 'Dipilih dengan ketat melalui beberapa seleksi' : 'Carefully selected through multiple rounds of screening' }}</p>
                                 </div>
-                                <div class="absolute -top-4 -right-4 bg-white text-orange-600 rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg">
+                                <div class="absolute -top-4 -right-4 bg-secondary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shadow-lg">
                                     #1
                                 </div>
                             </div>
@@ -547,14 +549,14 @@
                                 <div class="space-y-6">
                                     <div class="flex items-center justify-between p-6 bg-gradient-to-r from-indigo-50 to-white rounded-2xl hover:from-indigo-100 transition-all duration-300">
                                         <div class="flex items-center">
-                                            <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mr-4">
-                                                <i class="fas fa-history text-indigo-600"></i>
+                                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
+                                                <i class="fas fa-history text-secondary"></i>
                                             </div>
                                             <div>
                                                 <div class="text-gray-600">{{ $locale === 'id' ? 'Rata-rata Pengalaman' : 'Average Experience' }}</div>
                                             </div>
                                         </div>
-                                        <div class="text-3xl font-bold text-indigo-600">12+</div>
+                                        <div class="text-3xl font-bold text-secondary">12+</div>
                                     </div>
 
                                     <div class="flex items-center justify-between p-6 bg-gradient-to-r from-green-50 to-white rounded-2xl hover:from-green-100 transition-all duration-300">
@@ -566,19 +568,19 @@
                                                 <div class="text-gray-600">{{ $locale === 'id' ? 'Tingkat Kepuasan' : 'Success Rate' }}</div>
                                             </div>
                                         </div>
-                                        <div class="text-3xl font-bold text-green-600">98%</div>
+                                        <div class="text-3xl font-bold text-secondary">98%</div>
                                     </div>
 
                                     <div class="flex items-center justify-between p-6 bg-gradient-to-r from-purple-50 to-white rounded-2xl hover:from-purple-100 transition-all duration-300">
                                         <div class="flex items-center">
-                                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-4">
-                                                <i class="fas fa-graduation-cap text-purple-600"></i>
+                                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
+                                                <i class="fas fa-graduation-cap text-secondary"></i>
                                             </div>
                                             <div>
                                                 <div class="text-gray-600">{{ $locale === 'id' ? 'Jumlah Orang' : 'Students Taught' }}</div>
                                             </div>
                                         </div>
-                                        <div class="text-3xl font-bold text-purple-600">10,000+</div>
+                                        <div class="text-3xl font-bold text-secondary">10,000+</div>
                                     </div>
                                 </div>
                             </div>
@@ -640,57 +642,204 @@
         </div>
     </section>
 
-    <!-- Career Support Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $detail['career_support'] }}</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">{{ $detail['whats_included'] }}</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>{{ $detail['resume_review'] }}</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>{{ $detail['mock_interviews'] }}</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>{{ $detail['networking_events'] }}</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>{{ $detail['job_placement'] }}</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>{{ $detail['alumni_network'] }}</span>
-                        </li>
-                    </ul>
+    <!-- Career Support & Outcomes Section (Redesigned) -->
+    <section class="py-20 bg-gradient-to-b from-white to-blue-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-6 shadow-lg">
+                    <i class="fas fa-briefcase text-white text-2xl"></i>
                 </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">{{ $detail['career_outcomes'] }}</h3>
-                    <div class="bg-gray-100 rounded-lg p-6">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-secondary mb-2">85%</div>
-                                <div class="text-sm text-gray-600">{{ $detail['job_placement_rate'] }}</div>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{{ $detail['career_support'] }}</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    {{ $locale === 'id' ? 'Dukungan karir komprehensif untuk memastikan kesuksesan Anda pasca bootcamp' : 'Comprehensive career support to ensure your post-bootcamp success' }}
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+                <!-- Left Column: Career Support Services -->
+                <div class="bg-gradient-to-br from-white to-blue-50 rounded-3xl p-8 shadow-xl border border-blue-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group">
+                    <div class="flex items-center mb-8">
+                        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center text-white mr-5 shadow-lg">
+                            <i class="fas fa-tasks text-xl text-secondary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-secondary transition-colors duration-300">
+                            {{ $detail['whats_included'] }}
+                        </h3>
+                    </div>
+
+                    <div class="space-y-5">
+                        <div class="flex items-start p-5 rounded-2xl bg-white hover:bg-gradient-to-r hover:from-blue-50 hover:to-white transition-all duration-300 group/item border border-gray-100">
+                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center text-white mr-5 shadow-md">
+                                <i class="fas fa-file-alt text-secondary"></i>
                             </div>
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-secondary mb-2">3 months</div>
-                                <div class="text-sm text-gray-600">{{ $detail['avg_search_time'] }}</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-secondary mb-2">40%</div>
-                                <div class="text-sm text-gray-600">{{ $detail['salary_increase'] }}</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-secondary mb-2">500+</div>
-                                <div class="text-sm text-gray-600">{{ $detail['hiring_partners'] }}</div>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-semibold text-gray-800 mb-1 group-hover/item:text-secondary transition-colors duration-300">
+                                    {{ $detail['resume_review'] }}
+                                </h4>
+                                <p class="text-sm text-gray-600">
+                                    {{ $locale === 'id' ? 'Review CV profesional dan tips optimasi' : 'Professional CV review and optimization tips' }}
+                                </p>
                             </div>
                         </div>
+
+                        <div class="flex items-start p-5 rounded-2xl bg-white hover:bg-gradient-to-r hover:from-blue-50 hover:to-white transition-all duration-300 group/item border border-gray-100">
+                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center text-white mr-5 shadow-md">
+                                <i class="fas fa-comments text-secondary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-semibold text-gray-800 mb-1 group-hover/item:text-secondary transition-colors duration-300">
+                                    {{ $detail['mock_interviews'] }}
+                                </h4>
+                                <p class="text-sm text-gray-600">
+                                    {{ $locale === 'id' ? 'Simulasi wawancara dengan feedback mendalam' : 'Mock interviews with detailed feedback' }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start p-5 rounded-2xl bg-white hover:bg-gradient-to-r hover:from-blue-50 hover:to-white transition-all duration-300 group/item border border-gray-100">
+                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center text-white mr-5 shadow-md">
+                                <i class="fas fa-network-wired text-secondary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-semibold text-gray-800 mb-1 group-hover/item:text-secondary transition-colors duration-300">
+                                    {{ $detail['networking_events'] }}
+                                </h4>
+                                <p class="text-sm text-gray-600">
+                                    {{ $locale === 'id' ? 'Akses ke event networking dengan industri' : 'Access to industry networking events' }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start p-5 rounded-2xl bg-white hover:bg-gradient-to-r hover:from-blue-50 hover:to-white transition-all duration-300 group/item border border-gray-100">
+                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center text-white mr-5 shadow-md">
+                                <i class="fas fa-briefcase text-secondary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-semibold text-gray-800 mb-1 group-hover/item:text-secondary transition-colors duration-300">
+                                    {{ $detail['job_placement'] }}
+                                </h4>
+                                <p class="text-sm text-gray-600">
+                                    {{ $locale === 'id' ? 'Bantuan penempatan kerja dengan partner' : 'Job placement assistance with partners' }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start p-5 rounded-2xl bg-white hover:bg-gradient-to-r hover:from-blue-50 hover:to-white transition-all duration-300 group/item border border-gray-100">
+                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center text-white mr-5 shadow-md">
+                                <i class="fas fa-users text-secondary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-semibold text-gray-800 mb-1 group-hover/item:text-secondary transition-colors duration-300">
+                                    {{ $detail['alumni_network'] }}
+                                </h4>
+                                <p class="text-sm text-gray-600">
+                                    {{ $locale === 'id' ? 'Jaringan alumni untuk kolaborasi' : 'Alumni network for collaboration' }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Career Outcomes & Statistics -->
+                <div class="bg-gradient-to-br from-white to-emerald-50 rounded-3xl p-8 shadow-xl border border-emerald-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group">
+                    <div class="flex items-center mb-8">
+                        <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white mr-5 shadow-lg">
+                            <i class="fas fa-chart-line text-xl text-secondary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
+                            {{ $detail['career_outcomes'] }}
+                        </h3>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-lg transition-shadow duration-300 border border-emerald-100 hover:border-secondary">
+                            <div class="text-4xl md:text-5xl font-bold text-emerald-600 mb-2">85%</div>
+                            <div class="text-sm font-medium text-gray-700 mb-1">{{ $detail['job_placement_rate'] }}</div>
+                            <div class="text-xs text-gray-500">
+                                {{ $locale === 'id' ? 'Tingkat penempatan kerja' : 'Job placement rate' }}
+                            </div>
+                            <div class="mt-3 h-2 bg-emerald-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-emerald-500 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-lg transition-shadow duration-300 border border-blue-100 hover:border-secondary">
+                            <div class="text-4xl md:text-5xl font-bold text-secondary mb-2">3<span class="text-lg">months</span></div>
+                            <div class="text-sm font-medium text-gray-700 mb-1">{{ $detail['avg_search_time'] }}</div>
+                            <div class="text-xs text-gray-500">
+                                {{ $locale === 'id' ? 'Rata-rata waktu pencarian' : 'Average job search time' }}
+                            </div>
+                            <div class="mt-3 flex justify-center">
+                                <i class="fas fa-clock text-secondary"></i>
+                                <i class="fas fa-clock text-secondary mx-1"></i>
+                                <i class="fas fa-clock text-secondary"></i>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-lg transition-shadow duration-300 border border-amber-100 hover:border-secondary">
+                            <div class="text-4xl md:text-5xl font-bold text-secondary mb-2">40%</div>
+                            <div class="text-sm font-medium text-gray-700 mb-1">{{ $detail['salary_increase'] }}</div>
+                            <div class="text-xs text-gray-500">
+                                {{ $locale === 'id' ? 'Kenaikan gaji rata-rata' : 'Average salary increase' }}
+                            </div>
+                            <div class="mt-3 flex items-center justify-center">
+                                <i class="fas fa-arrow-up text-secondary mr-1"></i>
+                                <span class="text-sm font-semibold text-secondary">Significant Growth</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-lg transition-shadow duration-300 border border-purple-100 hover:border-secondary">
+                            <div class="text-4xl md:text-5xl font-bold text-secondary mb-2">500<span class="text-xl">+</span></div>
+                            <div class="text-sm font-medium text-gray-700 mb-1">{{ $detail['hiring_partners'] }}</div>
+                            <div class="text-xs text-gray-500">
+                                {{ $locale === 'id' ? 'Perusahaan partner' : 'Hiring partner companies' }}
+                            </div>
+                            <div class="mt-3">
+                                <div class="flex justify-center space-x-1">
+                                    <div class="w-3 h-3 bg-secondary rounded-full"></div>
+                                    <div class="w-3 h-3 bg-secondary rounded-full"></div>
+                                    <div class="w-3 h-3 bg-secondary rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success Story Highlight -->
+                    <div class="bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl p-6 border border-emerald-200">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mr-4">
+                                <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-medal text-emerald-600"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">
+                                    {{ $locale === 'id' ? 'Kisah Sukses Alumni' : 'Alumni Success Story' }}
+                                </h4>
+                                <p class="text-sm text-gray-600">
+                                    {{ $locale === 'id' ? '90% alumni mendapatkan pekerjaan dalam 6 bulan dengan kenaikan gaji rata-rata 40%' : '90% of alumni secured jobs within 6 months with an average 40% salary increase' }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="mt-12 max-w-4xl mx-auto">
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-secondary">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="text-center md:text-left">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">
+                                {{ $locale === 'id' ? 'Mulai Perjalanan Karir Anda Hari Ini' : 'Start Your Career Journey Today' }}
+                            </h4>
+                            <p class="text-gray-600">
+                                {{ $locale === 'id' ? 'Bergabunglah dengan bootcamp kami dan dapatkan dukungan karir komprehensif untuk masa depan yang cerah' : 'Join our bootcamp and get comprehensive career support for a brighter future' }}
+                            </p>
+                        </div>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg whitespace-nowrap">
+                            <i class="fas fa-rocket mr-2 text-secondary"></i> <span class="text-secondary">{{ $locale === 'id' ? 'Daftar Sekarang' : 'Enroll Now' }}</span>
+                        </button>
                     </div>
                 </div>
             </div>

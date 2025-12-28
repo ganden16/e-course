@@ -51,6 +51,11 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'id|en']], functio
     })->name('bootcamp.new');
 
     Route::get('/bootcamp-new/{id}', [BootcampController::class, 'showNew'])->name('bootcamp.new.detail');
+
+    Route::get('/login', function () {
+        return redirect('/login');
+    });
+
 });
 
 // Redirect root to default language (Indonesian)
