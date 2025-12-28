@@ -68,7 +68,7 @@ return [
             [
                 'name' => 'Threads',
                 'url' => 'https://www.threads.com/@healthcare.remotecircle',
-                'icon' => 'fab fa-instagram',
+                'icon' => 'fa-brands fa-threads',
                 'description' => 'Thoughtful takes, practical tips, and meaningful conversations—in bite-sized posts.'
             ],
             [

@@ -68,7 +68,7 @@ return [
             [
                 'name' => 'Threads',
                 'url' => 'https://www.threads.com/@healthcare.remotecircle',
-                'icon' => 'fab fa-instagram',
+                'icon' => 'fa-brands fa-threads',
                 'description' => 'Percakapan santai, tips praktis, dan pemikiran mendalam dalam format ringkas.'
             ],
             [

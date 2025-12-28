@@ -77,18 +77,48 @@
 </section>
 
 <!-- Filter Section -->
-<section class="py-8 bg-light border-b">
-    <div class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <h2 class="text-2xl font-semibold text-gray-800">{{ $filter['all_articles'] }}</h2>
-                <p class="text-gray-600">{{ $totalBlogs ?? count($blogs) }} {{ $filter['articles_available'] }}</p>
+<section class="py-12 bg-gradient-to-b from-gray-50 to-white border-b border-gray-100">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row justify-between items-center gap-6">
+            <!-- Left: Title & Stats -->
+            <div class="text-center lg:text-left">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                    {{ $filter['all_articles'] }}
+                </h2>
+                <div class="flex items-center justify-center lg:justify-start gap-2 text-gray-600">
+                    <span class="inline-flex items-center">
+                        <svg class="w-5 h-5 mr-1.5 text-secondary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="text-lg font-semibold">{{ $totalBlogs ?? count($blogs) }}</span>
+                    </span>
+                    <span>{{ $filter['articles_available'] }}</span>
+                </div>
             </div>
-            <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="sortFilter">
-                    <option value="latest">{{ $filter['latest_first'] }}</option>
-                    <option value="oldest">{{ $filter['oldest_first'] }}</option>
-                </select>
+
+            <!-- Right: Filter Controls -->
+            <div class="w-full lg:w-auto">
+                <div class="flex flex-col sm:flex-row items-center gap-4 bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-3">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                        </svg>
+                        <span class="text-sm font-medium text-gray-700">{{ $filter['sort_by'] ?? 'Sort by' }}</span>
+                    </div>
+
+                    <div class="relative">
+                        <select class="appearance-none bg-white border border-gray-300 rounded-lg pl-4 pr-10 py-2.5 text-gray-700 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all duration-200 cursor-pointer hover:border-gray-400 min-w-[180px]" id="sortFilter">
+                            <option value="latest" class="py-2">{{ $filter['latest_first'] }}</option>
+                            <option value="oldest" class="py-2">{{ $filter['oldest_first'] }}</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

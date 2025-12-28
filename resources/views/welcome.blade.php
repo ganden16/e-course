@@ -77,7 +77,7 @@
             @foreach($statsData as $index => $stat)
                 <div class="text-center">
                     <div class="text-3xl md:text-4xl font-bold text-secondary mb-2 pulse-animation">{{ $stat['number'] }}</div>
-                    <div class="text-gray-600">{{ $stats['active_students'] }}</div>
+                    <div class="text-gray-600">{{ $stat['label'] }}</div>
                 </div>
             @endforeach
         </div>
@@ -92,10 +92,10 @@
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $features['subtitle'] }}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach($featuresData as $index => $feature)
-                <div class="text-center bg-white p-8 rounded-xl shadow-lg card-hover">
-                    <div class="text-white rounded-full h-16 flex items-center justify-center mx-auto mb-4 float-animation text-2xl">
-                        <span class="material-icons-outlined text-4xl">{{ $feature['emoji'] }}</span>
+            @foreach($features['data'] as $feature)
+                <div class="text-center bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-secondary text-600 mb-4">
+                        <i class="{{ $feature['emoji'] }} text-4xl text-secondary"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">{{ $feature['title'] }}</h3>
                     <p class="text-gray-600">{{ $feature['description'] }}</p>
@@ -249,10 +249,10 @@
             @foreach($testimonialsData as $testimonial)
                 <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
                     <div class="flex items-center mb-4">
-                        <img src="{{ $testimonial['avatar'] }}" alt="{{ $testimonial['name'] }}" class="w-12 h-12 rounded-full mr-4">
+                        <img src="{{ asset('assets/images/users/avatar.jpg') }}" alt="{{ $testimonial['name'] }}" class="w-12 h-12 rounded-full mr-4">
                         <div>
                             <h4 class="font-semibold">{{ $testimonial['name'] }}</h4>
-                            <p class="text-sm text-gray-500">{{ $testimonial['role'] }}</p>
+                            {{-- <p class="text-sm text-gray-500">{{ $testimonial['role'] }}</p> --}}
                         </div>
                     </div>
                     <div class="flex mb-4">

@@ -85,27 +85,104 @@
 </section>
 
 <!-- Filter Section -->
-<section class="py-8 bg-light border-b">
-    <div class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <h2 class="text-2xl font-semibold text-gray-800">{{ $filter['all_bootcamps'] }}</h2>
-                <p class="text-gray-600">{{ $totalBootcamps ?? count($bootcamps) }} {{ $filter['bootcamps_available'] }}</p>
+<section class="py-10 bg-gradient-to-br from-white via-gray-50 to-gray-100 border-b border-gray-200/50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 lg:gap-8">
+            <!-- Title & Stats -->
+            <div class="flex-1 min-w-0">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2 tracking-tight">
+                    {{ $filter['all_bootcamps'] }}
+                </h1>
+                <div class="flex items-center gap-3 text-gray-700">
+                    <div class="flex items-center gap-1.5 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-gray-200 shadow-sm">
+                        <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="text-sm font-semibold">{{ $totalBootcamps ?? count($bootcamps) }}</span>
+                        <span class="text-sm text-gray-600">{{ $filter['bootcamps_available'] }}</span>
+                    </div>
+                    @if($selectedCategory ?? false)
+                    <div class="flex items-center gap-1.5 bg-secondary/10 px-3 py-1.5 rounded-full border border-secondary/20">
+                        <span class="text-sm font-medium text-secondary">{{ $selectedCategory->name }}</span>
+                        <button class="text-secondary/70 hover:text-secondary">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    @endif
+                </div>
             </div>
-            <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-                <select class="px-4 py-2 text-black bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="categoryFilter">
-                    <option value="">{{ $filter['all_categories'] }}</option>
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
-                <select class="px-4 py-2 text-black bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" id="sortFilter">
-                    <option value="default">{{ $filter['sort_by'] }}</option>
-                    <option value="price-low">{{ $filter['price_low_high'] }}</option>
-                    <option value="price-high">{{ $filter['price_high_low'] }}</option>
-                    <option value="rating">{{ $filter['highest_rated'] }}</option>
-                    <option value="duration">{{ $filter['shortest_first'] }}</option>
-                </select>
+
+            <!-- Filter Controls -->
+            <div class="w-full lg:w-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:flex gap-3 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200 shadow-sm p-4">
+                    <!-- Category Filter -->
+                    <div class="relative group">
+                        <div class="absolute -inset-0.5 bg-gradient-to-r from-secondary/20 to-primary/20 rounded-lg blur opacity-0 group-hover:opacity-50 transition duration-300"></div>
+                        <div class="relative">
+                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                <svg class="w-4 h-4 text-gray-500 group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                                </svg>
+                            </div>
+                            <select class="pl-10 pr-8 py-2.5 text-sm text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all duration-200 hover:border-gray-400 cursor-pointer appearance-none w-full min-w-[180px]" id="categoryFilter">
+                                <option value="" class="py-2 text-gray-600">{{ $filter['all_categories'] }}</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" class="py-2">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                                <svg class="w-4 h-4 text-gray-500 group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sort Filter -->
+                    <div class="relative group">
+                        <div class="absolute -inset-0.5 bg-gradient-to-r from-secondary/20 to-primary/20 rounded-lg blur opacity-0 group-hover:opacity-50 transition duration-300"></div>
+                        <div class="relative">
+                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                <svg class="w-4 h-4 text-gray-500 group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4"></path>
+                                </svg>
+                            </div>
+                            <select class="pl-10 pr-8 py-2.5 text-sm text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all duration-200 hover:border-gray-400 cursor-pointer appearance-none w-full min-w-[200px]" id="sortFilter">
+                                <option value="default" class="py-2 text-gray-600">{{ $filter['sort_by'] }}</option>
+                                <option value="price-low" class="py-2">{{ $filter['price_low_high'] }}</option>
+                                <option value="price-high" class="py-2">{{ $filter['price_high_low'] }}</option>
+                                <option value="rating" class="py-2">{{ $filter['highest_rated'] }}</option>
+                                <option value="duration" class="py-2">{{ $filter['shortest_first'] }}</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                                <svg class="w-4 h-4 text-gray-500 group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clear Filters Button (Optional) -->
+                    <button id="clearFilters" class="hidden lg:flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 rounded-lg border border-gray-300 transition-all duration-200 group">
+                        <svg class="w-4 h-4 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        {{ $filter['clear_filters'] ?? 'Clear All' }}
+                    </button>
+                </div>
+
+                <!-- Active Filters Indicator (Mobile) -->
+                <div class="mt-3 flex items-center justify-between text-sm text-gray-500">
+                    <span id="activeFiltersCount" class="hidden">
+                        <span class="font-medium">2</span> filters active
+                    </span>
+                    <button id="mobileClearFilters" class="text-secondary hover:text-secondary-dark font-medium hidden">
+                        {{ $filter['clear'] ?? 'Clear' }}
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -120,7 +197,7 @@
 
         <!-- Load More Button -->
         @if(($totalBootcamps ?? count($bootcamps)) > 6)
-            <div class="text-center mt-12">
+            <div class="flex justify-center text-center mt-12">
                 <button id="loadMoreBtn" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
                     {{ $load_more['bootcamps'] }}
                 </button>
@@ -254,16 +331,79 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const categoryFilter = document.getElementById('categoryFilter');
-        const sortFilter = document.getElementById('sortFilter');
-        const bootcampsGrid = document.getElementById('bootcampsGrid');
-        const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const sortFilter = document.getElementById('sortFilter');
+    const bootcampsGrid = document.getElementById('bootcampsGrid');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const clearFiltersBtn = document.getElementById('clearFilters');
+    const mobileClearBtn = document.getElementById('mobileClearFilters');
+    const activeFiltersCount = document.getElementById('activeFiltersCount');
 
-        let currentPage = 1;
-        let isLoading = false;
+    let currentPage = 1;
+    let isLoading = false;
+    let currentCategory = categoryFilter.value;
+    let currentSort = sortFilter.value;
+
+    // Update active filters counter
+    function updateActiveFilters() {
+        const activeFilters = [];
+        if (categoryFilter.value) activeFilters.push('category');
+        if (sortFilter.value !== 'default') activeFilters.push('sort');
+
+        const count = activeFilters.length;
+
+        if (count > 0) {
+            activeFiltersCount.innerHTML = `<span class="font-medium">${count}</span> ${count === 1 ? 'filter' : 'filters'} active`;
+            activeFiltersCount.classList.remove('hidden');
+            if (clearFiltersBtn) clearFiltersBtn.classList.remove('hidden');
+            if (mobileClearBtn) mobileClearBtn.classList.remove('hidden');
+        } else {
+            activeFiltersCount.classList.add('hidden');
+            if (clearFiltersBtn) clearFiltersBtn.classList.add('hidden');
+            if (mobileClearBtn) mobileClearBtn.classList.add('hidden');
+        }
+    }
+
+    // Update stats badge
+    function updateStatsBadge(count) {
+        const countElement = document.querySelector('.flex.items-center.gap-1.5 .text-sm.font-semibold');
+        if (countElement) {
+            countElement.textContent = count;
+        }
+    }
+
+    // Show loading state
+    function showLoading() {
+        if (loadMoreBtn) {
+            loadMoreBtn.disabled = true;
+            loadMoreBtn.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Loading...
+                `;
+            }
+        }
+
+        // Hide loading state
+        function hideLoading() {
+            if (loadMoreBtn) {
+                loadMoreBtn.disabled = false;
+                loadMoreBtn.innerHTML = 'Load More';
+            }
+        }
+
+        // Clear all filters
+        function clearAllFilters() {
+            categoryFilter.value = '';
+            sortFilter.value = 'default';
+            updateActiveFilters();
+            fetchBootcamps(true);
+        }
 
         // Ambil bootcamp dari server berdasarkan filter & sort
-        function fetchBootcamps(reset = true) {
+        function fetchBootcamps(reset = true, updateStats = true) {
             if (isLoading) return;
             isLoading = true;
 
@@ -271,19 +411,49 @@
                 currentPage = 1;
                 if (loadMoreBtn) {
                     loadMoreBtn.style.display = 'block';
+                    loadMoreBtn.classList.remove('hidden');
                 }
             }
 
+            // Update filter tracking
+            currentCategory = categoryFilter.value;
+            currentSort = sortFilter.value;
+
             const url = new URL(window.location.pathname, window.location.origin);
-            const params = url.searchParams;
-            params.set('category', categoryFilter.value || '');
-            params.set('sort', sortFilter.value || 'default');
+            const params = new URLSearchParams();
+            params.set('category', currentCategory || '');
+            params.set('sort', currentSort || 'default');
             params.set('page', currentPage);
 
+            // Show loading state
+            if (reset) {
+                bootcampsGrid.innerHTML = `
+                    <div class="col-span-full flex justify-center items-center py-12">
+                        <div class="text-center">
+                            <svg class="animate-spin h-8 w-8 text-secondary mx-auto mb-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <p class="text-gray-600">Loading bootcamps...</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                showLoading();
+            }
+
             fetch(`${url.pathname}?${params.toString()}`, {
-                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 if (reset) {
                     bootcampsGrid.innerHTML = '';
@@ -293,30 +463,114 @@
                     const temp = document.createElement('div');
                     temp.innerHTML = data.html;
                     const items = temp.querySelectorAll('.bootcamp-item');
-                    items.forEach(item => bootcampsGrid.appendChild(item));
 
-                    if (!data.hasMore && loadMoreBtn) {
-                        loadMoreBtn.style.display = 'none';
+                    items.forEach(item => {
+                        // Add fade-in animation
+                        item.classList.add('animate-fadeIn');
+                        bootcampsGrid.appendChild(item);
+                    });
+
+                    // Update load more button
+                    if (loadMoreBtn) {
+                        if (!data.hasMore) {
+                            loadMoreBtn.style.display = 'none';
+                        } else {
+                            loadMoreBtn.style.display = 'block';
+                            loadMoreBtn.classList.remove('hidden');
+                        }
                     }
+
+                    // Update stats if available
+                    if (updateStats && data.total !== undefined) {
+                        updateStatsBadge(data.total);
+                    }
+                } else if (reset) {
+                    // No results
+                    bootcampsGrid.innerHTML = `
+                        <div class="col-span-full text-center py-12">
+                            <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">No bootcamps found</h3>
+                            <p class="text-gray-600">Try adjusting your filters to find what you're looking for.</p>
+                        </div>
+                    `;
                 }
 
+                // Update active filters
+                updateActiveFilters();
                 isLoading = false;
+                hideLoading();
             })
             .catch(error => {
                 console.error('Error fetching bootcamps:', error);
+
+                if (reset) {
+                    bootcampsGrid.innerHTML = `
+                        <div class="col-span-full text-center py-12">
+                            <svg class="w-16 h-16 text-red-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">Error loading bootcamps</h3>
+                            <p class="text-gray-600">Please try again in a moment.</p>
+                            <button onclick="fetchBootcamps(true)" class="mt-4 bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                                Retry
+                            </button>
+                        </div>
+                    `;
+                }
+
                 isLoading = false;
+                hideLoading();
             });
         }
 
-        // Event listeners
-        categoryFilter.addEventListener('change', () => fetchBootcamps(true));
-        sortFilter.addEventListener('change', () => fetchBootcamps(true));
+        // Event listeners dengan debounce
+        let filterTimeout;
+        function debouncedFilter() {
+            clearTimeout(filterTimeout);
+            filterTimeout = setTimeout(() => fetchBootcamps(true), 300);
+        }
+
+        categoryFilter.addEventListener('change', () => {
+            updateActiveFilters();
+            debouncedFilter();
+        });
+
+        sortFilter.addEventListener('change', () => {
+            updateActiveFilters();
+            debouncedFilter();
+        });
+
+        if (clearFiltersBtn) {
+            clearFiltersBtn.addEventListener('click', clearAllFilters);
+        }
+
+        if (mobileClearBtn) {
+            mobileClearBtn.addEventListener('click', clearAllFilters);
+        }
 
         if (loadMoreBtn) {
             loadMoreBtn.addEventListener('click', () => {
                 currentPage++;
-                fetchBootcamps(false);
+                fetchBootcamps(false, false);
             });
         }
+
+        // Initialize active filters
+        updateActiveFilters();
+
+        // Add CSS animation for fade-in
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fadeIn {
+                animation: fadeIn 0.3s ease-out forwards;
+            }
+        `;
+        document.head.appendChild(style);
     });
 </script>

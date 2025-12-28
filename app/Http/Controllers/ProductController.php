@@ -48,18 +48,27 @@ class ProductController extends Controller
                 $query->orderBy('created_at', 'desc');
         }
 
-        // Get total count before applying pagination/limit
+        // Get total count
         $totalProducts = $query->count();
 
-        // Handle AJAX request for load more functionality
+        // Handle AJAX request
         if ($request->ajax()) {
             $page = $request->get('page', 1);
-            $offset = ($page - 1) * 6; // Load 6 items per click
-            $products = $query->skip($offset)->take(6)->get();
+            $perPage = 6;
+            $offset = ($page - 1) * $perPage;
+
+            // Clone query for pagination
+            $paginatedQuery = clone $query;
+            $products = $paginatedQuery->skip($offset)->take($perPage)->get();
+
+            // Check if there are more items
+            $hasMore = ($offset + $perPage) < $totalProducts;
 
             return response()->json([
                 'html' => view('partials.product-items', compact('products', 'course_details'))->render(),
-                'hasMore' => $totalProducts > ($offset + 6)
+                'hasMore' => $hasMore,
+                'total' => $totalProducts,
+                'currentPage' => $page
             ]);
         }
 

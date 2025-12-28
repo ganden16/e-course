@@ -53,32 +53,32 @@ return [
         'subtitle' => 'Kami menyediakan pengalaman belajar terbaik dengan fitur-fitur komprehensif yang dirancang untuk membantu Anda berhasil.',
         'data' => [
             [
-                'emoji' => '🌍',
+                'emoji' => 'fas fa-globe',
                 'title' => 'Belajar dari Mana Saja',
                 'description' => 'Nikmati fleksibilitas belajar online dari mana saja, kapan saja. Semua kelas kami dirancang untuk mendukung karier kalian di dunia remote healthcare global.'
             ],
             [
-                'emoji' => '🎓',
+                'emoji' => 'fas fa-certificate',
                 'title' => 'Sertifikat Resmi dengan Penilaian Profesional',
                 'description' => 'Dapatkan Graded Certificate of Completion, HIPAA Certificate, dan Internship Certificate. Setiap peserta menerima nilai akhir berdasarkan hasil belajar, performa praktik, dan pencapaian magang.'
             ],
             [
-                'emoji' => '👩‍⚕️',
+                'emoji' => 'fas fa-user-md',
                 'title' => 'Mentor Profesional & Internasional',
                 'description' => 'Belajar langsung dari mentor internasional dan praktisi kesehatan berpengalaman di bidang digital healthcare dan administrasi medis jarak jauh.'
             ],
             [
-                'emoji' => '💬',
+                'emoji' => 'fas fa-users',
                 'title' => 'Komunitas Global yang Supportif',
                 'description' => 'Bergabunglah dengan komunitas tenaga kesehatan dari berbagai negara. Di sini kita Share, Learn, dan Grow bersama menuju karier digital yang berkelanjutan.'
             ],
             [
-                'emoji' => '💼',
+                'emoji' => 'fas fa-briefcase',
                 'title' => 'Unlimited Professional Career Coaching',
                 'description' => 'Dapatkan pendampingan karier tanpa batas melalui personalized 1-on-1 mentoring untuk membantu kalian mengembangkan potensi, membangun portofolio, dan siap menghadapi dunia kerja global.'
             ],
             [
-                'emoji' => '📈',
+                'emoji' => 'fas fa-handshake',
                 'title' => 'Program Berbasis Praktik & Magang',
                 'description' => 'Bangun portofolio profesional melalui magang dengan klinik mitra, proyek nyata, dan pembimbingan langsung dari mentor berpengalaman.'
             ],

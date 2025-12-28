@@ -52,36 +52,36 @@ return [
         'title' => 'Why Choose Healthcare Remote Circle?',
         'subtitle' => 'We provide the best learning experience with comprehensive features designed to help you succeed.',
         'data' => [
-            [
-                'emoji' => '🌍',
+                [
+                'emoji' => 'fas fa-globe',
                 'title' => 'Learn From Anywhere',
                 'description' => 'Access online training anytime, anywhere. Study flexibly and prepare for a successful career in remote healthcare.'
-            ],
-            [
-                'emoji' => '🎓',
-                'title' => 'Professionally Graded & Recognized Certificates',
-                'description' => 'Earn a Graded Certificate of Completion, HIPAA Certificate, and Internship Certificate. Your final grade reflects your learning progress, practical performance, and internship outcomes.'
-            ],
-            [
-                'emoji' => '👩‍⚕️',
-                'title' => 'Expert & International Mentors',
-                'description' => 'Learn from international mentors and healthcare professionals with real-world experience in digital healthcare and remote practice.'
-            ],
-            [
-                'emoji' => '💬',
-                'title' => 'Supportive Global Community',
-                'description' => 'Join a worldwide network of healthcare professionals. At HRC, we Share, Learn, and Grow together.'
-            ],
-            [
-                'emoji' => '💼',
-                'title' => 'Unlimited Professional Career Coaching',
-                'description' => 'Receive unlimited personalized 1-on-1 mentoring to help you build confidence, improve skills, and prepare for global remote healthcare opportunities.'
-            ],
-            [
-                'emoji' => '📈',
-                'title' => 'Practice-Based & Internship Programs',
-                'description' => 'Gain real-world experience through internships with partner clinics, hands-on projects, and guided mentorship.'
-            ],
+                ],
+                [
+                    'emoji' => 'fas fa-certificate',
+                    'title' => 'Professionally Graded & Recognized Certificates',
+                    'description' => 'Earn a Graded Certificate of Completion, HIPAA Certificate, and Internship Certificate. Your final grade reflects your learning progress, practical performance, and internship outcomes.'
+                ],
+                [
+                    'emoji' => 'fas fa-user-md',
+                    'title' => 'Expert & International Mentors',
+                    'description' => 'Learn from international mentors and healthcare professionals with real-world experience in digital healthcare and remote practice.'
+                ],
+                [
+                    'emoji' => 'fas fa-users',
+                    'title' => 'Supportive Global Community',
+                    'description' => 'Join a worldwide network of healthcare professionals. At HRC, we Share, Learn, and Grow together.'
+                ],
+                [
+                    'emoji' => 'fas fa-briefcase',
+                    'title' => 'Unlimited Professional Career Coaching',
+                    'description' => 'Receive unlimited personalized 1-on-1 mentoring to help you build confidence, improve skills, and prepare for global remote healthcare opportunities.'
+                ],
+                [
+                    'emoji' => 'fas fa-handshake',
+                    'title' => 'Practice-Based & Internship Programs',
+                    'description' => 'Gain real-world experience through internships with partner clinics, hands-on projects, and guided mentorship.'
+                ],
             // [
             //     'emoji' => '💡',
             //     'title' => 'Affordable Investment, Maximum Value',
