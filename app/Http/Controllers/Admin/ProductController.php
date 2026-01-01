@@ -59,7 +59,7 @@ class ProductController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'product_category_id' => 'required|exists:product_categories,id',
-            'instructor' => 'required|string|max:255',
+            // 'instructor' => 'nullable|string|max:255',
             'price' => 'required|numeric|min:0',
             'original_price' => 'required|numeric|min:0',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -72,10 +72,17 @@ class ProductController extends Controller
             'curriculum' => 'nullable|array',
             'requirements' => 'nullable|array',
             'what_you_will_build' => 'nullable|array',
-            'is_active' => 'boolean',
+            'is_active' => 'string',
+            'lynkid' => 'nullable|string'
         ]);
 
         $data = $request->except('image');
+
+        if(isset($data['is_active'])) {
+            $data['is_active'] = true;
+        }else{
+            $data['is_active'] = false;
+        }
 
         // Create slug from title
         $data['slug'] = Str::slug($data['title']);
@@ -102,7 +109,7 @@ class ProductController extends Controller
         Product::create($data);
 
         return redirect()
-            ->route('admin.products')
+            ->back()
             ->with('success', 'Product created successfully!');
     }
 
@@ -123,7 +130,7 @@ class ProductController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'product_category_id' => 'required|exists:product_categories,id',
-            'instructor' => 'required|string|max:255',
+            // 'instructor' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
             'original_price' => 'required|numeric|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -136,10 +143,17 @@ class ProductController extends Controller
             'curriculum' => 'nullable|array',
             'requirements' => 'nullable|array',
             'what_you_will_build' => 'nullable|array',
-            'is_active' => 'boolean',
+            'is_active' => 'string',
+            'lynkid' => 'nullable|string'
         ]);
 
         $data = $request->except('image');
+
+        if(isset($data['is_active'])) {
+            $data['is_active'] = true;
+        }else{
+            $data['is_active'] = false;
+        }
 
         // Update slug if title changed
         if ($data['title'] !== $product->title) {
@@ -178,7 +192,7 @@ class ProductController extends Controller
         $product->update($data);
 
         return redirect()
-            ->route('admin.products')
+            ->back()
             ->with('success', 'Product updated successfully!');
     }
 
@@ -212,9 +226,6 @@ class ProductController extends Controller
         $product->is_active = !$product->is_active;
         $product->save();
 
-        return response()->json([
-            'success' => true,
-            'is_active' => $product->is_active
-        ]);
+        return redirect()->back()->with('success', 'Status product berhasil diperbarui!');
     }
 }

@@ -96,14 +96,16 @@
                                 <span class="text-3xl font-bold text-secondary">Rp {{ number_format($bootcamp->price, 0, ',', '.') }}</span>
                                 @if($bootcamp->price < $bootcamp->original_price)
                                     <span class="text-lg text-gray-500 line-through ml-2">Rp {{ number_format($bootcamp->original_price, 0, ',', '.') }}</span>
-                                    <span class="ml-2 text-red-500 font-semibold">{{ $detail['save'] }} {{ $bootcamp->discount_percentage }}%</span>
+                                    <p class="text-red-500 font-semibold my-4">{{ $detail['save'] }} {{ $bootcamp->discount_percentage }}%</p>
                                 @endif
                             </div>
                         </div>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <button class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 flex-1">
-                                <i class="fas fa-shopping-cart mr-2"></i> {{ $detail['enroll_now'] }}
-                            </button>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <a href="{{ $bootcamp->lynkid }}" class="w-full" target="_blank">
+                                <button class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-3 rounded-lg transition duration-300 transform hover:scale-105 flex-1 w-full">
+                                    <i class="fas fa-shopping-cart mr-2"></i> {{ $detail['enroll_now'] }}
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -147,7 +149,7 @@
                                             </span>
                                         </div>
                                         <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                                            <i class="fas fa-book-open  mr-3"></i>
+                                            <i class="fas fa-book-open mr-3"></i>
                                             {{ $week->module }}
                                         </h3>
                                         <p class="text-gray-600 leading-relaxed text-base md:text-lg">
@@ -155,11 +157,32 @@
                                             {{ $week->objective }}
                                         </p>
 
+                                        <!-- Description Section -->
+                                        @if($week->description)
+                                        <div class="mt-6 p-5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100">
+                                            <div class="flex items-start">
+                                                <div class="flex-shrink-0 mr-4">
+                                                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                                        <i class="fas fa-info-circle text-secondary"></i>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h4 class="font-semibold text-gray-800 mb-2">
+                                                        {{ $locale === 'id' ? 'Deskripsi Materi' : 'Module Description' }}
+                                                    </h4>
+                                                    <p class="text-gray-600 leading-relaxed">
+                                                        {{ $week->description }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endif
+
                                         <!-- Progress Indicator -->
                                         <div class="mt-6 pt-6 border-t border-gray-100">
                                             <div class="flex items-center text-sm text-gray-500">
                                                 <i class="fas fa-clock text-secondary mr-2"></i>
-                                                <span>{{ $training_modules['duration'] ?? '4-6 hours/week' }}</span>
+                                                <span>{{ $week->duration_hours }} {{ $locale === 'id' ? 'jam' : 'hours' }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -837,9 +860,11 @@
                                 {{ $locale === 'id' ? 'Bergabunglah dengan bootcamp kami dan dapatkan dukungan karir komprehensif untuk masa depan yang cerah' : 'Join our bootcamp and get comprehensive career support for a brighter future' }}
                             </p>
                         </div>
-                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg whitespace-nowrap">
-                            <i class="fas fa-rocket mr-2 text-secondary"></i> <span class="text-secondary">{{ $locale === 'id' ? 'Daftar Sekarang' : 'Enroll Now' }}</span>
-                        </button>
+                        <a href="{{ $bootcamp->lynkid }}" class="w-full sm:w-auto" target="_blank">
+                            <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg whitespace-nowrap">
+                                <i class="fas fa-rocket mr-2 text-secondary"></i> <span class="text-secondary">{{ $locale === 'id' ? 'Daftar Sekarang' : 'Enroll Now' }}</span>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1006,9 +1031,11 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $detail['ready_transform'] }}</h2>
             <p class="text-xl mb-8 max-w-3xl mx-auto">{{ str_replace('{category}', $bootcamp->category->name, $detail['transform_subtitle']) }}</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="bg-secondary border-2 border-white hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
-                    <i class="fas fa-shopping-cart mr-2"></i> {{ $detail['enroll_bootcamp'] }}
-                </button>
+                <a href="{{ $bootcamp->lynkid}}" class="flex-1 w-full" target="_blank">
+                    <button class="bg-secondary border-2 border-white hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-shopping-cart mr-2"></i> {{ $detail['enroll_bootcamp'] }}
+                    </button>
+                </a>
             </div>
         </div>
     </section>

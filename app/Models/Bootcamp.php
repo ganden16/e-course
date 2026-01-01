@@ -28,7 +28,8 @@ class Bootcamp extends Model
         'learning_outcomes',
         'career_support',
         'requirements',
-        'is_active'
+        'is_active',
+        'lynkid',
     ];
 
     protected $casts = [

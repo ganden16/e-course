@@ -51,14 +51,14 @@
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
+                            {{-- <div>
                                 <label for="instructor" class="block text-sm font-medium text-gray-700 mb-1">Instructor *</label>
                                 <input type="text" id="instructor" name="instructor" value="{{ old('instructor', $product->instructor ?? '') }}"
                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
                                 @error('instructor')
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
 
                             <div>
                                 <label for="product_category_id" class="block text-sm font-medium text-gray-700 mb-1">Category *</label>
@@ -91,10 +91,13 @@
                                 <label for="level" class="block text-sm font-medium text-gray-700 mb-1">Level *</label>
                                 <select id="level" name="level"
                                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
-                                    <option value="">Select level</option>
-                                    <option value="Beginner" {{ old('level', $product->level ?? '') == 'Beginner' ? 'selected' : '' }}>Beginner</option>
-                                    <option value="Intermediate" {{ old('level', $product->level ?? '') == 'Intermediate' ? 'selected' : '' }}>Intermediate</option>
-                                    <option value="Advanced" {{ old('level', $product->level ?? '') == 'Advanced' ? 'selected' : '' }}>Advanced</option>
+                                    <option value="">Select Level</option>
+                                        <option value="Beginner" {{ old('level', $product->level ?? '') === 'Beginner' ? 'selected' : '' }}>Beginner</option>
+                                        <option value="Intermediate" {{ old('level', $product->level ?? '') === 'Intermediate' ? 'selected' : '' }}>Intermediate</option>
+                                        <option value="Advanced" {{ old('level', $product->level ?? '') === 'Advanced' ? 'selected' : '' }}>Advanced</option>
+                                        <option value="Beginner to Intermediate" {{ old('level', $product->level ?? '') === 'Beginner to Intermediate' ? 'selected' : '' }}>Beginner to Intermediate</option>
+                                        <option value="Intermediate to Advanced" {{ old('level', $product->level ?? '') === 'Intermediate to Advanced' ? 'selected' : '' }}>Intermediate to Advanced</option>
+                                        <option value="Beginner to Advanced" {{ old('level', $product->level ?? '') === 'Beginner to Advanced' ? 'selected' : '' }}>Beginner to Advanced</option>
                                 </select>
                                 @error('level')
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -148,6 +151,26 @@
                         @error('students')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
+                    </div>
+                </div>
+
+                <!-- lynkid -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Lynk.id</h3>
+
+                    <div>
+                        <label for="lynkid" class="block text-sm font-medium text-gray-700 mb-1">Link lynk.id</label>
+                        <input type="url"
+                            id="lynkid"
+                            name="lynkid"
+                            value="{{ old('lynkid', $product->lynkid ?? '') }}"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                            placeholder="https://lynk.id/username/product-name"
+                            pattern="https://.*">
+                        @error('lynkid')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                        <p class="text-sm text-gray-500 mt-1">Enter the complete link to lynk.id platform</p>
                     </div>
                 </div>
 

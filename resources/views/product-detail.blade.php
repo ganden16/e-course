@@ -39,7 +39,7 @@
                 <div class="lg:w-2/5">
                     <img src="{{ $product->image }}" alt="{{ $product->title }}" class="w-full rounded-lg shadow-lg">
                     <div class="mt-6 bg-gray-100 rounded-lg p-6">
-                        <h3 class="font-semibold text-lg mb-4">{{ $product_details['course_includes'] }}:</h3>
+                        <h3 class="font-semibold text-lg mb-4">{{ $product_details['course_includes'] }}</h3>
                         <ul class="space-y-2">
                             @foreach($product->features as $feature)
                                 <li class="flex items-start">
@@ -70,10 +70,6 @@
                             <span class="ml-2 font-medium">{{ $product->rating }}</span>
                             <span class="ml-1 text-gray-500">({{ $product->students }} {{ $course_details['students'] }})</span>
                         </div>
-                        {{-- <div class="flex items-center text-gray-600">
-                            <i class="fas fa-user-tie mr-2"></i>
-                            <span>{{ $product->instructor }}</span>
-                        </div> --}}
                     </div>
 
                     <p class="text-lg text-gray-600 mb-8">{{ $product->description }}</p>
@@ -110,12 +106,11 @@
                             </div>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-2">
-                            <button class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-3 rounded-lg transition duration-300 transform hover:scale-105 flex-1">
-                                <i class="fas fa-shopping-cart mr-2"></i> {{ $product_details['enroll_now'] }}
-                            </button>
-                            {{-- <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-lg transition duration-300">
-                                <i class="fas fa-heart mr-2"></i> {{ $product_details['add_to_wishlist'] }}
-                            </button> --}}
+                            <a href="{{ $product->lynkid }}" class="w-full" target="_blank">
+                                <button class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-3 rounded-lg transition duration-300 transform hover:scale-105 flex-1 w-full">
+                                    <i class="fas fa-shopping-cart mr-2"></i> {{ $product_details['enroll_now'] }}
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -123,70 +118,95 @@
         </div>
     </section>
 
-    <!-- Course Content Section -->
+    <!-- Curriculum Section -->
+    @if(!empty($product->curriculum))
     <section class="py-16 bg-light">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $product_details['what_youll_learn'] }}</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white rounded-lg p-6 shadow-md">
-                    <h3 class="font-semibold text-lg mb-4">{{ $product_details['key_skills'] }}</h3>
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $locale == 'en' ? 'Curriculum' : 'Kurikulum' }}</h2>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
                     <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>{{ $detail['master_fundamentals'] }} {{ $product->productCategory->name }}</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>{{ $detail['build_projects'] }}</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>{{ $detail['learn_practices'] }}</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>{{ $detail['develop_skills'] }}</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="bg-white rounded-lg p-6 shadow-md">
-                    <h3 class="font-semibold text-lg mb-4">{{ $product_details['career_benefits'] }}</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>{{ $detail['enhance_resume'] }}</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>{{ $detail['increase_earning'] }}</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>{{ $detail['access_opportunities'] }}</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>{{ $detail['join_community'] }}</span>
-                        </li>
+                        @foreach($product->curriculum as $index => $item)
+                            @if(!empty($item))
+                            <li class="flex items-start border-b border-gray-100 pb-3 last:border-b-0 last:pb-0">
+                                <div class="flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-white font-bold mr-4 flex-shrink-0">
+                                    {{ $index + 1 }}
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-800">{{ $item }}</p>
+                                </div>
+                            </li>
+                            @endif
+                        @endforeach
                     </ul>
                 </div>
             </div>
         </div>
     </section>
+    @endif
+
+    <!-- Requirements Section -->
+    @if(!empty($product->requirements))
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $locale == 'en' ? 'Requirements' : 'Persyaratan' }}</h2>
+            <div class="bg-gray-50 rounded-lg p-8">
+                <ul class="space-y-3">
+                    @foreach($product->requirements as $requirement)
+                        @if(!empty($requirement))
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mt-1 mr-4"></i>
+                            <span class="text-gray-700">{{ $requirement }}</span>
+                        </li>
+                        @endif
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </section>
+    @endif
+
+    <!-- What You Will Build Section -->
+    @if(!empty($product->what_you_will_build))
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $locale == 'en' ? 'What You Will Build' : 'Yang Akan Anda Bangun' }}</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach($product->what_you_will_build as $item)
+                    @if(!empty($item))
+                    <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-cube text-secondary text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800">{{ $locale == 'en' ? 'Project' : 'Proyek' }} {{ $loop->iteration }}</h3>
+                        </div>
+                        <p class="text-gray-600">{{ $item }}</p>
+                    </div>
+                    @endif
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
 
     <!-- Instructor Section -->
     {{-- <section class="py-16 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $instructor['title'] }}</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ $locale == 'en' ? 'Instructor' : 'Instruktur' }}</h2>
             <div class="bg-gray-100 rounded-lg p-8">
                 <div class="flex flex-col md:flex-row items-center gap-8">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="{{ $product->instructor }}" class="w-32 h-32 rounded-full object-cover">
-                    <div>
+                    <div class="w-32 h-32 rounded-full bg-gray-300 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-gray-600 text-5xl"></i>
+                    </div>
+                    <div class="flex-1">
                         <h3 class="text-2xl font-semibold mb-2">{{ $product->instructor }}</h3>
-                        <p class="text-gray-600 mb-4">{{ str_replace('{category}', $product->productCategory->name, $detail['instructor_bio']) }}</p>
-                        <div class="flex items-center gap-6 text-sm text-gray-600">
+                        <p class="text-gray-600 mb-4">
+                            {{ $locale == 'en' ? 'Experienced instructor in ' : 'Instruktur berpengalaman dalam bidang ' }}{{ $product->productCategory->name }}
+                        </p>
+                        <div class="flex flex-wrap gap-4 text-sm text-gray-600">
                             <div class="flex items-center">
-                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 mr-2"></i>
                                 <span>{{ $product->rating }} {{ $instructor['rating'] }}</span>
                             </div>
                             <div class="flex items-center">
@@ -194,7 +214,7 @@
                                 <span>{{ $product->students }} {{ $instructor['students'] }}</span>
                             </div>
                             <div class="flex items-center">
-                                <i class="fas fa-play-circle mr-2"></i>
+                                <i class="fas fa-clock mr-2"></i>
                                 <span>{{ $product->duration }} {{ $instructor['content'] }}</span>
                             </div>
                         </div>
@@ -281,7 +301,7 @@
                                     @endif
                                 </div>
                                 <a href="{{ $baseUrl }}/product/{{ $otherProduct->id }}" class="bg-secondary hover:bg-secondary-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300">
-                                    Lihat Detail
+                                    {{ $locale == 'en' ? 'View Details' : 'Lihat Detail' }}
                                 </a>
                             </div>
                         </div>
@@ -290,7 +310,7 @@
             </div>
             <div class="text-center mt-8">
                 <a href="{{ $baseUrl }}/product" class="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300">
-                    Lihat Semua Product <i class="fas fa-arrow-right ml-2"></i>
+                    {{ $locale == 'en' ? 'View All Products' : 'Lihat Semua Product' }} <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
         </div>
@@ -298,79 +318,14 @@
 
     <!-- CTA Section -->
     <section class="py-16 bg-primary text-white relative overflow-hidden">
-        <!-- Animated Background with Secondary-Dark Diamond Ribbon Pattern -->
-        {{-- <div class="absolute inset-0 z-10">
-            <!-- Diamond Ribbon 1 - Top Left -->
-            <svg class="absolute top-0 left-0 w-80 h-80" viewBox="0 0 300 300">
-                <path d="M150,50 L200,100 L150,150 L100,100 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark"/>
-                <path d="M150,150 L200,200 L150,250 L100,200 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark opacity-80"/>
-                <path d="M50,100 L100,150 L50,200 L0,150 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark"/>
-                <path d="M250,100 L300,150 L250,200 L200,150 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark opacity-80"/>
-            </svg>
-
-            <!-- Diamond Ribbon 2 - Top Right -->
-            <svg class="absolute top-0 right-0 w-80 h-80" viewBox="0 0 300 300">
-                <path d="M150,50 L100,100 L150,150 L200,100 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark"/>
-                <path d="M150,150 L100,200 L150,250 L200,200 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark opacity-80"/>
-                <path d="M250,100 L200,150 L250,200 L300,150 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark"/>
-                <path d="M50,100 L100,150 L50,200 L0,150 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark opacity-80"/>
-            </svg>
-
-            <!-- Diamond Ribbon 3 - Bottom Left -->
-            <svg class="absolute bottom-0 left-0 w-80 h-80" viewBox="0 0 300 300">
-                <path d="M150,250 L200,200 L150,150 L100,200 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark"/>
-                <path d="M150,150 L200,100 L150,50 L100,100 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark opacity-80"/>
-                <path d="M50,200 L100,150 L50,100 L0,150 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark"/>
-                <path d="M250,200 L200,150 L250,100 L200,150 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark opacity-80"/>
-            </svg>
-
-            <!-- Diamond Ribbon 4 - Bottom Right -->
-            <svg class="absolute bottom-0 right-0 w-80 h-80" viewBox="0 0 300 300">
-                <path d="M150,250 L100,200 L150,150 L200,200 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark"/>
-                <path d="M150,150 L100,200 L150,50 L200,100 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark opacity-80"/>
-                <path d="M250,200 L200,150 L250,100 L300,150 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark"/>
-                <path d="M50,200 L100,150 L50,100 L0,150 Z"
-                      fill="currentColor"
-                      class="text-secondary-dark opacity-80"/>
-            </svg>
-        </div> --}}
-
         <div class="container mx-auto px-6 text-center relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ $cta['title'] }}</h2>
             <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $cta['subtitle'] }}</p>
-            <button class="bg-secondary border-2 border-white hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
-                <i class="fas fa-shopping-cart mr-2"></i> {{ $cta['enroll_now'] }}
-            </button>
+            <a href="{{ $product->lynkid }}" class="w-full" target="_blank">
+                <button class="bg-secondary border-2 border-white hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-shopping-cart mr-2"></i> {{ $cta['enroll_now'] }}
+                </button>
+            </a>
         </div>
     </section>
 

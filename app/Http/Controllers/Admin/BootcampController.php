@@ -66,8 +66,15 @@ class BootcampController extends Controller
     {
         $data = $request->validated();
 
+        if(isset($data['is_active'])) {
+            $data['is_active'] = true;
+        }else{
+            $data['is_active'] = false;
+        }
+
         // Handle array fields
-        $arrayFields = ['features', 'curriculum', 'learning_outcomes', 'career_support', 'requirements'];
+        // $arrayFields = ['features', 'curriculum', 'learning_outcomes', 'career_support', 'requirements'];
+        $arrayFields = ['learning_outcomes', 'career_support', 'requirements'];
         foreach ($arrayFields as $field) {
             if (isset($data[$field])) {
                 if (is_array($data[$field])) {
@@ -117,23 +124,25 @@ class BootcampController extends Controller
             $bootcamp->mentors()->sync($data['mentors']);
         }
 
+
         // Handle modules
         if (isset($data['modules'])) {
             // Delete existing modules
             $bootcamp->modules()->delete();
 
             // Create new modules
-            foreach ($data['modules'] as $moduleData) {
+            foreach ($data['modules'] as $key => $moduleData) {
                 if (!empty($moduleData['module'])) { // Only save if module name is not empty
                     $moduleData['bootcamp_id'] = $bootcamp->id;
+                    $moduleData['week_number'] = $key + 1;
 
                     // Handle topics field
-                    if (isset($moduleData['topics']) && is_string($moduleData['topics'])) {
-                        $moduleData['topics'] = array_filter(explode("\n", $moduleData['topics']));
-                        $moduleData['topics'] = array_map('trim', $moduleData['topics']);
-                        $moduleData['topics'] = array_filter($moduleData['topics']);
-                        $moduleData['topics'] = array_values($moduleData['topics']);
-                    }
+                    // if (isset($moduleData['topics']) && is_string($moduleData['topics'])) {
+                    //     $moduleData['topics'] = array_filter(explode("\n", $moduleData['topics']));
+                    //     $moduleData['topics'] = array_map('trim', $moduleData['topics']);
+                    //     $moduleData['topics'] = array_filter($moduleData['topics']);
+                    //     $moduleData['topics'] = array_values($moduleData['topics']);
+                    // }
 
                     ModuleBootcamp::create($moduleData);
                 }
@@ -141,7 +150,7 @@ class BootcampController extends Controller
         }
 
         return redirect()
-            ->route('admin.bootcamps')
+            ->back()
             ->with('success', 'Bootcamp berhasil dibuat!');
     }
 
@@ -164,8 +173,15 @@ class BootcampController extends Controller
     {
         $data = $request->validated();
 
+        if(isset($data['is_active'])) {
+            $data['is_active'] = true;
+        }else{
+            $data['is_active'] = false;
+        }
+
         // Handle array fields
-        $arrayFields = ['features', 'curriculum', 'learning_outcomes', 'career_support', 'requirements'];
+        // $arrayFields = ['features', 'curriculum', 'learning_outcomes', 'career_support', 'requirements'];
+        $arrayFields = ['learning_outcomes', 'career_support', 'requirements'];
         foreach ($arrayFields as $field) {
             if (isset($data[$field])) {
                 if (is_array($data[$field])) {
@@ -220,6 +236,7 @@ class BootcampController extends Controller
             }
         }
 
+
         $bootcamp->update($data);
 
         // Sync mentors
@@ -229,23 +246,25 @@ class BootcampController extends Controller
             $bootcamp->mentors()->detach();
         }
 
+
         // Handle modules
         if (isset($data['modules'])) {
             // Delete existing modules
             $bootcamp->modules()->delete();
 
             // Create new modules
-            foreach ($data['modules'] as $moduleData) {
+            foreach ($data['modules'] as $key => $moduleData) {
                 if (!empty($moduleData['module'])) { // Only save if module name is not empty
                     $moduleData['bootcamp_id'] = $bootcamp->id;
+                    $moduleData['week_number'] = $key + 1;
 
                     // Handle topics field
-                    if (isset($moduleData['topics']) && is_string($moduleData['topics'])) {
-                        $moduleData['topics'] = array_filter(explode("\n", $moduleData['topics']));
-                        $moduleData['topics'] = array_map('trim', $moduleData['topics']);
-                        $moduleData['topics'] = array_filter($moduleData['topics']);
-                        $moduleData['topics'] = array_values($moduleData['topics']);
-                    }
+                    // if (isset($moduleData['topics']) && is_string($moduleData['topics'])) {
+                    //     $moduleData['topics'] = array_filter(explode("\n", $moduleData['topics']));
+                    //     $moduleData['topics'] = array_map('trim', $moduleData['topics']);
+                    //     $moduleData['topics'] = array_filter($moduleData['topics']);
+                    //     $moduleData['topics'] = array_values($moduleData['topics']);
+                    // }
 
                     ModuleBootcamp::create($moduleData);
                 }
@@ -253,7 +272,7 @@ class BootcampController extends Controller
         }
 
         return redirect()
-            ->route('admin.bootcamps')
+            ->back()
             ->with('success', 'Bootcamp berhasil diperbarui!');
     }
 

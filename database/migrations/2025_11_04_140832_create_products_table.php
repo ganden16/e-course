@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
+            $table->text('lynkid')->nullable();
             $table->foreignId('product_category_id')->constrained()->onDelete('cascade');
-            $table->string('instructor');
+            $table->string('instructor')->nullable();
             $table->decimal('price', 10, 2);
             $table->decimal('original_price', 10, 2);
             $table->string('image');

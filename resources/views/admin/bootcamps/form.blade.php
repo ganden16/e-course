@@ -120,7 +120,7 @@
 
 @section('content')
 <!-- Success Message -->
-    @if(session('success'))
+    {{-- @if(session('success'))
     <div class="mb-6 bg-green-50 border-l-4 border-green-400 p-4 rounded-lg shadow-md">
         <div class="flex">
             <div class="flex-shrink-0">
@@ -131,7 +131,7 @@
             </div>
         </div>
     </div>
-    @endif
+    @endif --}}
 
     <!-- Error Message -->
     @if($errors->any())
@@ -220,9 +220,12 @@
                                     <label for="level" class="block text-sm font-medium text-gray-700 mb-2">Level <span class="text-red-500">*</span></label>
                                     <select id="level" name="level" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent" required>
                                         <option value="">Select Level</option>
-                                        <option value="beginner" {{ old('level', $bootcamp->level ?? '') === 'beginner' ? 'selected' : '' }}>Beginner</option>
-                                        <option value="intermediate" {{ old('level', $bootcamp->level ?? '') === 'intermediate' ? 'selected' : '' }}>Intermediate</option>
-                                        <option value="advanced" {{ old('level', $bootcamp->level ?? '') === 'advanced' ? 'selected' : '' }}>Advanced</option>
+                                        <option value="Beginner" {{ old('level', $bootcamp->level ?? '') === 'Beginner' ? 'selected' : '' }}>Beginner</option>
+                                        <option value="Intermediate" {{ old('level', $bootcamp->level ?? '') === 'Intermediate' ? 'selected' : '' }}>Intermediate</option>
+                                        <option value="Advanced" {{ old('level', $bootcamp->level ?? '') === 'Advanced' ? 'selected' : '' }}>Advanced</option>
+                                        <option value="Beginner to Intermediate" {{ old('level', $bootcamp->level ?? '') === 'Beginner to Intermediate' ? 'selected' : '' }}>Beginner to Intermediate</option>
+                                        <option value="Intermediate to Advanced" {{ old('level', $bootcamp->level ?? '') === 'Intermediate to Advanced' ? 'selected' : '' }}>Intermediate to Advanced</option>
+                                        <option value="Beginner to Advanced" {{ old('level', $bootcamp->level ?? '') === 'Beginner to Advanced' ? 'selected' : '' }}>Beginner to Advanced</option>
                                     </select>
                                     @error('level')
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -290,7 +293,7 @@
                     </div>
 
                     <!-- Bootcamp Features -->
-                    <div>
+                    {{-- <div>
                         <h3 class="text-md font-medium text-gray-900 mb-4">Bootcamp Features</h3>
                         <div class="space-y-4">
                             <div id="features-container" class="space-y-2">
@@ -317,10 +320,10 @@
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Curriculum -->
-                    <div>
+                    {{-- <div>
                         <h3 class="text-md font-medium text-gray-900 mb-4">Curriculum</h3>
                         <div class="space-y-4">
                             <div id="curriculum-container" class="space-y-2">
@@ -347,7 +350,7 @@
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Learning Outcomes -->
                     <div>
@@ -457,12 +460,12 @@
                                             </button>
                                         </div>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            <div>
+                                            {{-- <div>
                                                 <label class="block text-sm font-medium text-gray-700 mb-2">Week Number</label>
                                                 <input type="number" name="modules[{{ $index }}][week_number]" value="{{ $module->week_number ?? ($index + 1) }}"
                                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                                        min="1" placeholder="1">
-                                            </div>
+                                            </div> --}}
                                             <div>
                                                 <label class="block text-sm font-medium text-gray-700 mb-2">Duration (hours)</label>
                                                 <input type="number" name="modules[{{ $index }}][duration_hours]" value="{{ $module->duration_hours ?? '' }}"
@@ -488,7 +491,7 @@
                                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                                                       placeholder="Deskripsi detail dari modul ini">{{ $module->description ?? '' }}</textarea>
                                         </div>
-                                        <div class="mt-4">
+                                        {{-- <div class="mt-4">
                                             <label class="block text-sm font-medium text-gray-700 mb-2">Topics (one per line)</label>
                                             <textarea name="modules[{{ $index }}][topics]" rows="4"
                                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
@@ -502,7 +505,7 @@
                                                        class="rounded border-gray-300 text-orange focus:ring-orange">
                                                 <span class="ml-2 text-sm text-gray-700">Active</span>
                                             </label>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 @endforeach
                             </div>
@@ -622,6 +625,22 @@
                         </div>
                     </div>
 
+                     <!-- lynkid -->
+                    <div>
+                        <label for="lynkid" class="block text-sm font-medium text-gray-700 mb-2">Link lynk.id</label>
+                        <input type="url"
+                            id="lynkid"
+                            name="lynkid"
+                            value="{{ old('lynkid', $bootcamp->lynkid ?? '') }}"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+                            placeholder="https://lynk.id/username/bootcamp-name"
+                            pattern="https://.*">
+                        @error('lynkid')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                        <p class="text-xs text-gray-500 mt-1">Masukkan link lengkap ke platform lynk.id</p>
+                    </div>
+
                     <!-- Status -->
                     <div>
                         <h3 class="text-md font-medium text-gray-900 mb-4">Status</h3>
@@ -630,6 +649,7 @@
                                 <label class="flex items-center">
                                     <input type="checkbox"
                                            name="is_active"
+                                           id="is_active"
                                            value="1"
                                            {{ old('is_active', isset($bootcamp) && $bootcamp->is_active ? 'checked' : '') }}
                                            class="rounded border-gray-300 text-orange focus:ring-orange">
@@ -706,56 +726,56 @@ $(document).ready(function() {
     });
 
     // Features management
-    const featuresContainer = document.getElementById('features-container');
-    const addFeatureBtn = document.getElementById('add-feature');
+    // const featuresContainer = document.getElementById('features-container');
+    // const addFeatureBtn = document.getElementById('add-feature');
 
-    addFeatureBtn.addEventListener('click', function() {
-        const newFeature = document.createElement('div');
-        newFeature.className = 'flex items-center space-x-2 feature-item';
-        newFeature.innerHTML = `
-            <input type="text" name="features[]" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent" placeholder="Masukkan fitur">
-            <button type="button" class="text-red-600 hover:text-red-800 remove-feature">
-                <i class="fas fa-trash"></i>
-            </button>
-        `;
-        featuresContainer.appendChild(newFeature);
-    });
+    // addFeatureBtn.addEventListener('click', function() {
+    //     const newFeature = document.createElement('div');
+    //     newFeature.className = 'flex items-center space-x-2 feature-item';
+    //     newFeature.innerHTML = `
+    //         <input type="text" name="features[]" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent" placeholder="Masukkan fitur">
+    //         <button type="button" class="text-red-600 hover:text-red-800 remove-feature">
+    //             <i class="fas fa-trash"></i>
+    //         </button>
+    //     `;
+    //     featuresContainer.appendChild(newFeature);
+    // });
 
     // Remove feature
-    featuresContainer.addEventListener('click', function(e) {
-        if (e.target.closest('.remove-feature')) {
-            const featureItem = e.target.closest('.feature-item');
-            if (featuresContainer.children.length > 1) {
-                featureItem.remove();
-            }
-        }
-    });
+    // featuresContainer.addEventListener('click', function(e) {
+    //     if (e.target.closest('.remove-feature')) {
+    //         const featureItem = e.target.closest('.feature-item');
+    //         if (featuresContainer.children.length > 1) {
+    //             featureItem.remove();
+    //         }
+    //     }
+    // });
 
     // Curriculum management
-    const curriculumContainer = document.getElementById('curriculum-container');
-    const addCurriculumBtn = document.getElementById('add-curriculum');
+    // const curriculumContainer = document.getElementById('curriculum-container');
+    // const addCurriculumBtn = document.getElementById('add-curriculum');
 
-    addCurriculumBtn.addEventListener('click', function() {
-        const newCurriculum = document.createElement('div');
-        newCurriculum.className = 'flex items-center space-x-2 curriculum-item';
-        newCurriculum.innerHTML = `
-            <input type="text" name="curriculum[]" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent" placeholder="Masukkan topik kurikulum">
-            <button type="button" class="text-red-600 hover:text-red-800 remove-curriculum">
-                <i class="fas fa-trash"></i>
-            </button>
-        `;
-        curriculumContainer.appendChild(newCurriculum);
-    });
+    // addCurriculumBtn.addEventListener('click', function() {
+    //     const newCurriculum = document.createElement('div');
+    //     newCurriculum.className = 'flex items-center space-x-2 curriculum-item';
+    //     newCurriculum.innerHTML = `
+    //         <input type="text" name="curriculum[]" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent" placeholder="Masukkan topik kurikulum">
+    //         <button type="button" class="text-red-600 hover:text-red-800 remove-curriculum">
+    //             <i class="fas fa-trash"></i>
+    //         </button>
+    //     `;
+    //     curriculumContainer.appendChild(newCurriculum);
+    // });
 
     // Remove curriculum
-    curriculumContainer.addEventListener('click', function(e) {
-        if (e.target.closest('.remove-curriculum')) {
-            const curriculumItem = e.target.closest('.curriculum-item');
-            if (curriculumContainer.children.length > 1) {
-                curriculumItem.remove();
-            }
-        }
-    });
+    // curriculumContainer.addEventListener('click', function(e) {
+    //     if (e.target.closest('.remove-curriculum')) {
+    //         const curriculumItem = e.target.closest('.curriculum-item');
+    //         if (curriculumContainer.children.length > 1) {
+    //             curriculumItem.remove();
+    //         }
+    //     }
+    // });
 
     // Learning Outcomes management
     const learningOutcomesContainer = document.getElementById('learning-outcomes-container');
@@ -853,49 +873,29 @@ $(document).ready(function() {
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Nomor Minggu</label>
-                    <input type="number" name="modules[${moduleCount}][week_number]" value="${moduleCount}"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                           min="1" placeholder="1">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Durasi (jam)</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Duration (hours)</label>
                     <input type="number" name="modules[${moduleCount}][duration_hours]" value=""
                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                            min="1" placeholder="40">
                 </div>
             </div>
             <div class="mt-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Nama Modul</label>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Module Name</label>
                 <input type="text" name="modules[${moduleCount}][module]" value=""
                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                        placeholder="Contoh: Introduction to Web Development">
             </div>
             <div class="mt-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Tujuan Pembelajaran</label>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Learning Objective</label>
                 <textarea name="modules[${moduleCount}][objective]" rows="3"
                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                           placeholder="Contoh: Students will understand the basics of HTML, CSS, and JavaScript"></textarea>
             </div>
             <div class="mt-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
                 <textarea name="modules[${moduleCount}][description]" rows="3"
                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
                           placeholder="Deskripsi detail dari modul ini"></textarea>
-            </div>
-            <div class="mt-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Topik (satu per baris)</label>
-                <textarea name="modules[${moduleCount}][topics]" rows="4"
-                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                          placeholder="HTML Basics&#10;CSS Fundamentals&#10;JavaScript Introduction"></textarea>
-                <p class="text-xs text-gray-500 mt-1">Masukkan setiap topik pada baris baru</p>
-            </div>
-            <div class="mt-4">
-                <label class="flex items-center">
-                    <input type="checkbox" name="modules[${moduleCount}][is_active]" value="1" checked
-                           class="rounded border-gray-300 text-orange focus:ring-orange">
-                    <span class="ml-2 text-sm text-gray-700">Aktif</span>
-                </label>
             </div>
         `;
         modulesContainer.appendChild(newModule);

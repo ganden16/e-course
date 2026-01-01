@@ -26,7 +26,8 @@ class Product extends Model
         'curriculum',
         'requirements',
         'what_you_will_build',
-        'is_active'
+        'is_active',
+        'lynkid',
     ];
 
     protected $casts = [
