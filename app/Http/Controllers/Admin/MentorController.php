@@ -136,7 +136,7 @@ class MentorController extends Controller
         $mentor->update($data);
 
         return redirect()
-            ->route('admin.mentors')
+            ->back()
             ->with('success', 'Mentor berhasil diperbarui!');
     }
 
@@ -162,7 +162,7 @@ class MentorController extends Controller
         $mentor->delete();
 
         return redirect()
-            ->route('admin.mentors')
+            ->back()
             ->with('success', 'Mentor berhasil dihapus!');
     }
 
@@ -175,7 +175,7 @@ class MentorController extends Controller
         $mentor->save();
 
         return redirect()
-            ->route('admin.mentors')
+            ->back()
             ->with('success', 'Status mentor berhasil diperbarui!');
     }
 }

@@ -176,12 +176,12 @@
                         </div>
 
                         <!-- Demo Account Info -->
-                        <div class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                        {{-- <div class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
                             <p class="text-xs text-blue-800">
                                 <i class="fas fa-info-circle mr-1"></i>
                                 Demo Admin: admin / admin123
                             </p>
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
 

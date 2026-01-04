@@ -39,6 +39,7 @@
                         </div>
                     </div>
 
+                    {{-- @if(isset($blogTag))
                     <div class="col-md-6">
                         <!-- Status -->
                         <div class="mb-3">
@@ -53,6 +54,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif --}}
                 </div>
 
                 <!-- Submit Buttons -->

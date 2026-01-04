@@ -6,7 +6,7 @@ return [
         'tagline' => 'Unlock Your Potential with Digital Learning',
         'description' => 'Leading e-learning platform providing quality digital courses and bootcamps to advance your career.',
         'logo' => 'assets/images/logo1.png',
-        'email' => 'healthcareremotecircle@gmail.com',
+        'email' => 'contact@hrcteam.com',
         'phone' => '+6285704677707',
         'address' => 'Surabaya, Indonesia'
     ],

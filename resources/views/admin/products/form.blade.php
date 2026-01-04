@@ -123,7 +123,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label for="price" class="block text-sm font-medium text-gray-700 mb-1">Current Price ($) *</label>
+                            <label for="price" class="block text-sm font-medium text-gray-700 mb-1">Current Price (Rp) *</label>
                             <input type="number" id="price" name="price" value="{{ old('price', $product->price ?? '') }}"
                                    step="0.01" min="0"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
@@ -133,7 +133,7 @@
                         </div>
 
                         <div>
-                            <label for="original_price" class="block text-sm font-medium text-gray-700 mb-1">Original Price ($) *</label>
+                            <label for="original_price" class="block text-sm font-medium text-gray-700 mb-1">Original Price (Rp) *</label>
                             <input type="number" id="original_price" name="original_price" value="{{ old('original_price', $product->original_price ?? '') }}"
                                    step="0.01" min="0"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
@@ -322,6 +322,7 @@
                 </div>
 
                 <!-- Status -->
+                @if(isset($product))
                 <div class="bg-gray-50 rounded-lg p-6">
                     <h3 class="text-lg font-medium text-gray-900 mb-4">Status</h3>
 
@@ -336,6 +337,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
 
                 <!-- Actions -->
                 <div class="bg-gray-50 rounded-lg p-6">

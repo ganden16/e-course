@@ -109,7 +109,7 @@ class ProductController extends Controller
         Product::create($data);
 
         return redirect()
-            ->back()
+            ->route('admin.products')
             ->with('success', 'Product created successfully!');
     }
 
@@ -214,7 +214,7 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()
-            ->route('admin.products')
+            ->back()
             ->with('success', 'Product deleted successfully!');
     }
 

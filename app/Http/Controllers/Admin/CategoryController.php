@@ -100,7 +100,7 @@ class CategoryController extends Controller
         $category->update($data);
 
         return redirect()
-            ->route('admin.categories')
+            ->back()
             ->with('success', 'Kategori berhasil diperbarui!');
     }
 
@@ -112,14 +112,14 @@ class CategoryController extends Controller
         // Check if category has bootcamps
         if ($category->bootcamps()->count() > 0) {
             return redirect()
-                ->route('admin.categories')
+                ->back()
                 ->with('error', 'Kategori tidak dapat dihapus karena masih memiliki bootcamp!');
         }
 
         $category->delete();
 
         return redirect()
-            ->route('admin.categories')
+            ->back()
             ->with('success', 'Kategori berhasil dihapus!');
     }
 
@@ -132,7 +132,7 @@ class CategoryController extends Controller
         $category->save();
 
         return redirect()
-            ->route('admin.categories')
+            ->back()
             ->with('success', 'Status kategori berhasil diperbarui!');
     }
 

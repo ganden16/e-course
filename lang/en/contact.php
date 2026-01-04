@@ -12,7 +12,7 @@ return [
         'contact_info' => [
             [
                 'type' => 'Email',
-                'value' => 'healthcareremotecircle@gmail.com',
+                'value' => 'contact@hrcteam.com',
                 'icon' => 'fas fa-envelope'
             ],
             [

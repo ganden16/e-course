@@ -6,7 +6,7 @@ return [
         'tagline' => 'Buka Potensi Anda dengan Pembelajaran Digital',
         'description' => 'Platform e-learning terdepan yang menyediakan kursus digital dan bootcamp berkualitas untuk meningkatkan karir Anda.',
         'logo' => 'assets/images/logo1.png',
-        'email' => 'healthcareremotecircle@gmail.com',
+        'email' => 'contact@hrcteam.com',
         'phone' => '+6285704677707',
         'address' => 'Surabaya, Indonesia'
     ],

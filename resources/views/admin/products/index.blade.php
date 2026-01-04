@@ -157,9 +157,9 @@ use Illuminate\Support\Facades\Storage;
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">${{ number_format($product->price, 2) }}</div>
+                            <div class="text-sm text-gray-900">Rp {{ number_format($product->price, 2) }}</div>
                             @if($product->price < $product->original_price)
-                                <div class="text-sm text-gray-500 line-through">${{ number_format($product->original_price, 2) }}</div>
+                                <div class="text-sm text-gray-500 line-through">Rp {{ number_format($product->original_price, 2) }}</div>
                             @endif
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">

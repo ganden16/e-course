@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Success Message -->
-@if(session('success'))
+{{-- @if(session('success'))
 <div class="mb-6 bg-green-50 border-l-4 border-green-400 p-4 rounded-lg shadow-md">
     <div class="flex">
         <div class="flex-shrink-0">
@@ -16,7 +16,7 @@
         </div>
     </div>
 </div>
-@endif
+@endif --}}
 
 <!-- Error Message -->
 @if($errors->any())
@@ -98,7 +98,7 @@
                 </div>
 
                 <!-- Meta Title -->
-                <div>
+                {{-- <div>
                     <label for="meta_title" class="block text-sm font-medium text-gray-700 mb-2">Meta Title</label>
                     <input type="text"
                            id="meta_title"
@@ -109,10 +109,10 @@
                     @error('meta_title')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
-                </div>
+                </div> --}}
 
                 <!-- Meta Description -->
-                <div>
+                {{-- <div>
                     <label for="meta_description" class="block text-sm font-medium text-gray-700 mb-2">Meta Description</label>
                     <textarea id="meta_description"
                               name="meta_description"
@@ -122,7 +122,8 @@
                     @error('meta_description')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
-                </div>
+                </div> --}}
+
             </div>
 
             <!-- Sidebar -->
@@ -214,7 +215,8 @@
                     <label for="tags" class="block text-sm font-medium text-gray-700 mb-2">Tags</label>
                     <select id="tags" name="tags[]" multiple class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent">
                         @foreach($tags as $tag)
-                            <option value="{{ $tag->id }}" {{ in_array($tag->id, old('tags', isset($blogTags) ? $blogTags : [])) ? 'selected' : '' }}>
+                            <option value="{{ $tag->id }}"
+                                {{ in_array($tag->id, old('tags', $blogTags ?? [])) ? 'selected' : '' }}>
                                 {{ $tag->name }}
                             </option>
                         @endforeach
@@ -226,21 +228,23 @@
                 </div>
 
                 <!-- Status -->
+                @if(isset($blog))
                 <div>
                     <h3 class="text-md font-medium text-gray-900 mb-4">Status</h3>
                     <div class="space-y-4">
                         <div>
                             <label class="flex items-center">
                                 <input type="checkbox"
-                                       name="is_active"
-                                       value="1"
-                                       {{ old('is_active', isset($blog) && $blog->is_active ? 'checked' : '') }}
-                                       class="rounded border-gray-300 text-orange focus:ring-orange">
+                                    name="is_active"
+                                    value="1"
+                                     {{ old('is_active', $blog->is_active ?? true) ? 'checked' : '' }}
+                                    class="rounded border-gray-300 text-orange focus:ring-orange">
                                 <span class="ml-2 text-sm text-gray-700">Active</span>
                             </label>
                         </div>
                     </div>
                 </div>
+                @endif
 
                 <!-- Actions -->
                 <div class="pt-4">

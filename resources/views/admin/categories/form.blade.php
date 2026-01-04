@@ -105,6 +105,7 @@
                 <div class="space-y-6">
 
                     <!-- Status -->
+                    {{-- @if(isset($category))
                     <div>
                         <h3 class="text-md font-medium text-gray-900 mb-4">
                             <i class="fas fa-toggle-on mr-1"></i> Status
@@ -122,6 +123,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif --}}
 
                     <!-- Actions -->
                     <div class="pt-4">

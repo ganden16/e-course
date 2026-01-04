@@ -107,7 +107,7 @@ class BlogTagController extends Controller
         $blogTag->update($data);
 
         return redirect()
-            ->route('admin.blog-tags')
+            ->back()
             ->with('success', 'Tag blog berhasil diperbarui!');
     }
 
@@ -119,14 +119,14 @@ class BlogTagController extends Controller
         // Check if tag has blogs
         if ($blogTag->blogs()->count() > 0) {
             return redirect()
-                ->route('admin.blog-tags')
+                ->back()
                 ->with('error', 'Tag blog tidak dapat dihapus karena masih memiliki blog!');
         }
 
         $blogTag->delete();
 
         return redirect()
-            ->route('admin.blog-tags')
+            ->back()
             ->with('success', 'Tag blog berhasil dihapus!');
     }
 }

@@ -90,7 +90,7 @@ class BootcampController extends Controller
     {
         $bootcamp = Bootcamp::with(['category', 'mentors', 'modules' => function($query) {
             $query->orderBy('week_number');
-        }])->findOrFail($id);
+        }])->where('is_active', true)->findOrFail($id);
 
         // Get related bootcamps (same category, excluding current bootcamp)
         $relatedBootcamps = Bootcamp::where('category_id', $bootcamp->category_id)

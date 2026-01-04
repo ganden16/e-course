@@ -86,6 +86,7 @@ use Illuminate\Support\Str;
                 </div>
 
                 <!-- Status -->
+                {{-- @if(isset($productCategory))
                 <div class="bg-gray-50 rounded-lg p-6">
                     <h3 class="text-lg font-medium text-gray-900 mb-4">Status</h3>
 
@@ -101,6 +102,7 @@ use Illuminate\Support\Str;
                         <p class="text-sm text-gray-500">Inactive categories won't be displayed on the website</p>
                     </div>
                 </div>
+                @endif --}}
 
                 <!-- Actions -->
                 <div class="bg-gray-50 rounded-lg p-6">

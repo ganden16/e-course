@@ -64,7 +64,7 @@ class BlogController extends Controller
             'meta_description' => 'nullable|string|max:500',
             'tags' => 'nullable|array',
             'tags.*' => 'exists:blog_tags,id',
-            'is_active' => 'boolean'
+            // 'is_active' => 'boolean'
         ]);
 
         $data = $request->except(['image', 'tags']);
@@ -128,10 +128,16 @@ class BlogController extends Controller
             'meta_description' => 'nullable|string|max:500',
             'tags' => 'nullable|array',
             'tags.*' => 'exists:blog_tags,id',
-            'is_active' => 'boolean'
+            'is_active' => 'string'
         ]);
 
         $data = $request->except(['image', 'tags']);
+
+        if(isset($data['is_active'])) {
+            $data['is_active'] = true;
+        }else{
+            $data['is_active'] = false;
+        }
 
         // Update slug if title changed
         if ($data['title'] !== $blog->title) {
@@ -174,7 +180,7 @@ class BlogController extends Controller
         }
 
         return redirect()
-            ->route('admin.blogs')
+            ->back()
             ->with('success', 'Blog berhasil diperbarui!');
     }
 
@@ -197,7 +203,7 @@ class BlogController extends Controller
         $blog->delete();
 
         return redirect()
-            ->route('admin.blogs')
+            ->back()
             ->with('success', 'Blog berhasil dihapus!');
     }
 
@@ -210,7 +216,7 @@ class BlogController extends Controller
         $blog->save();
 
         return redirect()
-            ->route('admin.blogs')
+            ->back()
             ->with('success', 'Status blog berhasil diperbarui!');
     }
 }

@@ -22,12 +22,12 @@ class UserSeeder extends Seeder
             'image' => env('APP_URL').'/storage/users/' . rand(1, 13) . '.jpg',
         ]);
 
-        User::create([
-            'name' => 'Test User',
-            'username' => 'user',
-            'email' => 'user@healthcare.com',
-            'password' => Hash::make('user123'),
-            'image' => env('APP_URL').'/storage/users/' . rand(1, 13) . '.jpg',
-        ]);
+        // User::create([
+        //     'name' => 'Test User',
+        //     'username' => 'user',
+        //     'email' => 'user@healthcare.com',
+        //     'password' => Hash::make('user123'),
+        //     'image' => env('APP_URL').'/storage/users/' . rand(1, 13) . '.jpg',
+        // ]);
     }
 }

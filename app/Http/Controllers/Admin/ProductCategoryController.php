@@ -117,7 +117,7 @@ class ProductCategoryController extends Controller
         $productCategory->update($data);
 
         return redirect()
-            ->route('admin.product-categories')
+            ->back()
             ->with('success', 'Product category updated successfully!');
     }
 
@@ -129,14 +129,14 @@ class ProductCategoryController extends Controller
         // Check if category has products
         if ($productCategory->products()->count() > 0) {
             return redirect()
-                ->route('admin.product-categories')
+                ->back()
                 ->with('error', 'Category cannot be deleted because it still has products!');
         }
 
         $productCategory->delete();
 
         return redirect()
-            ->route('admin.product-categories')
+            ->back()
             ->with('success', 'Product category deleted successfully!');
     }
 
@@ -148,10 +148,7 @@ class ProductCategoryController extends Controller
         $productCategory->is_active = !$productCategory->is_active;
         $productCategory->save();
 
-        return response()->json([
-            'success' => true,
-            'is_active' => $productCategory->is_active
-        ]);
+        return redirect()->back()->with('success', 'Status kategori berhasil diperbarui!');
     }
 
 }

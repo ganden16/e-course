@@ -298,7 +298,7 @@ class BootcampController extends Controller
         $bootcamp->delete();
 
         return redirect()
-            ->route('admin.bootcamps')
+            ->back()
             ->with('success', 'Bootcamp berhasil dihapus!');
     }
 
@@ -311,7 +311,7 @@ class BootcampController extends Controller
         $bootcamp->save();
 
         return redirect()
-            ->route('admin.bootcamps')
+            ->back()
             ->with('success', 'Status bootcamp berhasil diperbarui!');
     }
 }

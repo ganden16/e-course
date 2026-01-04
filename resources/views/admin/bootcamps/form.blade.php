@@ -642,6 +642,7 @@
                     </div>
 
                     <!-- Status -->
+                    @if(isset($bootcamp))
                     <div>
                         <h3 class="text-md font-medium text-gray-900 mb-4">Status</h3>
                         <div class="space-y-4">
@@ -658,6 +659,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
 
                     <!-- Actions -->
                     <div class="pt-4">
