@@ -88,8 +88,7 @@
 </head>
 <body class="font-sans antialiased bg-light">
     <!-- Navigation -->
-    <header class="backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-            :class="scrolled ? 'bg-primary-dark/80 shadow-sm' : 'bg-transparent'"
+    <header class="backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-transform duration-300"
             x-data="{
                 mobileMenu: false,
                 scrolled: false,
@@ -103,10 +102,12 @@
                 scrolled = (currentScrollY > 20);
                 isScrollingDown = currentScrollY > lastScrollY;
 
-                // Hide header when scrolling down
-                if (isScrollingDown && currentScrollY > 100) {
+                // Hide header when scrolling in ANY direction (up or down)
+                // Only show when at the very top
+                if (currentScrollY > 100) {
                     showHeader = false;
-                } else {
+                } else if (currentScrollY <= 100) {
+                    // Always show header at the top
                     showHeader = true;
                 }
 
@@ -115,12 +116,15 @@
                 // Clear existing timeout
                 if (scrollTimeout) clearTimeout(scrollTimeout);
 
-                // Show header when scrolling stops (after 100ms)
+                // Show header when scrolling stops (after 300ms delay)
                 scrollTimeout = setTimeout(() => {
                     showHeader = true;
-                }, 100);
+                }, 300);
             "
-            :class="showHeader ? 'translate-y-0' : '-translate-y-full'">
+            :class="[
+                scrolled ? 'bg-primary-dark/80 shadow-sm' : 'bg-transparent',
+                showHeader ? 'translate-y-0' : '-translate-y-full'
+            ]">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
@@ -223,7 +227,7 @@
                                         <!-- Active Indicator / Chevron -->
                                         @if($code === $locale)
                                             <div class="flex items-center space-x-2">
-                                                <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                                                {{-- <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div> --}}
                                                 <span class="text-xs font-semibold text-white bg-white/20 px-2 py-1 rounded-full">
                                                     {{ $locale == 'id' ? 'Aktif' : 'Active' }}
                                                 </span>

@@ -51,11 +51,11 @@
             </p>
 
             <!-- CTA Button -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {{-- <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="{{ $baseUrl }}/product" class="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                     {{ $story['explore_courses'] }}
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>
