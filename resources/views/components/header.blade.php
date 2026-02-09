@@ -119,7 +119,7 @@
                 // Show header when scrolling stops (after 300ms delay)
                 scrollTimeout = setTimeout(() => {
                     showHeader = true;
-                }, 300);
+                }, 600);
             "
             :class="[
                 scrolled ? 'bg-primary-dark/80 shadow-sm' : 'bg-transparent',
