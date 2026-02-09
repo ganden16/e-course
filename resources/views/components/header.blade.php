@@ -131,7 +131,7 @@
                         </div>
 
                         <!-- Text "Health Care Remote Circle" dengan warna putih -->
-                        <span class="text-xl font-bold text-white">
+                        <span class="text-lg font-bold text-white">
                             Health Care Remote Circle
                         </span>
                     </a>
@@ -141,7 +141,7 @@
                 <div class="hidden md:flex items-center space-x-6">
                     @foreach($navItems as $item)
                         <a href="{{ $item['url'] }}"
-                           class="text-white hover:text-primary transition-colors duration-200 font-semibold text-lg {{ $item['active'] ? 'text-primary font-bold' : '' }}">
+                           class="text-white hover:text-primary transition-colors duration-200 font-semibold text-sm {{ $item['active'] ? 'text-primary font-bold' : '' }}">
                             {{ $item['name'] }}
                         </a>
                     @endforeach

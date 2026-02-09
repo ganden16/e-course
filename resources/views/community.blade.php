@@ -49,13 +49,13 @@
 
             <!-- CTA Buttons -->
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="https://t.me/+Pr90XWqdSBsyMTg9" target="_blank" class="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                {{-- <a href="https://t.me/+Pr90XWqdSBsyMTg9" target="_blank" class="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                     <i class="fab fa-telegram mr-2"></i>
                     {{ $main_join['button_text'] }}
-                </a>
-                <a href="#social-platforms" class="hover:bg-white hover:text-primary border border-white text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                </a> --}}
+                {{-- <a href="#social-platforms" class="hover:bg-white hover:text-primary border border-white text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                     {{ $hero['join_now'] }}
-                </a>
+                </a> --}}
             </div>
         </div>
     </div>

@@ -24,7 +24,7 @@
     <!-- Background Image with Overlay -->
     <div class="absolute inset-0 z-0">
         <!-- Use hero image from product page -->
-        <div class="w-full h-full bg-cover bg-center" style="background-image: url('{{ $products->first()->image ?? asset('assets/images/logo1.png') }}');">
+        <div class="w-full h-full bg-cover bg-center" style="background-image: url('{{ asset('assets/images/background/product.jpg') }}');">
             <!-- Dark Overlay -->
             <div class="absolute inset-0 bg-black/50"></div>
             <!-- Gradient Overlay -->
@@ -46,14 +46,14 @@
             </p>
 
             <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {{-- <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="#courses" class="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                     {{ $cta['request_course'] }}
                 </a>
                 <a href="{{ $baseUrl }}/bootcamp" class="hover:bg-white hover:text-primary border border-white text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                     {{ $cta['explore_bootcamps'] }}
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

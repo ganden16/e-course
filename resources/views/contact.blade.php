@@ -46,14 +46,14 @@
             </p>
 
             <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {{-- <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="#contact-form" class="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                     {{ $contact_form['send_message'] }}
                 </a>
                 <a href="#contact-info" class="hover:bg-white hover:text-primary border border-white text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                     {{ $contact_info['follow_us'] }}
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

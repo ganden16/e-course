@@ -24,7 +24,7 @@
     <!-- Background Image with Overlay -->
     <div class="absolute inset-0 z-0">
         <!-- Use hero image from blog page -->
-        <div class="w-full h-full bg-cover bg-center" style="background-image: url('{{ $blogs->first()->image ?? asset('assets/images/logo1.png') }}');">
+        <div class="w-full h-full bg-cover bg-center" style="background-image: url('{{ asset('assets/images/background/blog.jpg') }}');">
             <!-- Dark Overlay -->
             <div class="absolute inset-0 bg-black/50"></div>
             <!-- Gradient Overlay -->
@@ -46,11 +46,11 @@
             </p>
 
             <!-- CTA Button -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {{-- <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="#featured-post" class="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                     {{ $featured_post['read_article'] }}
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>
