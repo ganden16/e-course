@@ -22,26 +22,41 @@
 @include('components.header', ['title' => 'Our Community'])
 
 <!-- Hero Section -->
-<section class="bg-primary-dark text-white relative overflow-hidden py-16">
-    <!-- Animated Background with Orange Spiral Pattern -->
-    <div class="absolute inset-0 opacity-40 z-10">
-        <div class="absolute top-0 left-0 w-96 h-96 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute top-0 left-0 w-96 h-40 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute top-20 right-0 w-64 h-64 bg-secondary/80 rounded-full filter blur-2xl transform translate-x-1/3 translate-y-1/3"></div>
-        <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-secondary/60 rounded-full filter blur-xl transform translate-x-1/4 translate-y-1/4"></div>
-        <div class="absolute bottom-0 right-1/3 w-72 h-72 bg-secondary/40 rounded-full filter blur-lg transform translate-x-1/3 translate-y-1/3"></div>
-        <div class="absolute top-1/2 left-1/2 w-32 h-32 bg-accent rounded-full filter blur-md transform rotate-45"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-40 h-40 bg-accent/80 rounded-full filter blur-md transform -rotate-12"></div>
-        <div class="absolute top-1/3 right-1/2 w-24 h-24 bg-accent/60 rounded-full filter blur-sm transform rotate-12"></div>
-        <div class="absolute top-1/4 left-1/3 w-16 h-16 bg-secondary rounded-full"></div>
-        <div class="absolute top-1/2 right-1/3 w-20 h-20 bg-secondary/90 rounded-full"></div>
-        <div class="absolute bottom-1/3 left-1/2 w-24 h-24 bg-secondary/70 rounded-full"></div>
-        <div class="absolute bottom-1/4 right-1/2 w-32 h-32 bg-secondary/50 rounded-full"></div>
+<section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+        <!-- Use hero image from community page -->
+        <div class="w-full h-full bg-cover bg-center" style="background-image: url('{{ $community['image'] ?? asset('assets/images/logo1.png') }}');">
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-black/50"></div>
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+        </div>
     </div>
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ $hero['title'] }}</h1>
-            <p class="text-xl max-w-3xl mx-auto">{{ $hero['subtitle'] }}</p>
+
+    <!-- Hero Content -->
+    <div class="container mx-auto px-6 py-20 relative z-10">
+        <div class="text-center max-w-4xl mx-auto">
+            <!-- Headline -->
+            <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-4 text-white tracking-wide">
+                {{ $hero['title'] }}
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-xl lg:text-2xl mb-8 font-light text-gray-200">
+                {{ $hero['subtitle'] }}
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://t.me/+Pr90XWqdSBsyMTg9" target="_blank" class="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                    <i class="fab fa-telegram mr-2"></i>
+                    {{ $main_join['button_text'] }}
+                </a>
+                <a href="#social-platforms" class="hover:bg-white hover:text-primary border border-white text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                    {{ $hero['join_now'] }}
+                </a>
+            </div>
         </div>
     </div>
 </section>
@@ -171,12 +186,12 @@
             <!-- Bottom CTA -->
             <div class="text-center mt-12">
                 <div class="inline-flex items-center space-x-4 bg-white bg-opacity-10 backdrop-blur-lg rounded-full px-6 py-3">
-                    <div class="flex -space-x-2">
+                    {{-- <div class="flex -space-x-2">
                         <div class="w-8 h-8 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full border-2 border-white"></div>
                         <div class="w-8 h-8 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full border-2 border-white"></div>
                         <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full border-2 border-white"></div>
                         <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-teal-500 rounded-full border-2 border-white"></div>
-                    </div>
+                    </div> --}}
                     <p class="text-white font-medium">
                         <span class="font-bold">99+</span>
                         {{ $locale === 'id' ? 'orang bergabung' : 'people joined' }}
@@ -342,7 +357,7 @@
 
                 <div class="hidden sm:block w-px h-10 bg-gradient-to-b from-transparent via-gray-300 to-transparent"></div>
 
-                <div class="flex -space-x-3">
+                {{-- <div class="flex -space-x-3">
                     <div class="w-10 h-10 bg-gradient-to-br from-secondary to-secondary-dark rounded-full border-2 border-secondary flex items-center justify-center shadow-md">
                         <i class="fas fa-user text-secondary text-sm"></i>
                     </div>
@@ -355,7 +370,7 @@
                     <div class="w-10 h-10 bg-gradient-to-br from-secondary to-secondary-dark rounded-full border-2 border-secondary flex items-center justify-center shadow-md">
                         <span class="text-secondary text-xs font-bold">+24/7</span>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

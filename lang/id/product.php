@@ -84,6 +84,7 @@ return [
         'title' => 'Siap Memulai Pembelajaran?',
         'subtitle' => 'Bergabunglah dengan ribuan orang yang sudah memajukan karir mereka dengan kursus kami.',
         'request_course' => 'Ajukan Kursus',
+        'explore_bootcamps' => 'Jelajahi Bootcamps',
         'enroll_now' => 'Daftar di Kursus Ini'
     ],
 

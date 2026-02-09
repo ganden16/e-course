@@ -6,7 +6,6 @@
 
     // Load language file for landing page
     $translations = include lang_path("{$locale}/landingPage.php");
-    $site = $translations['site'];
     $hero = $translations['hero'];
     $stats = $translations['stats'];
     $features = $translations['features'];
@@ -20,55 +19,69 @@
     $statsData = $stats['data'];
     $featuresData = $features['data'];
     $testimonialsData = $testimonials['data'];
+
+    // Build URLs with current locale
+    $baseUrl = '/' . $locale;
 @endphp
 
 @include('components.header', ['title' => 'Home'])
 
-<!-- Hero Section -->
-<section class="bg-primary-dark text-white relative overflow-hidden">
-    <!-- Animated Background with Orange Spiral Pattern -->
-    <div class="absolute inset-0 opacity-40 z-10">
-        <div class="absolute top-0 left-0 w-96 h-96 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute top-0 left-0 w-96 h-40 bg-secondary rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute top-20 right-0 w-64 h-64 bg-secondary/80 rounded-full filter blur-2xl transform translate-x-1/3 translate-y-1/3"></div>
-        <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-secondary/60 rounded-full filter blur-xl transform translate-x-1/4 translate-y-1/4"></div>
-        <div class="absolute bottom-0 right-1/3 w-72 h-72 bg-secondary/40 rounded-full filter blur-lg transform translate-x-1/3 translate-y-1/3"></div>
-        <div class="absolute top-1/2 left-1/2 w-32 h-32 bg-accent rounded-full filter blur-md transform rotate-45"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-40 h-40 bg-accent/80 rounded-full filter blur-md transform -rotate-12"></div>
-        <div class="absolute top-1/3 right-1/2 w-24 h-24 bg-accent/60 rounded-full filter blur-sm transform rotate-12"></div>
-        <div class="absolute top-1/4 left-1/3 w-16 h-16 bg-secondary rounded-full"></div>
-        <div class="absolute top-1/2 right-1/3 w-20 h-20 bg-secondary/90 rounded-full"></div>
-        <div class="absolute bottom-1/3 left-1/2 w-24 h-24 bg-secondary/70 rounded-full"></div>
-        <div class="absolute bottom-1/4 right-1/2 w-32 h-32 bg-secondary/50 rounded-full"></div>
-    </div>
+<style>
+    .card-hover {
+        transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+</style>
 
-    <div class="container mx-auto px-6 py-16 lg:py-24 relative z-10">
-        <div class="flex flex-col lg:flex-row items-center">
-            <div class="lg:w-1/2 lg:pr-10">
-                <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-4 float-animation">
+<!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <!-- Use original hero image -->
+            <div class="w-full h-full bg-cover bg-center" style="background-image: url('{{ $hero['image'] }}');">
+                <!-- Dark Overlay -->
+                <div class="absolute inset-0 bg-black/50"></div>
+                <!-- Gradient Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+            </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="container mx-auto px-6 py-20 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Headline - Keep original content -->
+                <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-4 text-white tracking-wide">
                     {{ $hero['title'] }}
                 </h1>
-                <p class="text-xl lg:text-2xl mb-8 font-light">
+
+                <!-- Subheadline - Keep original content -->
+                <p class="text-xl lg:text-2xl mb-8 font-light text-gray-200">
                     {{ $hero['subtitle'] }}
                 </p>
-                <p class="text-base mb-8 opacity-90">
+
+                <!-- Description - Keep original content -->
+                <p class="text-base mb-8 opacity-90 text-gray-300">
                     {{ $hero['description'] }}
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="{{ $baseUrl }}/bootcamp" class="bg-secondary hover:text-primary hover:bg-white text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-lg text-center">
+
+                <!-- CTA Buttons - Keep original content and links -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <!-- Primary Button - Keep original text and link -->
+                    <a href="{{ $baseUrl }}/bootcamp" class="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                         {{ $hero['cta_text'] }}
                     </a>
-                    <a href="{{ $baseUrl }}/community" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 text-center">
+
+                    <!-- Secondary Button - Keep original text and link -->
+                    <a href="{{ $baseUrl }}/community" class="hover:bg-white hover:text-primary border border-white text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                         {{ $hero['cta_secondary'] }}
                     </a>
                 </div>
             </div>
-            <div class="lg:w-1/2 mt-10 lg:mt-0">
-                <img src="{{ $hero['image'] }}" alt="E-Learning Platform" class="w-full h-auto rounded-lg shadow-2xl">
-            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <!-- Stats Section -->
 <section class="py-16 bg-white">

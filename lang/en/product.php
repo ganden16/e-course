@@ -84,6 +84,7 @@ return [
         'title' => 'Ready to Start Learning?',
         'subtitle' => 'Join thousands of students who are already advancing their careers with our courses.',
         'request_course' => 'Request a Course',
+        'explore_bootcamps' => 'Explore Bootcamps',
         'enroll_now' => 'Enroll in This Course'
     ],
 

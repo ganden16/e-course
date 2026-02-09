@@ -88,7 +88,39 @@
 </head>
 <body class="font-sans antialiased bg-light">
     <!-- Navigation -->
-    <header class="bg-primary shadow-sm sticky top-0 z-50" x-data="{ mobileMenu: false }">
+    <header class="backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+            :class="scrolled ? 'bg-primary-dark/80 shadow-sm' : 'bg-transparent'"
+            x-data="{
+                mobileMenu: false,
+                scrolled: false,
+                lastScrollY: 0,
+                isScrollingDown: false,
+                scrollTimeout: null,
+                showHeader: true
+            }"
+            @scroll.window="
+                const currentScrollY = window.pageYOffset;
+                scrolled = (currentScrollY > 20);
+                isScrollingDown = currentScrollY > lastScrollY;
+
+                // Hide header when scrolling down
+                if (isScrollingDown && currentScrollY > 100) {
+                    showHeader = false;
+                } else {
+                    showHeader = true;
+                }
+
+                lastScrollY = currentScrollY;
+
+                // Clear existing timeout
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+
+                // Show header when scrolling stops (after 100ms)
+                scrollTimeout = setTimeout(() => {
+                    showHeader = true;
+                }, 100);
+            "
+            :class="showHeader ? 'translate-y-0' : '-translate-y-full'">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
@@ -109,14 +141,14 @@
                 <div class="hidden md:flex items-center space-x-6">
                     @foreach($navItems as $item)
                         <a href="{{ $item['url'] }}"
-                           class="text-gray-200 hover:text-white transition-colors duration-200 font-medium {{ $item['active'] ? 'text-white' : '' }}">
+                           class="text-white hover:text-primary transition-colors duration-200 font-semibold text-lg {{ $item['active'] ? 'text-primary font-bold' : '' }}">
                             {{ $item['name'] }}
                         </a>
                     @endforeach
                 </div>
 
                 <!-- Language Switcher & CTA Button -->
-                <div class="hidden md:flex items-center space-x-6">
+                <div class="hidden md:flex items-center space-x-4">
                     @php
                         $availableLangs = [
                             'id' => ['name' => 'Indonesia', 'flag' => '🇮🇩', 'code' => 'ID'],
@@ -130,25 +162,19 @@
                         <button
                             @click="open = !open"
                             @click.outside="open = false"
-                            class="flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-300 hover:bg-white/10 active:scale-95 group"
-                            :class="open ? 'bg-white/15 backdrop-blur-sm' : ''"
+                            class="flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-300 hover:bg-white/20 active:scale-95 group"
+                            :class="open ? 'bg-white/20 text-white' : ''"
                         >
                             <div class="flex items-center space-x-2">
-                                <!-- Flag with animated background -->
-                                <div class="relative">
-                                    <div class="absolute -inset-1 bg-gradient-to-r from-accent to-orange-dark rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-sm"></div>
-                                    <span class="text-lg relative z-10">{{ $availableLangs[$locale]['flag'] }}</span>
-                                </div>
-
                                 <!-- Language Code -->
-                                <span class="text-white font-medium tracking-wide">
+                                <span class="text-white font-semibold tracking-wide group-hover:text-primary transition-colors duration-300">
                                     {{ $availableLangs[$locale]['code'] }}
                                 </span>
 
                                 <!-- Animated Chevron -->
                                 <i
-                                    class="fas fa-chevron-down text-xs text-white/70 transition-transform duration-300"
-                                    :class="open ? 'rotate-180' : ''"
+                                    class="fas fa-chevron-down text-xs text-white group-hover:text-primary transition-all duration-300"
+                                    :class="open ? 'rotate-180 text-primary' : ''"
                                 ></i>
                             </div>
                         </button>
@@ -162,7 +188,7 @@
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 scale-100"
                             x-transition:leave-end="opacity-0 scale-95"
-                            class="absolute right-0 mt-3 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden z-50"
+                            class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden z-50"
                         >
                             <div class="p-2">
                                 <!-- Dropdown Header -->
@@ -176,24 +202,19 @@
                                 @foreach($availableLangs as $code => $lang)
                                     <a
                                         href="/lang/{{ $code }}"
-                                        class="flex items-center justify-between px-4 py-3.5 rounded-xl transition-all duration-300 group/language hover:bg-primary/5 active:scale-[0.98]"
-                                        :class="{{ $code === $locale ? "'bg-primary/10 cursor-default'" : "'hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5'" }}"
+                                        class="flex items-center justify-between px-4 py-3.5 rounded-xl transition-all duration-300 group/language active:scale-[0.98]"
+                                        :class="{{ $code === $locale ? "'bg-primary cursor-default'" : "'hover:bg-primary/10 hover:text-primary'" }}"
                                     >
                                         <div class="flex items-center space-x-3">
-                                            <!-- Flag with gradient border when active -->
-                                            <div class="relative">
-                                                @if($code === $locale)
-                                                    <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-full opacity-30 blur-xs"></div>
-                                                @endif
-                                                <span class="text-xl relative z-10">{{ $lang['flag'] }}</span>
-                                            </div>
+                                            <!-- Flag -->
+                                            <span class="text-xl">{{ $lang['flag'] }}</span>
 
                                             <!-- Language Details -->
                                             <div class="flex flex-col">
-                                                <span class="font-medium text-gray-800 group-hover/language:text-primary-dark transition-colors">
+                                                <span class="font-semibold {{ $code === $locale ? 'text-white' : 'text-gray-800 group-hover/language:text-primary' }} transition-colors">
                                                     {{ $lang['name'] }}
                                                 </span>
-                                                <span class="text-xs text-gray-500 mt-0.5">
+                                                <span class="text-xs {{ $code === $locale ? 'text-white/80' : 'text-gray-500 group-hover/language:text-primary/70' }} mt-0.5 transition-colors">
                                                     {{ $lang['code'] }}
                                                 </span>
                                             </div>
@@ -202,8 +223,8 @@
                                         <!-- Active Indicator / Chevron -->
                                         @if($code === $locale)
                                             <div class="flex items-center space-x-2">
-                                                <div class="w-2 h-2 bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"></div>
-                                                <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">
+                                                <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                                                <span class="text-xs font-semibold text-white bg-white/20 px-2 py-1 rounded-full">
                                                     {{ $locale == 'id' ? 'Aktif' : 'Active' }}
                                                 </span>
                                             </div>
@@ -215,7 +236,7 @@
                             </div>
 
                             <!-- Dropdown Footer -->
-                            <div class="px-4 py-3 bg-gradient-to-r from-primary-light/20 to-accent/10 border-t border-gray-100">
+                            <div class="px-4 py-3 bg-gray-50 border-t border-gray-100">
                                 <p class="text-xs text-gray-600 text-center">
                                     {{ $locale == 'id' ? 'Website tersedia dalam 2 bahasa' : 'Website available in 2 languages' }}
                                 </p>
@@ -223,23 +244,17 @@
                         </div>
                     </div>
 
-                    <!-- Optional: CTA Button (uncomment if needed) -->
-                    <!--
+                    <!-- Book Now Button -->
                     <a
                         href="{{ $baseUrl }}/product"
-                        class="relative group"
+                        class="px-6 py-2.5 border-2 border-white text-white font-bold rounded-full transition-all duration-300 hover:bg-white hover:text-primary active:scale-95"
                     >
-                        <div class="absolute -inset-1 bg-gradient-to-r from-secondary to-accent rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
-                        <button class="relative px-8 py-3 bg-gradient-to-r from-secondary to-accent text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 group-hover:scale-[1.02]">
-                            {{ $navigation['browse_courses'] }}
-                            <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
-                        </button>
+                        {{ $navigation['browse_courses'] }}
                     </a>
-                    -->
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button @click="mobileMenu = !mobileMenu" class="md:hidden text-white focus:outline-none">
+                <button @click="mobileMenu = !mobileMenu" class="md:hidden text-primary-dark focus:outline-none">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
@@ -257,7 +272,7 @@
                 <div class="space-y-1 mb-8">
                     @foreach($navItems as $item)
                         <a href="{{ $item['url'] }}"
-                        class="flex items-center py-3 px-4 rounded-xl transition-all duration-300 {{ $item['active'] ? 'bg-white/10 text-white border-l-4 border-accent' : 'text-gray-200 hover:bg-white/5 hover:text-white' }}">
+                        class="flex items-center py-3 px-4 rounded-xl transition-all duration-300 {{ $item['active'] ? 'bg-primary/10 text-primary border-l-4 border-accent' : 'text-gray-700 hover:bg-gray-100 hover:text-primary' }}">
                             <span class="font-medium">{{ $item['name'] }}</span>
                             @if($item['active'])
                                 <span class="ml-2 w-2 h-2 bg-accent rounded-full animate-pulse"></span>
@@ -268,25 +283,25 @@
                 </div>
 
                 <!-- Language Switcher -->
-                <div class="mt-6 pt-6 border-t border-white/20">
+                <div class="mt-6 pt-6 border-t border-gray-200">
                     <div class="flex items-center justify-between px-4 mb-4">
                         <div class="flex items-center space-x-2">
-                            <i class="fas fa-globe text-accent"></i>
-                            <span class="text-sm font-medium text-gray-100">{{ $locale == 'id' ? 'Bahasa Indonesia' : 'English' }}</span>
+                            <i class="fas fa-globe text-primary"></i>
+                            <span class="text-sm font-medium text-gray-700">{{ $locale == 'id' ? 'Bahasa Indonesia' : 'English' }}</span>
                         </div>
-                        <span class="text-xs text-gray-300">{{ $locale == 'id' ? 'Pilih bahasa' : 'Select language' }}</span>
+                        <span class="text-xs text-gray-500">{{ $locale == 'id' ? 'Pilih bahasa' : 'Select language' }}</span>
                     </div>
 
                     <div class="flex space-x-3">
                         @foreach($availableLangs as $code => $lang)
                             <a href="/lang/{{ $code }}"
-                            class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-300 transform hover:scale-105 {{ $code === $locale ? 'bg-gradient-to-br from-accent to-orange-dark shadow-lg' : 'bg-white/5 hover:bg-white/10' }}">
+                            class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-300 transform hover:scale-105 {{ $code === $locale ? 'bg-primary shadow-lg' : 'bg-gray-100 hover:bg-primary/20 hover:text-primary' }}">
                                 <span class="text-2xl mb-1">{{ $lang['flag'] }}</span>
-                                <span class="text-sm font-medium {{ $code === $locale ? 'text-white' : 'text-gray-200' }}">
+                                <span class="text-sm font-semibold {{ $code === $locale ? 'text-white' : 'text-gray-700' }}">
                                     {{ $lang['name'] }}
                                 </span>
                                 @if($code === $locale)
-                                    <span class="mt-1 w-1.5 h-1.5 bg-white rounded-full"></span>
+                                    <span class="mt-1 w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
                                 @endif
                             </a>
                         @endforeach
