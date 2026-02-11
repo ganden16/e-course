@@ -40,13 +40,13 @@ return [
             [
                 'name' => 'Amatul Akhlak Firdaus',
                 'role' => 'Co-Founder',
-                'avatar' => 'assets/images/users/9.jpg',
+                'avatar' => 'assets/images/users/ama.jpg',
                 'bio' => 'Passionate about empowering healthcare professionals to transition into digital careers and build sustainable remote work opportunities.'
             ],
             [
                 'name' => 'Aisha Maulidya Sari',
                 'role' => 'Co-Founder',
-                'avatar' => 'assets/images/users/12.jpg',
+                'avatar' => 'assets/images/users/aisa.jpg',
                 'bio' => 'Dedicated to creating structured training programs that prepare healthcare professionals for success in the digital healthcare ecosystem.'
             ]
         ]

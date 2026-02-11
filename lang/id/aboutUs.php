@@ -40,13 +40,13 @@ return [
             [
                 'name' => 'Amatul Akhlak Firdaus',
                 'role' => 'Co-Founder',
-                'avatar' => 'assets/images/users/9.jpg',
+                'avatar' => 'assets/images/users/ama.jpg',
                 'bio' => 'Berpengalaman dalam memberdayakan profesional kesehatan untuk beralih ke karir digital dan membangun peluang kerja jarak jauh yang berkelanjutan.'
             ],
             [
                 'name' => 'Aisha Maulidya Sari',
                 'role' => 'Co-Founder',
-                'avatar' => 'assets/images/users/12.jpg',
+                'avatar' => 'assets/images/users/aisa.jpg',
                 'bio' => 'Didedikasikan untuk menciptakan program pelatihan terstruktur yang mempersiapkan profesional kesehatan untuk sukses di ekosistem kesehatan digital.'
             ]
         ]
