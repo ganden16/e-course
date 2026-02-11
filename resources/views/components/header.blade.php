@@ -259,7 +259,7 @@
 
                 <!-- Mobile Menu Button -->
                 <button @click="mobileMenu = !mobileMenu" class="md:hidden text-primary-dark focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
+                    <i class="fas fa-bars text-2xl text-white"></i>
                 </button>
             </div>
 
@@ -276,7 +276,7 @@
                 <div class="space-y-1 mb-8">
                     @foreach($navItems as $item)
                         <a href="{{ $item['url'] }}"
-                        class="flex items-center py-3 px-4 rounded-xl transition-all duration-300 {{ $item['active'] ? 'bg-primary/10 text-primary border-l-4 border-accent' : 'text-gray-700 hover:bg-gray-100 hover:text-primary' }}">
+                        class="flex items-center py-3 px-4 rounded-xl transition-all duration-300 {{ $item['active'] ? 'bg-primary/10 text-primary border-l-4 border-accent text-white hover:text-primary' : 'text-white hover:bg-gray-100 hover:text-primary' }}">
                             <span class="font-medium">{{ $item['name'] }}</span>
                             @if($item['active'])
                                 <span class="ml-2 w-2 h-2 bg-accent rounded-full animate-pulse"></span>
@@ -290,18 +290,18 @@
                 <div class="mt-6 pt-6 border-t border-gray-200">
                     <div class="flex items-center justify-between px-4 mb-4">
                         <div class="flex items-center space-x-2">
-                            <i class="fas fa-globe text-primary"></i>
-                            <span class="text-sm font-medium text-gray-700">{{ $locale == 'id' ? 'Bahasa Indonesia' : 'English' }}</span>
+                            <i class="fas fa-globe text-primary text-white"></i>
+                            <span class="text-sm font-medium text-white">{{ $locale == 'id' ? 'Bahasa Indonesia' : 'English' }}</span>
                         </div>
-                        <span class="text-xs text-gray-500">{{ $locale == 'id' ? 'Pilih bahasa' : 'Select language' }}</span>
+                        <span class="text-xs text-white">{{ $locale == 'id' ? 'Pilih bahasa' : 'Select language' }}</span>
                     </div>
 
                     <div class="flex space-x-3">
                         @foreach($availableLangs as $code => $lang)
                             <a href="/lang/{{ $code }}"
-                            class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-300 transform hover:scale-105 {{ $code === $locale ? 'bg-primary shadow-lg' : 'bg-gray-100 hover:bg-primary/20 hover:text-primary' }}">
+                            class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-300 transform hover:scale-105 {{ $code === $locale ? 'bg-primary shadow-lg hover:text-white' : 'bg-gray-100 hover:bg-primary/20 hover:text-white' }}">
                                 <span class="text-2xl mb-1">{{ $lang['flag'] }}</span>
-                                <span class="text-sm font-semibold {{ $code === $locale ? 'text-white' : 'text-gray-700' }}">
+                                <span class="text-sm font-semibold hover:text-white ">
                                     {{ $lang['name'] }}
                                 </span>
                                 @if($code === $locale)
