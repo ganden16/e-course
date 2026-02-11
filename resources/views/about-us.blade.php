@@ -206,7 +206,7 @@
                                         {{ $member['role'] }}
                                     </span>
                                 </div>
-                                <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">
+                                <p class="text-gray-600 leading-relaxed mb-6 line-clamp-5">
                                     {{ $member['bio'] }}
                                 </p>
                             </div>

@@ -38,7 +38,7 @@ return [
         ],
         'team' => [
             [
-                'name' => 'Amatul Akhlak Firdaus',
+                'name' => 'Amatul Akhlak Firdausa',
                 'role' => 'Co-Founder',
                 'avatar' => 'assets/images/users/ama.jpg',
                 'bio' => 'Passionate about empowering healthcare professionals to transition into digital careers and build sustainable remote work opportunities.'

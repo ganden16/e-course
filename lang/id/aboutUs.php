@@ -38,7 +38,7 @@ return [
         ],
         'team' => [
             [
-                'name' => 'Amatul Akhlak Firdaus',
+                'name' => 'Amatul Akhlak Firdausa',
                 'role' => 'Co-Founder',
                 'avatar' => 'assets/images/users/ama.jpg',
                 'bio' => 'Berpengalaman dalam memberdayakan profesional kesehatan untuk beralih ke karir digital dan membangun peluang kerja jarak jauh yang berkelanjutan.'
