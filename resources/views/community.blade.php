@@ -583,8 +583,8 @@
         </div>
 
         <!-- Program Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            @foreach(['remote_care_talk', 'remote_care_qa_live', 'mva_discussion_room', 'networking_job_opportunities'] as $key)
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            @foreach(['remote_care_talk', 'remote_care_qa_live', 'mva_discussion_room', 'networking_job_opportunities', 'english_club'] as $key)
             <div class="group relative">
                 <!-- Card Container with Perspective -->
                 <div class="relative transform transition-all duration-700 group-hover:-translate-y-2">

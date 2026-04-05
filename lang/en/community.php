@@ -75,7 +75,7 @@ return [
                 'name' => 'YouTube',
                 'url' => 'https://dub.sh/Bnfb8p0',
                 'icon' => 'fab fa-youtube',
-                'description' => 'Master new skills with free course previews, live demos, and expert-led webinars.'
+                'description' => 'Master new skills with free product previews, live demos, and expert-led webinars.'
             ],
             [
                 'name' => 'TikTok',
@@ -144,23 +144,28 @@ return [
         'description' => 'Healthcare Remote Circle (HRC), we believe that the best learning happens when healthcare professionals share knowledge, learn together, and grow together. Through our community activities, we create interactive spaces that support digital healthcare career development.',
         'remote_care_talk' => [
             'title' => 'RemoteCare Talk',
-            'description' => 'A free webinar session featuring mentors and healthcare professionals from around the world who share insights about Medical Virtual Assistance (MVA), telehealth, and career opportunities in digital healthcare.',
+            'description' => 'Free webinar sessions featuring global mentors and healthcare professionals sharing insights about Medical Virtual Assistance, telehealth, and digital healthcare career opportunities.',
             'icon' => 'fas fa-video'
         ],
         'remote_care_qa_live' => [
             'title' => 'RemoteCare Q&A Live',
-            'description' => 'An interactive live session on social media where community members and audiences can ask questions directly about the world of Medical Virtual Assistance.',
+            'description' => 'Interactive live social media sessions where community members can ask questions directly about Medical Virtual Assistance, telehealth, EHR systems, and remote healthcare work.',
             'icon' => 'fas fa-comments'
         ],
         'mva_discussion_room' => [
             'title' => 'MVA Discussion Room',
-            'description' => 'A collaborative learning space where members can learn together and support one another in developing their skills as Medical Virtual Assistants.',
+            'description' => 'Collaborative learning space where members study together and support each other in developing essential Medical Virtual Assistant skills and professional growth.',
             'icon' => 'fas fa-users'
         ],
         'networking_job_opportunities' => [
             'title' => 'Networking & Job Opportunities',
-            'description' => 'Direct access to remote job openings and international healthcare projects in the digital health industry.HRC community members receive updates and information for internships, collaborations, and global clients.',
+            'description' => 'Direct access to remote job openings and international digital health projects. Community members receive updates on internships, collaborations, and global clients.',
             'icon' => 'fas fa-briefcase'
+        ],
+        'english_club' => [
+            'title' => 'English Club',
+            'description' => 'English-based community program designed to improve language proficiency through interactive discussions, practice sessions, and collaborative learning activities.',
+            'icon' => 'fas fa-language'
         ],
     ],
 

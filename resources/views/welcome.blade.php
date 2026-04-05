@@ -252,29 +252,85 @@
 </section>
 
 <!-- Testimonials Section -->
-<section class="py-16 bg-light">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ $testimonials['title'] }}</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">{{ $testimonials['subtitle'] }}</p>
+<section class="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <!-- Background Decorative Elements -->
+    <div class="absolute inset-0">
+        <div class="absolute top-20 left-20 w-72 h-72 bg-secondary/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-2xl mb-6 mx-auto shadow-lg">
+                <i class="fas fa-quote-left text-2xl text-white"></i>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                <span class="bg-clip-text">
+                    {{ $testimonials['title'] }}
+                </span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">{{ $testimonials['subtitle'] }}</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Testimonials Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             @foreach($testimonialsData as $testimonial)
-                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <img src="{{ asset('assets/images/users/avatar.jpg') }}" alt="{{ $testimonial['name'] }}" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold">{{ $testimonial['name'] }}</h4>
-                            {{-- <p class="text-sm text-gray-500">{{ $testimonial['role'] }}</p> --}}
+                @if($loop->iteration <= 2)
+                <div class="group relative">
+                    <!-- Card Container -->
+                    <div class="relative bg-white rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:-translate-y-2 hover:shadow-3xl">
+                        <!-- Top Decorative Element -->
+                        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-secondary via-primary to-secondary"></div>
+
+                        <!-- Large Photo Section -->
+                        <div class="relative h-96 overflow-hidden">
+                            <img src="{{ asset($testimonial['avatar']) }}" alt="{{ $testimonial['name'] }}" class="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105">
+                            <!-- Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+
+                            <!-- Name Overlay on Image -->
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <h3 class="text-2xl font-bold text-white mb-2">{{ $testimonial['name'] }}</h3>
+                                @if(!empty($testimonial['role']))
+                                <p class="text-white/90 text-sm flex items-center">
+                                    <i class="fas fa-briefcase mr-2"></i>
+                                    {{ $testimonial['role'] }}
+                                </p>
+                                @endif
+                            </div>
                         </div>
+
+                        <!-- Content Section -->
+                        <div class="p-8">
+                            <!-- Star Rating -->
+                            <div class="flex mb-6 justify-center">
+                                @for($i = 0; $i < 5; $i++)
+                                    <i class="fas fa-star text-secondary text-xl"></i>
+                                @endfor
+                            </div>
+
+                            <!-- Quote Icon -->
+                            <div class="text-center mb-4">
+                                <i class="fas fa-quote-left text-4xl text-secondary/20"></i>
+                            </div>
+
+                            <!-- Testimonial Content -->
+                            <p class="text-gray-700 leading-relaxed text-center italic">
+                                "{{ $testimonial['content'] }}"
+                            </p>
+
+                            <!-- Bottom Decorative Line -->
+                            <div class="mt-6 flex justify-center">
+                                <div class="w-24 h-1 bg-gradient-to-r from-secondary to-primary rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <!-- Hover Effect Border -->
+                        <div class="absolute inset-0 border-2 border-secondary/0 group-hover:border-secondary/30 rounded-3xl transition-all duration-500"></div>
                     </div>
-                    <div class="flex mb-4">
-                        @for($i = 0; $i < 5; $i++)
-                            <i class="fas fa-star text-secondary"></i>
-                        @endfor
-                    </div>
-                    <p class="text-gray-600 italic">"{{ $testimonial['content'] }}"</p>
                 </div>
+                @endif
             @endforeach
         </div>
     </div>

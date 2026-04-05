@@ -4,7 +4,7 @@ return [
     'site' => [
         'name' => 'Healthcare Remote Circle',
         'tagline' => 'Unlock Your Potential with Digital Learning',
-        'description' => 'Leading e-learning platform providing quality digital courses and bootcamps to advance your career.',
+        'description' => 'Leading e-learning platform providing quality digital products and bootcamps to advance your career.',
         'logo' => 'assets/images/logo1.png',
         'email' => 'contact@hrcteam.com',
         'phone' => '+6285704677707',
@@ -20,15 +20,15 @@ return [
         'contact' => 'Contact',
         'bootcamp' => 'Bootcamp',
         'community' => 'Our Community',
-        'browse_courses' => 'Browse Courses'
+        'browse_courses' => 'Browse Bootcamps'
     ],
 
     // Hero Section
     'hero' => [
         'title' => 'Transform Your Career with Digital Learning',
-        'subtitle' => 'Join thousands of students who have developed their careers through our comprehensive courses and bootcamps',
-        'description' => 'Access high-quality digital courses and intensive bootcamps taught by industry experts. Learn at your own pace, anytime, anywhere.',
-        'cta_text' => 'Explore Courses',
+        'subtitle' => 'Join thousands of students who have developed their careers through our comprehensive products and bootcamps',
+        'description' => 'Access high-quality digital products and intensive bootcamps taught by industry experts. Learn at your own pace, anytime, anywhere.',
+        'cta_text' => 'Explore Products',
         'cta_secondary' => 'Join Community',
         'image' => 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80'
     ],
@@ -37,12 +37,12 @@ return [
     'stats' => [
         'active_students' => 'Active Students',
         'expert_instructors' => 'Expert Instructors',
-        'courses_available' => 'Courses Available',
+        'courses_available' => 'Products Available',
         'satisfaction_rate' => 'Satisfaction Rate',
         'data' => [
             ['number' => '99+', 'label' => 'Active Students'],
             ['number' => '5+', 'label' => 'Expert Instructors'],
-            ['number' => '10+', 'label' => 'Courses Available'],
+            ['number' => '10+', 'label' => 'Products Available'],
             ['number' => '95%', 'label' => 'Satisfaction Rate']
         ]
     ],
@@ -93,9 +93,9 @@ return [
     // Featured Courses Section
     'featured_courses' => [
         'title' => 'Featured Products',
-        'subtitle' => 'Explore our most popular courses and start learning today.',
+        'subtitle' => 'Explore our most popular products and start learning today.',
         'view_details' => 'View Details',
-        'view_all_courses' => 'View All Courses',
+        'view_all_courses' => 'View All Products',
         'data' => [
             [
                 'id' => 1,
@@ -229,35 +229,35 @@ return [
 
     // Testimonials Section
     'testimonials' => [
-        'title' => 'What Our Students Say',
+        'title' => 'What They Say',
         'subtitle' => 'Real stories from real students who have transformed their careers.',
         'data' => [
             [
-                'name' => 'Sarah Johnson',
-                'role' => 'Web Developer',
-                'avatar' => 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-                'content' => 'Healthcare Remote Circle has truly transformed my career. The courses are comprehensive and the instructors are amazing!'
+                'name' => 'Herwin Pundhi Ramadhani',
+                'role' => 'Medical Virtual Assistant',
+                'avatar' => 'assets/images/testimonials/Herwin Pundhi Ramadhani.jpeg',
+                'content' => 'Joining the Medical Virtual Assistant Bootcamp at Healthcare Remote Circle was an incredibly valuable experience. The program provided clear guidance on healthcare workflows, patient communication, and administrative tasks. The mentors were supportive and shared practical insights about working with international healthcare clients. Through the assignments and guidance, I built a strong portfolio that helped me attract interest from potential clients. I learned that finding remote work requires persistence and continuous learning. This bootcamp gave me the knowledge, confidence, and direction to pursue a successful career as a Medical Virtual Assistant.'
             ],
             [
-                'name' => 'Michael Chen',
-                'role' => 'Data Scientist',
-                'avatar' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-                'content' => 'The bootcamp I attended was intensive and practical. I got a job within a month after completing it.'
+                'name' => 'Aurellia Firjanti',
+                'role' => 'Medical Virtual Assistant Graduate',
+                'avatar' => 'assets/images/testimonials/Aurellia Firjanti.jpeg',
+                'content' => 'I want to express my heartfelt gratitude for the HRC bootcamp program. It opened my eyes to the world of remote healthcare work and showed me what it truly takes to succeed as a Medical Virtual Assistant. From comprehensive materials to hands-on practice, every session was packed with valuable knowledge. The instructors were incredibly patient, kind, and created a relaxed learning environment that made classes engaging and enjoyable. Without this bootcamp, I would never have discovered these amazing remote opportunities or identified the skills I needed to develop further.'
             ],
-            [
-                'name' => 'Amanda Rodriguez',
-                'role' => 'UX Designer',
-                'avatar' => 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-                'content' => 'The flexibility to learn at my own pace while working full-time was invaluable. Highly recommended!'
-            ]
+            // [
+            //     'name' => 'Sarah Johnson',
+            //     'role' => 'Web Developer',
+            //     'avatar' => 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+            //     'content' => 'Healthcare Remote Circle has truly transformed my career. The products are comprehensive and the instructors are amazing!'
+            // ]
         ]
     ],
 
     // CTA Section
     'cta' => [
         'title' => 'Ready to Start Your Learning Journey?',
-        'subtitle' => 'Join thousands of students who are already transforming their careers with our courses.',
-        'browse_courses' => 'Browse Courses',
+        'subtitle' => 'Join thousands of students who are already transforming their careers with our products.',
+        'browse_courses' => 'Browse Bootcamps',
         'contact_us' => 'Contact Us'
     ],
 

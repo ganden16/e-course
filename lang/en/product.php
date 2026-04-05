@@ -2,14 +2,14 @@
 return [
     // Hero Section
     'hero' => [
-        'title' => 'Our Courses',
-        'subtitle' => 'Explore our comprehensive range of courses designed to help you master new skills and advance your career.'
+        'title' => 'Our Products',
+        'subtitle' => 'Explore our comprehensive range of products designed to help you master new skills and advance your career.'
     ],
 
     // Filter Section
     'filter' => [
-        'all_courses' => 'All Courses',
-        'courses_available' => 'courses available',
+        'all_courses' => 'All Products',
+        'courses_available' => 'products available',
         'all_categories' => 'All Categories',
         'sort_by' => 'Sort by',
         'price_low_high' => 'Price: Low to High',
@@ -28,7 +28,7 @@ return [
         ],
         'lifetime_access' => [
             'title' => 'Lifetime Access',
-            'description' => 'Get lifetime access to course materials and updates'
+            'description' => 'Get lifetime access to product materials and updates'
         ],
         'mobile_access' => [
             'title' => 'Mobile Access',
@@ -51,10 +51,10 @@ return [
 
     // Product Details
     'product_details' => [
-        'not_found' => 'Course Not Found',
-        'not_exist' => 'The course you\'re looking for doesn\'t exist.',
-        'browse_all' => 'Browse All Courses',
-        'course_includes' => 'Course Includes:',
+        'not_found' => 'Product Not Found',
+        'not_exist' => 'The product you\'re looking for doesn\'t exist.',
+        'browse_all' => 'Browse All Products',
+        'course_includes' => 'Product Includes:',
         'duration' => 'Duration',
         'level' => 'Level',
         'save' => 'Save',
@@ -75,22 +75,22 @@ return [
 
     // Related Courses
     'related_courses' => [
-        'title' => 'Related Courses',
+        'title' => 'Related Products',
         'view_details' => 'View Details'
     ],
 
     // CTA Section
     'cta' => [
         'title' => 'Ready to Start Learning?',
-        'subtitle' => 'Join thousands of students who are already advancing their careers with our courses.',
-        'request_course' => 'Request a Course',
+        'subtitle' => 'Join thousands of students who are already advancing their careers with our products.',
+        'request_course' => 'Request a Product',
         'explore_bootcamps' => 'Explore Bootcamps',
-        'enroll_now' => 'Enroll in This Course'
+        'enroll_now' => 'Enroll in This Product'
     ],
 
     // Load More
     'load_more' => [
-        'courses' => 'Load More Courses'
+        'courses' => 'Load More Products'
     ],
 
     // Product Detail Page
@@ -120,7 +120,7 @@ return [
             "students" => 3420,
             "duration" => "42 hours",
             "level" => "Beginner to Advanced",
-            "description" => "Learn web development from scratch with HTML, CSS, JavaScript, React, Node.js, and more. This comprehensive course is designed to take you from absolute beginner to professional web developer with a portfolio of real-world projects.",
+            "description" => "Learn web development from scratch with HTML, CSS, JavaScript, React, Node.js, and more. This comprehensive product is designed to take you from absolute beginner to professional web developer with a portfolio of real-world projects.",
             "features" => [
                 "42 hours of high-quality video content",
                 "100+ coding exercises with solutions",
@@ -166,7 +166,7 @@ return [
             "students" => 2850,
             "duration" => "36 hours",
             "level" => "Intermediate",
-            "description" => "Master Python programming for data science, machine learning, and data analysis. This course is designed to give you practical skills in collecting, cleaning, analyzing, and visualizing data using Python.",
+            "description" => "Master Python programming for data science, machine learning, and data analysis. This product is designed to give you practical skills in collecting, cleaning, analyzing, and visualizing data using Python.",
             "features" => [
                 "36 hours of high-quality video content",
                 "80+ coding exercises with real datasets",
@@ -191,7 +191,7 @@ return [
                 "Basic programming understanding (Python preferred)",
                 "Fundamental knowledge of statistics",
                 "Computer with minimum specifications (4GB RAM)",
-                "Anaconda installation (guided in the course)"
+                "Anaconda installation (guided in the product)"
             ],
             "what_you_will_build" => [
                 "Interactive Sales Analysis Dashboard",
@@ -213,7 +213,7 @@ return [
             "students" => 1980,
             "duration" => "28 hours",
             "level" => "Beginner",
-            "description" => "Learn digital marketing strategies including SEO, social media, content marketing, and more. This comprehensive course teaches you how to create, manage, and optimize effective digital marketing campaigns.",
+            "description" => "Learn digital marketing strategies including SEO, social media, content marketing, and more. This comprehensive product teaches you how to create, manage, and optimize effective digital marketing campaigns.",
             "features" => [
                 "28 hours of high-quality video content",
                 "50+ practical assignments with feedback",
@@ -260,7 +260,7 @@ return [
             "students" => 2150,
             "duration" => "32 hours",
             "level" => "Beginner to Intermediate",
-            "description" => "Master the principles of user interface and user experience design. This course teaches you how to create intuitive, attractive, and user-centered designs for web and mobile applications.",
+            "description" => "Master the principles of user interface and user experience design. This product teaches you how to create intuitive, attractive, and user-centered designs for web and mobile applications.",
             "features" => [
                 "32 hours of high-quality video content",
                 "60+ design exercises with feedback",
@@ -307,7 +307,7 @@ return [
             "students" => 1680,
             "duration" => "38 hours",
             "level" => "Intermediate",
-            "description" => "Build beautiful mobile apps for iOS and Android using Flutter and Dart. This course teaches you how to create high-performance mobile applications with attractive UIs for both platforms using a single codebase.",
+            "description" => "Build beautiful mobile apps for iOS and Android using Flutter and Dart. This product teaches you how to create high-performance mobile applications with attractive UIs for both platforms using a single codebase.",
             "features" => [
                 "38 hours of high-quality video content",
                 "70+ coding exercises with solutions",
@@ -354,7 +354,7 @@ return [
             "students" => 1230,
             "duration" => "40 hours",
             "level" => "Intermediate",
-            "description" => "Learn the fundamentals of cybersecurity, ethical hacking, and network security. This course provides in-depth understanding of cybersecurity threats and how to protect systems from attacks.",
+            "description" => "Learn the fundamentals of cybersecurity, ethical hacking, and network security. This product provides in-depth understanding of cybersecurity threats and how to protect systems from attacks.",
             "features" => [
                 "40 hours of high-quality video content",
                 "90+ practical exercises in virtual environment",

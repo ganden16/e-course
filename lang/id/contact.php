@@ -71,8 +71,8 @@ return [
 
     // Contact Info Section
     'contact_info' => [
-        'description' => 'Punya pertanyaan tentang kursus kami, bootcamp, atau butuh bantuan dengan pendaftaran? Tim kami di sini untuk membantu Anda.',
-        'additional_info' => 'Baik Anda memiliki pertanyaan tentang kursus kami, membutuhkan dukungan teknis, atau ingin mempelajari lebih lanjut tentang bootcamp kami, tim kami di sini untuk membantu Anda setiap langkahnya.',
+        'description' => 'Punya pertanyaan tentang produk kami, bootcamp, atau butuh bantuan dengan pendaftaran? Tim kami di sini untuk membantu Anda.',
+        'additional_info' => 'Baik Anda memiliki pertanyaan tentang produk kami, membutuhkan dukungan teknis, atau ingin mempelajari lebih lanjut tentang bootcamp kami, tim kami di sini untuk membantu Anda setiap langkahnya.',
         'office_hours' => 'Jam Kantor',
         'follow_us' => 'Ikuti Kami'
     ],
@@ -101,14 +101,14 @@ return [
     // FAQ Section
     'faq' => [
         'title' => 'Pertanyaan yang Sering Diajukan',
-        'subtitle' => 'Temukan jawaban untuk pertanyaan umum tentang kursus dan layanan kami.',
+        'subtitle' => 'Temukan jawaban untuk pertanyaan umum tentang produk dan layanan kami.',
         'how_to_enroll' => [
             'question' => 'Bagaimana cara mendaftar kursus?',
-            'answer' => 'Jelajahi katalog kursus kami, pilih kursus yang Anda minati, dan klik tombol "Daftar Sekarang". Anda akan dipandu melalui proses pendaftaran dan pembayaran.'
+            'answer' => 'Jelajahi katalog produk kami, pilih produk yang Anda minati, dan klik tombol "Daftar Sekarang". Anda akan dipandu melalui proses pendaftaran dan pembayaran.'
         ],
         'payment_methods' => [
             'question' => 'Metode pembayaran apa yang Anda terima?',
-            'answer' => 'Kami menerima semua kartu kredit utama, kartu debit, PayPal, dan transfer bank. Kami juga menawarkan rencana cicilan untuk kursus dan bootcamp tertentu.'
+            'answer' => 'Kami menerima semua kartu kredit utama, kartu debit, PayPal, dan transfer bank. Kami juga menawarkan rencana cicilan untuk produk dan bootcamp tertentu.'
         ],
         'refund_policy' => [
             'question' => 'Bisakah saya mendapatkan pengembalian uang jika tidak puas?',
@@ -123,7 +123,7 @@ return [
     // CTA Section
     'cta' => [
         'title' => 'Siap Memulai Perjalanan Pembelajaran Anda?',
-        'subtitle' => 'Bergabunglah dengan ribuan orang yang sudah memajukan karir mereka dengan kursus kami.',
+        'subtitle' => 'Bergabunglah dengan ribuan orang yang sudah memajukan karir mereka dengan produk kami.',
         'browse_courses' => 'Jelajahi Kursus',
         'explore_bootcamps' => 'Jelajahi Bootcamp'
     ]

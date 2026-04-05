@@ -4,7 +4,7 @@ return [
     'site' => [
         'name' => 'HEALTHCARE',
         'tagline' => 'Buka Potensi Anda dengan Pembelajaran Digital',
-        'description' => 'Platform e-learning terdepan yang menyediakan kursus digital dan bootcamp berkualitas untuk meningkatkan karir Anda.',
+        'description' => 'Platform e-learning terdepan yang menyediakan Produk digital dan bootcamp berkualitas untuk meningkatkan karir Anda.',
         'logo' => 'assets/images/logo1.png',
         'email' => 'contact@hrcteam.com',
         'phone' => '+6285704677707',
@@ -37,12 +37,12 @@ return [
     'stats' => [
         'active_students' => 'Orang Aktif',
         'expert_instructors' => 'Instruktur Ahli',
-        'courses_available' => 'Kursus Tersedia',
+        'courses_available' => 'Produk Tersedia',
         'satisfaction_rate' => 'Tingkat Kepuasan',
         'data' => [
             ['number' => '99+', 'label' => 'Orang Aktif'],
             ['number' => '5+', 'label' => 'Instruktur Ahli'],
-            ['number' => '10+', 'label' => 'Kursus Tersedia'],
+            ['number' => '10+', 'label' => 'Produk Tersedia'],
             ['number' => '95%', 'label' => 'Tingkat Kepuasan']
         ]
     ],
@@ -233,23 +233,23 @@ return [
         'subtitle' => 'Kisah nyata dari orang nyata yang telah mengubah karir mereka.',
         'data' => [
             [
-                'name' => 'Sarah Johnson',
-                'role' => 'Pengembang Web',
-                'avatar' => 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-                'content' => 'Healthcare Remote Circle benar-benar mengubah karir saya. Kursusnya sangat komprehensif dan instrukturnya luar biasa!'
+                'name' => 'Herwin Pundhi Ramadhani',
+                'role' => 'Medical Virtual Assistant',
+                'avatar' => 'assets/images/testimonials/Herwin Pundhi Ramadhani.jpeg',
+                'content' => 'Mengikuti Bootcamp Medical Virtual Assistant di Healthcare Remote Circle adalah pengalaman yang sangat berharga. Program ini memberikan panduan jelas tentang alur kerja kesehatan, komunikasi pasien, dan tugas administratif. Para mentor sangat mendukung dan berbagi wawasan praktis tentang bekerja dengan klien internasional. Melalui tugas dan bimbingan yang diberikan, saya membangun portofolio yang kuat untuk menarik minat klien potensial. Saya belajar bahwa pekerjaan remote membutuhkan ketekunan dan pembelajaran berkelanjutan. Bootcamp ini memberi saya pengetahuan, kepercayaan diri, dan arah untuk berkarier sebagai Medical Virtual Assistant.'
             ],
             [
-                'name' => 'Michael Chen',
-                'role' => 'Ilmuwan Data',
-                'avatar' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-                'content' => 'Bootcamp yang saya ikuti sangat intensif dan praktis. Saya mendapatkan pekerjaan dalam sebulan setelah menyelesaikannya.'
+                'name' => 'Aurellia Firjanti',
+                'role' => 'Lulusan Medical Virtual Assistant',
+                'avatar' => 'assets/images/testimonials/Aurellia Firjanti.jpeg',
+                'content' => 'Saya ingin menyampaikan rasa terima kasih yang mendalam untuk program bootcamp HRC. Bootcamp ini membuka mata saya terhadap dunia kerja remote di bidang kesehatan dan menunjukkan apa yang benar-benar diperlukan untuk sukses sebagai Medical Virtual Assistant. Dari materi komprehensif hingga praktik langsung, setiap sesi penuh dengan pengetahuan berharga. Para instruktur sangat sabar, baik hati, dan menciptakan lingkungan belajar yang santai sehingga kelas menjadi menarik dan menyenangkan. Tanpa bootcamp ini, saya tidak akan pernah menemukan peluang remote yang luar biasa ini atau mengetahui keterampilan apa yang perlu saya kembangkan lebih lanjut.'
             ],
-            [
-                'name' => 'Amanda Rodriguez',
-                'role' => 'Desainer UX',
-                'avatar' => 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-                'content' => 'Fleksibilitas belajar dengan kecepatan saya sendiri sambil bekerja penuh waktu sangat berharga. Sangat direkomendasikan!'
-            ]
+            // [
+            //     'name' => 'Sarah Johnson',
+            //     'role' => 'Pengembang Web',
+            //     'avatar' => 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+            //     'content' => 'Healthcare Remote Circle benar-benar mengubah karir saya. Kursusnya sangat komprehensif dan instrukturnya luar biasa!'
+            // ]
         ]
     ],
 

@@ -250,7 +250,7 @@
 
                     <!-- Book Now Button -->
                     <a
-                        href="{{ $baseUrl }}/product"
+                        href="{{ $baseUrl }}/bootcamp"
                         class="px-6 py-2.5 border-2 border-white text-white font-bold rounded-full transition-all duration-300 hover:bg-white hover:text-primary active:scale-95"
                     >
                         {{ $navigation['browse_courses'] }}

@@ -75,7 +75,7 @@ return [
                 'name' => 'YouTube',
                 'url' => 'https://dub.sh/Bnfb8p0',
                 'icon' => 'fab fa-youtube',
-                'description' => 'Pelajari keterampilan baru lewat demo visual, webinar, dan preview kursus gratis.'
+                'description' => 'Pelajari keterampilan baru lewat demo visual, webinar, dan preview produk gratis.'
             ],
             [
                 'name' => 'TikTok',
@@ -144,23 +144,28 @@ return [
         'description' => 'Di Healthcare Remote Circle (HRC), kami percaya bahwa pembelajaran terbaik terjadi ketika tenaga kesehatan saling berbagi, belajar bersama, dan tumbuh bersama. Melalui berbagai kegiatan komunitas, kami menghadirkan ruang interaktif untuk mendukung karier digital di bidang kesehatan.',
         'remote_care_talk' => [
             'title' => 'RemoteCare Talk',
-            'description' => 'Sesi webinar gratis yang menghadirkan mentor dan praktisi kesehatan dari seluruh dunia untuk berbagi wawasan tentang Medical Virtual Assistant (MVA), telehealth, dan karier di dunia digital healthcare.',
+            'description' => 'Sesi webinar gratis yang menghadirkan mentor global dan praktisi kesehatan berbagi wawasan tentang Medical Virtual Assistant, telehealth, dan peluang karier digital healthcare.',
             'icon' => 'fas fa-video'
         ],
         'remote_care_qa_live' => [
             'title' => 'RemoteCare Q&A Live',
-            'description' => 'Sesi live interaktif di media sosial tempat anggota komunitas dan audiens bisa bertanya langsung tentang dunia Medical Virtual Assistant. Diskusi ringan namun penuh makna ini mencakup topik seperti EHR, telehealth, medical admin skills, dan pengalaman kerja remote.',
+            'description' => 'Sesi live interaktif di media sosial tempat anggota komunitas bertanya langsung tentang Medical Virtual Assistant, telehealth, sistem EHR, dan kerja remote healthcare.',
             'icon' => 'fas fa-comments'
         ],
         'mva_discussion_room' => [
             'title' => 'MVA Discussion Room',
-            'description' => 'Ruang belajar kolaboratif tempat para anggota belajar bersama dan saling mendukung dalam mengasah keterampilan sebagai Medical Virtual Assistant.',
+            'description' => 'Ruang belajar kolaboratif tempat anggota belajar bersama dan saling mendukung mengembangkan keterampilan esensial Medical Virtual Assistant dan pertumbuhan profesional.',
             'icon' => 'fas fa-users'
         ],
         'networking_job_opportunities' => [
             'title' => 'Networking & Peluang Kerja',
-            'description' => 'Akses langsung ke berbagai peluang kerja remote dan proyek internasional di bidang kesehatan digital. Anggota komunitas HRC mendapatkan informasi untuk internship, kerja sama, dan klien global.',
+            'description' => 'Akses langsung ke lowongan kerja remote dan proyek kesehatan digital internasional. Anggota komunitas menerima update tentang magang, kolaborasi, dan klien global.',
             'icon' => 'fas fa-briefcase'
+        ],
+        'english_club' => [
+            'title' => 'English Club',
+            'description' => 'Program komunitas berbasis bahasa Inggris yang dirancang untuk meningkatkan kemahiran bahasa melalui diskusi interaktif, sesi latihan, dan kegiatan pembelajaran kolaboratif.',
+            'icon' => 'fas fa-language'
         ],
     ],
 
