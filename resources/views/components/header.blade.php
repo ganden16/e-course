@@ -136,7 +136,7 @@
 
                         <!-- Text "Health Care Remote Circle" dengan warna putih -->
                         <span class="text-lg font-bold text-white">
-                            Health Care Remote Circle
+                            Healthcare Remote Circle
                         </span>
                     </a>
                 </div>
