@@ -74,6 +74,9 @@
 <!DOCTYPE html>
 <html lang="{{ $locale }}" dir="ltr">
 <head>
+    <!-- Google Analytics -->
+    @include('components.google-analytics')
+
     <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -436,6 +439,3 @@
     <main>
         {{ $slot ?? '' }}
     </main>
-
-    <!-- Google Analytics -->
-    @include('components.google-analytics')
