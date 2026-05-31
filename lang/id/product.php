@@ -1,5 +1,10 @@
 <?php
 return [
+    // SEO Meta Tags
+    'seo_title' => 'Produk - Kursus & Sumber Daya Digital Healthcare | Healthcare Remote Circle',
+    'seo_description' => 'Jelajahi produk dan kursus digital kami untuk pelatihan Medical Virtual Assistant, edukasi telehealth, dan pengembangan keterampilan digital healthcare. Mulai belajar hari ini.',
+    'seo_keywords' => 'kursus kesehatan, produk medical virtual assistant, sumber daya digital healthcare, pelatihan telehealth, kursus MVA, produk edukasi kesehatan',
+
     // Hero Section
     'hero' => [
         'title' => 'Produk Kami',

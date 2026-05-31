@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bootcamp;
 use App\Models\Category;
+use App\Services\SeoService;
 use Illuminate\Http\Request;
 
 class BootcampController extends Controller
@@ -64,7 +65,19 @@ class BootcampController extends Controller
         $bootcamps = (clone $baseQuery)->take(6)->get();
         $categories = Category::where('is_active', true)->orderBy('updated_at', 'desc')->get();
 
-        return view('bootcamp-new', compact('categories', 'bootcamps', 'totalBootcamps', 'bootcamp_details'));
+        // SEO Data
+        $seo = new SeoService();
+        $seoTitle = $translations['bootcamp']['seo_title'] ?? 'Bootcamp - Healthcare Remote Circle';
+        $seoDescription = $translations['bootcamp']['seo_description'] ?? 'Join our intensive Medical Virtual Assistant bootcamps and accelerate your career in digital healthcare.';
+
+        return view('bootcamp-new', compact(
+            'categories',
+            'bootcamps',
+            'totalBootcamps',
+            'bootcamp_details',
+            'seoTitle',
+            'seoDescription'
+        ));
     }
 
     /**
@@ -111,7 +124,36 @@ class BootcampController extends Controller
             ->limit(2)
             ->get();
 
-        return view('bootcamp-detail-new', compact('bootcamp', 'relatedBootcamps', 'otherBootcamps'));
+        // SEO Service
+        $seo = new SeoService();
+
+        // SEO Data
+        $seoTitle = $bootcamp->seo_title;
+        $seoDescription = $bootcamp->seo_description;
+        $seoKeywords = $bootcamp->meta_keywords ?? '';
+        $seoImage = $bootcamp->seo_image;
+        $seoType = 'product';
+        $courseStructuredData = $seo->getCourseStructuredData($bootcamp);
+
+        // Breadcrumb structured data
+        $breadcrumbStructuredData = $seo->getBreadcrumbStructuredData([
+            ['name' => 'Home', 'url' => url($locale)],
+            ['name' => 'Bootcamp', 'url' => url($locale . '/bootcamp')],
+            ['name' => $bootcamp->title, 'url' => $bootcamp->canonical_url],
+        ]);
+
+        return view('bootcamp-detail-new', compact(
+            'bootcamp',
+            'relatedBootcamps',
+            'otherBootcamps',
+            'seoTitle',
+            'seoDescription',
+            'seoKeywords',
+            'seoImage',
+            'seoType',
+            'courseStructuredData',
+            'breadcrumbStructuredData'
+        ));
     }
 
     /**
@@ -142,6 +184,35 @@ class BootcampController extends Controller
             ->limit(2)
             ->get();
 
-        return view('bootcamp-detail-new', compact('bootcamp', 'relatedBootcamps', 'otherBootcamps'));
+        // SEO Service
+        $seo = new SeoService();
+
+        // SEO Data
+        $seoTitle = $bootcamp->seo_title;
+        $seoDescription = $bootcamp->seo_description;
+        $seoKeywords = $bootcamp->meta_keywords ?? '';
+        $seoImage = $bootcamp->seo_image;
+        $seoType = 'product';
+        $courseStructuredData = $seo->getCourseStructuredData($bootcamp);
+
+        // Breadcrumb structured data
+        $breadcrumbStructuredData = $seo->getBreadcrumbStructuredData([
+            ['name' => 'Home', 'url' => url($locale)],
+            ['name' => 'Bootcamp', 'url' => url($locale . '/bootcamp')],
+            ['name' => $bootcamp->title, 'url' => $bootcamp->canonical_url],
+        ]);
+
+        return view('bootcamp-detail-new', compact(
+            'bootcamp',
+            'relatedBootcamps',
+            'otherBootcamps',
+            'seoTitle',
+            'seoDescription',
+            'seoKeywords',
+            'seoImage',
+            'seoType',
+            'courseStructuredData',
+            'breadcrumbStructuredData'
+        ));
     }
 }

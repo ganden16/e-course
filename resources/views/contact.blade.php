@@ -17,7 +17,7 @@
     $baseUrl = '/' . $locale;
 @endphp
 
-@include('components.header', ['title' => 'Contact Us'])
+@include('components.header', ['title' => 'Contact Us', 'description' => 'Get in touch with Healthcare Remote Circle. We are here to help you with your digital healthcare education journey.'])
 
 <!-- Hero Section -->
 <section class="min-h-screen flex items-center justify-center relative overflow-hidden">

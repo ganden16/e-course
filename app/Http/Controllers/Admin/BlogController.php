@@ -62,6 +62,7 @@ class BlogController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:500',
+            'meta_keywords' => 'nullable|string|max:255',
             'tags' => 'nullable|array',
             'tags.*' => 'exists:blog_tags,id',
             // 'is_active' => 'boolean'
@@ -126,6 +127,7 @@ class BlogController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:500',
+            'meta_keywords' => 'nullable|string|max:255',
             'tags' => 'nullable|array',
             'tags.*' => 'exists:blog_tags,id',
             'is_active' => 'string'

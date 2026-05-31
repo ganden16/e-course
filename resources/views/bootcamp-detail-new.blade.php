@@ -23,7 +23,15 @@
         </div>
     </div>
 @else
-    @include('components.header', ['title' => $bootcamp->title])
+    @include('components.header', [
+    'title' => $seoTitle ?? $bootcamp->title,
+    'description' => $seoDescription ?? null,
+    'keywords' => $seoKeywords ?? null,
+    'image' => $seoImage ?? null,
+    'type' => $seoType ?? 'product',
+    'courseStructuredData' => $courseStructuredData ?? null,
+    'breadcrumbStructuredData' => $breadcrumbStructuredData ?? null
+])
 
     <!-- Bootcamp Hero Section -->
     <section class="py-16 bg-white">

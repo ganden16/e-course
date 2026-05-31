@@ -29,7 +29,15 @@
         </div>
     </div>
 @else
-    @include('components.header', ['title' => $product->title])
+    @include('components.header', [
+    'title' => $seoTitle ?? $product->title,
+    'description' => $seoDescription ?? null,
+    'keywords' => $seoKeywords ?? null,
+    'image' => $seoImage ?? null,
+    'type' => $seoType ?? 'product',
+    'productStructuredData' => $productStructuredData ?? null,
+    'breadcrumbStructuredData' => $breadcrumbStructuredData ?? null
+])
 
     <!-- Course Hero Section -->
     <section class="py-16 bg-white">

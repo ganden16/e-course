@@ -1,5 +1,10 @@
 <?php
 return [
+    // SEO Meta Tags
+    'seo_title' => 'Products - Digital Healthcare Courses & Resources | Healthcare Remote Circle',
+    'seo_description' => 'Explore our digital products and courses for Medical Virtual Assistant training, telehealth education, and digital healthcare skill development. Start learning today.',
+    'seo_keywords' => 'healthcare courses, medical virtual assistant products, digital healthcare resources, telehealth training, MVA courses, healthcare education products',
+
     // Hero Section
     'hero' => [
         'title' => 'Our Products',

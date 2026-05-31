@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Services\SeoService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -76,7 +77,20 @@ class ProductController extends Controller
         $products = $query->take(6)->get();
         $categories = ProductCategory::where('is_active', true)->orderBy('updated_at', 'desc')->get();
 
-        return view('product', compact('products', 'categories', 'totalProducts', 'course_details', 'load_more'));
+        // SEO Data
+        $seo = new SeoService();
+        $seoTitle = $translations['product']['seo_title'] ?? 'Products - Healthcare Remote Circle';
+        $seoDescription = $translations['product']['seo_description'] ?? 'Explore our digital products and courses for Medical Virtual Assistant training and digital healthcare education.';
+
+        return view('product', compact(
+            'products',
+            'categories',
+            'totalProducts',
+            'course_details',
+            'load_more',
+            'seoTitle',
+            'seoDescription'
+        ));
     }
 
     /**
@@ -105,7 +119,36 @@ class ProductController extends Controller
             ->limit(3)
             ->get();
 
-        return view('product-detail', compact('product', 'relatedProducts', 'otherProducts'));
+        // SEO Service
+        $seo = new SeoService();
+
+        // SEO Data
+        $seoTitle = $product->seo_title;
+        $seoDescription = $product->seo_description;
+        $seoKeywords = $product->meta_keywords ?? '';
+        $seoImage = $product->seo_image;
+        $seoType = 'product';
+        $productStructuredData = $seo->getProductStructuredData($product);
+
+        // Breadcrumb structured data
+        $breadcrumbStructuredData = $seo->getBreadcrumbStructuredData([
+            ['name' => 'Home', 'url' => url($locale)],
+            ['name' => 'Products', 'url' => url($locale . '/product')],
+            ['name' => $product->title, 'url' => $product->canonical_url],
+        ]);
+
+        return view('product-detail', compact(
+            'product',
+            'relatedProducts',
+            'otherProducts',
+            'seoTitle',
+            'seoDescription',
+            'seoKeywords',
+            'seoImage',
+            'seoType',
+            'productStructuredData',
+            'breadcrumbStructuredData'
+        ));
     }
 
     /**
@@ -147,6 +190,9 @@ class ProductController extends Controller
             'curriculum' => 'nullable|array',
             'requirements' => 'nullable|array',
             'what_you_will_build' => 'nullable|array',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string|max:500',
+            'meta_keywords' => 'nullable|string|max:255',
             'is_active' => 'boolean',
         ]);
 
@@ -210,6 +256,9 @@ class ProductController extends Controller
             'curriculum' => 'nullable|array',
             'requirements' => 'nullable|array',
             'what_you_will_build' => 'nullable|array',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string|max:500',
+            'meta_keywords' => 'nullable|string|max:255',
             'is_active' => 'boolean',
         ]);
 

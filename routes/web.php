@@ -8,6 +8,12 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SeoController;
+
+// SEO Routes - Sitemap and Robots (no locale prefix needed)
+Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
+Route::get('/robots.txt', [SeoController::class, 'robots'])->name('robots');
+Route::get('/health', [SeoController::class, 'health'])->name('health');
 
 // Language switch route
 Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('language.switch');

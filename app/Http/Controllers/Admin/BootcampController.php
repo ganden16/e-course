@@ -66,6 +66,14 @@ class BootcampController extends Controller
     {
         $data = $request->validated();
 
+        // Add SEO fields validation
+        $seoFields = ['meta_title', 'meta_description', 'meta_keywords'];
+        foreach ($seoFields as $field) {
+            if ($request->has($field)) {
+                $data[$field] = $request->$field;
+            }
+        }
+
         if(isset($data['is_active'])) {
             $data['is_active'] = true;
         }else{
@@ -172,6 +180,14 @@ class BootcampController extends Controller
     public function update(BootcampRequest $request, Bootcamp $bootcamp)
     {
         $data = $request->validated();
+
+        // Add SEO fields validation
+        $seoFields = ['meta_title', 'meta_description', 'meta_keywords'];
+        foreach ($seoFields as $field) {
+            if ($request->has($field)) {
+                $data[$field] = $request->$field;
+            }
+        }
 
         if(isset($data['is_active'])) {
             $data['is_active'] = true;

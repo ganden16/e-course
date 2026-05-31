@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\BlogTag;
+use App\Services\SeoService;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -55,7 +56,20 @@ class BlogController extends Controller
         $tags = BlogTag::active()->get();
         $blog_details = $translations['blog_details'];
 
-        return view('blog', compact('blogs', 'tags', 'translations', 'totalBlogs', 'blog_details'));
+        // SEO Data
+        $seo = new SeoService();
+        $seoTitle = $translations['blog']['seo_title'] ?? 'Blog - Healthcare Remote Circle';
+        $seoDescription = $translations['blog']['seo_description'] ?? 'Read the latest articles about Medical Virtual Assistant, telehealth, and digital healthcare from Healthcare Remote Circle.';
+
+        return view('blog', compact(
+            'blogs',
+            'tags',
+            'translations',
+            'totalBlogs',
+            'blog_details',
+            'seoTitle',
+            'seoDescription'
+        ));
     }
 
     /**
@@ -80,6 +94,35 @@ class BlogController extends Controller
             ->limit(3)
             ->get();
 
-        return view('blog-detail', compact('blog', 'relatedBlogs', 'otherBlogs'));
+        // SEO Service
+        $seo = new SeoService();
+
+        // SEO Data
+        $seoTitle = $blog->seo_title;
+        $seoDescription = $blog->seo_description;
+        $seoKeywords = $blog->meta_keywords ?? '';
+        $seoImage = $blog->seo_image;
+        $seoType = 'article';
+        $articleStructuredData = $seo->getArticleStructuredData($blog);
+
+        // Breadcrumb structured data
+        $breadcrumbStructuredData = $seo->getBreadcrumbStructuredData([
+            ['name' => 'Home', 'url' => url($locale)],
+            ['name' => 'Blog', 'url' => url($locale . '/blog')],
+            ['name' => $blog->title, 'url' => $blog->canonical_url],
+        ]);
+
+        return view('blog-detail', compact(
+            'blog',
+            'relatedBlogs',
+            'otherBlogs',
+            'seoTitle',
+            'seoDescription',
+            'seoKeywords',
+            'seoImage',
+            'seoType',
+            'articleStructuredData',
+            'breadcrumbStructuredData'
+        ));
     }
 }

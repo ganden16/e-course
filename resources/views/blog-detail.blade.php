@@ -6,7 +6,15 @@
     $translations = include lang_path("{$locale}/blog.php");
 @endphp
 
-@include('components.header', ['title' => $blog->title])
+@include('components.header', [
+    'title' => $seoTitle ?? $blog->title,
+    'description' => $seoDescription ?? null,
+    'keywords' => $seoKeywords ?? null,
+    'image' => $seoImage ?? null,
+    'type' => $seoType ?? 'article',
+    'articleStructuredData' => $articleStructuredData ?? null,
+    'breadcrumbStructuredData' => $breadcrumbStructuredData ?? null
+])
 
 <!-- Article Hero Section -->
 <section class="py-16 bg-white">

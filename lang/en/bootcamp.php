@@ -1,5 +1,10 @@
 <?php
 return [
+    // SEO Meta Tags
+    'seo_title' => 'Bootcamp - Medical Virtual Assistant Training Programs | Healthcare Remote Circle',
+    'seo_description' => 'Join intensive Medical Virtual Assistant bootcamps with expert mentors, hands-on projects, and career support. Accelerate your digital healthcare career with Healthcare Remote Circle.',
+    'seo_keywords' => 'medical virtual assistant bootcamp, MVA training, healthcare bootcamp, telehealth course, digital healthcare training, remote healthcare education',
+
     // Hero Section
     'hero' => [
         'title' => 'Intensive Bootcamps',

@@ -17,7 +17,7 @@
     $baseUrl = '/' . $locale;
 @endphp
 
-@include('components.header', ['title' => 'Courses'])
+@include('components.header', ['title' => $seoTitle ?? 'Products', 'description' => $seoDescription ?? null])
 
 <!-- Hero Section -->
 <section class="min-h-screen flex items-center justify-center relative overflow-hidden">

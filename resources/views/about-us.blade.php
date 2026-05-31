@@ -22,7 +22,7 @@
     $baseUrl = '/' . $locale;
 @endphp
 
-@include('components.header', ['title' => 'About Us'])
+@include('components.header', ['title' => 'About Us', 'description' => 'Learn about Healthcare Remote Circle - your trusted partner for Medical Virtual Assistant training and digital healthcare education.'])
 
 <!-- Hero Section -->
 <section class="min-h-screen flex items-center justify-center relative overflow-hidden">

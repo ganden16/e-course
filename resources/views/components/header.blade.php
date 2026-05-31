@@ -18,21 +18,145 @@
         ['name' => $navigation['bootcamp'], 'url' => $baseUrl . '/bootcamp', 'active' => request()->is($baseUrl . '/bootcamp*')],
         ['name' => $navigation['community'], 'url' => $baseUrl . '/community', 'active' => request()->is($baseUrl . '/community')]
     ];
+
+    // Initialize SEO Service
+    $seo = app(\App\Services\SeoService::class);
+
+    // SEO Data Preparation
+    $seoTitle = $seo->generateTitle($title ?? null);
+    $seoDescription = $seo->generateDescription($description ?? null);
+    $seoKeywords = $seo->generateKeywords($keywords ?? null);
+    $seoImage = $image ?? asset('assets/images/logo1.png');
+    $seoType = $type ?? 'website';
+    $canonicalUrl = $seo->getCanonicalUrl();
+    $hreflangUrls = $seo->getHreflangUrls();
+    $currentUrl = url()->current();
+
+    // Open Graph Data
+    $ogData = $seo->getOpenGraphData($seoTitle, $seoDescription, $seoImage, $seoType, $canonicalUrl);
+
+    // Twitter Card Data
+    $twitterData = $seo->getTwitterCardData($seoTitle, $seoDescription, $seoImage);
+
+    // Structured Data (JSON-LD)
+    $structuredData = [];
+
+    // Always add Organization and Website structured data
+    $structuredData[] = $seo->getOrganizationStructuredData();
+    $structuredData[] = $seo->getWebsiteStructuredData();
+
+    // Add article structured data if available
+    if (isset($articleStructuredData)) {
+        $structuredData[] = $articleStructuredData;
+    }
+
+    // Add course structured data if available
+    if (isset($courseStructuredData)) {
+        $structuredData[] = $courseStructuredData;
+    }
+
+    // Add product structured data if available
+    if (isset($productStructuredData)) {
+        $structuredData[] = $productStructuredData;
+    }
+
+    // Add breadcrumb structured data if available
+    if (isset($breadcrumbStructuredData)) {
+        $structuredData[] = $breadcrumbStructuredData;
+    }
+
+    // Add FAQ structured data if available
+    if (isset($faqStructuredData)) {
+        $structuredData[] = $faqStructuredData;
+    }
 @endphp
 
 <!DOCTYPE html>
-<html lang="{{ $locale }}">
+<html lang="{{ $locale }}" dir="ltr">
 <head>
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? $site['name'] }} - {{ $site['tagline'] }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Primary SEO Meta Tags -->
+    <title>{!! strip_tags($seoTitle) !!}</title>
+    <meta name="title" content="{!! strip_tags($seoTitle) !!}">
+    <meta name="description" content="{!! strip_tags($seoDescription) !!}">
+    <meta name="keywords" content="{!! strip_tags($seoKeywords) !!}">
+    <meta name="author" content="{{ $site['name'] }}">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+
+    <!-- Language and Locale -->
+    <meta name="language" content="{{ $locale === 'id' ? 'Indonesian' : 'English' }}">
+    <meta name="content-language" content="{{ $locale }}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ $canonicalUrl }}">
+
+    <!-- Hreflang Tags for Multilingual SEO -->
+    @foreach($hreflangUrls as $hreflangLocale => $hreflangUrl)
+        <link rel="alternate" hreflang="{{ $hreflangLocale }}" href="{{ $hreflangUrl }}">
+    @endforeach
+    <link rel="alternate" hreflang="x-default" href="{{ $hreflangUrls['en'] ?? url('/en') }}">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('assets/images/logo1.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/logo1.png') }}">
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="{{ $ogData['type'] }}">
+    <meta property="og:url" content="{{ $ogData['url'] }}">
+    <meta property="og:title" content="{!! strip_tags($ogData['title']) !!}">
+    <meta property="og:description" content="{!! strip_tags($ogData['description']) !!}">
+    <meta property="og:image" content="{{ $ogData['image'] }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{!! strip_tags($seoTitle) !!}">
+    <meta property="og:site_name" content="{{ $ogData['site_name'] }}">
+    <meta property="og:locale" content="{{ $ogData['locale'] }}">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="{{ $twitterData['card'] }}">
+    <meta name="twitter:site" content="{{ $twitterData['site'] }}">
+    <meta name="twitter:title" content="{!! strip_tags($twitterData['title']) !!}">
+    <meta name="twitter:description" content="{!! strip_tags($twitterData['description']) !!}">
+    <meta name="twitter:image" content="{{ $twitterData['image'] }}">
+    <meta name="twitter:image:alt" content="{!! strip_tags($seoTitle) !!}">
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="ID-JI">
+    <meta name="geo.placename" content="Surabaya">
+    <meta name="geo.position" content="-7.2575;112.7521">
+    <meta name="ICBM" content="-7.2575, 112.7521">
+
+    <!-- Mobile Optimization -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#009b77">
+
+    <!-- Structured Data (JSON-LD) -->
+    @foreach($structuredData as $data)
+        <script type="application/ld+json">
+            {!! json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+        </script>
+    @endforeach
+
+    <!-- Vite CSS -->
     @vite('resources/css/app.css')
+
+    <!-- External CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
@@ -41,11 +165,9 @@
                         'primary': '#009b77',
                         'primary-dark': '#174e47',
                         'primary-light': '#d1fae5',
-                        // 'secondary': '#ffb433',
-                        'secondary-two': '#ffb433',
                         'secondary': '#009b77',
-                        // 'secondary-dark': '#ff9500',
                         'secondary-dark': '#174e47',
+                        'secondary-two': '#ffb433',
                         'accent': '#ffb433',
                         'dark': '#064e3b',
                         'light': '#fcf8ef',
@@ -57,23 +179,8 @@
         }
     </script>
 
+    <!-- Custom Styles -->
     <style>
-        /* @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .pulse-animation {
-            animation: pulse 2s ease-in-out infinite;
-        } */
         .gradient-bg {
             background: linear-gradient(135deg, #ffb433 0%, #ff9500 100%);
         }
@@ -85,6 +192,17 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
     </style>
+
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+
+    <!-- Google Search Console Verification -->
+    @if(config('google.site_verification'))
+        <meta name="google-site-verification" content="{{ config('google.site_verification') }}">
+    @endif
 </head>
 <body class="font-sans antialiased bg-light">
     <!-- Navigation -->
@@ -102,21 +220,16 @@
                 scrolled = (currentScrollY > 20);
                 isScrollingDown = currentScrollY > lastScrollY;
 
-                // Hide header when scrolling in ANY direction (up or down)
-                // Only show when at the very top
                 if (currentScrollY > 100) {
                     showHeader = false;
                 } else if (currentScrollY <= 100) {
-                    // Always show header at the top
                     showHeader = true;
                 }
 
                 lastScrollY = currentScrollY;
 
-                // Clear existing timeout
                 if (scrollTimeout) clearTimeout(scrollTimeout);
 
-                // Show header when scrolling stops (after 300ms delay)
                 scrollTimeout = setTimeout(() => {
                     showHeader = true;
                 }, 600);
@@ -128,10 +241,10 @@
         <nav class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <a href="{{ $baseUrl }}" class="flex items-center">
+                    <a href="{{ $baseUrl }}" class="flex items-center" title="{{ $site['name'] }} - {{ $site['tagline'] }}">
                         <!-- Logo dengan background lingkaran putih -->
                         <div class="bg-white rounded-full p-2 mr-3">
-                            <img src="{{ asset($site['logo']) }}" alt="{{ $site['name'] }}" class="w-8 h-8">
+                            <img src="{{ asset($site['logo']) }}" alt="{{ $site['name'] }} Logo" class="w-8 h-8" loading="lazy" width="32" height="32">
                         </div>
 
                         <!-- Text "Health Care Remote Circle" dengan warna putih -->
@@ -168,6 +281,7 @@
                             @click.outside="open = false"
                             class="flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-300 hover:bg-white/20 active:scale-95 group"
                             :class="open ? 'bg-white/20 text-white' : ''"
+                            aria-label="{{ $locale == 'id' ? 'Pilih Bahasa' : 'Select Language' }}"
                         >
                             <div class="flex items-center space-x-2">
                                 <!-- Language Code -->
@@ -193,6 +307,8 @@
                             x-transition:leave-start="opacity-100 scale-100"
                             x-transition:leave-end="opacity-0 scale-95"
                             class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden z-50"
+                            role="menu"
+                            aria-orientation="vertical"
                         >
                             <div class="p-2">
                                 <!-- Dropdown Header -->
@@ -208,6 +324,7 @@
                                         href="/lang/{{ $code }}"
                                         class="flex items-center justify-between px-4 py-3.5 rounded-xl transition-all duration-300 group/language active:scale-[0.98]"
                                         :class="{{ $code === $locale ? "'bg-primary cursor-default'" : "'hover:bg-primary/10 hover:text-primary'" }}"
+                                        role="menuitem"
                                     >
                                         <div class="flex items-center space-x-3">
                                             <!-- Flag -->
@@ -227,7 +344,6 @@
                                         <!-- Active Indicator / Chevron -->
                                         @if($code === $locale)
                                             <div class="flex items-center space-x-2">
-                                                {{-- <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div> --}}
                                                 <span class="text-xs font-semibold text-white bg-white/20 px-2 py-1 rounded-full">
                                                     {{ $locale == 'id' ? 'Aktif' : 'Active' }}
                                                 </span>
@@ -252,13 +368,14 @@
                     <a
                         href="{{ $baseUrl }}/bootcamp"
                         class="px-6 py-2.5 border-2 border-white text-white font-bold rounded-full transition-all duration-300 hover:bg-white hover:text-primary active:scale-95"
+                        title="{{ $navigation['browse_courses'] }}"
                     >
                         {{ $navigation['browse_courses'] }}
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button @click="mobileMenu = !mobileMenu" class="md:hidden text-primary-dark focus:outline-none">
+                <button @click="mobileMenu = !mobileMenu" class="md:hidden text-primary-dark focus:outline-none" aria-label="Toggle Menu">
                     <i class="fas fa-bars text-2xl text-white"></i>
                 </button>
             </div>
@@ -317,3 +434,8 @@
     </header>
 
     <main>
+        {{ $slot ?? '' }}
+    </main>
+
+    <!-- Google Analytics -->
+    @include('components.google-analytics')

@@ -21,7 +21,8 @@ class Blog extends Model
         'image',
         'is_active',
         'meta_title',
-        'meta_description'
+        'meta_description',
+        'meta_keywords',
     ];
 
     protected $casts = [
@@ -74,6 +75,58 @@ class Blog extends Model
             ->with('tags')
             ->limit($limit)
             ->get();
+    }
+
+    /**
+     * Get the SEO title (meta_title or generated from title).
+     */
+    public function getSeoTitleAttribute()
+    {
+        return $this->meta_title ?? $this->title;
+    }
+
+    /**
+     * Get the SEO description (meta_description or generated from excerpt).
+     */
+    public function getSeoDescriptionAttribute()
+    {
+        return $this->meta_description ?? Str::limit(strip_tags($this->excerpt), 160);
+    }
+
+    /**
+     * Get the full image URL for SEO.
+     */
+    public function getSeoImageAttribute()
+    {
+        if ($this->image) {
+            return asset('storage/' . $this->image);
+        }
+        return asset('assets/images/logo1.png');
+    }
+
+    /**
+     * Get the canonical URL for this blog.
+     */
+    public function getCanonicalUrlAttribute()
+    {
+        $locale = app()->getLocale();
+        return url($locale . '/blog/' . $this->slug);
+    }
+
+    /**
+     * Get the published date in ISO 8601 format for structured data.
+     */
+    public function getPublishedDateIsoAttribute()
+    {
+        return $this->published_at->toIso8601String();
+    }
+
+    /**
+     * Get the modified date in ISO 8601 format for structured data.
+     */
+    public function getModifiedDateIsoAttribute()
+    {
+        return $this->updated_at->toIso8601String();
     }
 
     /**

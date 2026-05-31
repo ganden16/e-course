@@ -1,5 +1,10 @@
 <?php
 return [
+    // SEO Meta Tags
+    'seo_title' => 'Blog - Latest Articles on Medical Virtual Assistant & Digital Healthcare | Healthcare Remote Circle',
+    'seo_description' => 'Read expert articles on Medical Virtual Assistant (MVA), telehealth, digital healthcare, and remote healthcare careers. Stay updated with the latest insights from Healthcare Remote Circle.',
+    'seo_keywords' => 'medical virtual assistant blog, telehealth articles, digital healthcare news, MVA tips, remote healthcare career, healthcare education',
+
     // Hero Section
     'hero' => [
         'title' => 'Our Blog',

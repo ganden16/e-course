@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 
 class Bootcamp extends Model
 {
@@ -30,6 +31,9 @@ class Bootcamp extends Model
         'requirements',
         'is_active',
         'lynkid',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
     ];
 
     protected $casts = [
@@ -91,5 +95,69 @@ class Bootcamp extends Model
             return round((1 - $this->price / $this->original_price) * 100);
         }
         return 0;
+    }
+
+    /**
+     * Get the SEO title (meta_title or generated from title).
+     */
+    public function getSeoTitleAttribute()
+    {
+        return $this->meta_title ?? $this->title;
+    }
+
+    /**
+     * Get the SEO description (meta_description or generated from description).
+     */
+    public function getSeoDescriptionAttribute()
+    {
+        return $this->meta_description ?? Str::limit(strip_tags($this->description), 160);
+    }
+
+    /**
+     * Get the full image URL for SEO.
+     */
+    public function getSeoImageAttribute()
+    {
+        if ($this->image) {
+            return asset($this->image);
+        }
+        return asset('assets/images/logo1.png');
+    }
+
+    /**
+     * Get the canonical URL for this bootcamp.
+     */
+    public function getCanonicalUrlAttribute()
+    {
+        $locale = app()->getLocale();
+        return url($locale . '/bootcamp/' . $this->id);
+    }
+
+    /**
+     * Scope a query to only include active bootcamps.
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+
+    /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($bootcamp) {
+            if (empty($bootcamp->slug)) {
+                $bootcamp->slug = Str::slug($bootcamp->title);
+            }
+        });
+
+        static::updating(function ($bootcamp) {
+            if ($bootcamp->isDirty('title') && empty($bootcamp->slug)) {
+                $bootcamp->slug = Str::slug($bootcamp->title);
+            }
+        });
     }
 }

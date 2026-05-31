@@ -1,5 +1,10 @@
 <?php
 return [
+    // SEO Meta Tags
+    'seo_title' => 'Bootcamp - Program Pelatihan Medical Virtual Assistant | Healthcare Remote Circle',
+    'seo_description' => 'Ikuti bootcamp intensif Medical Virtual Assistant dengan mentor ahli, proyek praktis, dan dukungan karier. Percepat karier digital healthcare Anda bersama Healthcare Remote Circle.',
+    'seo_keywords' => 'bootcamp medical virtual assistant, pelatihan MVA, bootcamp kesehatan, kursus telehealth, pelatihan digital healthcare, edukasi remote healthcare',
+
     // Hero Section
     'hero' => [
         'title' => 'Bootcamp Intensif',

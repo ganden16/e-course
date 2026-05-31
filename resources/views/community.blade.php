@@ -19,7 +19,7 @@
     $baseUrl = '/' . $locale;
 @endphp
 
-@include('components.header', ['title' => 'Our Community'])
+@include('components.header', ['title' => 'Community', 'description' => 'Join Healthcare Remote Circle community and connect with thousands of healthcare professionals worldwide.'])
 
 <!-- Hero Section -->
 <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
