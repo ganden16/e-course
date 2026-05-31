@@ -24,11 +24,11 @@
     <!-- Background Image with Overlay -->
     <div class="absolute inset-0 z-0">
         <!-- Use hero image from blog page -->
-        <div class="w-full h-full bg-cover bg-center" style="background-image: url('{{ asset('assets/images/background/blog.jpg') }}');">
+        <div class="w-full h-full bg-cover bg-center" style="background-image: url('{{ asset('assets/images/background/blog.jpeg') }}');">
             <!-- Dark Overlay -->
             <div class="absolute inset-0 bg-black/50"></div>
             <!-- Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-green/60 via-green/40 to-green/60"></div>
         </div>
     </div>
 
