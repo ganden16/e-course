@@ -108,7 +108,7 @@ return [
         ],
         'payment_methods' => [
             'question' => 'What payment methods do you accept?',
-            'answer' => 'We accept all major credit cards, debit cards, PayPal, and bank transfers. We also offer installment plans for select products and bootcamps.'
+            'answer' => 'We accept debit cards, PayPal, and bank transfers for products and bootcamps.'
         ],
         'refund_policy' => [
             'question' => 'Can I get a refund if I\'m not satisfied?',

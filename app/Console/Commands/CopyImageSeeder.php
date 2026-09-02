@@ -30,7 +30,7 @@ class CopyImageSeeder extends Command
         $this->info('Starting to copy images from seedersImage to public/storage...');
 
         $sourcePath = public_path('seedersImage');
-        $destinationPath = public_path('storage');
+        $destinationPath = storage_path('app/public');
 
         // Check if source directory exists
         if (!File::exists($sourcePath)) {

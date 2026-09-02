@@ -232,7 +232,7 @@
                 </div>
             </div>
 
-            <div class="mb-4">
+            {{-- <div class="mb-4">
                 <button @click="open = 2" class="w-full text-left bg-gray-100 p-4 rounded-lg flex justify-between items-center hover:bg-gray-200 transition">
                     <span class="font-semibold">{{ $faq['refund_policy']['question'] }}</span>
                     <i class="fas fa-chevron-down transition-transform" :class="{ 'rotate-180': open === 2 }"></i>
@@ -240,7 +240,7 @@
                 <div x-show="open === 2" x-transition class="bg-gray-50 p-4 rounded-b-lg">
                     <p class="text-gray-600">{{ $faq['refund_policy']['answer'] }}</p>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="mb-4">
                 <button @click="open = 3" class="w-full text-left bg-gray-100 p-4 rounded-lg flex justify-between items-center hover:bg-gray-200 transition">

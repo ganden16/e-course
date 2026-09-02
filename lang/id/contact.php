@@ -108,7 +108,7 @@ return [
         ],
         'payment_methods' => [
             'question' => 'Metode pembayaran apa yang Anda terima?',
-            'answer' => 'Kami menerima semua kartu kredit utama, kartu debit, PayPal, dan transfer bank. Kami juga menawarkan rencana cicilan untuk produk dan bootcamp tertentu.'
+            'answer' => 'Kami menerima kartu debit, PayPal, dan transfer bank untuk produk dan bootcamp.'
         ],
         'refund_policy' => [
             'question' => 'Bisakah saya mendapatkan pengembalian uang jika tidak puas?',
